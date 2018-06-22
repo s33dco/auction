@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_001920) do
+ActiveRecord::Schema.define(version: 2018_06_22_105628) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -39,6 +39,18 @@ ActiveRecord::Schema.define(version: 2018_06_22_001920) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "houses", force: :cascade do |t|
+    t.string "name"
+    t.string "address1"
+    t.string "address2"
+    t.string "address3"
+    t.string "postcode"
+    t.string "phone"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "manufacturer"
     t.string "model"
@@ -46,10 +58,21 @@ ActiveRecord::Schema.define(version: 2018_06_22_001920) do
     t.decimal "selling_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
+    t.integer "lotnumber"
+    t.integer "sale_id"
     t.integer "seller_id"
+    t.integer "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["sale_id"], name: "index_products_on_sale_id"
     t.index ["seller_id"], name: "index_products_on_seller_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.integer "house_id"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_sales_on_house_id"
   end
 
   create_table "sellers", force: :cascade do |t|
