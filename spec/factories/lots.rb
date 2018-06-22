@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :product do
+  factory :lot do
     manufacturer "MyString"
     model "MyString"
     desciption "MyString"

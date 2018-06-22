@@ -1,0 +1,11 @@
+class CreateBids < ActiveRecord::Migration[5.2]
+  def change
+    create_table :bids do |t|
+      t.references :buyer, foreign_key: true
+      t.references :lot, foreign_key: true
+      t.decimal :bidvalue
+
+      t.timestamps
+    end
+  end
+end

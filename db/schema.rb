@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_105628) do
+ActiveRecord::Schema.define(version: 2018_06_22_130041) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,26 @@ ActiveRecord::Schema.define(version: 2018_06_22_105628) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "bids", force: :cascade do |t|
+    t.integer "buyer_id"
+    t.integer "lot_id"
+    t.decimal "bidvalue"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_bids_on_buyer_id"
+    t.index ["lot_id"], name: "index_bids_on_lot_id"
+  end
+
+  create_table "buyers", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "phone"
+    t.string "email"
+    t.decimal "commrate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -51,14 +71,15 @@ ActiveRecord::Schema.define(version: 2018_06_22_105628) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "lots", force: :cascade do |t|
     t.string "manufacturer"
     t.string "model"
     t.string "description"
-    t.decimal "selling_price"
+    t.integer "lotnumber"
+    t.decimal "sellingprice"
+    t.decimal "reserve"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "lotnumber"
     t.integer "sale_id"
     t.integer "seller_id"
     t.integer "category_id"

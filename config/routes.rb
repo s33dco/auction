@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :bids
+  resources :buyers
   resources :sales
   resources :houses
   resources :sellers
