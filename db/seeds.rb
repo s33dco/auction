@@ -6,12 +6,10 @@ House.create!({
 	phone:'07867456789',
 	email: 'hello@hicksteadauctions.com',
 								})
-
 Sale.create!({
 	house_id: 1,
-	date: Time.now.to_date
+	date: 14.days.ago
 })
-
 Buyer.create!([{
 	firstname: 'Tony',
 	lastname: 'Abrahams',
@@ -55,14 +53,12 @@ Seller.create!([{
 	phone: '07894837656',
 	commrate:15
 }])
-
 Category.create!([{
 	title: 'Televisions'
 },
 {
 	title: 'Audio'
 }])
-
 Lot.create!([{
 	manufacturer: 'Sony',
 	model: 'xyz123',
@@ -113,7 +109,6 @@ Lot.create!([{
 	seller_id: 2,
 	category_id: 1
 }])
-
 Bid.create!([{
 	buyer_id: 1,
 	lot_id: 1,
