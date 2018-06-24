@@ -28,4 +28,9 @@ module ApplicationHelper
   	end
   end
 
+  # nice date
+  def nice_date(t)
+    t.strftime("#{t.day.ordinalize} %B %Y") 
+  end
+
 end
