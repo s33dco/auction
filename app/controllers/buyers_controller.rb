@@ -5,6 +5,8 @@ class BuyersController < ApplicationController
 
 		def show
 			@buyer = Buyer.find(params[:id])
+			@lots = Sale.active.first.lots.by_lot_number unless Sale.active.blank? 
+			# can return nil value so catch in view and display check back message
 		end
 
 		def new

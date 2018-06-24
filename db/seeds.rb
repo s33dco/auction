@@ -100,12 +100,22 @@ Lot.create!([{
 	category_id: 1
 },
 {
+	manufacturer: 'Technics',
+	model: 'ff9fflcd0',
+	description:'a long and detailed blurb about the item',
+	reserve: 90,
+	sale_id: 1,
+	lotnumber: 5,
+	seller_id: 1,
+	category_id: 2
+},
+{
 	manufacturer: 'Samsung',
 	model: 'zz995',
 	description:'a long and detailed blurb about the item',
 	reserve: 90,
 	sale_id: 1,
-	lotnumber: 5,
+	lotnumber: 6,
 	seller_id: 2,
 	category_id: 1
 }])

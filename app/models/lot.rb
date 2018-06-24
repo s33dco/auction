@@ -7,6 +7,8 @@ class Lot < ApplicationRecord
 	has_one_attached :image
 	has_many_attached :pictures	
 
-	scope :by_sale_asc, ->(id){where('sale_id = ?', id).order(lotnumber: :asc)}
+	scope :by_lot_number, ->{order(lotnumber: :asc)}
+	scope :asc_by_sale, ->(id){where('sale_id = ?', id).order(lotnumber: :asc)}
+	scope :by_category, ->(id){by_lot_number.joins(:category).merge(Category.where('category_id = ?',id))}
 
 end
