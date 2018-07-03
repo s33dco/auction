@@ -1,4 +1,21 @@
 <aside>
+	<nav>
+		<li>
+			<%= link_to 'change house details', edit_house_path(@house)%>
+		</li>
+		<li>
+			<%= link_to 'create sale', new_sale_path%>
+		</li>
+		<li>
+			<%= link_to 'buyers admin', buyers_path%>
+		</li>
+		<li>
+			<%= link_to 'sellers admin', sellers_path%>
+		</li>
+		<li>
+			reports
+		</li>
+	</nav>
 	
 
 	<%= content_for(:side_extras)%>

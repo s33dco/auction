@@ -5,8 +5,8 @@ class CreateLots < ActiveRecord::Migration[5.2]
       t.string :model
       t.string :description
       t.integer :lotnumber
-      t.decimal :sellingprice, scale: 2
-      t.decimal :reserve, scale: 2
+      t.decimal :sellingprice, :decimal, precision: 7, scale: 2
+      t.decimal :reserve, :decimal, precision: 7, scale: 2
       t.timestamps
     end
   end

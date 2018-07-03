@@ -1,10 +1,10 @@
 House.create!({
-	name:'Hickstead Autions', 
+	name:'An AuctionHouse Autions', 
 	address1:'Hope Place',
-	address2:'Hickstead',
+	address2:'Hopestead',
 	postcode:'W1 1AA', 
 	phone:'07867456789',
-	email: 'hello@hicksteadauctions.com',
+	email: 'hello@auctions.com',
 								})
 Sale.create!({
 	house_id: 1,

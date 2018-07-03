@@ -36,7 +36,8 @@ ActiveRecord::Schema.define(version: 2018_06_24_090345) do
   create_table "bids", force: :cascade do |t|
     t.integer "buyer_id"
     t.integer "lot_id"
-    t.decimal "bidvalue"
+    t.decimal "bidvalue", precision: 7, scale: 2
+    t.decimal "decimal", precision: 7, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_bids_on_buyer_id"
@@ -77,16 +78,17 @@ ActiveRecord::Schema.define(version: 2018_06_24_090345) do
     t.string "model"
     t.string "description"
     t.integer "lotnumber"
-    t.decimal "sellingprice"
-    t.decimal "reserve"
+    t.decimal "sellingprice", precision: 7, scale: 2
+    t.decimal "decimal", precision: 7, scale: 2
+    t.decimal "reserve", precision: 7, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sale_id"
     t.integer "seller_id"
     t.integer "category_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["sale_id"], name: "index_products_on_sale_id"
-    t.index ["seller_id"], name: "index_products_on_seller_id"
+    t.index ["category_id"], name: "index_lots_on_category_id"
+    t.index ["sale_id"], name: "index_lots_on_sale_id"
+    t.index ["seller_id"], name: "index_lots_on_seller_id"
   end
 
   create_table "sales", force: :cascade do |t|
