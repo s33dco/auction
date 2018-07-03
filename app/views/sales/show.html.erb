@@ -1,0 +1,6 @@
+<h1><%= @sale.house.name %></h1>
+<h2>
+	<% @lots.each do |lot| %>
+		<%= render "shared/lot_table" %>
+	<% end %>
+</h2>

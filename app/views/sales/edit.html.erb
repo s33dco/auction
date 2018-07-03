@@ -1,0 +1,35 @@
+<h1><%= @sale.house_and_date%> (edit)</h1>
+
+<%= render "shared/errors", object: @sale %>
+<%= form_with(model:@sale, local:true, html: {class: "cms"}) do |f| %>
+<fieldset>
+	<ul>
+		<li>
+			<label>House</label>
+			<%= f.collection_select(:house_id, House.alpha, :id , :name, prompt: "Choose House" ) %>
+		</li>
+		<li>
+			<label>Auction Date</label>
+			<%= f.date_select :date, { order: [ :day, :month, :year]} %>
+		</li>
+		<table>
+			<% @sale.lots.by_lot_number.each do |lot| %>	
+			<tr>
+				<td><%=lot.lotnumber %></td>
+				<td><%=lot.manufacturer%></td>
+				<td><%=lot.model%></td>
+				<td><td><%=truncate(lot.description, length: 30, separator: ' ')%></td></td>
+				<td><%=show_money(lot.reserve)%></td>
+				<td>Remove from Sale</td>
+			</tr>
+			<% end %>
+		</table>
+	</ul>
+		<%=f.fields_for :lot do |lot| %>
+			<%= render "shared/lot_form", f: lot %>
+		<% end %>
+</fieldset>
+
+<%= f.submit %>
+
+<% end %>

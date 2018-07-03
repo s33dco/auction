@@ -33,4 +33,8 @@ module ApplicationHelper
     t.strftime("#{t.day.ordinalize} %B %Y") 
   end
 
+    def show_money(money)
+    number_to_currency(money, unit: "£")
+  end
+
 end

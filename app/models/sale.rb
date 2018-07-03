@@ -3,6 +3,7 @@ class Sale < ApplicationRecord
   has_many :lots
   has_many :vendors, through: :lots, source: :seller
   has_many :bids, through: :lots
+  accepts_nested_attributes_for :lots
 
   scope :latest, ->{order(date: :desc)}
   scope :active, ->{where('active = ?', true)}

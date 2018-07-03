@@ -6,6 +6,7 @@ class SalesController < ApplicationController
 
 		def show
 			@sale = Sale.find(params[:id])
+			@lots = @sale.lots.by_lot_number
 		end
 
 		def new
@@ -19,6 +20,11 @@ class SalesController < ApplicationController
 			else
 			  render :new
 			end
+		end
+
+		def edit
+			@sale = Sale.find(params[:id])
+			@lots = @sale.lots.by_lot_number
 		end
 
 		def update
@@ -41,6 +47,4 @@ class SalesController < ApplicationController
 		def sale_params
 			params.require(:sale).permit(:date, :house_id)
 		end
-	end
-
 end

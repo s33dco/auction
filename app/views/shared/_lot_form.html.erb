@@ -1,0 +1,32 @@
+<fieldset>
+	<ul>
+		<li>
+			<label>Lot #</label>
+			<%=f.text_field :lotnumber%>
+		</li>
+		<li>
+			<label>Manufacturer</label>
+			<%=f.text_field :manufacturer%>
+		</li>
+		<li>
+			<label>Model</label>
+			<%=f.text_field :model%>
+		</li>
+			<li>
+				<label>Description</label>
+			<%=f.text_area :description%>
+		</li>
+		<li>
+			<label>Reserve</label>
+			<%=f.number_field :reserve, step: :any%>
+		</li>
+		<li>
+			<label>Main Image</label>
+			<%=f.file_field :image%>
+		</li>
+		<li>
+			<label>Alternative Images</label>
+			<%=f.file_field :pictures, multiple: true%>
+		</li>
+	</ul>
+</fieldset>

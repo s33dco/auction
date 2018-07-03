@@ -1,0 +1,9 @@
+<table>
+	<tr>
+		<td><%=lot.lotnumber %></td>
+		<td><%=lot.manufacturer%></td>
+		<td><%=lot.model%></td>
+		<td><%=truncate(lot.description, length: 25, separator: ' ')%></td>		
+		<td><%=show_money(lot.reserve)%></td>
+	</tr>
+</table>

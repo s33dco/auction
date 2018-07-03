@@ -1,0 +1,12 @@
+<h1>Previous auctions</h1>
+<table>
+<% @sales.each do |sale| %>
+	<tr>
+		<td class='date'><%= nice_date(sale.date) %></td>
+		<td class='house'><%= sale.house.name%></td>
+		<td class='lots'><%= pluralize(sale.lots.count, 'lot') %></td>
+		<td class='admin-link'><%= link_to "Edit", edit_sale_path(sale) %></td>
+		<td class='admin-link'><%=link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+<% end %>
+</table>
