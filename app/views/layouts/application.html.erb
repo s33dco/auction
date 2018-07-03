@@ -7,7 +7,7 @@
     <meta property="og:title" content="<%= page_title %>"/>
     <meta property="og:description" content="<%= page_description%>"/>
     <meta property="og:url" content="<%=request.original_url%>"/>
-    <meta property="og:site_name" content="<%=ENV['COOP_NAME']%>"/>
+    <meta property="og:site_name" content=""/>
     <meta property="og:image" content="<%=request.base_url%>/apple-touch-icon.png"/>
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en-GB" />
@@ -15,7 +15,6 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"> 
     <meta charset="utf-8">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -24,15 +23,18 @@
   </head>
 
   <body>
-    <%= render 'header' %>
-    <%= render 'flashes'%>
-    <aside class='sidebar'>
-      <%= render 'sidebar' %>
-    </aside>
-    <main class='page  <%= controller.controller_name %>'>
-      <section class='content'>
-        <%= yield %>
-      </section>
-    </main>
+    <div class="wrapper">
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/flashes' %>
+      <main class='page  <%= controller.controller_name %>'>
+        <section class='content'>
+          <%= yield %>
+        </section>
+          <%= render 'layouts/sidebar' %>
+        <div class="footer">
+          <%= render 'layouts/footer' %>
+        </div>
+      </main>
+    </div>
   </body>
 </html>

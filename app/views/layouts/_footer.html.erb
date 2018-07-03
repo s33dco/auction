@@ -1,0 +1,14 @@
+<footer>
+	<p>
+		<%= @house.name%>
+		<%= @house.address1 if @house.address1 %>
+		<%= @house.address2 if @house.address2 %>
+		<%= @house.address3 if @house.address3 %>
+		<%= @house.postcode if @house.postcode %>
+	</p>
+	<p>
+		<%= @house.email if @house.email %> /	
+		<%= @house.phone if @house.phone %>
+	</p>
+</footer>
+
