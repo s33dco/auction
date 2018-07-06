@@ -5,4 +5,8 @@ class ApplicationRecord < ActiveRecord::Base
     t.strftime("#{t.day.ordinalize} %B %Y") 
   end
 
+  def first_and_last_name
+  	"#{firstname} #{lastname}"
+  end
+
 end

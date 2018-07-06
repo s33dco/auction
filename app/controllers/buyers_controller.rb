@@ -5,8 +5,9 @@ class BuyersController < ApplicationController
 
 		def show
 			@buyer = Buyer.find(params[:id])
-			@lots = Sale.active.first.lots.by_lot_number unless Sale.active.blank? 
+			@bidding_card = Sale.active.first.lots.by_lot_number unless Sale.active.blank? 
 			# can return nil value so catch in view and display check back message
+			@previous_card = Sale.just_done.first.lots.by_lot_number
 		end
 
 		def new
@@ -34,7 +35,7 @@ class BuyersController < ApplicationController
 		def destroy
 			@buyer = Buyer.find(params[:id])
 			@buyer.destroy
-	    redirect_to buyerss_url, alert: "Buyer successfully deleted!"
+	    redirect_to buyers_url, alert: "Buyer successfully deleted!"
 		end
 
 		private
@@ -42,5 +43,4 @@ class BuyersController < ApplicationController
 		def buyer_params
 			params.require(:buyer).permit(:firstname, :lastname, :email, :phone, :commrate)
 		end
-	end
 end

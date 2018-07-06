@@ -1,9 +1,21 @@
-<table>
-	<tr>
-		<td><%=lot.lotnumber %></td>
-		<td><%=lot.manufacturer%></td>
-		<td><%=lot.model%></td>
-		<td><%=truncate(lot.description, length: 25, separator: ' ')%></td>		
-		<td><%=show_money(lot.reserve)%></td>
-	</tr>
-</table>
+<td><%=lot.lotnumber %></td>
+<td><%= lot.category.title %></td>
+<td><%= image_tag lot.image.variant(resize: "400x") if lot.image.attached? %></td>
+<td><%=lot.manufacturer%></td>
+<td><%=lot.model%></td>
+<td><%=truncate(lot.description, length: 30, separator: ' ')%></td>
+<td><%=show_money(lot.reserve)%></td>
+
+
+
+
+<% unless lot.bids.empty? %>
+	<td><%= show_money(lot.bids.desc_order.first.bidvalue) %> (<%=lot.bids.desc_order.first.buyer.firstname%>)</td>
+	<td><%= show_money(lot.bids.desc_order.second.bidvalue) %> (<%=lot.bids.desc_order.second.buyer.firstname%>)</td>
+<% else %>
+	<td> (no bids) </td>
+<% end %>
+
+
+
+<td><%= link_to "edit", edit_lots_path(lot) unless lot.sale.frozen?%></td>

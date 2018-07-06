@@ -1,7 +1,7 @@
 class SalesController < ApplicationController
 
 		def index
-			@sales = Sale.latest
+			@sales = Sale.descending
 		end
 
 		def show
@@ -40,6 +40,22 @@ class SalesController < ApplicationController
 			@sale = Sale.find(params[:id])
 			@sale.destroy
 	    redirect_to sales_url, alert: "Sale successfully deleted!"
+		end
+
+		def active
+			@live_lots_asc = Sale.active.first.live_lots_asc
+
+
+		 	# 	lots.each do |lot|
+		  #   	puts "#{lot.lotnumber} #{lot.manufacturer} #{lot.model}"
+		  # 		lot.bids.sort{|a,b| b.bidvalue <=> a.bidvalue}.each do |bid|
+		  #     	puts "#{bid.buyer.firstname} - #{bid.bidvalue}"
+		  #   	end
+		  # 	end
+
+	# Sale.active.first.lots.each{|lot| puts "#{lot.lotnumber} #{lot.manufacturer} #{lot.model}"}.lot.bids.sort{|a,b| b.bidvalue <=> a.bidvalue}.each{|bid| puts "#{bid.buyer.firstname} - #{bid.bidvalue}" }
+
+
 		end
 
 		private

@@ -1,0 +1,9 @@
+<header>
+	<h1>Add a New Buyer</h1>
+</header>
+<article>
+	<%= form_with(model: @buyer, local: true, html{ class: 'client'}) do |f| %>
+		<%= render "shared/client_form" %>
+		<% f.submit %>
+	<% end %>
+</article>

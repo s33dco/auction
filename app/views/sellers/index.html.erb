@@ -1,0 +1,17 @@
+<header>
+	<h1>Clients - Sellers</h1>
+</header>
+<article>
+	<table>
+		<% @sellers.each do |seller| %>
+			<tr>
+				<td>seller.first_and_last_name</td>
+				<td>seller.code</td>
+				<td>seller.phone</td>
+				<td>seller.email</td>
+				<td>edit</td>
+				<td>delete</td>
+			</tr>
+		<% end %>
+	</table>
+</article>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :reports
 	root "pages#welcome"
 
   resources :bids
@@ -8,6 +9,6 @@ Rails.application.routes.draw do
   resources :houses
   resources :sellers
   resources :categories
-  resources :products
+  resources :lots
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
