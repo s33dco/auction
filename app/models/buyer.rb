@@ -6,6 +6,6 @@ class Buyer < ApplicationRecord
 	scope :by_code, ->{order(buyercode: :asc)}
 
 	def code_and_name
-		"#{buyercode} (#{firstname} #{lastname})"
+		"#{code} (#{firstname} #{lastname})"
 	end
 end

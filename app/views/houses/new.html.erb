@@ -1,0 +1,9 @@
+<header>
+	<h1>Create New House</h1>
+</header>
+<article>
+	<%=form_with(model:@house, local:true) do |f| %>
+		<%= render 'house_fields', f:f%>
+		<%= f.submit %>
+	<% end %>
+</article>

@@ -6,8 +6,10 @@ class BuyersController < ApplicationController
 		def show
 			@buyer = Buyer.find(params[:id])
 			@bidding_card = Sale.active.first.lots.by_lot_number unless Sale.active.blank? 
-			# can return nil value so catch in view and display check back message
 			@previous_card = Sale.just_done.first.lots.by_lot_number
+			@total_bids = @buyer.bids.count
+			@winning_bids = @buyer.reports.count
+			@money_spent = @buyer.reports.cash_spent
 		end
 
 		def new
@@ -21,6 +23,10 @@ class BuyersController < ApplicationController
 			else
 			  render :new
 			end
+		end
+
+		def edit
+			@buyer = Buyer.find(params[:id])
 		end
 
 		def update

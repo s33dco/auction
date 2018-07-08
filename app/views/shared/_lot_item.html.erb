@@ -1,0 +1,16 @@
+<div class="lot-item">
+	<div class="general">
+		<div class="image">
+			<%= image_tag lot.image.variant(resize: "400x") if lot.image.attached? %>
+		</div>
+		<div class="headings">
+			<h2><%= lot.sale.house.name %> <%= nice_date(lot.sale.date) %></h2>
+			<h2> Lot Number <%= lot.lotnumber%></h2>
+		</div>
+	</div>
+	<div class="specifics">
+		<h3><%=lot.manufacturer%> <%=lot.model%> (<%=lot.category.title%>)</h3>
+		<h4><%=lot.description%></h4>
+		<p>add pictures</p>
+	</div>
+</div>

@@ -15,21 +15,24 @@ Buyer.create!([{
 	lastname: 'Abrahams',
 	email: 'tony@abrahams.com',
 	phone: '07967678456',
-	commrate:15
+	commrate:15,
+	code: '100'
 },
 {
 	firstname: 'George',
 	lastname: 'Ross',
 	email: 'georgie@ross.com',
 	phone: '07953846456',
-	commrate:15
+	commrate:15,
+	code: '7'
 },
 {
 	firstname: 'Louis',
 	lastname: 'Oddjob',
 	email: 'louis@job.com',
 	phone: '07894837656',
-	commrate:15
+	commrate:15,
+	code: '123'
 }])
 
 Seller.create!([{
@@ -37,24 +40,27 @@ Seller.create!([{
 	lastname: 'Smith',
 	email: 'blake@smith.com',
 	phone: '07899978456',
-	commrate:15
+	commrate:15,
+	code: 'BS'
 },
 {
 	firstname: 'Peter',
 	lastname: 'George',
 	email: 'peter@george.com',
 	phone: '07958886456',
-	commrate:15
+	commrate:15,
+	code: 'PG'
 },
 {
 	firstname: 'Gary',
 	lastname: 'Buckle',
 	email: 'gaz@buckle.com',
 	phone: '07894837656',
-	commrate:15
+	commrate:15,
+	code: 'GB'
 }])
 Category.create!([{
-	title: 'Televisions'
+	title: 'TVs'
 },
 {
 	title: 'Audio'

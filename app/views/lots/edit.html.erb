@@ -1,0 +1,15 @@
+<header>
+	
+</header>
+<article>
+	<%= form_with(model: @lot, url: sale_lot_path(@lot), local:true) do |f| %>
+		<fieldset>
+			<label>Sale</label>
+			<%= f.collection_select(:sale_id, Sale.building, :id , :house_and_date, prompt: "Choose Auction" ) %>
+		</fieldset>
+		<%= render "shared/lot_form", lot: f %>
+		<%= f.submit %>
+
+	<% end %>
+
+</article>

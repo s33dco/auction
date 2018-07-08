@@ -1,0 +1,10 @@
+<header>
+	<h1>Auction Categories</h1>
+</header>
+<article>
+	<% @categories.each do |category| %>
+		<div class="house">
+			<%= category.title %>	<%=link_to 'edit', edit_category_path(category) %>
+		</div>
+	<% end %>
+</article>

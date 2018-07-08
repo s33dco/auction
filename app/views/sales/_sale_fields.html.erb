@@ -1,0 +1,22 @@
+<%= render "shared/errors", object: @sale %>
+<%= form_with(model:@sale, local:true, html: {class: "cms"}) do |f| %>
+	<fieldset>
+		<ul>
+			<li>
+				<label>House</label>
+				<%= f.collection_select(:house_id, House.alpha, :id , :name, prompt: "Choose House" ) %>
+			</li>
+			<li>
+				<label>Auction Date</label>
+				<%= f.date_select :date, { order: [ :day, :month, :year]} %>
+			</li>
+		</ul>
+		<%=f.fields_for :lots do | lots | %>
+			<%= render 'lot_fields', collection:lots, f: lots %>
+		<% end %>
+		<div class="links">
+		  <%= link_to_add_association 'add lot', f, :lots %>
+		</div>
+	</fieldset>
+	<%= f.submit %>
+<% end %>
