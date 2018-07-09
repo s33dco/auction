@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
 	before_action :set_active_sale
 
 	def set_house
-		@house = House.first
+		@house = House.home.first
 	end
 
 	def set_active_sale
-		@sale = Sale.active.first
+		@sale = Sale.active
 	end
 
 	 def nice_date(t)

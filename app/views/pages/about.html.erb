@@ -1,6 +1,8 @@
-<header>
-	<h1>About <%= @house.name%></h1>
-</header>
+<% if @house %>
+	<header>
+		<h1>About <%= @house.name%></h1>
+	</header>
+<% end %>
 <article>
 	<h2>Terms and conditions, general info</h2>
 </article>

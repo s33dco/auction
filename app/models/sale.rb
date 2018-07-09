@@ -33,6 +33,10 @@ class Sale < ApplicationRecord
     complete? || active? == true
   end
 
+  def building?
+    complete? && active? == false
+  end
+
   def activate
     update_attributes(active: true, complete: false)
   end

@@ -1,6 +1,7 @@
 class BidsController < ApplicationController
 
 	def create
+		fail
 		@lot = Lot.find(params[:bid][:lot_id])
 		@bid = @lot.bids.new(bid_params)
 		@bid.buyer_id = 1 #this will be current buyer from devise

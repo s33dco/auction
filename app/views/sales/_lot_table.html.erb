@@ -3,25 +3,33 @@
 		<td><%=lot.lotnumber %></td>
 		<td><%=lot.category.title %></td>
 		<td><%=link_to "#{lot.manufacturer} #{lot.model}", sale_lot_path(@sale,lot) %></td>
-		<td class="money"><%= show_money(lot.selling_price)%></td>
-		<td class="money">
-			<%if @buyer.bid_for(lot).empty? %>
-				no bid
-			<% else %>
-				<%= show_money(lot.buyer_highest_bid(@buyer).bidvalue)%>
+		<% if !@sale.active? %>
+			<td><%=show_money(lot.reserve) %></td>
+		<% end %>
+		<% if @sale.active? || @sale.complete? %>
+			<td class="money"><%= show_money(lot.selling_price)%></td>
+		<% end %>
+		<% if @buyer %>
+			<% if @sale.active %>
+				<td class="money">
+					<%if @buyer.bid_for(lot).empty? %>
+						no bid
+					<% else %>
+						<%= show_money(lot.buyer_highest_bid(@buyer).bidvalue)%>
+					<% end %>
+				</td>
+				<td class="money">
+					<%if @buyer.bid_for(lot).empty? %>
+						<%= link_to 'add bid', sale_lot_path(@sale, lot)%>
+					<% else %>
+						<% if lot.buyer_highest_bid(@buyer).bidvalue >= lot.highest_bid.bidvalue && lot.buyer_highest_bid(@buyer).bidvalue >= lot.reserve %>
+							winning
+						<% else %>
+							<%=link_to 'increase bid', sale_lot_path(@sale, lot)%>
+						<% end %>
+					<% end %>
+				</td>
 			<% end %>
-		</td>
-
-		<td class="money">
-			<%if @buyer.bid_for(lot).empty? %>
-				<%= link_to 'add bid', sale_lot_path(@sale, lot)%>
-			<% else %>
-				<% if lot.buyer_highest_bid(@buyer).bidvalue >= lot.highest_bid.bidvalue && lot.buyer_highest_bid(@buyer).bidvalue >= lot.reserve %>
-					winning
-				<% else %>
-					<%=link_to 'increase bid', sale_lot_path(@sale, lot)%>
-				<% end %>
-			<% end %>
-		</td>
+		<% end %>				
 	</tr>
 <% end %>

@@ -17,9 +17,18 @@
 			<td>Lot</td>
 			<td>Category</td>
 			<td>Item</td>
-			<td class="money">Bidding at</td>
-			<td class="money">Your Bid</td>
-			<td class="money">Status</td>
+			<% if !@sale.active? %>
+				<td>Reserve</td>
+			<% end %>
+			<% if @sale.active? || @sale.complete? %>
+				<td class="money">Selling at</td>
+			<% end %>
+			<% if @buyer %>
+				<% if @sale.active %>
+					<td class="money">Your Bid</td>
+					<td class="money">Status</td>
+				<% end %>
+			<% end %>
 		</tr>
 		<%= render "lot_table"%>
 	</table>
