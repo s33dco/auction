@@ -1,3 +1,37 @@
 <aside>
-	<%= content_for(:side_extras)%>
+	<%= content_for(:side_links)%>
+	<nav class='standard'>
+		<ul>
+			<% unless controller.controller_name == "houses" %>
+				<li>
+					<%= link_to 'houses', houses_path %>
+				</li>
+			<% end %>
+			<% unless controller.controller_name == "sales" %>
+				<li>
+					<%= link_to 'sales', sales_path %>
+				</li>
+			<% end %>
+			<% unless controller.controller_name == "categories" %>
+				<li>
+					<%= link_to 'categories', categories_path %>
+				</li>
+			<% end %>
+			<% unless controller.controller_name == "buyers" %>
+				<li>
+					<%= link_to 'buyers', buyers_path %>
+				</li>
+			<% end %>
+			<% unless controller.controller_name == "sellers" %>
+				<li>
+					<%= link_to 'sellers', sellers_path %>
+				</li>
+			<% end %>
+			<% unless controller.controller_name == "reports"%>
+				<li>
+					<%= link_to 'reports', reports_path %>
+				</li>
+			<% end %>
+		</ul>
+	</nav>
 </aside>

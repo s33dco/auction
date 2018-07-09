@@ -5,6 +5,7 @@ class SalesController < ApplicationController
 		end
 
 		def show
+			@buyer = Buyer.find(1)
 			@sale = Sale.find(params[:id])
 			@lots = @sale.lots.by_lot_number
 		end

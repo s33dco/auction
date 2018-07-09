@@ -1,6 +1,22 @@
 <header>
-	<h1><%= @lot.manufacturer %> <%= @lot.model %></h1>
+	<h1>Lot <%=@lot.lotnumber%> - <%=@lot.sale.house.name%> - <%=nice_date(@lot.sale.date)%></h1>
 </header>
+
 <article>
-	<%= render 'shared/lot_item', lot: @lot%> 
+	<div class="top-box">
+		<div class="title-image">
+		</div>
+		<div class="title-text">
+			<div class="item">
+				<h1><%= @lot.manufacturer %> <%= @lot.model %></h1>
+			</div>
+			<div class="bid">
+				<%= render 'bid_field' %> 
+			</div>
+		</div>
+	</div>
+	<%= render 'shared/lot_item', lot: @lot%>
 </article>
+<% content_for(:side_links) do %>
+	<%= link_to 'back to bidding card', sale_path(@lot.sale)%>
+<% end %>

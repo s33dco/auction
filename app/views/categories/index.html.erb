@@ -4,7 +4,15 @@
 <article>
 	<% @categories.each do |category| %>
 		<div class="house">
-			<%= category.title %>	<%=link_to 'edit', edit_category_path(category) %>
+			<%= category.title %>	<%=link_to 'edit', edit_category_path(category) %> 
 		</div>
 	<% end %>
 </article>
+
+<% content_for(:side_links) do %>
+	<nav>
+		<li>
+			<%=link_to 'new category', new_category_path %>
+		</li>
+	</nav>
+<% end %>

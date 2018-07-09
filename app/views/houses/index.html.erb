@@ -8,3 +8,11 @@
 		</div>
 	<% end %>
 </article>
+
+<% content_for(:side_links) do %>
+	<nav>
+		<li>
+			<%=link_to 'new house', new_house_path %>
+		</li>
+	</nav>
+<% end %>

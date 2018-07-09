@@ -1,35 +1,34 @@
-<h1>Auctions</h1>
+<header>
+<h1>Auctions</h1>	
+</header>
+<article>
+	<table>
+		<% @sales.each do |sale| %>
+			<tr>
+				<td class='date'><%= nice_date(sale.date) %></td>
+				<td class='house'><%= sale.house.name%></td>
+				<td class='lots'><%= pluralize(sale.lots.count, 'lot') %></td>
+				<td class='admin-link'><%= link_to "View", sale_path(sale) %></td>
+				<!-- below if admin -->
+				<td class='admin-link'><%= link_to "Edit", edit_sale_path(sale) unless sale.frozen? %></td>
+				<td class='admin-link'><%=link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure? All lots will be deleted!' } unless sale.frozen? %></td>
+				<% if sale.active? %>
+					<td>(active)</td>
+				<% end %>
+				<% if !sale.frozen? %>
+					<td>(building)</td>
+				<% end %>
+				<% if sale.complete? %>
+					<td>(completed)</td>
+				<% end %>
+				<!-- to here -->
+			</tr>
+		<% end %>
+	</table>
+</article>
 
-<table>
-<% @sales.each do |sale| %>
-	<tr>
-		<td class='date'><%= nice_date(sale.date) %></td>
-		<td class='house'><%= sale.house.name%></td>
-		<td class='lots'><%= pluralize(sale.lots.count, 'lot') %></td>
-		<td class='admin-link'><%= link_to "View", sale_path(sale) %></td>
-		<td class='admin-link'><%= link_to "Edit", edit_sale_path(sale) unless sale.frozen? %></td>
-		<td class='admin-link'><%=link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure? All lots will be deleted!' } unless sale.frozen? %></td>
-		<% if sale.active? %>
-			<td>(active)</td>
-		<% end %>
-		<% if !sale.frozen? %>
-			<td>(building)</td>
-		<% end %>
-		<% if sale.complete? %>
-			<td>(completed)</td>
-		<% end %>
-	</tr>
+<!-- again if admin -->
+<% content_for(:side_links) do %>
+	<%= render 'contextual_menu' %>
 <% end %>
-</table>
-
-
-<% content_for(:side_extras) do %>
-	<nav>
-		<li>
-			<%=link_to 'Create New Sale', new_sale_path %>
-		</li>
-		<li>
-			<%= link_to 'Create New House', new_house_path%>
-		</li>
-	</nav>
-<% end %>
+<!-- to here -->

@@ -5,12 +5,12 @@
 	<table>
 		<% @buyers.each do |buyer| %>
 			<tr>
-				<td>buyer.first_and_last_name</td>
-				<td>buyer.code</td>
-				<td>buyer.phone</td>
-				<td>buyer.email</td>
-				<td>edit</td>
-				<td>delete</td>
+				<td><%= buyer.first_and_last_name %></td>
+				<td><%= buyer.code %></td>
+				<td><%= buyer.phone %></td>
+				<td><%= buyer.email %></td>
+				<td><%= link_to 'edit', edit_buyer_path(buyer) %></td>
+				<td><%=link_to 'delete', buyer, method: :delete, data: { confirm: 'Are you sure? All lots will be deleted!' } if buyer.bids.empty? %></td>
 			</tr>
 		<% end %>
 	</table>

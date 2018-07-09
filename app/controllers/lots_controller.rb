@@ -2,6 +2,7 @@ class LotsController < ApplicationController
 
 	def show
 		@lot = Lot.find(params[:id])
+		@buyer = Buyer.first
 	end
 
 	def edit

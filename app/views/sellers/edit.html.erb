@@ -1,0 +1,9 @@
+<header>
+	<h1>Editing <%= @seller.full_name%></h1>
+</header>
+<article>
+	<%= form_with(model:@buyer, local:true) do |f| %>
+		<%= render "shared/client_fields", f:f%>
+		<%= f.submit %>
+	<% end %>
+</article>

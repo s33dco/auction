@@ -1,53 +1,30 @@
 <header>
-	<h1><%= nice_date(@sale.date) %></h1>	
+	<h1><%= nice_date(@sale.date) %> <%=@sale.house.name %></h1>	
 </header>
 <article>
-	<% if @sale.active?	%>
-		<%= button_to 'End Auction', deactivate_sale_path(@sale)%>
-	<% end %>
-	<% if !@sale.frozen? %>
-		<%= button_to 'Start Auction', activate_sale_path(@sale)%>
-	<% end %>
+	<div class="auction-control">
+		<!-- if admin -->
+			<% if @sale.active?	%>
+				<%= button_to 'End Auction', deactivate_sale_path(@sale)%>
+			<% end %>
+			<% if !@sale.frozen? %>
+				<%= button_to 'Start Auction', activate_sale_path(@sale)%>
+			<% end %>
+		<!-- to here -->
+	</div>
 	<table>
 		<tr>
-			<td>#</td>
+			<td>Lot</td>
 			<td>Category</td>
-			<td>Manufacturer / Model</td>
-			<td>Reserve</td>
-			<% unless @sale.bids.empty? %>
-				<td>Selling at</td>
-				<td>To</td>
-				<td>On Bid of</td>
-
-			<% end %>
-
+			<td>Item</td>
+			<td class="money">Bidding at</td>
+			<td class="money">Your Bid</td>
+			<td class="money">Status</td>
 		</tr>
-		<% @lots.each do |lot| %>
-			<tr>
-				<%= render "shared/lot_table", collection: @lots, lot:lot%>
-			</tr>
-		<% end %>
+		<%= render "lot_table"%>
 	</table>
 </article>
 
-<% content_for(:side_extras) do %>
-	<nav>
-		<li>
-			<%= link_to 'Sales Home', sales_path%>
-		</li>
-		<li>
-			<%= link_to 'Create New House', new_house_path%>
-		</li>
-		<li>
-			<%=link_to 'Create New Sale', new_sale_path %>
-		</li>
-		<li>
-			<% if !@sale.frozen? %>
-				<%= link_to 'Edit This Sale', edit_sale_path(@sale) unless @sale.frozen? %>
-			<% end %>
-		</li>
-		<li>
-			<%=link_to 'Destroy This Sale & Lots', @sale, method: :delete, data: { confirm: 'Are you sure? All lots will be deleted!' } unless @sale.frozen? %>
-		</li>
-	</nav>
+<% content_for(:side_links) do %>
+	<%= render 'contextual_menu' %>
 <% end %>

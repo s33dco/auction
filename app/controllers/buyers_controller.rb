@@ -5,11 +5,6 @@ class BuyersController < ApplicationController
 
 		def show
 			@buyer = Buyer.find(params[:id])
-			@bidding_card = Sale.active.first.lots.by_lot_number unless Sale.active.blank? 
-			@previous_card = Sale.just_done.first.lots.by_lot_number
-			@total_bids = @buyer.bids.count
-			@winning_bids = @buyer.reports.count
-			@money_spent = @buyer.reports.cash_spent
 		end
 
 		def new

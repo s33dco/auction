@@ -2,12 +2,12 @@ Rails.application.routes.draw do
 
   
 	root "pages#welcome"
-  get "welcome" => "pages#welcome", as: 'welcome'
-  get "about" => "pages#about", as: 'about'
+  get "welcome", to: "pages#welcome", as: 'welcome'
+  get "about", to: "pages#about", as: 'about'
 
   resources :bids
   resources :buyers
-
+  
   resources :sales do
     member do
       post :deactivate

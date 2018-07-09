@@ -3,7 +3,7 @@
 </header>
 <article>
 	<%= form_with(model: @seller, local: true, html{ class: 'client'}) do |f| %>
-		<%= render "shared/client_form" %>
-		<% f.submit %>
+		<%= render "shared/client_fields" %>
+		<%= f.submit %>
 	<% end %>
 </article>

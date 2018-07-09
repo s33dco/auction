@@ -1,0 +1,24 @@
+	<nav class='contextual'>
+		<ul>
+			<% if controller.action_name == "show" %>
+				<% if !@sale.frozen? %>
+						<li>
+							<%= link_to 'edit this sale', edit_sale_path(@sale) unless @sale.frozen? %>
+						</li>
+						<li>
+							<%=link_to 'destroy this sale & lots', @sale, method: :delete, data: { confirm: 'Are you sure? All lots will be deleted!' } %>
+						</li>
+				<% end %>
+			<% end %>
+			<% unless controller.action_name == "new" %>
+				<li>
+					<%=link_to 'create new sale', new_sale_path %>
+				</li>
+			<% end %>
+			<% unless controller.action_name == "index" %>
+				<li>		
+					<%=link_to 'list sales', sales_path %>
+				</li>
+			<% end %>
+		</ul>
+	</nav>
