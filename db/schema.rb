@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_211431) do
+ActiveRecord::Schema.define(version: 2018_07_10_102818) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -114,6 +114,8 @@ ActiveRecord::Schema.define(version: 2018_07_09_211431) do
     t.datetime "updated_at", null: false
     t.boolean "active", default: false
     t.boolean "complete", default: false
+    t.decimal "notch", default: "3.0"
+    t.decimal "minfee", default: "3.5"
     t.index ["house_id"], name: "index_sales_on_house_id"
   end
 

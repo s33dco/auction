@@ -68,6 +68,6 @@ class SalesController < ApplicationController
 		end
 
 		def sale_params
-			params.require(:sale).permit(:date, :house_id, lots_attributes:[ :id, :_destroy, :category_id, :seller_id, :manufacturer, :model, :description, :lotnumber, :reserve])
+			params.require(:sale).permit(:notch, :minfee, :date, :house_id, lots_attributes:[ :id, :_destroy, :category_id, :seller_id, :manufacturer, :model, :description, :lotnumber, :reserve])
 		end
 end

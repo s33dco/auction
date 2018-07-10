@@ -46,18 +46,13 @@ class Sale < ApplicationRecord
   end
 
   def generate_report
-    # for each lot in sale write corresponding record in Report detailing selling price and commisions
-    # self.lots.by_lot_number.each do |lot|
-    #   report              = Report.new
+    # minimum_fee = self.minfee
+    # self.lots.by_lot_number do |lot|
+    #   report = Report.new
     #   report.sale_id      = lot.sale.id
     #   report.lot_id       = lot.id
-    #   report.seller_id    = lot.seller.id
-    #   report.buyer_id     = lot.bids.highest_bid.buyer.id
-    #   report.sold_at      = lot.selling_price
-    #   # todo deal with minimal fee charging
-    #   report.buyer_fee    = (lot.selling_price / 100) * lot.bids.highest_bid.buyer.commrate
-    #   report.seller_fee   = (lot.selling_price / 100) * lot.seller.commrate
-    #   report.category_id  = lot.category_id
-    #   report.save
+    #   report.buyer_id     = lot.highest_bid.buyer.id
+    #   report.category_id  = lot.category.id
+
   end
 end

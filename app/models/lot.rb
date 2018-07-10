@@ -36,14 +36,14 @@ class Lot < ApplicationRecord
 		else
 			if self.second_best_bid
 				# selling price 3 more than value of second bid different buyer (one notch)
-				(3 + self.second_best_bid.bidvalue)
+				(self.sale.notch + self.second_best_bid.bidvalue)
 			else
 				if self.highest_bid.bidvalue >= self.reserve
 					# if only one bid 3 more than value of reserve (one notch)
-					(3 + self.reserve)
+					(self.sale.notch + self.reserve)
 				else
 					# selling at reserve
-					(3 + self.highest_bid.bidvalue)
+					(self.sale.notch + self.highest_bid.bidvalue)
 				end
 			end
 		end

@@ -1,4 +1,16 @@
-<div class="contact-details">
-<p>telephone : <%= @buyer.phone%></p>
-	<p>email : <%= @buyer.email%></p>
+<div class="client-details">
+	<table>
+		<tr>
+			<td>telephone</td>
+			<td><%= @buyer.phone%></td>
+		</tr>
+		<tr>
+			<td>email</td>
+			<td><%= @buyer.email%></td>
+		</tr>
+		<tr>
+			<td>commision rate</td>
+			<td><%= @buyer.commrate%> %</td>
+		</tr>	
+	</table>
 </div>

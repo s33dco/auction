@@ -10,6 +10,14 @@
 				<label>Auction Date</label>
 				<%= f.date_select :date, { order: [ :day, :month, :year]} %>
 			</li>
+			<li>
+				<label>Notch (£)</label>
+				<%=f.number_field :notch%>
+			</li>
+			<li>
+				<label>Minimum Transaction fee (£)</label>
+				<%=f.number_field :minfee%>
+			</li>
 		</ul>
 		<%=f.fields_for :lots do | lots | %>
 			<%= render 'lot_fields', collection:lots, f: lots %>
