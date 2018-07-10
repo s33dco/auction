@@ -36,13 +36,16 @@
 	<nav class='contextual'>
 	<ul>
 		<li>
-			<%= link_to 'Completed', filtered_lots_path(:complete)%>
+			<%= link_to 'completed', filtered_lots_path(:complete)%>
 		</li>
 		<li>
-			<%= link_to 'Active', filtered_lots_path(:active)%>
+			<%= link_to 'active', filtered_lots_path(:active)%>
 		</li>
 		<li>
-			<%= link_to 'Unsold', filtered_lots_path(:unsold)%>
+			<%= link_to 'unsold', filtered_lots_path(:unsold)%>
+		</li>
+		<li>
+			<%= link_to 'all', filtered_lots_path(:all)%>
 		</li>
 	</ul>
 </nav>

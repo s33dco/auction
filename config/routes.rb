@@ -23,6 +23,5 @@ Rails.application.routes.draw do
   resources :sellers
   resources :categories
 
-  resources :reports
 
 end
