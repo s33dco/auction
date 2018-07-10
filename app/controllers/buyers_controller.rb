@@ -5,6 +5,7 @@ class BuyersController < ApplicationController
 
 		def show
 			@buyer = Buyer.find(params[:id])
+			@sales = Sale.active
 		end
 
 		def new

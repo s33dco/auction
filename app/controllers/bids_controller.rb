@@ -1,10 +1,12 @@
 class BidsController < ApplicationController
 
 	def index
-		@sale = Sale.active.first
-		if @sale
-			@lots = @sale.lots.by_lot_number
-		end
+		@sales = Sale.active
+	end
+
+	def show
+		@sale = Sale.find(params[:id])
+		@lots = @sale.lots.by_lot_number
 	end
 
 	def create

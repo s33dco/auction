@@ -3,11 +3,18 @@
 </header>
 <article>
 	<%= render "client_contact" %>
-	<% if @sale %>
-		<%=link_to 'bidding card', sale_path(@sale)%>
+	<% if @sales.empty? %>
+		<p>Look out for a message advising the next auciton is live. Let us know if your phone and email details are incorrect.</p>
 	<% else %>
-		<p>look out for a message advising the next auciton is live</p>
-		<p>You can check your phone and email details are correct above</p>
+		<table>
+			<% @sales.each do |sale| %>
+				<tr>
+					<td><%=sale.house.name%></td>
+					<td><%=nice_date(sale.date)%></td>
+					<td><%=link_to 'bidding card', sale_path(@sale)%></td>
+				</tr>
+			<% end %>
+		</table>
 	<% end %>
 </article>
 
