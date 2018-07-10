@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def set_active_sale
-		@sale = Sale.active
+		@sale = Sale.active.first
 	end
 
 	 def nice_date(t)

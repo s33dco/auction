@@ -85,7 +85,7 @@ Seller.create!([{
 	code: 'GB'
 }])
 Category.create!([{
-	title: 'TVs'
+	title: 'TV'
 },
 {
 	title: 'Audio'

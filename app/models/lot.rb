@@ -15,6 +15,7 @@ class Lot < ApplicationRecord
 	scope :asc_by_sale, ->(id){where('sale_id = ?', id).order(lotnumber: :asc)}
 	scope :by_category, ->(id){by_lot_number.joins(:category).merge(Category.where('category_id = ?',id))}
 	
+
 	def buyer_highest_bid(buyer)
 		bids.where("buyer_id = ?", buyer).order(bidvalue: :desc).first
 	end
@@ -24,17 +25,26 @@ class Lot < ApplicationRecord
 	end
 
 	def second_best_bid
-		bids.order(bidvalue: :desc).second		
+		# the highest bid from a different buyer
+		bids.where.not(buyer_id: highest_bid.buyer.id).order(bidvalue: :desc).first		
 	end
 
 	def selling_price
-		if self.second_best_bid
-			(3 + self.second_best_bid.bidvalue)
+		if self.bids.empty?
+			# if no bids.....
+			0
 		else
-			if self.highest_bid
-				(3 + self.reserve)
+			if self.second_best_bid
+				# selling price 3 more than value of second bid different buyer (one notch)
+				(3 + self.second_best_bid.bidvalue)
 			else
-				(self.reserve)
+				if self.highest_bid.bidvalue >= self.reserve
+					# if only one bid 3 more than value of reserve (one notch)
+					(3 + self.reserve)
+				else
+					# selling at reserve
+					(3 + self.highest_bid.bidvalue)
+				end
 			end
 		end
 	end

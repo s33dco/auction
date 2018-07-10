@@ -10,7 +10,6 @@
 			<div class="item">
 				<h1><%= @lot.manufacturer %> <%= @lot.model %></h1>
 			</div>
-
 			<div class="bid">
 				<% if @lot.sale.complete? %>
 					<h3>Winning Bid : <%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
