@@ -1,5 +1,9 @@
 class BidsController < ApplicationController
 
+	def index
+		
+	end
+
 	def create
 		@lot = Lot.find(params[:bid][:lot_id])
 		@bid = @lot.bids.new(bid_params)
