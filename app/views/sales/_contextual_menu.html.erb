@@ -1,5 +1,15 @@
 	<nav class='contextual'>
 		<ul>
+			<% if @buyer && controller.action_name == "show"%>
+				<li>
+					<%= link_to "back to profile", buyer_path(@buyer) %>
+				</li>
+			<% end %>
+
+
+
+
+
 			<% if controller.action_name == "show" %>
 				<% if !@sale.frozen? %>
 						<li>
@@ -20,5 +30,11 @@
 					<%=link_to 'list sales', sales_path %>
 				</li>
 			<% end %>
+
+
+
+
+			
 		</ul>
 	</nav>
+

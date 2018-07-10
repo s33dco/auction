@@ -11,14 +11,17 @@
 				<h1><%= @lot.manufacturer %> <%= @lot.model %></h1>
 			</div>
 			<div class="bid">
-				<% if @lot.sale.complete? %>
-					<h3>Winning Bid : <%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
-					<% unless @lot.selling_price >= @lot.reserve %>
-						<h3>Reserve not met</h3>
+					<% if @lot.sale.complete? %>
+
+						<h3>Winning Bid : <%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
+						<% unless @lot.selling_price >= @lot.reserve %>
+							<h3>Reserve not met</h3>
+						<% end %>
+					<% else %>
+						<% if @lot.sale.active? %>
+							<%= render 'bid_field' %>
+						<% end %>
 					<% end %>
-				<% else %>
-					<%= render 'bid_field' %>
-				<% end %> 
 			</div>
 		</div>
 	</div>
