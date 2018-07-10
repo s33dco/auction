@@ -1,15 +1,15 @@
 <footer>
-	<% if @house %>
+	<% if @default %>
 		<p>
-			<%= @house.name%>
-			<%= @house.address1 if @house.address1 %>
-			<%= @house.address2 if @house.address2 %>
-			<%= @house.address3 if @house.address3 %>
-			<%= @house.postcode if @house.postcode %>
+			<%= @default.name%>
+			<%= @default.address1 if @default.address1 %>
+			<%= @default.address2 if @default.address2 %>
+			<%= @default.address3 if @default.address3 %>
+			<%= @default.postcode if @default.postcode %>
 		</p>
 		<p>
-			<%= @house.email if @house.email %> /	
-			<%= @house.phone if @house.phone %>
+			<%= @default.email if @default.email %> /	
+			<%= @default.phone if @default.phone %>
 		</p>
 	<% end %>
 </footer>

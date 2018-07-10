@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_active_sale
 
 	def set_house
-		@house = House.home.first
+		@default = House.home.first
 	end
 
 	def set_active_sale
