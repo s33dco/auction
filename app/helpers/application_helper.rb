@@ -33,6 +33,10 @@ module ApplicationHelper
     t.strftime("#{t.day.ordinalize} %B %Y") 
   end
 
+  def short_date(t)
+    t.strftime("%v") 
+  end
+
   def date_time(t)
     t.strftime("%k:%m:%S (%a %d %b)") 
   end

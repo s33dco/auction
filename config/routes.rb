@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   
 	root "pages#welcome"
+  get 'lots/filter/:scope', to: "lots#index", as: :filtered_lots
+  get 'bids/filter/:scope', to: "bids#index", as: :filtered_bids
   get "welcome", to: "pages#welcome", as: 'welcome'
   get "about", to: "pages#about", as: 'about'
 
@@ -13,9 +15,9 @@ Rails.application.routes.draw do
       post :deactivate
       post :activate
     end
-      resources :lots
   end
 
+  resources :lots
 
   resources :houses
   resources :sellers
@@ -23,5 +25,4 @@ Rails.application.routes.draw do
 
   resources :reports
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

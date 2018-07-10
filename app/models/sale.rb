@@ -10,7 +10,8 @@ class Sale < ApplicationRecord
   scope :active, ->{where('active = ?', true)}
   scope :complete, ->{where('complete = ?', true)}
   scope :just_done, ->{complete.order(date: :desc).first}
-  scope :building, ->{ where('complete & active = ?', false)}
+  # todo more scopes for re allocating a lot
+  scope :open, ->{where('complete = ?', false).where('active = ?', false)}
 
   
   def live_lots_asc
@@ -46,13 +47,17 @@ class Sale < ApplicationRecord
   end
 
   def generate_report
-    # minimum_fee = self.minfee
-    # self.lots.by_lot_number do |lot|
+    # sale.lots.by_lot_number do |lot|
     #   report = Report.new
     #   report.sale_id      = lot.sale.id
     #   report.lot_id       = lot.id
+    #   report.seller_id    = lot.seller.id
     #   report.buyer_id     = lot.highest_bid.buyer.id
     #   report.category_id  = lot.category.id
-
+    #   report.sold_at      = lot.selling_price
+    #   report.buyerfee     = lot.buyingfee
+    #   report.sellerfee    = lot.sellingfee
+    #   report.save
+    #  end
   end
 end

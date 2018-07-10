@@ -1,5 +1,9 @@
 class LotsController < ApplicationController
 
+	def index
+		@lots = Lot.send(lots_scope)
+	end
+
 	def show
 		@lot = Lot.find(params[:id])
 		@buyer = Buyer.first
@@ -27,6 +31,16 @@ class LotsController < ApplicationController
 	private
 
 	def lot_params
-		params.require(:lot).permit(:_destroy, :category_id, :seller_id, :manufacturer, :model, :description, :lotnumber, :reserve, :sale_id)
+		params.require(:lot).permit(:category_id, :seller_id, :manufacturer, :model, :description, :lotnumber, :reserve, :sale_id, :image, :pictures)
 	end
+
+	def lots_scope
+	  if params[:scope].in? %w(completed active unsold)
+	    params[:scope]
+	  else
+	    :all
+	  end
+	end
+
+
 end

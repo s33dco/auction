@@ -17,6 +17,11 @@
 					<%= link_to 'categories', categories_path %>
 				</li>
 			<% end %>
+			<% unless controller.controller_name == "lots" %>
+				<li>
+					<%= link_to 'lots', lots_path %>
+				</li>
+			<% end %>
 			<% unless controller.controller_name == "buyers" %>
 				<li>
 					<%= link_to 'buyers', buyers_path %>
@@ -32,11 +37,11 @@
 					<%= link_to 'live bidding', bids_path %>
 				</li>
 			<% end %>
-			<% unless controller.controller_name == "reports"%>
+<!-- 			<% unless controller.controller_name == "reports"%>
 				<li>
 					<%= link_to 'reports', reports_path %>
 				</li>
-			<% end %>
+			<% end %> -->
 		</ul>
 	</nav>
 </aside>

@@ -3,8 +3,7 @@
 	<h3><%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
 	<% unless @lot.selling_price >= @lot.reserve %>
 		<h3>Reserve not met</h3>
-	<% end %>
-	
+	<% end %>	
 	<%= form_with(model: Bid, url: bids_path, method: :post, local:true) do |f| %>	
   <div class="actions">
   	<%=f.hidden_field :lot_id , value: @lot.id %>

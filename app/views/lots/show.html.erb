@@ -19,14 +19,14 @@
 						<% end %>
 					<% else %>
 						<% if @lot.sale.active? %>
-							<%= render 'bid_field' %>
+							<%= render 'bid_field'%>
 						<% end %>
 					<% end %>
+				<p>
+					<%= link_to 'back to bidding card', sale_path(@lot.sale)%>
+				</p>
 			</div>
 		</div>
 	</div>
 	<%= render 'shared/lot_item', lot: @lot%>
 </article>
-<% content_for(:side_links) do %>
-	<%= link_to 'back to bidding card', sale_path(@lot.sale)%>
-<% end %>

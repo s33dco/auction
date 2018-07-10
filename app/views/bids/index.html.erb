@@ -1,5 +1,5 @@
 <header>
-	<h1>Active Sales</h1>
+	<h1>Auction Bidding</h1>
 </header>
 <article>
 	<% if @sales.empty? %>
@@ -17,3 +17,16 @@
 		</table>
 	<% end %>
 </article>
+
+<% content_for(:side_links) do %>
+	<nav class='contextual'>
+	<ul>
+		<li>
+			<%= link_to 'Active', filtered_bids_path(:active)%>
+		</li>
+		<li>
+			<%= link_to 'Complete', filtered_bids_path(:complete)%>
+		</li>
+	</ul>
+</nav>
+<% end %>

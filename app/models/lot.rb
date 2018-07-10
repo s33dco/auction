@@ -7,14 +7,38 @@ class Lot < ApplicationRecord
 	has_many :bidders, through: :bids, source: :buyer
 	has_one_attached :image
 	has_many_attached :pictures	
-	accepts_nested_attributes_for :bids, allow_destroy: true, reject_if: ->(attrs) { attrs['bidvalue'].blank? || attrs['buyer_id'].blank? }
-
 
 	scope :by_lot_number, ->{order(lotnumber: :asc)}
-	scope :by_reverse_lot_number, ->{order(lotnumber: :desc)}
 	scope :asc_by_sale, ->(id){where('sale_id = ?', id).order(lotnumber: :asc)}
 	scope :by_category, ->(id){by_lot_number.joins(:category).merge(Category.where('category_id = ?',id))}
-	
+	scope :complete, ->{joins(:sale).where('complete = ?', true )}
+	scope :active, ->{joins(:sale).where('active = ?', true )}
+	# todo need to add attribute to model
+	scope :unsold, ->{}
+
+	def make_and_model
+		"#{manufacturer} #{model}"
+	end
+
+	def sellingfee
+		if selling_price == 0
+			0
+		else
+			sale.minfee >= selling_price ? sale.minfee : ((selling_price/100) * seller.commrate)
+		end 
+	end
+
+	def buyingfee
+		if selling_price == 0
+			0
+		else
+			sale.minfee >= selling_price ? sale.minfee : ((selling_price/100) * highest_bid.buyer.commrate)
+		end
+	end
+
+	def commissions
+		sellingfee + buyingfee	
+	end
 
 	def buyer_highest_bid(buyer)
 		bids.where("buyer_id = ?", buyer).order(bidvalue: :desc).first
@@ -35,14 +59,14 @@ class Lot < ApplicationRecord
 			0
 		else
 			if self.second_best_bid
-				# selling price 3 more than value of second bid different buyer (one notch)
+				# selling price is second bid from different buyer plus notch if there is a 2nd bid
 				(self.sale.notch + self.second_best_bid.bidvalue)
 			else
 				if self.highest_bid.bidvalue >= self.reserve
-					# if only one bid 3 more than value of reserve (one notch)
+					# else if highest bid is equal or greater then reserve add notch to reserve
 					(self.sale.notch + self.reserve)
 				else
-					# selling at reserve
+					# else add notch to highest bid as less than reserve
 					(self.sale.notch + self.highest_bid.bidvalue)
 				end
 			end

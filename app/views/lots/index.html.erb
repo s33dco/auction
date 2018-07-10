@@ -1,0 +1,50 @@
+<header>
+	<h1>Lot Admin</h1>
+</header>
+<article>
+	<div class="filters">
+		<p>filter by Buyer, Seller, Sale, Category</p>
+	</div>
+	<table>
+		<tr>
+			<td>Date</td>
+			<td>Sale</td>
+			<td>Lot #</td>
+			<td>Category</td>
+			<td>Item</td>
+			<td class='money'>Selling @</td>
+			<td class='money'>Comms</td>
+			<td></td>
+		</tr>
+		<% @lots.each do |lot| %>
+		<tr>
+			<td><%= short_date(lot.sale.date) %></td>
+			<td><%= lot.sale.house.name %></td>
+			<td><%= lot.lotnumber %></td>
+			<td><%= lot.category.title %></td>
+			<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
+			<td class='money'><%= show_money(lot.selling_price) %></td>
+			<td class='money'><%= show_money(lot.commissions) %></td>
+			<td><%=link_to 'edit', edit_lot_path(lot)%></td>
+		</tr>
+		<% end %>
+	</table>
+</article>
+
+<!-- again if admin -->
+<% content_for(:side_links) do %>
+	<nav class='contextual'>
+	<ul>
+		<li>
+			<%= link_to 'Completed', filtered_lots_path(:complete)%>
+		</li>
+		<li>
+			<%= link_to 'Active', filtered_lots_path(:active)%>
+		</li>
+		<li>
+			<%= link_to 'Unsold', filtered_lots_path(:unsold)%>
+		</li>
+	</ul>
+</nav>
+<% end %>
+<!-- to here -->

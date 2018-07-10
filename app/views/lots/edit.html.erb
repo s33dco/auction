@@ -1,15 +1,9 @@
 <header>
-	
+	<h1>Editing <%= @lot.make_and_model%></h1>
 </header>
 <article>
-	<%= form_with(model: @lot, url: sale_lot_path(@lot), local:true) do |f| %>
-		<fieldset>
-			<label>Sale</label>
-			<%= f.collection_select(:sale_id, Sale.building, :id , :house_and_date, prompt: "Choose Auction" ) %>
-		</fieldset>
-		<%= render "shared/lot_form", lot: f %>
+	<%= form_with(model: @lot, local:true) do |f| %>
+		<%= render 'lot_fields', f: f%>
 		<%= f.submit %>
-
 	<% end %>
-
 </article>

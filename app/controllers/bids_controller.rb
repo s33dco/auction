@@ -1,7 +1,7 @@
 class BidsController < ApplicationController
 
 	def index
-		@sales = Sale.active
+		@sales = Sale.send(sales_scope)
 	end
 
 	def show
@@ -24,6 +24,14 @@ class BidsController < ApplicationController
 
 	def bid_params
 		params.require(:bid).permit(:bidvalue, :lot_id)
+	end
+
+	def sales_scope
+	  if params[:scope].in? %w(complete active)
+	    params[:scope]
+	  else
+	    :active
+	  end
 	end
 
 end
