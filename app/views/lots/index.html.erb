@@ -10,20 +10,26 @@
 			<td>Date</td>
 			<td>Sale</td>
 			<td>Lot #</td>
-			<td>Category</td>
 			<td>Item</td>
-			<td class='money'>Selling @</td>
+			<td class='money'>Reserve</td>
+			<td class='money'>Max Bid</td>
+			<td class='money'>Sold @</td>
 			<td class='money'>Comms</td>
 			<td></td>
 		</tr>
 		<% @lots.each do |lot| %>
 		<tr>
 			<td><%= short_date(lot.sale.date) %></td>
-			<td><%= lot.sale.house.name %></td>
+			<td><%= lot.sale.house.code %></td>
 			<td><%= lot.lotnumber %></td>
-			<td><%= lot.category.title %></td>
 			<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
-			<td class='money'><%= show_money(lot.selling_price) %></td>
+			<td class='money'><%=show_money(lot.reserve)%></td>
+			<td class='money'>
+
+				<%=show_money(lot.highest_bid.bidvalue) unless lot.bids.empty?%>
+					
+				</td>
+			<td class='money'><%= show_money(lot.soldat) %></td>
 			<td class='money'><%= show_money(lot.commissions) %></td>
 			<td><%=link_to 'edit', edit_lot_path(lot)%></td>
 		</tr>
@@ -36,16 +42,13 @@
 	<nav class='contextual'>
 	<ul>
 		<li>
-			<%= link_to 'completed', filtered_lots_path(:complete)%>
-		</li>
-		<li>
-			<%= link_to 'active', filtered_lots_path(:active)%>
+			<%= link_to 'sold', filtered_lots_path(:sold)%>
 		</li>
 		<li>
 			<%= link_to 'unsold', filtered_lots_path(:unsold)%>
 		</li>
 		<li>
-			<%= link_to 'all', filtered_lots_path(:all)%>
+			<%= link_to 'complete', filtered_lots_path(:complete)%>
 		</li>
 	</ul>
 </nav>

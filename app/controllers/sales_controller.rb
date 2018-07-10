@@ -50,14 +50,15 @@ class SalesController < ApplicationController
 		def activate
 			@sale = Sale.find(params[:id])
 		  flash[:notice] = "It's on - #{@sale.house.name} #{nice_date(@sale.date)} Active - no changes can be made." if @sale.activate
-		  redirect_to(@sale)
+		  redirect_to sales_url
 		end
 
 		def deactivate
 			@sale = Sale.find(params[:id])
-		  flash[:alert] = "#{@sale.house.name} #{nice_date(@sale.date)} now closed - report being built." if @sale.deactivate
+		  flash.now[:notice] = "#{@sale.house.name} #{nice_date(@sale.date)} building report..." if @sale.deactivate
 		  @sale.generate_report
-		  redirect_to(@sale)
+		  flash[:alert] = "#{@sale.house.name} #{nice_date(@sale.date)} now closed - report built."
+		  redirect_to sales_url
 		end
 
 

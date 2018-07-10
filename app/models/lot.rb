@@ -9,12 +9,11 @@ class Lot < ApplicationRecord
 	has_many_attached :pictures	
 
 	scope :by_lot_number, ->{order(lotnumber: :asc)}
-	scope :asc_by_sale, ->(id){where('sale_id = ?', id).order(lotnumber: :asc)}
-	scope :by_category, ->(id){by_lot_number.joins(:category).merge(Category.where('category_id = ?',id))}
 	scope :complete, ->{joins(:sale).where('complete = ?', true )}
 	scope :active, ->{joins(:sale).where('active = ?', true )}
-	# todo need to add attribute to model
-	scope :unsold, ->{}
+	scope :unsold, ->{where('sold = ?', false)}
+	scope :sold, ->{where('sold = ?', true)}
+
 
 	def make_and_model
 		"#{manufacturer} #{model}"
@@ -37,7 +36,11 @@ class Lot < ApplicationRecord
 	end
 
 	def commissions
-		sellingfee + buyingfee	
+		if sold?
+			bfee + sfee	
+		else
+			0
+		end
 	end
 
 	def buyer_highest_bid(buyer)

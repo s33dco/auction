@@ -12,9 +12,9 @@
 			</div>
 			<div class="bid">
 					<% if @lot.sale.complete? %>
-
-						<h3>Winning Bid : <%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
-						<% unless @lot.selling_price >= @lot.reserve %>
+						<% if @lot.selling_price >= @lot.reserve %>
+							<h3>Winning Bid : <%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
+						<% else %>
 							<h3>Reserve not met</h3>
 						<% end %>
 					<% else %>

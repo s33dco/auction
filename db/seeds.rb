@@ -5,6 +5,7 @@ House.create!([{
 	postcode:'W1 1AA', 
 	phone:'07867456789',
 	email: 'hello@auctions.com',
+	code:'HA',
 	siteinfo: true}, 
 	{
 	name:'Electric Autions', 
@@ -12,19 +13,20 @@ House.create!([{
 	address2:'Hopestead',
 	postcode:'W1 1AA', 
 	phone:'07867456789',
+	code:'EA',
 	email: 'hello@electricals.com',
 	siteinfo: false
 }])
 
 Sale.create!([{
 	house_id: 1,
-	date: 14.days.ago,
-	active: false,
-	complete: true
+	date: 2.days.from_now,
+	active: true,
+	complete: false
 },
 {
 	house_id: 2,
-	date: 7.days.from_now,
+	date: 3.days.from_now,
 	active: true,
 	complete: false
 },

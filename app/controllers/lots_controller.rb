@@ -35,10 +35,10 @@ class LotsController < ApplicationController
 	end
 
 	def lots_scope
-	  if params[:scope].in? %w(complete active unsold all)
+	  if params[:scope].in? %w(complete active unsold sold)
 	    params[:scope]
 	  else
-	    :active
+	    :sold
 	  end
 	end
 

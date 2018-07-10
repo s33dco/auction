@@ -10,7 +10,6 @@ class Sale < ApplicationRecord
   scope :active, ->{where('active = ?', true)}
   scope :complete, ->{where('complete = ?', true)}
   scope :just_done, ->{complete.order(date: :desc).first}
-  # todo more scopes for re allocating a lot
   scope :open, ->{where('complete = ?', false).where('active = ?', false)}
 
   
@@ -47,17 +46,12 @@ class Sale < ApplicationRecord
   end
 
   def generate_report
-    # sale.lots.by_lot_number do |lot|
-    #   report = Report.new
-    #   report.sale_id      = lot.sale.id
-    #   report.lot_id       = lot.id
-    #   report.seller_id    = lot.seller.id
-    #   report.buyer_id     = lot.highest_bid.buyer.id
-    #   report.category_id  = lot.category.id
-    #   report.sold_at      = lot.selling_price
-    #   report.buyerfee     = lot.buyingfee
-    #   report.sellerfee    = lot.sellingfee
-    #   report.save
-    #  end
+    lots.by_lot_number.each do |lot|
+      if lot.reserve > lot.selling_price
+        lot.update_attribute(:sold, false)
+      else
+        lot.update_attributes(winner:lot.highest_bid.buyer.id, soldat:lot.selling_price, bfee:lot.buyingfee, sfee:lot.sellingfee, sold: true)
+      end
+    end
   end
 end
