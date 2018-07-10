@@ -7,3 +7,20 @@
 		<%= f.submit %>
 	<% end %>
 </article>
+
+<% content_for(:side_links) do %>
+	<nav>
+		<ul>
+			<% unless controller.action_name == "new" %>
+				<li>
+					<%=link_to 'new house', new_house_path %>
+				</li>	
+			<% end %>
+			<% unless controller.action_name == "index" %>
+				<li>
+					<%=link_to 'houses list', houses_path %>
+				</li>
+			<% end %>
+		</ul>
+	</nav>
+<% end %>

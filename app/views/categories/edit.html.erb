@@ -7,3 +7,20 @@
 		<%= f.submit %>
 	<% end %>
 </article>
+
+<% content_for(:side_links) do %>
+	<nav>
+		<ul>
+			<% unless controller.action_name == "new" %>
+				<li>
+					<%=link_to 'new category', new_category_path %>
+				</li>	
+			<% end %>
+			<% unless controller.action_name == "index" %>
+				<li>
+					<%=link_to 'categories list', categories_path %>
+				</li>
+			<% end %>
+		</ul>
+	</nav>
+<% end %>

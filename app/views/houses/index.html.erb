@@ -2,17 +2,35 @@
 	<h1>Auction House's</h1>
 </header>
 <article>
+	<table>
 	<% @houses.each do |house| %>
-		<div class="house">
-			<%= house.name %>	<%=link_to 'edit', edit_house_path(house) %>
-		</div>
+		<tr>
+			<td>
+				<%= house.name %>	
+			</td>
+			<td>
+				<%=link_to 'edit', edit_house_path(house) %>
+			</td>
+		</tr>
 	<% end %>
+	</table>
 </article>
+
 
 <% content_for(:side_links) do %>
 	<nav>
-		<li>
-			<%=link_to 'new house', new_house_path %>
-		</li>
+		<ul>
+			<% unless controller.action_name == "new" %>
+				<li>
+					<%=link_to 'new house', new_house_path %>
+				</li>	
+			<% end %>
+			<% unless controller.action_name == "index" %>
+				<li>
+					<%=link_to 'houses list', houses_path %>
+				</li>
+			<% end %>
+		</ul>
 	</nav>
 <% end %>
+

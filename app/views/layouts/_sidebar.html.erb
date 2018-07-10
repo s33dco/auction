@@ -12,6 +12,11 @@
 					<%= link_to 'sales', sales_path %>
 				</li>
 			<% end %>
+			<% unless controller.controller_name == "bids" %>
+				<li>
+					<%= link_to 'current bidding', bids_path %>
+				</li>
+			<% end %>
 			<% unless controller.controller_name == "categories" %>
 				<li>
 					<%= link_to 'categories', categories_path %>

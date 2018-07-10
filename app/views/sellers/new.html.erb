@@ -7,3 +7,33 @@
 		<%= f.submit %>
 	<% end %>
 </article>
+
+<% content_for(:side_links) do %>
+	<nav>
+		<li>
+			<% unless controller.action_name == "new" %>
+				<%=link_to 'new seller', new_seller_path %>
+			<% end %>
+			<% unless controller.action_name == "index" %>
+				<%=link_to 'sellers list', sellers_path %>
+			<% end %>
+		</li>
+	</nav>
+<% end %>
+
+<% content_for(:side_links) do %>
+	<nav>
+		<ul>
+			<% unless controller.action_name == "new" %>
+				<li>
+					<%=link_to 'new seller', new_seller_path %>
+				</li>	
+			<% end %>
+			<% unless controller.action_name == "index" %>
+				<li>
+					<%=link_to 'sellers list', sellers_path %>
+				</li>
+			<% end %>
+		</ul>
+	</nav>
+<% end %>

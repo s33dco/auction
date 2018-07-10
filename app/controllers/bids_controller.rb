@@ -1,7 +1,10 @@
 class BidsController < ApplicationController
 
 	def index
-		
+		@sale = Sale.active.first
+		if @sale
+			@lots = @sale.lots.by_lot_number
+		end
 	end
 
 	def create
@@ -9,7 +12,7 @@ class BidsController < ApplicationController
 		@bid = @lot.bids.new(bid_params)
 		@bid.buyer_id = 1 #this will be current buyer from devise
 		if @bid.save
-			redirect_to sale_path(@lot.sale), notice: "Bid accepted!"
+			redirect_to sale_path(@lot.sale), notice: "Bid accepted #{@bid.buyer.full_name}!"
 		else
 			render :back, alert: "not accepted!"
 		end

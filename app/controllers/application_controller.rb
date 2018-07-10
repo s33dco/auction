@@ -10,8 +10,5 @@ class ApplicationController < ActionController::Base
 		@sale = Sale.active.first
 	end
 
-	 def nice_date(t)
-    t.strftime("#{t.day.ordinalize} %B %Y") 
-  end
 
 end
