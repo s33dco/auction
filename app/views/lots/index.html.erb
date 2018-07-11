@@ -42,14 +42,17 @@
 	<nav class='contextual'>
 	<ul>
 		<li>
-			<%= link_to 'sold', filtered_lots_path(:sold)%>
+			<%= link_to 'sold lots', filtered_lots_path(:sold)%>
 		</li>
 		<li>
-			<%= link_to 'unsold', filtered_lots_path(:unsold)%>
+			<%= link_to 'unsold lots', filtered_lots_path(:unsold)%>
 		</li>
 		<li>
 			<%= link_to 'auctioned', filtered_lots_path(:auctioned)%>
 		</li>
+<!-- 		<li>
+			<%=link_to 'Download CSV', lots_path(format: "csv") %>
+		</li> -->
 	</ul>
 </nav>
 <% end %>

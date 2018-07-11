@@ -7,15 +7,14 @@ class Lot < ApplicationRecord
 	has_one_attached :image
 	has_many_attached :pictures	
 	scope :by_lot_number, ->{order(lotnumber: :asc)}
-	# scope :ended, ->{joins(:sale).where(complete: true)}
-	# scope :live, ->{joins(:sale).where(active: true )}
 	scope :auctioned, ->{where(sold: [true,false])}
 	scope :unsold, ->{where(sold: false)}
 	scope :sold, ->{where(sold: true)}
-	scope :buyerowes, ->{where(buyerpaid: false)}
-	scope :buyerpaid, ->{where(buyerpaid: true)}
-	scope :sellerowed, ->{where(sellerpaid:false)}
-	scope :sellerpaid, ->{where(sellerpaid: true)}	
+	# scope :buyerowes, ->{where(buyerpaid: false)}
+	# scope :buyerpaid, ->{where(buyerpaid: true)}
+	# scope :sellerowed, ->{where(sellerpaid:false)}
+	# scope :sellerpaid, ->{where(sellerpaid: true)}
+	# scope :buyerunpaid, ->(buyer){}	
 
 	def self.total_sales
 		sum{|l| l.soldat}
@@ -46,6 +45,17 @@ class Lot < ApplicationRecord
 			0
 		else
 			total_comm / self.count
+		end
+	end
+
+
+	def self.to_csv
+		CSV.generate do |csv|
+			csv << ["Date", "Sale", "Lot#", "Lot_id", "Item", "Reserve", "Highest bid", "Selling Price", "Profit", "Buyer", "Buyer Comm", "Buyer Paid", "Seller", "Seller Comm", "Seller Paid"]
+			all.each do |lot|
+					row = [lot.sale.date, lot.sale.house.code, lot.lotnumber, lot.id, lot.make_and_model, lot.reserve, lot.highest_bid.bidvalue, lot.soldat, lot.commissions, lot.buyer.full_name, lot.bfee, lot.buyerpaid, lot.seller.full_name, lot.sfee, lot.sellerpaid ]
+					csv << row
+			end
 		end
 	end
 

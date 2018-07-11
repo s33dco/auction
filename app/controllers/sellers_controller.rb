@@ -20,6 +20,10 @@ class SellersController < ApplicationController
 			end
 		end
 
+		def edit
+			@seller = Seller.find(params[:id])
+		end
+
 		def update
 			@seller = Seller.find(params[:id])
 			if @seller.update(seller_params)
