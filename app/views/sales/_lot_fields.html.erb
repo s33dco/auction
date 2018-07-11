@@ -3,7 +3,7 @@
 		<ul>
 			<li>
 				<label>Lot Number</label>
-				<%=f.number_field :lotnumber%>
+				<%=f.number_field :lotnumber, step: 0.01 %>
 			</li>
 			<li>
 				<label>Category</label>
@@ -23,7 +23,7 @@
 			</li>
 			<li>
 				<label>Reserve</label>
-				<%=f.number_field :reserve, step: :any%>
+				<%=f.number_field :reserve, step: 0.01 %>
 			</li>
 				<li>
 					<label>Description</label>

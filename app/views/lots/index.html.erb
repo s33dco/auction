@@ -45,16 +45,30 @@
 			<%= link_to 'sold lots', filtered_lots_path(:sold)%>
 		</li>
 		<li>
-			<%= link_to 'unsold lots', filtered_lots_path(:unsold)%>
+			<%= link_to 'unsold lots', filtered_lots_path(:unsold )%>
 		</li>
 		<li>
 			<%= link_to 'auctioned', filtered_lots_path(:auctioned)%>
 		</li>
- 		<li>
-			<%=link_to 'Download CSV', filtered_lots_path(format: "csv") %>
-		</li>
-	</ul>
-</nav>
+
+		<!-- todo refactor.... -->
+			<%  if current_page?('/lots/filter/unsold') %>
+		 		<li>
+					<%=link_to 'download CSV', filtered_lots_path(:unsold, format: "csv") %>
+				</li>
+			<% end %>
+			<%  if current_page?('/lots/filter/sold') %>
+		 		<li>
+					<%=link_to 'download CSV', filtered_lots_path(:sold, format: "csv") %>
+				</li>
+			<% end %>
+			<%  if current_page?('/lots/filter/auctioned') %>
+		 		<li>
+					<%=link_to 'download CSV', filtered_lots_path(:auctioned, format: "csv") %>
+				</li>
+			<% end %>
+		</ul>
+	</nav>
 <% end %>
 
 <% content_for(:side_info) do %>

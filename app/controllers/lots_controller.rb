@@ -30,7 +30,7 @@ class LotsController < ApplicationController
 	def update
 	@lot = Lot.find(params[:id])
 		if @lot.update(lot_params)
-		  redirect_to @lot.sale, notice: "Lot successfully updated!"
+		  redirect_to lots_url notice: "Lot successfully updated!"
 		else
 		  render :edit
 		end
@@ -45,7 +45,7 @@ class LotsController < ApplicationController
 	private
 
 	def lot_params
-		params.require(:lot).permit(:category_id, :seller_id, :manufacturer, :model, :description, :lotnumber, :reserve, :sale_id, :image, :pictures)
+		params.require(:lot).permit(:category_id, :seller_id, :winner, :soldat, :bfee, :sfee, :sold, :buyerpaid, :sellerpaid)
 	end
 
 	def lots_scope

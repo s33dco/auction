@@ -8,7 +8,7 @@
   <div class="actions">
   	<%=f.hidden_field :lot_id , value: @lot.id %>
   	<%= f.label "Your Maximum Bid £" %>
-  	<%=f.number_field :bidvalue%>
+  	<%=f.number_field :bidvalue %>
     <%=f.submit "Bid", data: { confirm: 'Bids cannot be retracted, Are you sure ?' }%>
   </div>
 	<% end %>
