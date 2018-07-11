@@ -11,10 +11,10 @@ class LotsController < ApplicationController
 		@average = @lots.average_profit
 		@how_many = @lots.count
 
-		# respond_to do |format|
-		# 	format.html
-		# 	format.csv { send_data @lots.to_csv }
-		# end
+		respond_to do |format|
+			format.html
+			format.csv { send_data @lots.to_csv }
+		end
 		
 	end
 

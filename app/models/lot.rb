@@ -51,15 +51,13 @@ class Lot < ApplicationRecord
 
 	def self.to_csv
 		CSV.generate do |csv|
-			csv << ["Date", "Sale", "Lot#", "Lot_id", "Item", "Reserve", "Highest bid", "Selling Price", "Profit", "Buyer", "Buyer Comm", "Buyer Paid", "Seller", "Seller Comm", "Seller Paid"]
+			csv << ["Date", "Sale", "Lot#", "Lot_id", "Item", "Reserve  (£)", "Sold", "Highest bid  (£)", "Selling Price  (£)", "Profit (£)", "Winner", "Buyer Fee (£)", "Buyer Paid", "Seller", "Seller Fee (£)", "Seller Paid"]
 			all.each do |lot|
-					row = [lot.sale.date, lot.sale.house.code, lot.lotnumber, lot.id, lot.make_and_model, lot.reserve, lot.highest_bid.bidvalue, lot.soldat, lot.commissions, lot.buyer.full_name, lot.bfee, lot.buyerpaid, lot.seller.full_name, lot.sfee, lot.sellerpaid ]
+					row = [lot.sale.date, lot.sale.house.code, lot.lotnumber, lot.id, lot.make_and_model, lot.reserve, lot.sold, lot.highest_bid_value, lot.soldat, lot.commissions, lot.winner, lot.bfee, lot.buyerpaid, lot.seller.full_name, lot.sfee, lot.sellerpaid ]
 					csv << row
 			end
 		end
 	end
-
-
 
 	def make_and_model
 		"#{manufacturer} #{model}"
@@ -94,8 +92,24 @@ class Lot < ApplicationRecord
 	end
 	
 	def highest_bid
-		bids.order(bidvalue: :desc).first		
+		bids.order(bidvalue: :desc)	
 	end
+
+	def highest_bid_value
+		if highest_bid.empty?
+			0
+		else
+			highest_bid.first.bidvalue
+		end
+	end
+
+	# def buyer_name
+	# 	if highest_bid_value > reserve
+	# 		highest_bid.buyer.full_name
+	# 	else
+	# 		"no sale"
+	# 	end
+	# end
 
 	def second_best_bid
 		# the highest bid from a different buyer
@@ -111,12 +125,12 @@ class Lot < ApplicationRecord
 				# selling price is second bid from different buyer plus notch if there is a 2nd bid
 				(self.sale.notch + self.second_best_bid.bidvalue)
 			else
-				if self.highest_bid.bidvalue >= self.reserve
+				if self.highest_bid_value >= self.reserve
 					# else if highest bid is equal or greater then reserve add notch to reserve
 					(self.sale.notch + self.reserve)
 				else
 					# else add notch to highest bid as less than reserve
-					(self.sale.notch + self.highest_bid.bidvalue)
+					(self.sale.notch + self.highest_bid_value)
 				end
 			end
 		end

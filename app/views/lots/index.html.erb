@@ -26,7 +26,7 @@
 			<td class='money'><%=show_money(lot.reserve)%></td>
 			<td class='money'>
 
-				<%=show_money(lot.highest_bid.bidvalue) unless lot.bids.empty?%>
+				<%=show_money(lot.highest_bid_value)%>
 					
 				</td>
 			<td class='money'><%= show_money(lot.soldat) %></td>
@@ -50,9 +50,9 @@
 		<li>
 			<%= link_to 'auctioned', filtered_lots_path(:auctioned)%>
 		</li>
-<!-- 		<li>
-			<%=link_to 'Download CSV', lots_path(format: "csv") %>
-		</li> -->
+ 		<li>
+			<%=link_to 'Download CSV', filtered_lots_path(format: "csv") %>
+		</li>
 	</ul>
 </nav>
 <% end %>

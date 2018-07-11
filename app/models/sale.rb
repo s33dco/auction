@@ -9,9 +9,7 @@ class Sale < ApplicationRecord
   scope :live, ->{where('active = ?', true)}
   scope :ended, ->{where('complete = ?', true)}
   scope :just_done, ->{complete.order(date: :desc).first}
-  scope :open, ->{where('complete = ?', false).where('active = ?', false)}
-
-  
+ 
   def live_lots_asc
    lots.sort{| b,a| b.lotnumber <=> a.lotnumber}
   end
