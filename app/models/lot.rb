@@ -51,11 +51,25 @@ class Lot < ApplicationRecord
 
 	def self.to_csv
 		CSV.generate do |csv|
-			csv << ["Date", "Sale", "Lot#", "Lot_id", "Item", "Reserve  (£)", "Sold", "Highest bid  (£)", "Selling Price  (£)", "Profit (£)", "Winner", "Buyer Fee (£)", "Buyer Paid", "Seller", "Seller Fee (£)", "Seller Paid"]
+			csv << ["Date", "Sale", "Lot#", "Lot_id", "Item", "Reserve  (£)", "Sold", "Highest bid  (£)", "Selling Price  (£)", "Profit (£)", "Buyer", "Buyer Fee (£)", "Buyer Paid", "Seller", "Seller Fee (£)", "Seller Paid"]
 			all.each do |lot|
-					row = [lot.sale.date, lot.sale.house.code, lot.lotnumber, lot.id, lot.make_and_model, lot.reserve, lot.sold, lot.highest_bid_value, lot.soldat, lot.commissions, lot.winner, lot.bfee, lot.buyerpaid, lot.seller.full_name, lot.sfee, lot.sellerpaid ]
+					row = [lot.sale.date, lot.sale.house.code, lot.lotnumber, lot.id, lot.make_and_model, lot.reserve, lot.sold, lot.highest_bid_value, lot.soldat, lot.commissions, lot.winning_bid_buyer_name, lot.bfee, lot.buyerpaid, lot.seller.full_name, lot.sfee, lot.sellerpaid ]
 					csv << row
 			end
+		end
+	end
+
+
+# call this after it's all sorted out
+	def winning_bid
+			bids.where(won:true).first
+	end
+
+	def winning_bid_buyer_name
+		if winning_bid.nil?
+			"no sale"
+		else
+			bids.where(won:true).first.buyer.full_name
 		end
 	end
 
@@ -75,7 +89,7 @@ class Lot < ApplicationRecord
 		if selling_price == 0
 			0
 		else
-			sale.minfee >= selling_price ? sale.minfee : ((selling_price/100) * highest_bid.buyer.commrate)
+			sale.minfee >= selling_price ? sale.minfee : ((selling_price/100) * highest_bid.first.buyer.commrate)
 		end
 	end
 
@@ -102,14 +116,6 @@ class Lot < ApplicationRecord
 			highest_bid.first.bidvalue
 		end
 	end
-
-	# def buyer_name
-	# 	if highest_bid_value > reserve
-	# 		highest_bid.buyer.full_name
-	# 	else
-	# 		"no sale"
-	# 	end
-	# end
 
 	def second_best_bid
 		# the highest bid from a different buyer

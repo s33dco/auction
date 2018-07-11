@@ -15,4 +15,8 @@ class Buyer < ApplicationRecord
 	def code_and_name
 		"#{code} (#{firstname} #{lastname})"
 	end
+
+	def winning_bids
+		bids.where(won: true)
+	end
 end
