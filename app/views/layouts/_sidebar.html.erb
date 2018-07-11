@@ -1,5 +1,6 @@
 <aside>
 	<%= content_for(:side_links)%>
+	<%= content_for(:side_info)%>
 	<nav class='standard'>
 		<ul>
 			<% unless controller.controller_name == "houses" %>
@@ -19,7 +20,7 @@
 			<% end %>
 			<% unless controller.controller_name == "lots" %>
 				<li>
-					<%= link_to 'lots', lots_path %>
+					<%= link_to 'report', lots_path %>
 				</li>
 			<% end %>
 			<% unless controller.controller_name == "bids" %>

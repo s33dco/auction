@@ -89,9 +89,9 @@ ActiveRecord::Schema.define(version: 2018_07_10_231936) do
     t.decimal "soldat"
     t.decimal "bfee"
     t.decimal "sfee"
-    t.boolean "sold", default: false
-    t.boolean "buyerpaid", default: false
-    t.boolean "sellerpaid", default: false
+    t.boolean "sold"
+    t.boolean "buyerpaid"
+    t.boolean "sellerpaid"
     t.index ["category_id"], name: "index_lots_on_category_id"
     t.index ["sale_id"], name: "index_lots_on_sale_id"
     t.index ["seller_id"], name: "index_lots_on_seller_id"

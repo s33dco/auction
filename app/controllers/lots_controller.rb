@@ -2,6 +2,14 @@ class LotsController < ApplicationController
 
 	def index
 		@lots = Lot.send(lots_scope)
+		@gross = @lots.total_gross
+		@total_sales = @lots.total_sales
+		@buyer_fees	= @lots.total_buyer_fees
+		@seller_fees = @lots.total_seller_fees
+		@comm = @lots.total_comm
+		@pay_out = @lots.pay_out
+		@average = @lots.average_profit
+		@how_many = @lots.count
 	end
 
 	def show
@@ -35,7 +43,7 @@ class LotsController < ApplicationController
 	end
 
 	def lots_scope
-	  if params[:scope].in? %w(complete active unsold sold)
+	  if params[:scope].in? %w(auctioned unsold sold)
 	    params[:scope]
 	  else
 	    :sold

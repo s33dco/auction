@@ -16,7 +16,8 @@ class BidsController < ApplicationController
 		if @bid.save
 			redirect_to sale_path(@lot.sale), notice: "Bid accepted #{@bid.buyer.full_name}!"
 		else
-			render :back, alert: "not accepted!"
+			flash.now[:alert] = 'bid not accepted'
+			render :back
 		end
 	end
 
@@ -27,10 +28,10 @@ class BidsController < ApplicationController
 	end
 
 	def sales_scope
-	  if params[:scope].in? %w(complete active)
+	  if params[:scope].in? %w(ended live)
 	    params[:scope]
 	  else
-	    :active
+	    :live
 	  end
 	end
 

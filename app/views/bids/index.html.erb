@@ -3,7 +3,7 @@
 </header>
 <article>
 	<% if @sales.empty? %>
-		<h2>There are no live sales</h2>
+		<h2>No sales available</h2>
 	<% else %>
 		<table>
 			<% @sales.each do |sale| %>
@@ -22,10 +22,10 @@
 	<nav class='contextual'>
 	<ul>
 		<li>
-			<%= link_to 'active', filtered_bids_path(:active)%>
+			<%= link_to 'live sales', filtered_bids_path(:live)%>
 		</li>
 		<li>
-			<%= link_to 'complete', filtered_bids_path(:complete)%>
+			<%= link_to 'completed sales', filtered_bids_path(:ended)%>
 		</li>
 	</ul>
 </nav>

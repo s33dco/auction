@@ -2,17 +2,53 @@ class Lot < ApplicationRecord
 	belongs_to :sale
 	belongs_to :category
 	belongs_to :seller
-	has_many :reports # is this right ?
 	has_many :bids
 	has_many :bidders, through: :bids, source: :buyer
 	has_one_attached :image
 	has_many_attached :pictures	
-
 	scope :by_lot_number, ->{order(lotnumber: :asc)}
-	scope :complete, ->{joins(:sale).where('complete = ?', true )}
-	scope :active, ->{joins(:sale).where('active = ?', true )}
-	scope :unsold, ->{where('sold = ?', false)}
-	scope :sold, ->{where('sold = ?', true)}
+	# scope :ended, ->{joins(:sale).where(complete: true)}
+	# scope :live, ->{joins(:sale).where(active: true )}
+	scope :auctioned, ->{where(sold: [true,false])}
+	scope :unsold, ->{where(sold: false)}
+	scope :sold, ->{where(sold: true)}
+	scope :buyerowes, ->{where(buyerpaid: false)}
+	scope :buyerpaid, ->{where(buyerpaid: true)}
+	scope :sellerowed, ->{where(sellerpaid:false)}
+	scope :sellerpaid, ->{where(sellerpaid: true)}	
+
+	def self.total_sales
+		sum{|l| l.soldat}
+	end
+
+	def self.total_buyer_fees
+		sum{|l| l.bfee}
+	end
+
+	def self.total_seller_fees
+		sum{|l| l.sfee}
+	end
+
+	def self.total_comm
+		total_buyer_fees + total_seller_fees
+	end
+
+	def self.total_gross
+		total_sales + total_buyer_fees
+	end
+
+	def self.pay_out
+		total_sales - total_seller_fees
+	end
+
+	def self.average_profit
+		if self.count == 0 
+			0
+		else
+			total_comm / self.count
+		end
+	end
+
 
 
 	def make_and_model
