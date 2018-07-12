@@ -217,150 +217,180 @@ Lot.create!([{
 Bid.create!([{
 	buyer_id: 1,
 	lot_id: 1,
-	bidvalue: 100
+	bidvalue: 100,
+	sale_id: 1
 },
 {
 	buyer_id: 2,
 	lot_id: 1,
-	bidvalue: 110
+	bidvalue: 110,
+	sale_id: 1
 },
 {
 	buyer_id: 3,
 	lot_id: 1,
-	bidvalue: 120
+	bidvalue: 120,
+	sale_id: 1
 },
 {
 	buyer_id: 1,
 	lot_id: 2,
-	bidvalue: 90
+	bidvalue: 90,
+	sale_id: 1
 },
 {
 	buyer_id: 2,
 	lot_id: 2,
-	bidvalue: 95
+	bidvalue: 95,
+	sale_id: 1
 },
 {
 	buyer_id: 3,
 	lot_id: 2,
-	bidvalue: 120
+	bidvalue: 120,
+	sale_id: 1
 },
 {
 	buyer_id: 1,
 	lot_id: 3,
-	bidvalue: 50
+	bidvalue: 50,
+	sale_id: 1
 },
 {
 	buyer_id: 2,
 	lot_id: 3,
-	bidvalue: 85
+	bidvalue: 85,
+	sale_id: 1
 },
 {
 	buyer_id: 3,
 	lot_id: 3,
-	bidvalue: 95
+	bidvalue: 95,
+	sale_id: 1
 },
 {
 	buyer_id: 1,
 	lot_id: 4,
-	bidvalue: 120
+	bidvalue: 120,
+	sale_id: 1
 },
 {
 	buyer_id: 2,
 	lot_id: 4,
-	bidvalue: 111
+	bidvalue: 111,
+	sale_id: 1
 },
 {
 	buyer_id: 3,
 	lot_id: 4,
-	bidvalue: 80
+	bidvalue: 80,
+	sale_id: 1
 },
 {
 	buyer_id: 1,
 	lot_id: 5,
-	bidvalue: 60
+	bidvalue: 60,
+	sale_id: 1
 },
 {
 	buyer_id: 2,
 	lot_id: 5,
-	bidvalue: 70
+	bidvalue: 70,
+	sale_id: 1
 },
 {
 	buyer_id: 3,
 	lot_id: 5,
-	bidvalue: 55
+	bidvalue: 55,
+	sale_id: 1
 },
 {
 	buyer_id: 1,
 	lot_id: 7,
-	bidvalue: 100
+	bidvalue: 100,
+	sale_id: 2
 },
 {
 	buyer_id: 2,
 	lot_id: 7,
-	bidvalue: 110
+	bidvalue: 110,
+	sale_id: 2
 },
 {
 	buyer_id: 3,
 	lot_id: 7,
-	bidvalue: 120
+	bidvalue: 120,
+	sale_id: 2
 },
 {
 	buyer_id: 1,
 	lot_id: 8,
-	bidvalue: 90
+	bidvalue: 90,
+	sale_id: 2
 },
 {
 	buyer_id: 2,
 	lot_id: 8,
-	bidvalue: 95
+	bidvalue: 95,
+	sale_id: 2
 },
 {
 	buyer_id: 3,
 	lot_id: 8,
-	bidvalue: 120
+	bidvalue: 120,
+	sale_id: 2
 },
 {
 	buyer_id: 1,
 	lot_id: 9,
-	bidvalue: 50
+	bidvalue: 50,
+	sale_id: 2
 },
 {
 	buyer_id: 2,
 	lot_id: 9,
-	bidvalue: 85
+	bidvalue: 85,
+	sale_id: 2
 },
 {
 	buyer_id: 3,
 	lot_id: 9,
-	bidvalue: 95
+	bidvalue: 95,
+	sale_id: 2
 },
 {
 	buyer_id: 1,
 	lot_id: 9,
-	bidvalue: 120
+	bidvalue: 120,
+	sale_id: 2
 },
 {
 	buyer_id: 2,
 	lot_id: 9,
-	bidvalue: 111
+	bidvalue: 111,
+	sale_id: 2
 },
 {
 	buyer_id: 3,
 	lot_id: 10,
-	bidvalue: 80
+	bidvalue: 80,
+	sale_id: 2
 },
 {
 	buyer_id: 1,
 	lot_id: 10,
-	bidvalue: 60
+	bidvalue: 60,
+	sale_id: 2
 },
 {
 	buyer_id: 2,
 	lot_id: 11,
-	bidvalue: 70
+	bidvalue: 70,
+	sale_id: 2
 },
 {
 	buyer_id: 3,
 	lot_id: 12,
-	bidvalue: 55
+	bidvalue: 55,
+	sale_id: 2
 }])

@@ -2,20 +2,38 @@
 	<h1><%= @buyer.first_and_last_name %></h1>
 </header>
 <article>
-	<%= render "client_contact" %>
-	<% if @sales.empty? %>
-		<p>Look out for a message advising the next auciton is live. Let us know if your phone and email details are incorrect.</p>
-	<% else %>
-		<table>
-			<% @sales.each do |sale| %>
+	<div class="live">
+		<%= render "client_contact" %>
+		<% if @sales.empty? %>
+			<p>Look out for a message advising when the next auciton is live. Let us know if your phone and email details are incorrect.</p>
+		<% else %>
+			<table>
+				<% @sales.each do |sale| %>
+					<tr>
+						<td><%=sale.house.name %></td>
+						<td><%=nice_date(sale.date)%></td>
+						<td><%=link_to 'bidding card', sale_path(@sale)%></td>
+					</tr>
+				<% end %>
+			</table>
+		<% end %>
+	</div>
+	<div class="previous">
+		<h2><%= @previous.house.name %> <%= nice_date(@previous.date)%></h2>
+			<table>
+			<% @winning_bids.each do |bid| %>
 				<tr>
-					<td><%=sale.house.name%></td>
-					<td><%=nice_date(sale.date)%></td>
-					<td><%=link_to 'bidding card', sale_path(@sale)%></td>
+					<td><%= bid.lot.lotnumber %></td>
+					<td><%= bid.lot.make_and_model %></td>
+					<td><%= show_money(bid.lot.selling_price) %></td>
+					<td><%= show_money(bid.bfee) %></td>
 				</tr>
 			<% end %>
-		</table>
-	<% end %>
+			</table>
+	</div>
+
+
+
 </article>
 
 <% content_for(:side_links) do %>

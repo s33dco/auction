@@ -4,6 +4,7 @@ class Buyer < ApplicationRecord
 
 	scope :by_code, ->{order(buyercode: :asc)}
 
+
 	def bid_for(lot)
 		bids.where('lot_id = ?', lot)
 	end
@@ -18,5 +19,9 @@ class Buyer < ApplicationRecord
 
 	def winning_bids
 		bids.where(won: true)
+	end
+
+	def winning_bids_in(sale)
+		winning_bids.joins(:sale).where(sale_id: sale)
 	end
 end

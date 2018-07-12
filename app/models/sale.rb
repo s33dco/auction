@@ -2,13 +2,14 @@ class Sale < ApplicationRecord
   belongs_to :house
   has_many :lots
   has_many :vendors, through: :lots, source: :seller
-  has_many :bids, through: :lots
+  has_many :bids
+  has_many :bidders, through: :bids, source: :buyer
   accepts_nested_attributes_for :lots, allow_destroy: true, reject_if: ->(attrs) { attrs['lotnumber'].blank? || attrs['description'].blank? || attrs['reserve'].blank? || attrs['manufacturer'].blank? }
 
   scope :descending, ->{order(date: :desc)}
   scope :live, ->{where('active = ?', true)}
   scope :ended, ->{where('complete = ?', true)}
-  scope :just_done, ->{complete.order(date: :desc).first}
+  scope :previous, ->{ended.order(date: :desc).first}
  
   def live_lots_asc
    lots.sort{| b,a| b.lotnumber <=> a.lotnumber}

@@ -13,6 +13,7 @@ class BidsController < ApplicationController
 		@lot = Lot.find(params[:bid][:lot_id])
 		@bid = @lot.bids.new(bid_params)
 		@bid.buyer_id = 1 #this will be current buyer from devise
+		@bid.sale = @lot.sale
 		if @bid.save
 			redirect_to sale_path(@lot.sale), notice: "Bid accepted #{@bid.buyer.full_name}!"
 		else

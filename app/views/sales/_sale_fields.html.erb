@@ -12,11 +12,11 @@
 			</li>
 			<li>
 				<label>Notch (£)</label>
-				<%=f.number_field :notch%>
+				<%=f.number_field :notch , step: 0.01 %>
 			</li>
 			<li>
 				<label>Minimum Transaction fee (£)</label>
-				<%=f.number_field :minfee%>
+				<%=f.number_field :minfee , step: 0.01 %>
 			</li>
 		</ul>
 		<%=f.fields_for :lots do | lots | %>

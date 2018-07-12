@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_145320) do
+ActiveRecord::Schema.define(version: 2018_07_11_230456) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,8 +40,10 @@ ActiveRecord::Schema.define(version: 2018_07_11_145320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "won"
+    t.integer "sale_id"
     t.index ["buyer_id"], name: "index_bids_on_buyer_id"
     t.index ["lot_id"], name: "index_bids_on_lot_id"
+    t.index ["sale_id"], name: "index_bids_on_sale_id"
   end
 
   create_table "buyers", force: :cascade do |t|

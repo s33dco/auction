@@ -5,10 +5,12 @@
 	<table>
 		<% @sales.each do |sale| %>
 			<tr>
-				<td class='date'><%= nice_date(sale.date) %></td>
-				<td class='house'><%= sale.house.name%></td>
+				<td class='date'><%= short_date(sale.date) %></td>
+				<td class='house'><%= sale.house.code%></td>
 				<td class='lots'><%= pluralize(sale.lots.count, 'lot') %></td>
+				<td><%= pluralize(sale.vendors.uniq.count, 'vendor') %></td>
 				<td><%= pluralize(sale.bids.count, 'bid') %></td>
+				<td><%= pluralize(sale.bidders.uniq.count, 'bidder') %></td>
 				<td class='admin-link'><%= link_to "View", sale_path(sale) %></td>
 				<!-- below if admin -->
 				<td class='admin-link'><%= link_to "Edit", edit_sale_path(sale) unless sale.frozen? %></td>
