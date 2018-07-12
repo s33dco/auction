@@ -1,5 +1,5 @@
 <header>
-	<h1>Report(lots post sale)</h1>
+	<h1>Lots</h1>
 </header>
 <article>
 	<div class="filters">
@@ -42,16 +42,24 @@
 	<nav class='contextual'>
 	<ul>
 		<li>
-			<%= link_to 'sold lots', filtered_lots_path(:sold)%>
+			<%= link_to 'last sale', filtered_lots_path(:lastsale)%>
 		</li>
 		<li>
-			<%= link_to 'unsold lots', filtered_lots_path(:unsold )%>
+			<%= link_to 'all sold', filtered_lots_path(:sold)%>
 		</li>
 		<li>
-			<%= link_to 'auctioned', filtered_lots_path(:auctioned)%>
+			<%= link_to 'all unsold', filtered_lots_path(:unsold )%>
+		</li>
+		<li>
+			<%= link_to 'all auctioned', filtered_lots_path(:auctioned)%>
 		</li>
 
 		<!-- todo refactor.... -->
+				<%  if current_page?('/lots/filter/lastsale') %>
+			 		<li>
+						<%=link_to 'download CSV', filtered_lots_path(:lastsale, format: "csv") %>
+					</li>
+				<% end %>
 			<%  if current_page?('/lots/filter/unsold') %>
 		 		<li>
 					<%=link_to 'download CSV', filtered_lots_path(:unsold, format: "csv") %>

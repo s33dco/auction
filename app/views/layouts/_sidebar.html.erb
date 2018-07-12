@@ -20,7 +20,7 @@
 			<% end %>
 			<% unless controller.controller_name == "lots" %>
 				<li>
-					<%= link_to 'report', lots_path %>
+					<%= link_to 'lots', filtered_lots_path(:lastsale) %>
 				</li>
 			<% end %>
 			<% unless controller.controller_name == "bids" %>

@@ -1,39 +1,37 @@
 <fieldset>
 	<ul>
 		<li>
-			<label>Seller</label>
-			<%= f.collection_select(:seller_id, Seller.by_code, :id , :code_and_name, prompt: "Choose Seller" ) %>
-		</li>
-		<li>
-			<label>Buyer</label>
-			<p>buyer</p>
-		</li>
-		<li>
 			<label>Sold at £</label>
 			<%= f.number_field :soldat, step: 0.01 %>
-		</li>
-		<li>
-			<label>Buyer fee £</label>
-			<%= f.number_field :bfee, step: 0.01 %>
-		</li>
-		<li>
-			<label>Seller fee £</label>
-			<%= f.number_field :sfee, step: 0.01 %>
 		</li>
 		<li>
 			<label>Sold</label>
 			<%= f.check_box :sold%>
 		</li>
 		<li>
-			<label>Buyer paid</label>
-			<%= f.check_box :buyerpaid%>
+			<label>Seller</label>
+			<%= f.collection_select(:seller_id, Seller.by_code, :id , :code_and_name, prompt: "Choose Seller" ) %>
+		</li>
+		<li>
+			<label>Seller fee £</label>
+			<%= f.number_field :sfee, step: 0.01 %>
 		</li>
 		<li>
 			<label>Seller paid</label>
 			<%= f.check_box :sellerpaid%>
 		</li>
-
+		<li>
+			<label>Buyer</label>
+			<%= @lot.winning_bid_buyer_name%>
+		</li>
+		<li>
+			<label>Buyer fee £</label>
+			<%= f.number_field :bfee, step: 0.01 %>
+		</li>
+		<li>
+			<label>Buyer paid</label>
+			<%= f.check_box :buyerpaid%>
+		</li>
 	</ul>
-
 </fieldset>
 		

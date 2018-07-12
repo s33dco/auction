@@ -5,7 +5,7 @@
 	<table>
 		<% @sellers.each do |seller| %>
 			<tr>
-				<td><%=seller.full_name%></td>
+				<td><%=link_to "#{seller.full_name}", seller_path(seller) %></td>
 				<td><%=seller.code%></td>
 				<td><%=seller.phone%></td>
 				<td><%=seller.email%></td>

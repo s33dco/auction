@@ -7,8 +7,8 @@ class BuyersController < ApplicationController
 	def show
 		@buyer = Buyer.find(params[:id])
 		@sales = Sale.live
-		@previous = Sale.previous
-		@winnings_bids = @buyer.winning_bids_in(@previous)
+		@unpaid_lots = @buyer.winning_bids.map{|b| b.lot}.select{| l | l.buyerpaid == false && l.sold == true}
+		@unpaid_cash = @unpaid_lots.sum{| l | l.soldat + l.bfee }
 	end
 
 	def new

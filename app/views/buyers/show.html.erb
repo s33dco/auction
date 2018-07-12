@@ -2,8 +2,13 @@
 	<h1><%= @buyer.first_and_last_name %></h1>
 </header>
 <article>
-	<div class="live">
+	<div class="client-details">
+		<h3>Contact Details.</h3>
 		<%= render "client_contact" %>
+		<p>You've bid on <%= @buyer.bidon.uniq.count%> lots, winning <%= @buyer.winning_bids.count%>. (<%= pluralize(@buyer.bids.count, 'bid')%> made in total)</p>
+	</div>
+	<div class="live-sales">
+		<h3>Auctions.</h3>
 		<% if @sales.empty? %>
 			<p>Look out for a message advising when the next auciton is live. Let us know if your phone and email details are incorrect.</p>
 		<% else %>
@@ -12,30 +17,40 @@
 					<tr>
 						<td><%=sale.house.name %></td>
 						<td><%=nice_date(sale.date)%></td>
-						<td><%=link_to 'bidding card', sale_path(@sale)%></td>
+						<td><%=link_to 'bidding card', sale_path(sale)%></td>
 					</tr>
 				<% end %>
 			</table>
 		<% end %>
 	</div>
-	<div class="previous">
-		<h2><%= @previous.house.name %> <%= nice_date(@previous.date)%></h2>
+	<% unless @unpaid_lots.empty? %>
+		<div class="account-payable">
+			<h3>Account  - Payment due <%= show_money(@unpaid_cash)%></h3>
 			<table>
-			<% @winning_bids.each do |bid| %>
 				<tr>
-					<td><%= bid.lot.lotnumber %></td>
-					<td><%= bid.lot.make_and_model %></td>
-					<td><%= show_money(bid.lot.selling_price) %></td>
-					<td><%= show_money(bid.bfee) %></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>Bid</td>
+					<td>Comm</td>
+					<td>Total</td>
 				</tr>
-			<% end %>
+				<% @unpaid_lots.each do |lot| %>
+					<tr>
+						<td><%= lot.sale.house.code%></td>
+						<td><%= short_date(lot.sale.date)%></td>
+						<td>Lot <%= lot.lotnumber%></td>
+						<td><%= link_to "#{lot.make_and_model}", lot_path(lot.id)%></td>
+						<td class='money'><%= show_money(lot.soldat)%></td>
+						<td class='money'><%= show_money(lot.bfee)%></td>
+						<td class='money'><%= show_money(lot.buyer_pays)%></td>
+					</tr>
+				<% end %>
 			</table>
-	</div>
-
-
-
+		</div>
+	<% end %>
 </article>
-
 <% content_for(:side_links) do %>
 	<nav>
 		<ul>

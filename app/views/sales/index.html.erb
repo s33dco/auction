@@ -14,7 +14,7 @@
 				<td class='admin-link'><%= link_to "View", sale_path(sale) %></td>
 				<!-- below if admin -->
 				<td class='admin-link'><%= link_to "Edit", edit_sale_path(sale) unless sale.frozen? %></td>
-				<td class='admin-link'><%=link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure? All lots will be deleted!' } unless sale.frozen? %></td>
+				<td class='admin-link'><%=link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure? ALL attached lots will be deleted!' } unless sale.frozen? %></td>
 				<% if sale.active? %>
 					<td>(active)</td>
 				<% end %>

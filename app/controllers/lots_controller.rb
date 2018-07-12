@@ -49,10 +49,10 @@ class LotsController < ApplicationController
 	end
 
 	def lots_scope
-	  if params[:scope].in? %w(auctioned unsold sold)
+	  if params[:scope].in? %w(auctioned unsold sold lastsale)
 	    params[:scope]
 	  else
-	    :sold
+	    :lastsale
 	  end
 	end
 

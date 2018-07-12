@@ -2,7 +2,7 @@ class Lot < ApplicationRecord
 	belongs_to :sale
 	belongs_to :category
 	belongs_to :seller
-	has_many :bids
+	has_many :bids, dependent: :destroy
 	has_many :bidders, through: :bids, source: :buyer
 	has_one_attached :image
 	has_many_attached :pictures	
@@ -10,11 +10,7 @@ class Lot < ApplicationRecord
 	scope :auctioned, ->{where(sold: [true,false])}
 	scope :unsold, ->{where(sold: false)}
 	scope :sold, ->{where(sold: true)}
-	# scope :buyerowes, ->{where(buyerpaid: false)}
-	# scope :buyerpaid, ->{where(buyerpaid: true)}
-	# scope :sellerowed, ->{where(sellerpaid:false)}
-	# scope :sellerpaid, ->{where(sellerpaid: true)}
-	# scope :buyerunpaid, ->(buyer){}	
+	scope :lastsale, ->{auctioned.where(sale_id: Sale.just_ended.id)}	
 
 	def self.total_sales
 		sum{|l| l.soldat}
@@ -51,9 +47,9 @@ class Lot < ApplicationRecord
 
 	def self.to_csv
 		CSV.generate do |csv|
-			csv << ["Date", "Sale", "Lot#", "Lot_id", "Item", "Reserve  (£)", "Sold", "Highest bid  (£)", "Selling Price  (£)", "Profit (£)", "Buyer", "Buyer Fee (£)", "Buyer Paid", "Seller", "Seller Fee (£)", "Seller Paid"]
+			csv << ["Date", "Sale", "Lot#", "Lot_id", "Item", "Reserve", "Sold", "Highest bid", "Selling Price", "Profit", "Buyer", "Buyer Fee", "Buyer Charge","Buyer Paid", "Seller", "Seller Fee", "Seller Due", "Seller Paid"]
 			all.each do |lot|
-					row = [lot.sale.date, lot.sale.house.code, lot.lotnumber, lot.id, lot.make_and_model, lot.reserve, lot.sold, lot.highest_bid_value, lot.soldat, lot.commissions, lot.winning_bid_buyer_name, lot.bfee, lot.buyerpaid, lot.seller.full_name, lot.sfee, lot.sellerpaid ]
+					row = [lot.sale.date, lot.sale.house.code, lot.lotnumber, lot.id, lot.make_and_model, lot.reserve, lot.sold, lot.highest_bid_value, lot.soldat, lot.commissions, lot.winning_bid_buyer_name, lot.bfee, (lot.bfee + lot.soldat), lot.buyerpaid, lot.seller.full_name, lot.sfee, (lot.soldat - lot.sfee),lot.sellerpaid ]
 					csv << row
 			end
 		end
@@ -75,6 +71,14 @@ class Lot < ApplicationRecord
 
 	def make_and_model
 		"#{manufacturer} #{model}"
+	end
+
+	def buyer_pays
+		bfee + soldat
+	end
+
+	def seller_due
+		soldat - sfee
 	end
 
 	def sellingfee
