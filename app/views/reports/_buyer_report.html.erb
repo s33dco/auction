@@ -1,7 +1,7 @@
 <header>
 	<h1><%= nice_date(@sale.date) %> <%= @sale.house.name %>.</h1>
-	<h3>Invoice : <%= @buyer.full_name %>.</h3>
-	<h4><%= show_money(@buyer_bill)%> due, <%= pluralize(@buyer_lots.count, 'lot')%> purchased.</h4>
+	<h2>Invoice : <%= @buyer.full_name %>.</h2>
+	<h3>Total : <%= show_money(@buyer_bill)%> (<%= pluralize(@buyer_lots.count, 'lot')%>).</h3>
 </header>
 <article>
 	<table>

@@ -1,7 +1,7 @@
 <header>
 	<h1><%= nice_date(@sale.date) %> <%= @sale.house.name %></h1>
-	<h3>Auction Report</h3>
-	<h4>(<%= @sold_lots.count%> out of <%= pluralize(@lots.count, 'lot')%> in sold - Turnover <%= show_money(@lots.total_gross)%>, Seller Payments <%= show_money(@lots.pay_out)%>, Commission <%= show_money(@lots.total_comm)%>)</h4>
+	<h2>Auction Report</h2>
+	<h3>(<%= @sold_lots.count%> out of <%= pluralize(@lots.count, 'lot')%> sold, Turnover <%= show_money(@lots.total_gross)%>, Seller Payments <%= show_money(@lots.pay_out)%>, Commission <%= show_money(@lots.total_comm)%>)</h3>
 </header>
 
 <article>

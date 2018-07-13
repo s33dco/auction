@@ -1,7 +1,7 @@
 <header>
 	<h1><%= nice_date(@sale.date) %> <%= @sale.house.name %>.</h1>
-	<h3>Credit Note : <%= @seller.full_name %>.</h3>
-	<h4>Payment : <%= show_money(@seller_payment)%> - (<%=@seller_sold_lots.count%> of <%= pluralize(@seller_lots.count, 'lot')%>  sold)</h4>
+	<h2>Credit Note : <%= @seller.full_name %>.</h2>
+	<h3>Total : <%= show_money(@seller_payment)%> - (<%=@seller_sold_lots.count%> of <%= pluralize(@seller_lots.count, 'lot')%>  sold)</h3>
 </header>
 <article>
 	<% unless @seller_sold_lots.empty? %>

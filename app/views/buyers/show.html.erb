@@ -5,8 +5,12 @@
 	<div class="client-details">
 		<h3>Contact Details</h3>
 		<%= render "client_contact" %>
-		<p>You've bid on <%= @buyer.bidon.uniq.count%> lots, winning <%= @buyer.winning_bids.count%>. (<%= pluralize(@buyer.bids.count, 'bid')%> made in total)</p>
 	</div>
+
+	<div class="history">
+		<p>Bidding for <%= time_ago_in_words(@since)%>, winning <%= pluralize( @total_winning_bids ,'lot' )%> with <%= pluralize(@total_bids, 'bid') %>, total spend of <%= show_money(@gross_spend)%>.</p>
+	</div>
+
 	<div class="live-sales">
 		<h3>Auctions</h3>
 		<% if @sales.empty? %>
@@ -23,6 +27,7 @@
 			</table>
 		<% end %>
 	</div>
+
 	<% unless @unpaid_lots.empty? %>
 		<div class="accounts">
 			<h3>Account  - Payment due <%= show_money(@unpaid_cash)%></h3>
@@ -50,7 +55,9 @@
 			</table>
 		</div>
 	<% end %>
+
 </article>
+
 <% content_for(:side_links) do %>
 		<li class='contextual'>
 			<%=link_to 'new buyer', new_buyer_path %>

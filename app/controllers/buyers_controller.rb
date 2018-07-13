@@ -9,6 +9,11 @@ class BuyersController < ApplicationController
 		@sales = Sale.live
 		@unpaid_lots = @buyer.winning_bids.map{|b| b.lot}.select{| l | l.buyerpaid == false && l.sold == true}
 		@unpaid_cash = @unpaid_lots.sum{| l | l.soldat + l.bfee }
+		@total_bids_value = @buyer.bids.sum{|b| b.bidvalue}
+		@total_bids = @buyer.bids.count
+		@total_winning_bids = @buyer.winning_bids.count
+		@gross_spend = @buyer.winning_bids.map{|b| b.lot}.sum{| l | l.soldat + l.bfee}
+		@since = @buyer.bids.eldest_first.first.created_at
 	end
 
 	def new
