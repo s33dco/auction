@@ -17,7 +17,7 @@ class SalesController < ApplicationController
 		def create
 			@sale = Sale.new(sale_params)
 			if @sale.save
-			  redirect_to @sale, notice: "#{@sale.date} #{@sale.house.name} created!"
+			  redirect_to @sale, notice: "#{@sale.house.name} #{nice_date(@sale.date)} created!"
 			else
 			  render :new
 			end
