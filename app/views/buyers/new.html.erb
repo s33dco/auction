@@ -2,6 +2,7 @@
 	<h1>Add a New Buyer</h1>
 </header>
 <article>
+	<%= render 'shared/errors', object: @buyer %>
 	<%= form_with(model: @buyer, local:true) do |f| %>
 		<%= render "shared/client_fields", f: f%>
 		<%= f.submit %>

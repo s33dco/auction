@@ -5,7 +5,13 @@ class Lot < ApplicationRecord
 	has_many :bids, dependent: :destroy
 	has_many :bidders, through: :bids, source: :buyer
 	has_one_attached :image
-	has_many_attached :pictures	
+	has_many_attached :pictures
+
+	validates :manufacturer, :description, :lotnumber,		
+										presence: true
+	validates_numericality_of :reserve, 
+										presence: true, greater_than_or_equal_to: 0
+
 	scope :by_lot_number, ->{order(lotnumber: :asc)}
 	scope :auctioned, ->{where(sold: [true,false])}
 	scope :unsold, ->{where(sold: false)}

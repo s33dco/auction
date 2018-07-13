@@ -4,12 +4,12 @@
 	<% unless @lot.selling_price >= @lot.reserve %>
 		<h3>Reserve not met</h3>
 	<% end %>	
-	<%= form_with(model: Bid, url: bids_path, method: :post, local:true) do |f| %>	
-  <div class="actions">
-  	<%=f.hidden_field :lot_id , value: @lot.id %>
-  	<%= f.label "Your Maximum Bid £" %>
-  	<%=f.number_field :bidvalue %>
-    <%=f.submit "Bid", data: { confirm: 'Bids cannot be retracted, Are you sure ?' }%>
-  </div>
-	<% end %>
+	<div class="actions">
+		<%= form_with(model: Bid, url: bids_path, method: :post, local:true) do |f| %>	
+	  	<%=f.hidden_field :lot_id , value: @lot.id %>
+	  	<%= f.label "Your Maximum Bid £" %>
+	  	<%=f.number_field :bidvalue %>
+	    <%=f.submit "Bid", data: { confirm: 'Bids cannot be retracted, Are you sure ?' }%>
+		<% end %>
+	</div>
 </fieldset>

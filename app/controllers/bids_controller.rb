@@ -18,7 +18,7 @@ class BidsController < ApplicationController
 			redirect_to sale_path(@lot.sale), notice: "Bid accepted #{@bid.buyer.full_name}!"
 		else
 			flash.now[:alert] = 'bid not accepted'
-			render :back
+			redirect_to lot_path(@lot)
 		end
 	end
 

@@ -6,6 +6,9 @@ class Sale < ApplicationRecord
   has_many :bidders, through: :bids, source: :buyer
   accepts_nested_attributes_for :lots, allow_destroy: true, reject_if: ->(attrs) { attrs['lotnumber'].blank? || attrs['description'].blank? || attrs['reserve'].blank? || attrs['manufacturer'].blank? }
 
+  validates :date, presence: true
+  validates_numericality_of :notch, :minfee, presence: true, greater_than_or_equal_to: 0
+
   scope :descending, ->{order(date: :desc)}
   scope :live, ->{where('active = ?', true)}
   scope :ended, ->{where('complete = ?', true)}

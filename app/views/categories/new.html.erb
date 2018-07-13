@@ -2,6 +2,7 @@
 	<h1>Add a new Category</h1>
 </header>
 <article>
+	<%= render 'shared/errors', object: @category %>
 	<%=form_with(model:@category, local:true) do |f| %>
 		<%= render 'category_fields', f:f %>
 		<%= f.submit %>
