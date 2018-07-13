@@ -1,0 +1,40 @@
+<header>
+	<h1><%= nice_date(@sale.date) %> <%= @sale.house.name %></h1>
+	<h3>Auction Report</h3>
+	<h4>(<%= @sold_lots.count%> out of <%= pluralize(@lots.count, 'lot')%> in sold - Turnover <%= show_money(@lots.total_gross)%>, Seller Payments <%= show_money(@lots.pay_out)%>, Commission <%= show_money(@lots.total_comm)%>)</h4>
+</header>
+
+<article>
+	<table>
+		<tr>
+			<td>Lot</td>
+			<td>Item</td>
+			<td>Reserve</td>
+			<td>Winning Bid</td>
+			<td>Buyer</td>
+			<td>Buyer pays</td>
+			<td>Seller</td>
+			<td>Seller due</td>
+			<td>Comm</td>
+		</tr>
+
+		<% @lots.each do |lot| %>
+			<tr>
+				<td><%= lot.lotnumber%></td>
+				<td><%=link_to "#{lot.make_and_model}", lot_path(lot)%></td>
+				<td class='money'><%=show_money(lot.reserve) %></td>
+				<td class='money'><%=show_money(lot.soldat) %></td>
+				<% if lot.winning_bid_buyer_name == 'no sale'%>
+					<td><%= lot.winning_bid_buyer_name %></td>
+				<% else %>
+					<td><%= link_to "#{lot.winning_bid_buyer_name}", buyer_path(lot.winning_bid.buyer) %></td>
+				<% end %>
+				<td class='money'><%=show_money(lot.buyer_pays) %></td>
+				<td><%= link_to "#{lot.seller.full_name}", seller_path(lot.seller) %></td>
+				<td class='money'><%=show_money(lot.seller_due) %></td>
+				<td class='money'><%= show_money(lot.commissions)%></td>
+			</tr>
+		<% end %>
+	</table>
+
+</article>

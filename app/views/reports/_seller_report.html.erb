@@ -1,0 +1,53 @@
+<header>
+	<h1><%= nice_date(@sale.date) %> <%= @sale.house.name %>.</h1>
+	<h3>Credit Note : <%= @seller.full_name %>.</h3>
+	<h4>Payment : <%= show_money(@seller_payment)%> - (<%=@seller_sold_lots.count%> of <%= pluralize(@seller_lots.count, 'lot')%>  sold)</h4>
+</header>
+<article>
+	<% unless @seller_sold_lots.empty? %>
+		<div class="sold-lots">
+			<h3>Sold Lots</h3>
+				<table>
+					<tr>
+						<td>Lot</td>
+						<td>Item</td>
+						<td>Reserve</td>
+						<td>Payment</td>
+					</tr>
+					<% @seller_sold_lots.each do |lot| %>
+						<tr>
+							<td><%= lot.lotnumber%></td>
+							<td><%=link_to "#{lot.make_and_model}", lot_path(lot)%></td>
+							<td class='money'><%=show_money(lot.reserve) %></td>
+							<td class='money'><%=show_money(lot.seller_due) %></td>
+						</tr>
+					<% end %>
+				</table>
+		</div>
+	<% end %>
+	<% unless @seller_unsold_lots.empty? %>
+		<div class="unsold-lots">
+			<h3>Unsold Lots</h3>
+				<table>
+					<tr>
+						<td>Lot</td>
+						<td>Item</td>
+						<td>Reserve</td>
+						<td>High Bid</td>
+					</tr>
+					<% @seller_unsold_lots.each do |lot| %>
+						<tr>
+							<td><%= lot.lotnumber%></td>
+							<td><%=link_to "#{lot.make_and_model}", lot_path(lot)%></td>
+							<td class='money'><%=show_money(lot.reserve) %></td>
+							<% if lot.highest_bid.empty? %>
+								<td class='money'>no bids</td>
+							<% else %>
+								<td class='money'><%=show_money(lot.highest_bid.first.bidvalue) %></td>
+							<% end %>
+						</tr>
+					<% end %>
+				</table>
+		</div>
+	<% end %>
+</article>

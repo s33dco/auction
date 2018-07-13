@@ -1,0 +1,27 @@
+<header>
+	<h1><%= nice_date(@sale.date) %> <%= @sale.house.name %>.</h1>
+	<h3>Invoice : <%= @buyer.full_name %>.</h3>
+	<h4><%= show_money(@buyer_bill)%> due, <%= pluralize(@buyer_lots.count, 'lot')%> purchased.</h4>
+</header>
+<article>
+	<table>
+		<tr>
+			<td>Lot</td>
+			<td>Item</td>
+			<td class='money'>Sold at</td>
+			<td class='money'>Comm</td>
+			<td class='money'>Total</td>
+		</tr>
+
+		<% @buyer_lots.each do |lot| %>
+			<tr>
+				<td><%= lot.lotnumber%></td>
+				<td><%=lot.make_and_model %></td>
+				<td class='money'><%=show_money(lot.soldat) %></td>
+				<td class='money'><%=show_money(lot.bfee) %></td>
+				<td class='money'><%=show_money(lot.buyer_pays) %></td>
+			</tr>
+		<% end %>
+	</table>
+
+</article>

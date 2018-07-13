@@ -1,6 +1,5 @@
 jQuery(document).on 'turbolinks:load', ->
   lots = $('#lots')
-  count = lots.find('.count > span')
 
   lots.on 'cocoon:before-insert', (e, el_to_add) ->
     el_to_add.fadeIn(1000)

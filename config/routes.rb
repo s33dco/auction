@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'bids/filter/:scope', to: "bids#index", as: :filtered_bids
   get "welcome", to: "pages#welcome", as: 'welcome'
   get "about", to: "pages#about", as: 'about'
+  get 'report_viewer', to: "reports#viewer"
+  get "reports", to: "reports#index"
 
   resources :bids
   resources :buyers
@@ -22,6 +24,6 @@ Rails.application.routes.draw do
   resources :houses
   resources :sellers
   resources :categories
-
+  resources :reports
 
 end

@@ -10,7 +10,7 @@
 	<div class="live-sales">
 		<h3>Auctions</h3>
 		<% if @sales.empty? %>
-			<p>Look out for a message advising when the next auciton is live. Let us know if your phone and email details are incorrect.</p>
+			<p>Look out for a message advising when the next auciton is live. Let us know if your phone and email details have changed.</p>
 		<% else %>
 			<table>
 				<% @sales.each do |sale| %>
@@ -32,9 +32,9 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td>Bid</td>
-					<td>Comm</td>
-					<td>Total</td>
+					<td class="money">Bid</td>
+					<td class="money">Comm</td>
+					<td class="money">Total</td>
 				</tr>
 				<% @unpaid_lots.each do |lot| %>
 					<tr>

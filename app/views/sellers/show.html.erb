@@ -18,9 +18,9 @@
 						<td><%= lot.sale.house.code%></td>
 						<td><%= lot.lotnumber%></td>
 						<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
-						<td><%= show_money(lot.reserve)%></td>
-						<td><%= pluralize(lot.bids.count, 'bid')%></td>
-						<td><%= show_money(lot.selling_price)%></td>
+						<td class="money"><%= show_money(lot.reserve)%></td>
+						<td class="money"><%= pluralize(lot.bids.count, 'bid')%></td>
+						<td class="money"><%= show_money(lot.selling_price)%></td>
 					</tr>
 				<% end %>
 			</table>
@@ -29,7 +29,7 @@
 
 	<% unless @sold_lots.empty? %>
 		<div class="sold-lots">
-			<h3>Sold Lots <%= show_money(@cash_due_to_seller)%> to be paid.</h3>
+			<h3>Account <%= show_money(@cash_due_to_seller)%> to be paid.</h3>
 			<table>
 				<% @sold_lots.each do | lot| %>
 					<tr>
@@ -37,9 +37,9 @@
 						<td><%= lot.sale.house.code%></td>
 						<td><%= lot.lotnumber%></td>
 						<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
-						<td><%= show_money(lot.soldat)%></td>
-						<td><%= show_money(lot.sfee)%></td>
-						<td><%= show_money(lot.seller_due)%></td>
+						<td class="money"><%= show_money(lot.soldat)%></td>
+						<td class="money"><%= show_money(lot.sfee)%></td>
+						<td class="money"><%= show_money(lot.seller_due)%></td>
 					</tr>
 				<% end %>
 			</table>

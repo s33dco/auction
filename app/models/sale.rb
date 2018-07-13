@@ -14,7 +14,13 @@ class Sale < ApplicationRecord
   scope :ended, ->{where('complete = ?', true)}
   scope :previous, ->{ended.order(date: :desc)}
   scope :just_ended, ->{ended.order(date: :desc).first}
+
  
+  def ordered_bidders
+    bidders.uniq.sort{|a,b| a.lastname <=> b.lastname}
+    
+  end
+
   def live_lots_asc
    lots.sort{| b,a| b.lotnumber <=> a.lotnumber}
   end

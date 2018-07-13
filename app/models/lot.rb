@@ -22,6 +22,10 @@ class Lot < ApplicationRecord
 		sum{|l| l.soldat}
 	end
 
+	def self.total_buyer_costs
+		total_buyer_fees + total_sales
+	end
+
 	def self.total_buyer_fees
 		sum{|l| l.bfee}
 	end
@@ -55,7 +59,7 @@ class Lot < ApplicationRecord
 		CSV.generate do |csv|
 			csv << ["Date", "Sale", "Lot#", "Lot_id", "Item", "Reserve", "Sold", "Highest bid", "Selling Price", "Profit", "Buyer", "Buyer Fee", "Buyer Charge","Buyer Paid", "Seller", "Seller Fee", "Seller Due", "Seller Paid"]
 			all.each do |lot|
-					row = [lot.sale.date, lot.sale.house.code, lot.lotnumber, lot.id, lot.make_and_model, lot.reserve, lot.sold, lot.highest_bid_value, lot.soldat, lot.commissions, lot.winning_bid_buyer_name, lot.bfee, (lot.bfee + lot.soldat), lot.buyerpaid, lot.seller.full_name, lot.sfee, (lot.soldat - lot.sfee),lot.sellerpaid ]
+					row = [lot.sale.date, lot.sale.house.code, lot.lotnumber, lot.id, lot.make_and_model, lot.reserve, lot.sold, lot.highest_bid_value, lot.soldat, lot.commissions, lot.winning_bid_buyer_name, lot.bfee, (lot.bfee + lot.soldat), lot.buyerpaid, lot.seller.full_name, lot.sfee, lot.seller_due,lot.sellerpaid ]
 					csv << row
 			end
 		end
