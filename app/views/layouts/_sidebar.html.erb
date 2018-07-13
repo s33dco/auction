@@ -1,43 +1,32 @@
 <aside>
-	<%= content_for(:side_links)%>
 	<%= content_for(:side_info)%>
 	<nav class='standard'>
 		<ul>
-			<% unless controller.controller_name == "houses" %>
-				<li>
-					<%= link_to 'houses', houses_path %>
-				</li>
-			<% end %>
-			<% unless controller.controller_name == "sales" %>
-				<li>
-					<%= link_to 'sales', sales_path %>
-				</li>
-			<% end %>
-			<% unless controller.controller_name == "categories" %>
-				<li>
-					<%= link_to 'categories', categories_path %>
-				</li>
-			<% end %>
-			<% unless controller.controller_name == "lots" %>
-				<li>
-					<%= link_to 'lots', filtered_lots_path(:lastsale) %>
-				</li>
-			<% end %>
-			<% unless controller.controller_name == "bids" %>
-				<li>
-					<%= link_to 'bidding', bids_path %>
-				</li>
-			<% end %>
-			<% unless controller.controller_name == "buyers" %>
-				<li>
-					<%= link_to 'buyers', buyers_path %>
-				</li>
-			<% end %>
-			<% unless controller.controller_name == "sellers" %>
-				<li>
-					<%= link_to 'sellers', sellers_path %>
-				</li>
-			<% end %>
+			<%= content_for(:side_links)%>
+			<li>
+				<%= link_to 'houses', houses_path %>
+			</li>
+			<li>
+				<%= link_to 'categories', categories_path %>
+			</li>
+			<li>
+				<%= link_to 'sales', sales_path %>
+			</li>
+			<li>
+				<%= link_to 'bidding', bids_path %>
+			</li>
+			<li>
+				<%= link_to 'post sale lots', filtered_lots_path(:lastsale) %>
+			</li>
+			<li>
+				<%= link_to 'buyers', buyers_path %>
+			</li>
+			<li>
+				<%= link_to 'sellers', sellers_path %>
+			</li>
+			<li>
+				reports
+			</li>
 		</ul>
 	</nav>
 </aside>

@@ -1,6 +1,6 @@
 <% if @sale %>
 	<header>
-		<h1>Current Bidding for <%=@sale.house.name%> <%=nice_date(@sale.date)%></h1>
+		<h1>Bidding for <%=@sale.house.name%> <%=nice_date(@sale.date)%></h1>
 	</header>
 	<article>
 		<% @lots.each do | lot | %>
@@ -30,11 +30,10 @@
 <% end %>
 
 <% content_for(:side_links) do %>
-	<nav>
-		<ul>
-			<li>
-				<%=link_to 'back to bidding list', bids_path %>
-			</li>	
-		</ul>
-	</nav>
+		<li class='contextual'>
+			<%= link_to 'live sales', filtered_bids_path(:live)%>
+		</li>
+		<li class='contextual'>
+			<%= link_to 'completed sales', filtered_bids_path(:ended)%>
+		</li>
 <% end %>

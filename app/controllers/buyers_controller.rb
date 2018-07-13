@@ -43,27 +43,6 @@ class BuyersController < ApplicationController
     redirect_to buyers_url, alert: "#{@buyer.full_name} successfully deleted!"
 	end
 
-
-
-
-	def report
-		# @buyer = Buyer.first
-		# 		if params[:sale_id].in? Sale.house_and_date.map{|s| s.id.to_s}
-		# 			@lots = Lot.by_sale(params[:sale_id])
-		# 		else
-		# 			@lots = Lot.buyerunpaid(@buyer.id)
-		# 		end
-		# @money = @payments.total
-		
-		# respond_to do |format|
-		# 	format.html
-		# 	format.csv { send_data @lot.to_csv }
-		# end
-	end
-
-
-
-
 	private
 
 	def buyer_params

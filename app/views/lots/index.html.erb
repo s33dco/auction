@@ -39,42 +39,40 @@
 
 <!-- again if admin -->
 <% content_for(:side_links) do %>
-	<nav class='contextual'>
-	<ul>
-		<li>
-			<%= link_to 'last sale', filtered_lots_path(:lastsale)%>
-		</li>
-		<li>
-			<%= link_to 'all sold', filtered_lots_path(:sold)%>
-		</li>
-		<li>
-			<%= link_to 'all unsold', filtered_lots_path(:unsold )%>
-		</li>
-		<li>
-			<%= link_to 'all auctioned', filtered_lots_path(:auctioned)%>
-		</li>
+	<li class='contextual'>
+		<%= link_to 'last sale', filtered_lots_path(:lastsale)%>
+	</li>
+	<li class='contextual'>
+		<%= link_to 'all sold', filtered_lots_path(:sold)%>
+	</li>
+	<li class='contextual'>
+		<%= link_to 'all unsold', filtered_lots_path(:unsold )%>
+	</li>
+	<li class='contextual'>
+		<%= link_to 'all auctioned', filtered_lots_path(:auctioned)%>
+	</li>
 
 		<!-- todo refactor.... -->
-				<%  if current_page?('/lots/filter/lastsale') %>
-			 		<li>
-						<%=link_to 'download CSV', filtered_lots_path(:lastsale, format: "csv") %>
-					</li>
-				<% end %>
-			<%  if current_page?('/lots/filter/unsold') %>
-		 		<li>
-					<%=link_to 'download CSV', filtered_lots_path(:unsold, format: "csv") %>
-				</li>
-			<% end %>
-			<%  if current_page?('/lots/filter/sold') %>
-		 		<li>
-					<%=link_to 'download CSV', filtered_lots_path(:sold, format: "csv") %>
-				</li>
-			<% end %>
-			<%  if current_page?('/lots/filter/auctioned') %>
-		 		<li>
-					<%=link_to 'download CSV', filtered_lots_path(:auctioned, format: "csv") %>
-				</li>
-			<% end %>
+	<%  if current_page?('/lots/filter/lastsale') %>
+ 		<li class='contextual'>
+			<%=link_to 'download CSV', filtered_lots_path(:lastsale, format: "csv") %>
+		</li>
+	<% end %>
+	<%  if current_page?('/lots/filter/unsold') %>
+ 		<li class='contextual'>
+			<%=link_to 'download CSV', filtered_lots_path(:unsold, format: "csv") %>
+		</li>
+	<% end %>
+	<%  if current_page?('/lots/filter/sold') %>
+ 		<li class='contextual'>
+			<%=link_to 'download CSV', filtered_lots_path(:sold, format: "csv") %>
+		</li>
+	<% end %>
+	<%  if current_page?('/lots/filter/auctioned') %>
+ 		<li class='contextual'>
+			<%=link_to 'download CSV', filtered_lots_path(:auctioned, format: "csv") %>
+		</li>
+	<% end %>
 		<!--  -->
 		</ul>
 	</nav>

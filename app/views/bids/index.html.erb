@@ -19,14 +19,10 @@
 </article>
 
 <% content_for(:side_links) do %>
-	<nav class='contextual'>
-	<ul>
-		<li>
+		<li class='contextual'>
 			<%= link_to 'live sales', filtered_bids_path(:live)%>
 		</li>
-		<li>
+		<li class='contextual'>
 			<%= link_to 'completed sales', filtered_bids_path(:ended)%>
 		</li>
-	</ul>
-</nav>
 <% end %>

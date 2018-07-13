@@ -9,18 +9,7 @@
 </article>
 
 <% content_for(:side_links) do %>
-	<nav>
-		<ul>
-			<% unless controller.action_name == "new" %>
-			<li>
-				<%=link_to 'new buyer', new_buyer_path %>
-			</li>	
-			<% end %>
-			<% unless controller.action_name == "index" %>
-			<li>
-				<%=link_to 'buyers list', buyers_path %>
-			</li>
-			<% end %>
-		</ul>
-	</nav>
+		<li class='contextual'>
+			<%=link_to 'new buyer', new_buyer_path %>
+		</li>	
 <% end %>
