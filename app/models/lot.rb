@@ -13,9 +13,9 @@ class Lot < ApplicationRecord
 										presence: true, greater_than_or_equal_to: 0
 
 	scope :by_lot_number, ->{order(lotnumber: :asc)}
-	scope :auctioned, ->{where(sold: [true,false])}
-	scope :unsold, ->{where(sold: false)}
-	scope :sold, ->{where(sold: true)}
+	scope :auctioned, ->{where(sold: [true,false]).joins(:sale).merge(Sale.descending)}
+	scope :unsold, ->{where(sold: false).joins(:sale).merge(Sale.descending)}
+	scope :sold, ->{where(sold: true).joins(:sale).merge(Sale.descending)}
 	scope :lastsale, ->{auctioned.where(sale_id: Sale.just_ended.id)}	
 
 	def self.total_sales
