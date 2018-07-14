@@ -2,11 +2,14 @@
 	<h1>Auction Categories</h1>
 </header>
 <article>
-	<% @categories.each do |category| %>
-		<div class="house">
-			<%= category.title %>	<%=link_to 'edit', edit_category_path(category) %> 
-		</div>
-	<% end %>
+	<table>
+		<% @categories.each do |category| %>
+		<tr>
+			<td><%= category.title %></td>
+			<td><%=link_to 'edit', edit_category_path(category) %></td>
+		</tr>
+		<% end %>
+	</table>
 </article>
 
 <% content_for(:side_links) do %>

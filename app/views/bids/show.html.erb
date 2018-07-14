@@ -6,7 +6,11 @@
 		<% @lots.each do | lot | %>
 			<div class="lot">
 				<h2>Lot <%=lot.lotnumber%> - <%= link_to "#{lot.make_and_model}", lot_path(lot)%></h2>
-				<h3>Selling at <%=show_money(lot.selling_price)%> (reserve <%= show_money(lot.reserve)%>)</h3>
+				<% if @sale.complete? %>
+					<h3>Sold at <%=show_money(lot.soldat)%> (reserve <%= show_money(lot.reserve)%>)</h3>
+				<% else %>
+					<h3>Bidding at <%=show_money(lot.selling_price)%> (reserve <%= show_money(lot.reserve)%>)</h3>
+				<% end %>
 				<table>
 					<% lot.bids.leading_bids.each do |bid |%> 
 					<!-- lot.bids.leading_bids(10).each for top 10 bids, defaults to 5 -->

@@ -1,396 +1,121 @@
-House.create!([{
-	name:'Hickstead Autions', 
-	address1:'Hope Place',
-	address2:'Hopestead',
-	postcode:'W1 1AA', 
-	phone:'07867456789',
-	email: 'hello@auctions.com',
-	code:'HA',
-	siteinfo: true}, 
-	{
-	name:'Electric Autions', 
-	address1:'Hope Place',
-	address2:'Hopestead',
-	postcode:'W1 1AA', 
-	phone:'07867456789',
-	code:'EA',
-	email: 'hello@electricals.com',
-	siteinfo: false
-}])
+require 'faker'
+include Faker
 
-Sale.create!([{
-	house_id: 1,
-	date: 2.days.from_now,
-	active: true,
-	complete: false
-},
-{
-	house_id: 2,
-	date: 3.days.from_now,
-	active: true,
-	complete: false
-},
-{
-	house_id: 1,
-	date: 14.days.from_now,
-	active: false,
-	complete: false
-}])
+# running this seed file will take some time
+# it will generate buyers and sellers
+# numberofsales auctions
+# numberofsales * numberoflots lots
+# numberofsales * numberoflots * 15 bids
+# modify the variables in the file to generate to relevant amount of seed data
+# depending on your time and space
+# 10% of the auctions will active, 90% complete
+# ensure numberofsales / 10 != 0
 
-Buyer.create!([{
-	firstname: 'Tony',
-	lastname: 'Abrahams',
-	email: 'tony@abrahams.com',
-	phone: '07967678456',
-	commrate:15,
-	code: '100'
-},
-{
-	firstname: 'George',
-	lastname: 'Ross',
-	email: 'georgie@ross.com',
-	phone: '07953846456',
-	commrate:15,
-	code: '7'
-},
-{
-	firstname: 'Louis',
-	lastname: 'Oddjob',
-	email: 'louis@job.com',
-	phone: '07894837656',
-	commrate:15,
-	code: '123'
-}])
 
-Seller.create!([{
-	firstname: 'Blake',
-	lastname: 'Smith',
-	email: 'blake@smith.com',
-	phone: '07899978456',
-	commrate:15,
-	code: 'BS'
-},
-{
-	firstname: 'Peter',
-	lastname: 'George',
-	email: 'peter@george.com',
-	phone: '07958886456',
-	commrate:15,
-	code: 'PG'
-},
-{
-	firstname: 'Gary',
-	lastname: 'Buckle',
-	email: 'gaz@buckle.com',
-	phone: '07894837656',
-	commrate:15,
-	code: 'GB'
-}])
-Category.create!([{
-	title: 'TV'
-},
-{
-	title: 'Audio'
-}])
+# make five auction houses
+5.times do
+	House.create!(
+		name: 			Faker::Company.unique.name, 
+		address1: 	Faker::Address.street_address,
+		address2: 	Faker::Address.city,
+		postcode: 	Faker::Address.postcode, 
+		phone: 			Faker::PhoneNumber.phone_number,
+		email: 			Faker::Internet.email,
+		code: 			('A'..'Z').to_a.shuffle[0,2].join,
+		siteinfo: 	false)
+end
 
-Lot.create!([{
-	manufacturer: 'Sony',
-	model: 'xyz123',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 1,
-	lotnumber: 1,
-	seller_id: 1,
-	category_id: 1
-},
-{
-	manufacturer: 'Samsung',
-	model: 'abclcd4',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 1,
-	lotnumber: 2,
-	seller_id: 2,
-	category_id: 1
-},
-{
-	manufacturer: 'Hitachi',
-	model: 'jj47774',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 1,
-	lotnumber: 3,
-	seller_id: 3,
-	category_id: 1
-},
-{
-	manufacturer: 'Samsung',
-	model: 'ff9fflcd0',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 1,
-	lotnumber: 4,
-	seller_id: 1,
-	category_id: 1
-},
-{
-	manufacturer: 'Technics',
-	model: 'ff9fflcd0',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 1,
-	lotnumber: 5,
-	seller_id: 1,
-	category_id: 2
-},
-{
-	manufacturer: 'Samsung',
-	model: 'zz995',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 1,
-	lotnumber: 6,
-	seller_id: 2,
-	category_id: 1
-},
-{
-	manufacturer: 'Sony',
-	model: 'xyz123',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 2,
-	lotnumber: 1,
-	seller_id: 1,
-	category_id: 1
-},
-{
-	manufacturer: 'Samsung',
-	model: 'abclcd4',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 2,
-	lotnumber: 2,
-	seller_id: 2,
-	category_id: 1
-},
-{
-	manufacturer: 'Hitachi',
-	model: 'jj47774',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 2,
-	lotnumber: 3,
-	seller_id: 3,
-	category_id: 1
-},
-{
-	manufacturer: 'Samsung',
-	model: 'ff9fflcd0',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 2,
-	lotnumber: 4,
-	seller_id: 1,
-	category_id: 1
-},
-{
-	manufacturer: 'Technics',
-	model: 'ff9fflcd0',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 2,
-	lotnumber: 5,
-	seller_id: 1,
-	category_id: 2
-},
-{
-	manufacturer: 'Samsung',
-	model: 'zz995',
-	description:'a long and detailed blurb about the item',
-	reserve: 40,
-	sale_id: 2,
-	lotnumber: 6,
-	seller_id: 2,
-	category_id: 1
-}])
+# make 7 product categories
+Category.create!([
+	{title: 'TV'},
+	{title: 'Digital'},
+	{title: 'Home Cinema'},
+	{title: 'Tower PCs'},
+	{title: 'Laptops'},
+	{title: 'Phones'},
+	{title: 'Audio'}
+	])
 
-Bid.create!([{
-	buyer_id: 1,
-	lot_id: 1,
-	bidvalue: 100,
-	sale_id: 1
-},
-{
-	buyer_id: 2,
-	lot_id: 1,
-	bidvalue: 110,
-	sale_id: 1
-},
-{
-	buyer_id: 3,
-	lot_id: 1,
-	bidvalue: 120,
-	sale_id: 1
-},
-{
-	buyer_id: 1,
-	lot_id: 2,
-	bidvalue: 90,
-	sale_id: 1
-},
-{
-	buyer_id: 2,
-	lot_id: 2,
-	bidvalue: 95,
-	sale_id: 1
-},
-{
-	buyer_id: 3,
-	lot_id: 2,
-	bidvalue: 120,
-	sale_id: 1
-},
-{
-	buyer_id: 1,
-	lot_id: 3,
-	bidvalue: 50,
-	sale_id: 1
-},
-{
-	buyer_id: 2,
-	lot_id: 3,
-	bidvalue: 85,
-	sale_id: 1
-},
-{
-	buyer_id: 3,
-	lot_id: 3,
-	bidvalue: 95,
-	sale_id: 1
-},
-{
-	buyer_id: 1,
-	lot_id: 4,
-	bidvalue: 120,
-	sale_id: 1
-},
-{
-	buyer_id: 2,
-	lot_id: 4,
-	bidvalue: 111,
-	sale_id: 1
-},
-{
-	buyer_id: 3,
-	lot_id: 4,
-	bidvalue: 80,
-	sale_id: 1
-},
-{
-	buyer_id: 1,
-	lot_id: 5,
-	bidvalue: 60,
-	sale_id: 1
-},
-{
-	buyer_id: 2,
-	lot_id: 5,
-	bidvalue: 70,
-	sale_id: 1
-},
-{
-	buyer_id: 3,
-	lot_id: 5,
-	bidvalue: 55,
-	sale_id: 1
-},
-{
-	buyer_id: 1,
-	lot_id: 7,
-	bidvalue: 100,
-	sale_id: 2
-},
-{
-	buyer_id: 2,
-	lot_id: 7,
-	bidvalue: 110,
-	sale_id: 2
-},
-{
-	buyer_id: 3,
-	lot_id: 7,
-	bidvalue: 120,
-	sale_id: 2
-},
-{
-	buyer_id: 1,
-	lot_id: 8,
-	bidvalue: 90,
-	sale_id: 2
-},
-{
-	buyer_id: 2,
-	lot_id: 8,
-	bidvalue: 95,
-	sale_id: 2
-},
-{
-	buyer_id: 3,
-	lot_id: 8,
-	bidvalue: 120,
-	sale_id: 2
-},
-{
-	buyer_id: 1,
-	lot_id: 9,
-	bidvalue: 50,
-	sale_id: 2
-},
-{
-	buyer_id: 2,
-	lot_id: 9,
-	bidvalue: 85,
-	sale_id: 2
-},
-{
-	buyer_id: 3,
-	lot_id: 9,
-	bidvalue: 95,
-	sale_id: 2
-},
-{
-	buyer_id: 1,
-	lot_id: 9,
-	bidvalue: 120,
-	sale_id: 2
-},
-{
-	buyer_id: 2,
-	lot_id: 9,
-	bidvalue: 111,
-	sale_id: 2
-},
-{
-	buyer_id: 3,
-	lot_id: 10,
-	bidvalue: 80,
-	sale_id: 2
-},
-{
-	buyer_id: 1,
-	lot_id: 10,
-	bidvalue: 60,
-	sale_id: 2
-},
-{
-	buyer_id: 2,
-	lot_id: 11,
-	bidvalue: 70,
-	sale_id: 2
-},
-{
-	buyer_id: 3,
-	lot_id: 12,
-	bidvalue: 55,
-	sale_id: 2
-}])
+# make buyers
+60.times do
+	Buyer.create!(
+		firstname: 		Faker::Name.first_name,
+		lastname: 		Faker::Name.unique.last_name ,
+		email: 				Faker::Internet.unique.email,
+		phone: 				Faker::PhoneNumber.phone_number,
+		commrate: 		rand(7..20),
+		code: 				rand(100..999))
+end
+
+# make sellers
+25.times do
+Seller.create!(
+		firstname: 		Faker::Name.first_name,
+		lastname: 		Faker::Name.unique.last_name ,
+		email: 				Faker::Internet.unique.email,
+		phone: 				Faker::PhoneNumber.phone_number,
+		commrate: 		rand(7..20),
+		code: 				('A'..'Z').to_a.shuffle[0,2].join)
+end
+
+# make x active sales with 120 lots in each
+# change numbersales variable to reduce or increase seed date
+# depending on space and time, minimum value is 10
+
+numberofsales = 50
+numberofsales.times do
+	auction = Sale.create!(
+		house_id: 		rand(1..House.all.count),
+		date: 				rand(1..100).days.ago,
+		active: 			true,
+		complete: 		false,
+		notch: 				rand(1..5),
+		minfee: 			rand(0.99..9.99)
+												)
+		lotnumber = 1
+		numberoflots = 150
+		numberoflots.times do
+			lot = auction.lots.new
+			lot.update!(
+			manufacturer: Faker::Device.manufacturer,
+			model: 				Faker::Device.model_name,
+			description: 	Faker::Hipster.paragraph(5, true, 2),
+			reserve: 			rand(5..200),
+			seller_id: 		rand(1..Sale.all.count),
+			category_id: 	rand(1..Category.all.count),
+			lotnumber: 		lotnumber
+									)
+			lotnumber += 1
+	end
+end
+
+# make an average of x bids per lot
+x = 10
+numberofbids = ( Lot.all.count * x)
+numberofbids.times do
+	Bid.create!(
+		buyer_id: 		rand(1..Buyer.all.count),
+		lot_id: 			rand(1..Lot.all.count),
+		bidvalue: 		rand(5..199),
+		sale_id: 			rand(1..Sale.all.count)
+							)
+end
+
+# make most recent 10% of auctions active
+howmanycomplete = ((Sale.all.count / 10) * 9)
+
+# order the auctions by date and set the earlier 25 to complete with buyer an sellers both paid
+auctions = Sale.order(date: :asc).limit(howmanycomplete)
+auctions.each do | a |
+	a.update(active:false, complete:true)
+	a.lots.each do | lot |
+		if lot.reserve > lot.highest_bid_value
+		  lot.update_attributes(sold: false, soldat: 0, bfee:0, sfee:0) # not setting buyer/sellerpaid to true as these attributes decide lot populating on show page of relevant nodel
+    else
+      lot.update_attributes(soldat:lot.selling_price, bfee:lot.buyingfee, sfee:lot.sellingfee, sold: true, buyerpaid:true, sellerpaid:true) #buyerpaid / sellerpaid are updated to false in the app, true here so these completed lots are seen as fully paid out / in
+      lot.highest_bid.first.update(won: true)
+    end
+	end
+end
+
+

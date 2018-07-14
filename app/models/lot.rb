@@ -131,8 +131,13 @@ class Lot < ApplicationRecord
 		end
 	end
 
+# is there a bid on the lot from another buyer?
+	def second_best_bid?
+		!second_best_bid.nil?
+	end
+
+# get the highest bid from a different buyer
 	def second_best_bid
-		# the highest bid from a different buyer
 		bids.where.not(buyer_id: highest_bid.first.buyer.id).order(bidvalue: :desc).first		
 	end
 
@@ -141,8 +146,8 @@ class Lot < ApplicationRecord
 			# if no bids.....
 			0
 		else
-			if self.second_best_bid
-				# selling price is second bid from different buyer plus notch if there is a 2nd bid
+			if self.second_best_bid?
+				# selling price is second bid from different buyer plus notch (if there is a 2nd bid)
 				(self.sale.notch + self.second_best_bid.bidvalue)
 			else
 				if self.highest_bid_value >= self.reserve

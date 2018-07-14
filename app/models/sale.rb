@@ -54,12 +54,12 @@ class Sale < ApplicationRecord
   end
 
   def generate_report
-    lots.by_lot_number.each do |lot|
-      if lot.reserve > lot.selling_price
+    lots.each do |lot|
+      if lot.reserve > lot.highest_bid_value
         lot.update_attributes(sold: false, soldat: 0, bfee:0, sfee:0) # not setting buyer/sellerpaid to true as these attributes decide lot populating on show page of relevant nodel
       else
         lot.update_attributes(soldat:lot.selling_price, bfee:lot.buyingfee, sfee:lot.sellingfee, sold: true, buyerpaid:false, sellerpaid:false)
-        lot.highest_bid.first.update_attribute(:won, true)
+        lot.highest_bid.first.update(won: true)
       end
     end
   end

@@ -6,8 +6,8 @@ class SellersController < ApplicationController
 	def show
 		@seller = Seller.find(params[:id])
 		@active_lots = @seller.lots.select{| l | l.sold.nil? }
-		@sold_lots = @seller.lots.select{| l | l.sold == true && l.sellerpaid == false}
-		@unsold_lots = @seller.lots.select{| l | l.sold == false && l.sellerpaid == false }
+		@sold_lots = @seller.lots.select{| l | l.sold == true && l.sellerpaid == false}.sort{|a,b| b.sale.date <=> a.sale.date}
+		@unsold_lots = @seller.lots.select{| l | l.sold == false && l.sellerpaid == false }.sort{|a,b| b.sale.date <=> a.sale.date}
 		@cash_due_to_seller = @sold_lots.sum{| l | (l.seller_due)}
 		@cash_made_by_seller = @seller.lots.select{| l | l.sold == true}.sum{| l | (l.seller_due)}
 	end

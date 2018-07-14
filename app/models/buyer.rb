@@ -2,21 +2,21 @@ class Buyer < ApplicationRecord
 	has_many :bids
 	has_many :bidon, through: :bids, source: :lot
 
-	validates :firstname, presence: true,
-											  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },
-                        length: { minimum: 1}
+	# validates :firstname, presence: true,
+	# 										  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },
+ #                        length: { minimum: 1}
 
-	validates :lastname, 	presence: true,
-											  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },
-												length: { minimum: 2 }
+	# validates :lastname, 	presence: true,
+	# 										  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },
+	# 											length: { minimum: 2 }
 
   validates :email, 		presence: true,
                     		format: /\A\S+@\S+\z/,
                     		uniqueness: { case_sensitive: false , 
                     									message: "Email address already in use"}
 
-  validates :phone,     numericality:  {message: "just digits no spaces"},
-  											length: {minimum: 10, maximum: 14}
+  # validates :phone,     numericality:  {message: "just digits no spaces"},
+  # 											length: {minimum: 10, maximum: 14}
 
   validates :code, 			presence: true
 
@@ -40,6 +40,10 @@ class Buyer < ApplicationRecord
 
 	def winning_bids
 		bids.where(won: true)
+	end
+
+	def winning_by_date
+		winning_bids.map{|b| b.sale}.sort{|a , b| b.date <=> a.date}.map{|s| s.bids}
 	end
 
 	def winning_bids_in(sale)

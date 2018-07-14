@@ -10,6 +10,7 @@ class BidsController < ApplicationController
 	end
 
 	def create
+		# todo stop bids being created if !@lot.sale.active
 		@lot = Lot.find(params[:bid][:lot_id])
 		@bid = @lot.bids.new(bid_params)
 		@bid.buyer_id = 1 #this will be current buyer from devise
