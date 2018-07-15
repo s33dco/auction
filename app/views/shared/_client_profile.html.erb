@@ -1,21 +1,16 @@
-<header>
-	<h1>Client Profile</h1>
+<div class="client-details">
 	<table>
 		<tr>
-			<td>Name</td>
-			<td>client_profile.first_and_last_name</td>
+			<td>telephone</td>
+			<td><%= @seller.phone%></td>
 		</tr>
 		<tr>
-			<td>Phone</td>
-			<td>client_profile.phone</td>
+			<td>email</td>
+			<td><%= @seller.email%></td>
 		</tr>
 		<tr>
-			<td>Email</td>
-			<td>client_profile.email</td>
-		</tr>
-		<tr>
-			<td>Commision</td>
-			<td>client_profile.commrate</td>
-		</tr>
+			<td>commision rate</td>
+			<td><%= @seller.commrate%>%</td>
+		</tr>	
 	</table>
-</header>
+</div>

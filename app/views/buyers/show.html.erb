@@ -4,7 +4,7 @@
 	</header>
 	<div class="details">
 		<%= render "client_contact" %>
-		<p>(Bidding for <%= time_ago_in_words(@since)%>, making  <%= pluralize(@total_bids, 'bid') %>, winning <%= pluralize( @total_winning_bids ,'lot' )%>, total spend of <%= show_money(@gross_spend)%>).</p>
+		<p>(Bidding for <%= time_ago_in_words(@since)%>, winning <%= pluralize( @total_winning_bids ,'lot' )%>, (<%= pluralize(@total_bids, 'bid') %>), total spend <%= show_money(@gross_spend)%>).</p>
 	</div>
 
 	<div class="live-sales">

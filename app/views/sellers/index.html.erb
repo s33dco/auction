@@ -5,8 +5,8 @@
 	<table>
 		<% @sellers.each do |seller| %>
 			<tr>
-				<td><%=link_to "#{seller.full_name}", seller_path(seller) %></td>
 				<td>(<%=seller.code%>)</td>
+				<td><%=link_to "#{seller.full_name}", seller_path(seller) %></td>
 				<td><%=seller.email%></td>
 				<td><%=seller.phone%></td>
 				<td><%= link_to 'edit', edit_seller_path(seller)%></td>

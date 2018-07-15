@@ -5,8 +5,8 @@
 	<table>
 		<% @buyers.each do |buyer| %>
 			<tr>
-				<td><%= link_to "#{buyer.first_and_last_name}", buyer_path(buyer) %></td>
 				<td>(<%= buyer.code %>)</td>
+				<td><%= link_to "#{buyer.first_and_last_name}", buyer_path(buyer) %></td>
 				<td><%= buyer.email %></td>
 				<td><%= buyer.phone %></td>
 				<td><%= link_to 'edit', edit_buyer_path(buyer) %></td>

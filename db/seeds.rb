@@ -37,7 +37,7 @@ Category.create!([
 	])
 
 # make buyers
-60.times do
+50.times do
 	Buyer.create!(
 		firstname: 		Faker::Name.first_name,
 		lastname: 		Faker::Name.unique.last_name ,

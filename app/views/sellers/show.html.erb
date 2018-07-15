@@ -4,7 +4,7 @@
 	</header>
 	<div class="details">
 	<%= render "client_contact" %>
-	<p>(Selling for <%= time_ago_in_words(@since)%>, auctioned <%= pluralize(@seller.lots.count, 'lot')%>, sold <%= @total_lots_sold_by_seller %> for <%=show_money(@cash_made_by_seller)%>)</p>
+	<p>(Selling for <%= time_ago_in_words(@since)%>, sold <%= @total_lots_sold_by_seller %>  of <%= pluralize(@seller.lots.count, 'lot')%> for <%=show_money(@cash_made_by_seller)%>)</p>
 	</div>
 
 	<% unless @active_lots.empty? %>
