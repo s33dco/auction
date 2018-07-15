@@ -1,8 +1,8 @@
-<% if @sale %>
-	<header>
-		<h1>Bidding for <%=@sale.house.name%> <%=nice_date(@sale.date)%></h1>
-	</header>
-	<article>
+<article>
+	<% if @sale %>
+		<header>
+			<h1>Bidding for <%=@sale.house.name%> <%=nice_date(@sale.date)%></h1>
+		</header>
 		<% @lots.each do | lot | %>
 			<div class="lot">
 				<h2>Lot <%=lot.lotnumber%> - <%= link_to "#{lot.make_and_model}", lot_path(lot)%></h2>
@@ -23,15 +23,13 @@
 				</table>
 			</div>
 		<% end %>
-	</article>
-<% else %>
-	<header>
-		<h1>There is no current active sale</h1>
-	</header>
-	<article>
-		check reports for previous sale details
-	</article>
-<% end %>
+	<% else %>
+		<header>
+			<h1>There is no current active sale</h1>
+		</header>
+		<p>check reports  or bidding for previous sale details</p>
+	<% end %>
+</article>
 
 <% content_for(:side_links) do %>
 		<li class='contextual'>

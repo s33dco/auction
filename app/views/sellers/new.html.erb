@@ -1,7 +1,7 @@
-<header>
-	<h1>Add a New Seller</h1>
-</header>
 <article>
+	<header>
+		<h1>Add a New Seller</h1>
+	</header>
 	<%= form_with(model: @seller, local: true) do |f| %>
 		<%= render "shared/client_fields", f:f %>
 		<%= f.submit %>

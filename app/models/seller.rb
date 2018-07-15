@@ -23,9 +23,14 @@ class Seller < ApplicationRecord
 														greater_than_or_equal_to: 0
 
 	scope :by_code, ->{order(code: :asc)}
+	scope :lastname_firstname, ->{order(lastname: :asc).order(firstname: :asc)}
 
 	def full_name
 		"#{firstname} #{lastname}"
+	end
+
+	def eldest
+		lots.order(created_at: :asc).first.sale.date
 	end
 
 	def code_and_name

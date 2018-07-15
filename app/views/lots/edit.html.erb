@@ -1,7 +1,7 @@
-<header>
-	<h1>Editing <%= @lot.make_and_model%> (post auction)</h1>
-</header>
 <article>
+	<header>
+		<h1>Editing <%= @lot.make_and_model%> (post auction)</h1>
+	</header>
 	<%= form_with(model: @lot, local:true) do |f| %>
 		<%= render 'lot_fields', f: f%>
 		<%= f.submit %>

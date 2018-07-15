@@ -1,7 +1,7 @@
 class BuyersController < ApplicationController
 
 	def index
-		@buyers = Buyer.all
+		@buyers = Buyer.lastname_firstname
 	end
 
 	def show
@@ -13,7 +13,7 @@ class BuyersController < ApplicationController
 		@total_bids = @buyer.bids.count
 		@total_winning_bids = @buyer.winning_bids.count
 		@gross_spend = @buyer.winning_bids.map{|b| b.lot}.sum{| l | l.soldat + l.bfee}
-		@since = @buyer.bids.eldest_first.first.created_at
+		@since = @buyer.eldest
 	end
 
 	def new

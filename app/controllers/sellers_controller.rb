@@ -1,15 +1,17 @@
 class SellersController < ApplicationController
 	def index
-		@sellers = Seller.all
+		@sellers = Seller.lastname_firstname
 	end
 
 	def show
 		@seller = Seller.find(params[:id])
-		@active_lots = @seller.lots.select{| l | l.sold.nil? }
+		@active_lots = @seller.lots.select{| l | l.sold.nil? }.sort{|a,b| b.lotnumber<=> a.lotnumber}.sort{|a,b| b.sale.date <=> a.sale.date}
 		@sold_lots = @seller.lots.select{| l | l.sold == true && l.sellerpaid == false}.sort{|a,b| b.sale.date <=> a.sale.date}
 		@unsold_lots = @seller.lots.select{| l | l.sold == false && l.sellerpaid == false }.sort{|a,b| b.sale.date <=> a.sale.date}
 		@cash_due_to_seller = @sold_lots.sum{| l | (l.seller_due)}
 		@cash_made_by_seller = @seller.lots.select{| l | l.sold == true}.sum{| l | (l.seller_due)}
+		@total_lots_sold_by_seller = @seller.lots.select{|l| l.sold == true}.count
+		@since = @seller.eldest
 	end
 
 	def new

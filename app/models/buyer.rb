@@ -24,6 +24,11 @@ class Buyer < ApplicationRecord
 														greater_than_or_equal_to: 0
 														
 	scope :by_code, ->{order(buyercode: :asc)}
+	scope :lastname_firstname, ->{order(lastname: :asc).order(firstname: :asc)}
+
+	def eldest
+		bids.order(created_at: :asc).first.sale.date
+	end
 
 
 	def bid_for(lot)

@@ -24,17 +24,21 @@
 
   <body>
     <div class="wrapper">
-      <%= render 'layouts/header' %>
-      <%= render 'layouts/flashes' %>
+      <header class='header'>
+        <%= render 'layouts/header' %>
+      </header>
       <main class='page  <%= controller.controller_name %>'>
+        <%= render 'layouts/flashes' %>
         <section class='content'>
           <%= yield %>
+          <aside>
+            <%= render 'layouts/sidebar' %>
+          </aside>
         </section>
-          <%= render 'layouts/sidebar' %>
-        <div class="footer">
-          <%= render 'layouts/footer' %>
-        </div>
       </main>
+      <footer class="footer">
+        <%= render 'layouts/footer' %>
+      </footer>
     </div>
   </body>
 </html>

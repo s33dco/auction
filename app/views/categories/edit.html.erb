@@ -1,7 +1,7 @@
-<header>
-	<h1>Edit <%=@category.title%></h1>
-</header>
 <article>
+	<header>
+		<h1>Edit <%=@category.title%></h1>
+	</header>
 	<%= render 'shared/errors', object: @category %>
 	<%=form_with(model:@category, local:true) do |f| %>
 		<%= render 'category_fields', f:f %>

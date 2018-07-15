@@ -1,16 +1,15 @@
-<header>
-	<h1><%= @seller.first_and_last_name %></h1>
-</header>
 <article>
-	<div class="client-details">
-		<h3>Contact Details</h3>
-		<%= render "client_contact" %>
-		<p>You've auctioned <%= pluralize(@seller.lots.count, 'lot')%>, selling <%= @sold_lots.count %> for <%=show_money(@cash_made_by_seller)%></p>
+	<header>
+		<h1><%= @seller.first_and_last_name %></h1>
+	</header>
+	<div class="details">
+	<%= render "client_contact" %>
+	<p>(Selling for <%= time_ago_in_words(@since)%>, auctioned <%= pluralize(@seller.lots.count, 'lot')%>, sold <%= @total_lots_sold_by_seller %> for <%=show_money(@cash_made_by_seller)%>)</p>
 	</div>
 
 	<% unless @active_lots.empty? %>
 		<div class="live-items">
-			<h3>Lots in process</h3>
+			<h3>Lots in Auction</h3>
 			<table>
 				<% @active_lots.each do | lot| %>
 					<tr>

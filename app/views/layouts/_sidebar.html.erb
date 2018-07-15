@@ -1,32 +1,30 @@
-<aside>
-	<%= content_for(:side_info)%>
-	<nav class='standard'>
-		<ul>
-			<%= content_for(:side_links)%>
-			<li>
-				<%= link_to 'houses', houses_path %>
-			</li>
-			<li>
-				<%= link_to 'categories', categories_path %>
-			</li>
-			<li>
-				<%= link_to 'sales', sales_path %>
-			</li>
-			<li>
-				<%= link_to 'bidding', bids_path %>
-			</li>
-			<li>
-				<%= link_to 'post sale lots', filtered_lots_path(:lastsale) %>
-			</li>
-			<li>
-				<%= link_to 'buyers', buyers_path %>
-			</li>
-			<li>
-				<%= link_to 'sellers', sellers_path %>
-			</li>
-			<li>
-				<%= link_to 'reports', reports_path %>
-			</li>
-		</ul>
-	</nav>
-</aside>
+<%= content_for(:side_info)%>
+<nav class='admin-lnks'>
+	<ul>
+		<%= content_for(:side_links)%>
+		<li>
+			<%= link_to 'houses', houses_path %>
+		</li>
+		<li>
+			<%= link_to 'categories', categories_path %>
+		</li>
+		<li>
+			<%= link_to 'sales', sales_path %>
+		</li>
+		<li>
+			<%= link_to 'bidding', bids_path %>
+		</li>
+		<li>
+			<%= link_to 'post sale lots', filtered_lots_path(:lastsale) %>
+		</li>
+		<li>
+			<%= link_to 'buyers', buyers_path %>
+		</li>
+		<li>
+			<%= link_to 'sellers', sellers_path %>
+		</li>
+		<li>
+			<%= link_to 'reports', reports_path %>
+		</li>
+	</ul>
+</nav>

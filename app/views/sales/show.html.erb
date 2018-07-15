@@ -1,8 +1,8 @@
-<header>
-	<h1><%= nice_date(@sale.date) %> <%=@sale.house.name %></h1>
-	<p>Fee charged per lot is <%= show_money(@sale.minfee)%> or <%=@buyer.commrate%>%, whichever is higher.</p>
-</header>
 <article>
+	<header>
+		<h1><%= nice_date(@sale.date) %> <%=@sale.house.name %></h1>
+		<p>Fee charged per lot is <%= show_money(@sale.minfee)%> or <%=@buyer.commrate%>%, whichever is higher.</p>
+	</header>
 	<div class="auction-control">
 		<!-- if admin -->
 			<% if @sale.active?	%>

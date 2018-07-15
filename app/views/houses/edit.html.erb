@@ -1,7 +1,7 @@
-<header>
-	<h1>Edit <%=@house.name%></h1>
-</header>
 <article>
+	<header>
+		<h1>Edit <%=@house.name%></h1>
+	</header>
 	<%= render 'shared/errors', object: @house %>
 	<%=form_with(model:@house, local:true) do |f| %>
 		<%= render 'house_fields', f:f%>

@@ -1,8 +1,7 @@
-<header>
-	<header>
-        <h1>Auction Reports, Invoices & Credit Notes.</h1>
-    </header>
 <article>
+  <header>
+      <h1>Auction Reports, Invoices & Credit Notes.</h1>
+  </header>
 	<h3>Generate reports for completed auctions.</h3>
   <%= form_with(scope: :report, url: report_viewer_path, method: :get, local:true) do |f| %>
     <fieldset>
@@ -18,7 +17,6 @@
     		<li>
     			<%= f.collection_select(:seller_id, Seller.all, :id , :full_name, prompt: "Choose seller" ) %>
     		</li>
-
     </fieldset>
     <%= f.submit "Report" %>
    <% end %>

@@ -62,16 +62,17 @@ end
 # change numbersales variable to reduce or increase seed date
 # depending on space and time, minimum value is 10
 
-numberofsales = 50
+numberofsales = 60
 numberofsales.times do
 	auction = Sale.create!(
 		house_id: 		rand(1..House.all.count),
-		date: 				rand(1..100).days.ago,
+		date: 				numberofsales.days.ago,
 		active: 			true,
 		complete: 		false,
 		notch: 				rand(1..5),
 		minfee: 			rand(0.99..9.99)
 												)
+		numberofsales -= 1
 		lotnumber = 1
 		numberoflots = 150
 		numberoflots.times do
@@ -81,7 +82,7 @@ numberofsales.times do
 			model: 				Faker::Device.model_name,
 			description: 	Faker::Hipster.paragraph(5, true, 2),
 			reserve: 			rand(5..200),
-			seller_id: 		rand(1..Sale.all.count),
+			seller_id: 		rand(1..Seller.all.count),
 			category_id: 	rand(1..Category.all.count),
 			lotnumber: 		lotnumber
 									)
@@ -96,7 +97,7 @@ numberofbids.times do
 	Bid.create!(
 		buyer_id: 		rand(1..Buyer.all.count),
 		lot_id: 			rand(1..Lot.all.count),
-		bidvalue: 		rand(5..199),
+		bidvalue: 		rand(5..200), # this could create some unsold lots reserve & bid max the same value
 		sale_id: 			rand(1..Sale.all.count)
 							)
 end

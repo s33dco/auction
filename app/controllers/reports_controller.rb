@@ -13,14 +13,14 @@ class ReportsController < ApplicationController
 			@sold_lots = @lots.map{|l| l.sold == true}
 		elsif !buyer.blank?
 			@buyer = Buyer.find(params[:report][:buyer_id])
-			@buyer_lots = @buyer.winning_bids_in(@sale).map { |b| b.lot  }
+			@buyer_lots = @buyer.winning_bids_in(@sale).map { |b| b.lot  }.sort{|b,a| b.lotnumber <=> a.lotnumber}
 			@buyer_bill = @buyer_lots.sum{|l| l.soldat + l.bfee}
 		else !seller.blank?
 			@seller = Seller.find(params[:report][:seller_id])
 			@seller_lots = @seller.lots.select{| l | l.sale_id == @sale.id}
-			@seller_sold_lots = @seller_lots.select{|l| l.sold == true}
+			@seller_sold_lots = @seller_lots.select{|l| l.sold == true}.sort{|b,a| b.lotnumber <=> a.lotnumber}
 			@seller_payment = @seller_sold_lots.sum{|l| l.soldat - l.sfee}
-			@seller_unsold_lots = @seller_lots.select{|l| l.sold == false}
+			@seller_unsold_lots = @seller_lots.select{|l| l.sold == false}.sort{|b,a| b.lotnumber <=> a.lotnumber}
 		end
 	end
 
