@@ -3,10 +3,11 @@ class ReportsController < ApplicationController
 	end
 
 	def viewer
-		@sale = Sale.find(params[:report][:sale_id])
+		session[:report] = params[:report] if params[:report]
+		@sale = Sale.find(session[:report][:sale_id])
 		@sale_lots = @sale.lots.by_lot_number
-		buyer = params[:report][:buyer_id]
-		seller = params[:report][:seller_id]
+		buyer = session[:report][:buyer_id]
+		seller = session[:report][:seller_id]
 
 		if buyer.blank? && seller.blank?
 			@lots = @sale.lots.by_lot_number

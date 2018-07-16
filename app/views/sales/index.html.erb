@@ -35,7 +35,7 @@
 					<td><%= pluralize(sale.vendors.uniq.count, 'vendor') %></td>
 					<td><%= pluralize(sale.bids.count, 'bid') %></td>
 					<td ><%= link_to "live bidding", bid_path(sale) %></td>
-					<td><%= button_to 'End Sale', deactivate_sale_path(@sale), data: { confirm: 'Are you sure? This will close the auction and publish the reports!' }%></td>
+					<td><%= button_to 'End Sale', deactivate_sale_path(sale), data: { confirm: 'Are you sure? This will close the auction and publish the reports!' }%></td>
 				</tr>
 			<% end %>
 	<% end %>
@@ -52,7 +52,7 @@
 					<td class='lots'><%= pluralize(sale.lots.count, 'lot') %></td>
 					<td><%= pluralize(sale.vendors.uniq.count, 'vendor') %></td>
 					<td><%= pluralize(sale.bids.count, 'bid') %></td>
-					<td><%= link_to "view bids", bids_path(sale) %></td>
+					<td><%= link_to "view bids", bid_path(sale) %></td>
 					<!-- todo button to sales report -->
 					<td>Report</td>
 					<!-- to here -->

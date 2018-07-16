@@ -9,4 +9,8 @@ class ApplicationRecord < ActiveRecord::Base
   	"#{firstname} #{lastname}"
   end
 
+  def short_date(t)
+  	t.strftime("%v")
+  end
+
 end

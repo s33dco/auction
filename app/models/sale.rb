@@ -29,6 +29,11 @@ class Sale < ApplicationRecord
   	"#{house.name} #{nice_date(date)}"
   end
 
+  def code_and_date
+    "#{house.code} #{short_date(date)}"
+    
+  end
+
   def active?
   	active == true
   end
@@ -58,7 +63,7 @@ class Sale < ApplicationRecord
       if lot.reserve > lot.highest_bid_value
         lot.update_attributes(sold: false, soldat: 0, bfee:0, sfee:0) # not setting buyer/sellerpaid to true as these attributes decide lot populating on show page of relevant nodel
       else
-        lot.update_attributes(soldat:lot.selling_price, bfee:lot.buyingfee, sfee:lot.sellingfee, sold: true, buyerpaid:false, sellerpaid:false)
+        lot.update_attributes(soldat:lot.selling_price, bfee:lot.buyingfee, sfee:lot.sellingfee, sold: true, buyerpaid:false, sellerpaid:false, buyer_id:lot.highest_bid.first.buyer_id)
         lot.highest_bid.first.update(won: true)
       end
     end

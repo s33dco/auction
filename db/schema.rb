@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_230456) do
+ActiveRecord::Schema.define(version: 2018_07_16_124006) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 2018_07_11_230456) do
     t.boolean "sold"
     t.boolean "buyerpaid"
     t.boolean "sellerpaid"
+    t.integer "buyer_id"
+    t.index ["buyer_id"], name: "index_lots_on_buyer_id"
     t.index ["category_id"], name: "index_lots_on_category_id"
     t.index ["sale_id"], name: "index_lots_on_sale_id"
     t.index ["seller_id"], name: "index_lots_on_seller_id"

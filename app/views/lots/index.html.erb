@@ -2,34 +2,31 @@
 	<header>
 		<h1>Lots</h1>
 	</header>
-	<div class="filters">
-		<p>filter by Buyer, Seller, Sale, Category</p>
-	</div>
+	<%= render 'lot_search_form' %>
+	<%= link_to 'download CSV', lots_path(format: "csv") %>
 	<table>
 		<tr>
 			<td>Date</td>
 			<td>Sale</td>
-			<td>Lot #</td>
+			<td>Lot</td>
 			<td>Item</td>
 			<td class='money'>Reserve</td>
-			<td class='money'>Max Bid</td>
 			<td class='money'>Sold @</td>
-			<td class='money'>Comms</td>
+			<td class='money'>Fee (Buyer)</td>
+			<td class='money'>Fee (Seller)</td>
+			<td class='money'>Fee (Total)</td>
 			<td></td>
 		</tr>
 		<% @lots.each do |lot| %>
 		<tr>
 			<td><%= short_date(lot.sale.date) %></td>
 			<td><%= lot.sale.house.code %></td>
-			<td><%= lot.lotnumber %></td>
+			<td class='money'><%= lot.lotnumber %></td>
 			<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
-			<td class='money'><%=show_money(lot.reserve)%></td>
-			<td class='money'>
-
-				<%=show_money(lot.highest_bid_value)%>
-					
-				</td>
+			<td class='money'><%= show_money(lot.reserve)%></td>
 			<td class='money'><%= show_money(lot.soldat) %></td>
+			<td class='money'><%= show_money(lot.bfee) %></td>
+			<td class='money'><%= show_money(lot.sfee) %></td>
 			<td class='money'><%= show_money(lot.commissions) %></td>
 			<td><%=link_to 'edit', edit_lot_path(lot)%></td>
 		</tr>
@@ -37,84 +34,7 @@
 	</table>
 </article>
 
-<!-- again if admin -->
-<% content_for(:side_links) do %>
-	<li class='contextual'>
-		<%= link_to 'last sale', filtered_lots_path(:lastsale)%>
-	</li>
-	<li class='contextual'>
-		<%= link_to 'all sold', filtered_lots_path(:sold)%>
-	</li>
-	<li class='contextual'>
-		<%= link_to 'all unsold', filtered_lots_path(:unsold )%>
-	</li>
-	<li class='contextual'>
-		<%= link_to 'all auctioned', filtered_lots_path(:auctioned)%>
-	</li>
-
-		<!-- todo refactor.... -->
-	<%  if current_page?('/lots/filter/lastsale') %>
- 		<li class='contextual'>
-			<%=link_to 'download CSV', filtered_lots_path(:lastsale, format: "csv") %>
-		</li>
-	<% end %>
-	<%  if current_page?('/lots/filter/unsold') %>
- 		<li class='contextual'>
-			<%=link_to 'download CSV', filtered_lots_path(:unsold, format: "csv") %>
-		</li>
-	<% end %>
-	<%  if current_page?('/lots/filter/sold') %>
- 		<li class='contextual'>
-			<%=link_to 'download CSV', filtered_lots_path(:sold, format: "csv") %>
-		</li>
-	<% end %>
-	<%  if current_page?('/lots/filter/auctioned') %>
- 		<li class='contextual'>
-			<%=link_to 'download CSV', filtered_lots_path(:auctioned, format: "csv") %>
-		</li>
-	<% end %>
-		<!--  -->
-		</ul>
-	</nav>
-<% end %>
-
 <% content_for(:side_info) do %>
-	<div class="infos">
-		<table>
-			<tr>
-				<td>turnover</td>
-				<td class='money'><%=show_money(@gross)%></td>
-			</tr>
-				<tr>
-				<td>bid sales</td>
-				<td class='money'><%=show_money(@total_sales)%></td>
-			</tr>
-				<tr>
-				<td>seller's due</td>
-				<td class='money'><%=show_money(@pay_out)%></td>
-			</tr>
-				<tr>
-				<td>seller comm</td>
-				<td class='money'><%=show_money(@seller_fees)%></td>
-			</tr>
-				<tr>
-				<td>buyer comm</td>
-				<td class='money'><%=show_money(@buyer_fees)%></td>
-			</tr>
-				<tr>
-				<td>total profit</td>
-				<td class='money'><%=show_money(@comm)%></td>
-			</tr>
-			</tr>
-				<tr>
-				<td>number of lots</td>
-				<td class='money'><%= @how_many%></td>
-			</tr>
-			<tr>
-				<td>av. profit/lot</td>
-				<td class='money'><%=show_money(@average)%></td>
-			</tr>
-		</table>
-	</div>
+	<%= render "side_stats" %>
 <% end %>
-<!-- to here -->
+

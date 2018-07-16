@@ -37,7 +37,7 @@ Category.create!([
 	])
 
 # make buyers
-50.times do
+10.times do
 	Buyer.create!(
 		firstname: 		Faker::Name.first_name,
 		lastname: 		Faker::Name.unique.last_name ,
@@ -48,7 +48,7 @@ Category.create!([
 end
 
 # make sellers
-25.times do
+10.times do
 Seller.create!(
 		firstname: 		Faker::Name.first_name,
 		lastname: 		Faker::Name.unique.last_name ,
@@ -62,7 +62,7 @@ end
 # change numbersales variable to reduce or increase seed date
 # depending on space and time, minimum value is 10
 
-numberofsales = 60
+numberofsales = 10
 numberofsales.times do
 	auction = Sale.create!(
 		house_id: 		rand(1..House.all.count),
@@ -74,7 +74,7 @@ numberofsales.times do
 												)
 		numberofsales -= 1
 		lotnumber = 1
-		numberoflots = 150
+		numberoflots = 20
 		numberoflots.times do
 			lot = auction.lots.new
 			lot.update!(
@@ -113,7 +113,7 @@ auctions.each do | a |
 		if lot.reserve > lot.highest_bid_value
 		  lot.update_attributes(sold: false, soldat: 0, bfee:0, sfee:0) # not setting buyer/sellerpaid to true as these attributes decide lot populating on show page of relevant nodel
     else
-      lot.update_attributes(soldat:lot.selling_price, bfee:lot.buyingfee, sfee:lot.sellingfee, sold: true, buyerpaid:true, sellerpaid:true) #buyerpaid / sellerpaid are updated to false in the app, true here so these completed lots are seen as fully paid out / in
+      lot.update_attributes(soldat:lot.selling_price, bfee:lot.buyingfee, sfee:lot.sellingfee, sold: true, buyerpaid:true, sellerpaid:true, buyer_id:lot.highest_bid.first.buyer_id) #buyerpaid / sellerpaid are updated to false in the app, true here so these completed lots are seen as fully paid out / in
       lot.highest_bid.first.update(won: true)
     end
 	end

@@ -1,7 +1,9 @@
 class LotsController < ApplicationController
 
 	def index
-		@lots = Lot.send(lots_scope)
+		session[:q] = params[:q] if params[:q]
+		@search = Lot.auctioned.search(session[:q])
+		@lots = @search.result
 		@gross = @lots.total_gross
 		@total_sales = @lots.total_sales
 		@buyer_fees	= @lots.total_buyer_fees
@@ -45,16 +47,6 @@ class LotsController < ApplicationController
 	private
 
 	def lot_params
-		params.require(:lot).permit(:category_id, :seller_id, :winner, :soldat, :bfee, :sfee, :sold, :buyerpaid, :sellerpaid)
+		params.require(:lot).permit(:category_id, :buyer_id, :seller_id, :winner, :soldat, :bfee, :sfee, :sold, :buyerpaid, :sellerpaid)
 	end
-
-	def lots_scope
-	  if params[:scope].in? %w(auctioned unsold sold lastsale)
-	    params[:scope]
-	  else
-	    :lastsale
-	  end
-	end
-
-
 end

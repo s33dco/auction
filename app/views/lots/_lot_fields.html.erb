@@ -1,6 +1,9 @@
 <fieldset>
 	<ul>
 		<li>
+			<h3>Lot <%= @lot.lotnumber %>, <%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %></h3>
+		</li>
+		<li>
 			<label>Sold at £</label>
 			<%= f.number_field :soldat, step: 0.01 %>
 		</li>
@@ -22,7 +25,7 @@
 		</li>
 		<li>
 			<label>Buyer</label>
-			<%= @lot.winning_bid_buyer_name%>
+			<%= f.collection_select(:buyer_id, Buyer.all, :id , :code_and_name, include_blank: true) %>
 		</li>
 		<li>
 			<label>Buyer fee £</label>

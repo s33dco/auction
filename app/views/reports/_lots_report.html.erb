@@ -24,10 +24,10 @@
 				<td><%=link_to "#{lot.make_and_model}", lot_path(lot)%></td>
 				<td class='money'><%=show_money(lot.reserve) %></td>
 				<td class='money'><%=show_money(lot.soldat) %></td>
-				<% if lot.winning_bid_buyer_name == 'no sale'%>
-					<td><%= lot.winning_bid_buyer_name %></td>
-				<% else %>
-					<td><%= link_to "#{lot.winning_bid_buyer_name}", buyer_path(lot.winning_bid.buyer) %></td>
+				<% if lot.buyer.nil?%>
+					<td>no sale</td>
+				<%else%>
+					<td><%= link_to "#{lot.buyer.full_name}", buyer_path(lot.buyer) %>
 				<% end %>
 				<td class='money'><%=show_money(lot.buyer_pays) %></td>
 				<td><%= link_to "#{lot.seller.full_name}", seller_path(lot.seller) %></td>
