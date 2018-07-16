@@ -17,7 +17,7 @@
 					<tr>
 						<td><%=sale.house.name %></td>
 						<td><%=nice_date(sale.date)%></td>
-						<td><%=link_to 'bidding card', sale_path(sale)%></td>
+						<td><%=link_to "bidding card", buyer_bidding_path(@buyer,sale)%></td>
 					</tr>
 				<% end %>
 			</table>

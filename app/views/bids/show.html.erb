@@ -2,6 +2,7 @@
 	<% if @sale %>
 		<header>
 			<h1>Bidding for <%=@sale.house.name%> <%=nice_date(@sale.date)%></h1>
+			<h2><%= pluralize(@sale.bids.count, 'bid') %>, <%= pluralize(@sale.bidders.uniq.count, 'bidder') %></h2>
 		</header>
 		<% @lots.each do | lot | %>
 			<div class="lot">

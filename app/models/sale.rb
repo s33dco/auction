@@ -10,10 +10,11 @@ class Sale < ApplicationRecord
   validates_numericality_of :notch, :minfee, presence: true, greater_than_or_equal_to: 0
 
   scope :descending, ->{order(date: :desc)}
-  scope :live, ->{where('active = ?', true)}
-  scope :ended, ->{where('complete = ?', true)}
+  scope :live, ->{descending.where('active = ?', true)}
+  scope :ended, ->{descending.where('complete = ?', true)}
   scope :previous, ->{ended.order(date: :desc)}
   scope :just_ended, ->{ended.order(date: :desc).first}
+  scope :building, ->{where('active = ? AND complete = ? ', false, false)}
  
   def ordered_bidders
     bidders.uniq.sort{|a,b| a.lastname <=> b.lastname}

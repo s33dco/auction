@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "about", to: "pages#about", as: 'about'
   get 'report_viewer', to: "reports#viewer"
   get "reports", to: "reports#index"
+  get "buyers/:id/:sale", to:"buyers#bidding", as: :buyer_bidding
 
   resources :bids
   resources :buyers

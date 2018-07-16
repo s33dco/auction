@@ -1,38 +1,15 @@
 <article>
 	<header>
 		<h1><%= nice_date(@sale.date) %> <%=@sale.house.name %></h1>
-		<p>Fee charged per lot is <%= show_money(@sale.minfee)%> or <%=@buyer.commrate%>%, whichever is higher.</p>
 	</header>
-	<div class="auction-control">
-		<!-- if admin -->
-			<% if @sale.active?	%>
-				<%= button_to 'End Auction', deactivate_sale_path(@sale)%>
-			<% end %>
-			<% if !@sale.frozen? %>
-				<%= button_to 'Start Auction', activate_sale_path(@sale)%>
-			<% end %>
-		<!-- to here -->
-	</div>
-	<table>
-		<tr>
-			<td>Lot</td>
-			<td>Category</td>
-			<td>Item</td>
-			<% if !@sale.active? %>
-				<td>Reserve</td>
-			<% end %>
-			<% if @sale.active? || @sale.complete? %>
-				<td class="money">Selling at</td>
-			<% end %>
-			<% if @buyer %>
-				<% if @sale.active %>
-					<td class="money">Your Bid</td>
-					<td class="money">Status</td>
-				<% end %>
-			<% end %>
-		</tr>
-		<%= render "lot_table"%>
-	</table>
+	<% @lots.each do |lot| %>
+		<div class="lot">
+			<h2>Lot <%=lot.lotnumber%> - <%= link_to "#{lot.make_and_model}", lot_path(lot)%> - reserve : <% show_money(lot.reserve)%></h2>
+			<!-- todo -->
+			<h3> images go here </h3>
+			<p><%= simple_format(lot.description)%></p>
+		</div>
+	<% end %>
 </article>
 
 <% content_for(:side_links) do %>

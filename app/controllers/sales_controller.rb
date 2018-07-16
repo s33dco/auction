@@ -1,11 +1,13 @@
 class SalesController < ApplicationController
 
 		def index
-			@sales = Sale.descending
+			@sale  = Sale.all
+			@building = @sale.building
+			@live_sales = @sale.live
+			@complete_sales = @sale.ended
 		end
 
 		def show
-			@buyer = Buyer.find(1)
 			@sale = Sale.find(params[:id])
 			@lots = @sale.lots.by_lot_number
 		end

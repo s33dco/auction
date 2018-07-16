@@ -48,9 +48,16 @@ class BuyersController < ApplicationController
     redirect_to buyers_url, alert: "#{@buyer.full_name} successfully deleted!"
 	end
 
+	def bidding
+		@buyer = Buyer.find(params[:id])
+		@sale = Sale.find(params[:sale])
+		@lots = @sale.lots
+
+	end
+
 	private
 
 	def buyer_params
-		params.require(:buyer).permit(:firstname, :lastname, :email, :phone, :commrate)
+		params.require(:buyer).permit(:firstname, :lastname, :email, :phone, :commrate, :sale_id)
 	end
 end

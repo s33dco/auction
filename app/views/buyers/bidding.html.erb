@@ -1,0 +1,45 @@
+<article>
+	<header>
+		<h1><%= nice_date(@sale.date) %> <%=@sale.house.name %></h1>
+		<p>Fee charged per lot is <%= show_money(@sale.minfee)%> or <%=@buyer.commrate%>%, whichever is higher.</p>
+	</header>
+	<table>
+		<tr>
+			<td>Lot</td>
+			<td>Category</td>
+			<td>Item</td>
+			<td>Reserve</td>
+			<td class="money">Selling at</td>
+			<td class="money">Your Bid</td>
+			<td class="money">Status</td>
+		</tr>
+		<%@lots.each do |lot| %>
+		<tr>
+			<td><%= lot.lotnumber%></td>
+			<td><%= lot.category.title%></td>
+			<td><%= link_to "#{lot.make_and_model}", lot_path(lot)%></td>
+			<td><%=show_money(lot.reserve) %></td>
+			<td class="money"><%= show_money(lot.selling_price)%></td>
+			<td class="money">
+				<%if @buyer.bid_for(lot).empty? %>
+					no bid
+				<% else %>
+					<%= show_money(lot.buyer_highest_bid(@buyer).bidvalue)%>
+				<% end %>
+			</td>
+			<td class="money">
+				<%if @buyer.bid_for(lot).empty? %>
+					<%= link_to 'add bid', lot_path(lot)%>
+				<% else %>
+					<% if lot.buyer_highest_bid(@buyer).bidvalue >= lot.highest_bid_value && lot.buyer_highest_bid(@buyer).bidvalue >= lot.reserve %>
+						winning
+					<% else %>
+						<%=link_to 'increase bid', lot_path(lot)%>
+					<% end %>
+				<% end %>
+			</td>				
+		</tr>
+<% end %>
+		</tr>
+	</table>
+</article>

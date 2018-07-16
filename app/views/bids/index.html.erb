@@ -10,7 +10,8 @@
 				<tr>
 					<td><%= sale.house.name%></td>
 					<td><%= nice_date(sale.date)%></td>
-					<td class='money'><%= pluralize(sale.bids.count, 'bid')%></td>
+					<td><%= pluralize(sale.bids.count, 'bid')%></td>
+					<td><%= pluralize(sale.bidders.uniq.count, 'bidder') %></td>
 					<td><%= link_to 'view bidding', bid_path(sale)%></td>
 				</tr>
 			<% end %>
