@@ -8,7 +8,11 @@
 			<div class="lot">
 				<h2>Lot <%=lot.lotnumber%> - <%= link_to "#{lot.make_and_model}", lot_path(lot)%></h2>
 				<% if @sale.complete? %>
-					<h3>Sold at <%=show_money(lot.soldat)%> (reserve <%= show_money(lot.reserve)%>)</h3>
+					<% if lot.reserve > lot.soldat %>
+						<h3>Reserve not met (<%= show_money(lot.reserve)%>)</h3>
+					<% else %>
+						<h3>Sold at <%=show_money(lot.soldat)%> (reserve <%= show_money(lot.reserve)%>)</h3>
+					<% end %>
 				<% else %>
 					<h3>Bidding at <%=show_money(lot.selling_price)%> (reserve <%= show_money(lot.reserve)%>)</h3>
 				<% end %>
