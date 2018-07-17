@@ -5,7 +5,7 @@
 		<h3>Reserve not met</h3>
 	<% end %>	
 	<div class="actions">
-		<%= form_with(model: Bid, url: bids_path, method: :post, local:true) do |f| %>	
+		<%= form_with(model: Bid.new, url: bids_path, method: :post, local:true) do |f| %>	
 	  	<%=f.hidden_field :lot_id , value: @lot.id %>
 	  	<%= f.label "Your Maximum Bid £" %>
 	  	<%=f.number_field :bidvalue %>

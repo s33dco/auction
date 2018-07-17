@@ -2,6 +2,7 @@
 	<header>
 		<h1>Clients - Buyers</h1>
 	</header>
+	<%= paginate @buyers %>
 	<table>
 		<% @buyers.each do |buyer| %>
 			<tr>
@@ -14,6 +15,7 @@
 			</tr>
 		<% end %>
 	</table>
+	<%= paginate @buyers %>
 </article>
 
 <% content_for(:side_links) do %>

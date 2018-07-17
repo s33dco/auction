@@ -7,17 +7,21 @@
 	  		<td><%= f.collection_select(:sale_id_eq, Sale.previous, :id, :code_and_date, prompt: 'All Auctions', include_blank: true )%></td>
 	  		<td><%= f.select :sold_eq, options_for_select([["All lots", ""],["Sold lots", "true"], ["Unsold lots", "false"]])%></td>
 	  		<td><%= f.collection_select(:category_id_eq, Category.all, :id, :title, prompt: 'All Categories', include_blank: true )%></td>
+	  		<td><%= f.number_field :lotnumber_eq, placeholder: 'Lot Number...'%></td>
+
 	  	</tr>
 	  	<tr>
 	  		<td>Seller</td>
 	  		<td><%= f.collection_select(:seller_id_eq, Seller.all, :id , :code_and_name, prompt: "All Sellers", include_blank: true  ) %></td>
 	  		<td><%= f.select :sellerpaid_eq, options_for_select([["Paid & Due", ""],["Paid", "true"], ["Seller Owed", "false"]])%></td>
-	  		<td><%= f.text_field :manufacturer_or_model_cont, placeholder: 'item name'%></td>
+	  		<td></td>
+	  		<td><%= f.text_field :manufacturer_or_model_cont, placeholder: 'Search in item name...'%></td>
 	  	</tr>
 	  	<tr>
 	  		<td>Buyer</td>
 	  		<td><%= f.collection_select(:buyer_id_eq, Buyer.all, :id , :code_and_name, prompt: "All Buyers", include_blank: true  ) %></td>
 	  		<td><%= f.select :buyerpaid_eq, options_for_select([["Paid & Due", ""],["Paid", "true"], ["Buyer Owes", "false"]])%></td>
+	  		<td></td>
 	  		<td><%= f.submit "Search" %></td>
 	  	</tr>
 	  </table>

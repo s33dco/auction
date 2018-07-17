@@ -2,7 +2,7 @@
 <header>
 	<h1>Auctions</h1>	
 </header>
-
+	<%= paginate @sales %>
 	<table>
 	<% unless @building.empty? %>
 		<tr>
@@ -61,6 +61,7 @@
 			<% end %>
 	<% end %>
 	</table>
+	<%= paginate @sales %>
 </article>
 
 <!-- again if admin -->

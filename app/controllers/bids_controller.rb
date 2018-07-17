@@ -10,13 +10,15 @@ class BidsController < ApplicationController
 	end
 
 	def create
+		#to do current buyer !
 		# todo stop bids being created if !@lot.sale.active
 		@lot = Lot.find(params[:bid][:lot_id])
 		@bid = @lot.bids.new(bid_params)
 		@bid.buyer_id = 1 #this will be current buyer from devise
+		@buyer = 1
 		@bid.sale = @lot.sale
 		if @bid.save
-			redirect_to sale_path(@lot.sale), notice: "Bid accepted #{@bid.buyer.full_name}!"
+			redirect_to buyer_bidding_path(@buyer, @bid.sale), notice: "Bid accepted #{@bid.buyer.full_name}!"
 		else
 			flash.now[:alert] = 'bid not accepted'
 			redirect_to lot_path(@lot)

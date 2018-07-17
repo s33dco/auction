@@ -4,9 +4,9 @@
 	</header>
 	<% @lots.each do |lot| %>
 		<div class="lot">
-			<h2>Lot <%=lot.lotnumber%> - <%= link_to "#{lot.make_and_model}", lot_path(lot)%> - reserve : <% show_money(lot.reserve)%></h2>
+			<h2>Lot <%=lot.lotnumber%> - <%= link_to "#{lot.make_and_model}", lot_path(lot)%> - reserve : <%= show_money(lot.reserve)%></h2>
 			<!-- todo -->
-			<h3> images go here </h3>
+			<h5> images go here </h5>
 			<p><%= simple_format(lot.description)%></p>
 		</div>
 	<% end %>

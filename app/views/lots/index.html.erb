@@ -5,11 +5,12 @@
 	</header>
 	
 	<%if @lots.nil?%>
-		<h3>Use the filters above to search and edit lots.</h3>
+		<h4>Use the filters above to search and edit lots.</h4>
 	<% else %>
 		<% if @lots.empty? %>
-			<h4>No search results, no lots fit this criteria.</h4>
+			<h4>No search results, no lots fit the criteria.</h4>
 		<% else %>
+	
 			<table>
 				<tr>
 					<td>Date</td>
@@ -39,6 +40,7 @@
 				</tr>
 				<% end %>
 			</table>
+
 		<% end %>
 	<% end %>
 </article>

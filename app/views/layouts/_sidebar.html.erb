@@ -3,14 +3,14 @@
 	<ul>
 		<%= content_for(:side_links)%>
 		<li>
-			<%= link_to 'sales', sales_path %>
+			<%= link_to 'sales', filtered_sales_path(:scope) %>
 		</li>
 		<li>
 			<%= link_to 'bidding', bids_path %>
 		</li>
 		 <!-- todo unless no complete sales -->
 		<li>
-			<%= link_to 'lots', filtered_lots_path(:lastsale) %>
+			<%= link_to 'lots', lots_path %>
 		</li>
 		<li>
 			<%= link_to 'buyers', buyers_path %>

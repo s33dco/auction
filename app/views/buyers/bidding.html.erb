@@ -1,14 +1,14 @@
 <article>
 	<header>
-		<h1><%= nice_date(@sale.date) %> <%=@sale.house.name %></h1>
+		<h1><%= nice_date(@sale.date) %> <%=@sale.house.name %> (<%= pluralize(@sale.lots.count, 'lot')%>).</h1>
 		<p>Fee charged per lot is <%= show_money(@sale.minfee)%> or <%=@buyer.commrate%>%, whichever is higher.</p>
 	</header>
+	<%= paginate @lots %>
 	<table>
 		<tr>
 			<td>Lot</td>
 			<td>Category</td>
 			<td>Item</td>
-			<td>Reserve</td>
 			<td class="money">Selling at</td>
 			<td class="money">Your Bid</td>
 			<td class="money">Status</td>
@@ -18,7 +18,6 @@
 			<td><%= lot.lotnumber%></td>
 			<td><%= lot.category.title%></td>
 			<td><%= link_to "#{lot.make_and_model}", lot_path(lot)%></td>
-			<td><%=show_money(lot.reserve) %></td>
 			<td class="money"><%= show_money(lot.selling_price)%></td>
 			<td class="money">
 				<%if @buyer.bid_for(lot).empty? %>
@@ -42,4 +41,5 @@
 <% end %>
 		</tr>
 	</table>
+	<%= paginate @lots %>
 </article>

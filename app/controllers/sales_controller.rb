@@ -1,10 +1,10 @@
 class SalesController < ApplicationController
 
 		def index
-			@sale  = Sale.all
-			@building = @sale.building
-			@live_sales = @sale.live
-			@complete_sales = @sale.ended
+			@sales  = Sale.send(sales_scope).page(params[:page]).per(20)
+			@building = @sales.building
+			@live_sales = @sales.live
+			@complete_sales = @sales.ended
 		end
 
 		def show
@@ -65,6 +65,14 @@ class SalesController < ApplicationController
 
 
 		private
+
+		def sales_scope
+		  if params[:scope].in? %w(ended building live)
+		    params[:scope]
+		  else
+		    :live
+		  end
+		end
 
 		def set_sale
 			@sale = Sale.find(params[:id])

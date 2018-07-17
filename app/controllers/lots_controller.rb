@@ -54,6 +54,7 @@ class LotsController < ApplicationController
 
 	def items
 	  @lots ||= search.result
+	  # add .page(params[:page]).per(20) to above to paginate...
 	end 
 
 	def search

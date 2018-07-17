@@ -12,13 +12,13 @@ class Sale < ApplicationRecord
   scope :descending, ->{order(date: :desc)}
   scope :live, ->{descending.where('active = ?', true)}
   scope :ended, ->{descending.where('complete = ?', true)}
+  scope :process, ->{descending.where('complete = ?', false)}
   scope :previous, ->{ended.order(date: :desc)}
   scope :just_ended, ->{ended.order(date: :desc).first}
   scope :building, ->{where('active = ? AND complete = ? ', false, false)}
  
   def ordered_bidders
     bidders.uniq.sort{|a,b| a.lastname <=> b.lastname}
-    
   end
 
   def live_lots_asc
@@ -31,7 +31,6 @@ class Sale < ApplicationRecord
 
   def code_and_date
     "#{house.code} #{short_date(date)}"
-    
   end
 
   def active?

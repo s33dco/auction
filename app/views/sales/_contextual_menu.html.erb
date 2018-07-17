@@ -4,16 +4,27 @@
 				<%= link_to 'edit this sale', edit_sale_path(@sale) unless @sale.frozen? %>
 			</li>
 			<li class='contextual'>
-				<%=link_to 'destroy this sale & lots', @sale, method: :delete, data: { confirm: 'Are you sure? All lots will be deleted!' } %>
+				<%=link_to 'destroy this sale', @sale, method: :delete, data: { confirm: 'Are you sure? All lots will be deleted!' } %>
 			</li>
 	<% end %>
 <% end %>
+
 <% unless controller.action_name == "new" %>
 	<li class='contextual'>
 		<%=link_to 'create new sale', new_sale_path %>
 	</li>
 <% end %>
-
+<% if controller.action_name == "index" %>
+		<li>
+			<%= link_to	'building', filtered_sales_path(:building)%>
+		</li>
+		<li>
+			<%= link_to	'live', filtered_sales_path(:active)%>
+		</li>
+		<li>
+			<%= link_to	'complete', filtered_sales_path(:ended)%>
+		</li>
+<% end %>
 		<li>
 			<%= link_to 'houses', houses_path %>
 		</li>

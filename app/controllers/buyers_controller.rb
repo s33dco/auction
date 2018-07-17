@@ -1,7 +1,7 @@
 class BuyersController < ApplicationController
 
 	def index
-		@buyers = Buyer.lastname_firstname
+		@buyers = Buyer.lastname_firstname.page(params[:page]).per(20)
 	end
 
 	def show
@@ -51,7 +51,7 @@ class BuyersController < ApplicationController
 	def bidding
 		@buyer = Buyer.find(params[:id])
 		@sale = Sale.find(params[:sale])
-		@lots = @sale.lots
+		@lots = @sale.lots.page(params[:page]).per(20)
 
 	end
 

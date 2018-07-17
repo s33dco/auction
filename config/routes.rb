@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   
 	root "pages#welcome"
-  get 'lots/filter/:scope', to: "lots#index", as: :filtered_lots
+  get 'sales/filter/:scope', to: "sales#index", as: :filtered_sales
   get 'bids/filter/:scope', to: "bids#index", as: :filtered_bids
   get "welcome", to: "pages#welcome", as: 'welcome'
   get "about", to: "pages#about", as: 'about'

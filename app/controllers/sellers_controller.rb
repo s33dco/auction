@@ -1,6 +1,6 @@
 class SellersController < ApplicationController
 	def index
-		@sellers = Seller.lastname_firstname
+		@sellers = Seller.lastname_firstname.page(params[:page]).per(20)
 	end
 
 	def show
