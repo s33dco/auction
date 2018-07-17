@@ -1,7 +1,7 @@
 class BidsController < ApplicationController
 
 	def index
-		@sales = Sale.send(sales_scope)
+		@sales = Sale.send(sales_scope).page(params[:page]).per(20)
 	end
 
 	def show

@@ -1,7 +1,7 @@
 class SalesController < ApplicationController
 
 		def index
-			@sales  = Sale.send(sales_scope).page(params[:page])
+			@sales  = Sale.send(sales_scope).page(params[:page]).per(20)
 			@building = @sales.building
 			@live_sales = @sales.live
 			@complete_sales = @sales.ended

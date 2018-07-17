@@ -5,6 +5,7 @@
 	<% if @sales.empty? %>
 		<h2>No sales available</h2>
 	<% else %>
+	<%= paginate @sales %>
 		<table>
 			<% @sales.each do |sale| %>
 				<tr>
@@ -17,6 +18,7 @@
 			<% end %>
 		</table>
 	<% end %>
+	<%= paginate @sales %>
 </article>
 
 <% content_for(:side_links) do %>
