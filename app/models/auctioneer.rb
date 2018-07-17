@@ -1,0 +1,3 @@
+class Auctioneer < ApplicationRecord
+
+end

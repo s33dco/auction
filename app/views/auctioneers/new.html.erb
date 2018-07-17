@@ -1,0 +1,23 @@
+<article>
+	<header>
+		<h1>Add an Auctioneer</h1>
+	</header>
+	<%= render 'shared/errors', object: @auctioneer %>
+	<%= form_with(model:@auctioneer, local:true) do |f| %>
+	<fieldset>
+		<li>
+			<label>Name</label>
+			<%= f.text_field :name %>
+		</li>
+		<li>
+			<label>Phone</label>
+			<%=f.phone_field :phone %>
+		</li>
+		<li>
+			<label>Email</label>
+			<%= f.email_field :email %>
+		</li>
+	</fieldset>
+		<%= f.submit %>
+	<% end %>
+</article>

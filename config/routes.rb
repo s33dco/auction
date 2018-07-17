@@ -21,10 +21,9 @@ Rails.application.routes.draw do
   end
 
   resources :lots
-
   resources :houses
   resources :sellers
   resources :categories
   resources :reports
-
+  resources :auctioneers
 end

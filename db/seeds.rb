@@ -13,10 +13,10 @@ include Faker
 
 
 numberofhouses = 5
-numberofbuyers = 120
-numberofsellers = 50
-numberofsales = 80 #must be divisable by 10
-averagebidsperlot = 15
+numberofbuyers = 20
+numberofsellers = 20
+numberofsales = 10 #must be divisable by 10
+averagebidsperlot = 10
 
 
 
@@ -91,7 +91,7 @@ numberofsales.times do
 												)
 		numberofsales -= 1
 		lotnumber = 1
-		numberoflots = 200
+		numberoflots = 50
 		numberoflots.times do
 			lot = auction.lots.new
 			lot.update!(

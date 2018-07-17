@@ -2,12 +2,16 @@
 <nav class='admin-lnks'>
 	<ul>
 		<%= content_for(:side_links)%>
-		<li>
-			<%= link_to 'sales', filtered_sales_path(:scope) %>
-		</li>
-		<li>
-			<%= link_to 'bidding', bids_path %>
-		</li>
+		<% unless controller.controller_name == "sales" %>
+			<li>
+				<%= link_to 'sales', filtered_sales_path(:scope) %>
+			</li>
+		<% end %>	
+		<% unless controller.controller_name == "bids" %>
+			<li>
+				<%= link_to 'bidding', bids_path %>
+			</li>
+		<% end %>
 		 <!-- todo unless no complete sales -->
 		<li>
 			<%= link_to 'lots', lots_path %>
@@ -20,6 +24,9 @@
 		</li>
 		<li>
 			<%= link_to 'reports', reports_path %>
+		</li>
+		<li>
+			<%= link_to 'auctioneers', auctioneers_path %>
 		</li>
 	</ul>
 </nav>

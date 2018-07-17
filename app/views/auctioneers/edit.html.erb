@@ -1,0 +1,29 @@
+<article>
+	<header>
+		<h1>Editing <%= @auctioneer.name%></h1>
+	</header>
+	<%= render 'shared/errors', object: @auctioneer %>
+	<%= form_with(model:@auctioneer, local:true) do |f| %>
+	<fieldset>
+		<li>
+			<label>Name</label>
+			<%= f.text_field :name %>
+		</li>
+		<li>
+			<label>Phone</label>
+			<%=f.phone_field :phone %>
+		</li>
+		<li>
+			<label>Email</label>
+			<%= f.email_field :email %>
+		</li>
+	</fieldset>
+		<%= f.submit %>
+	<% end %>
+</article>
+
+<% content_for(:side_links) do %>
+	<li class='contextual'>
+		<%=link_to 'new auctioneer', new_auctioneer_path %>
+	</li>	
+<% end %>

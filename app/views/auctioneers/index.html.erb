@@ -1,0 +1,23 @@
+<article>
+	<header>
+		<h1>Auctioneers</h1>
+	</header>
+	
+	<table>
+		<% @auctioneers.each do |auctioneer| %>
+			<tr>
+				<td><%= link_to "#{auctioneer.name}", auctioneer_path(auctioneer) %></td>
+				<td><%= auctioneer.email %></td>
+				<td><%= auctioneer.phone %></td>
+				<td><%= link_to 'edit', edit_auctioneer_path(auctioneer) %></td>
+				<td><%=link_to 'delete', auctioneer, method: :delete, data: { confirm: 'Are you sure? Theres no way back.' } %></td>
+			</tr>
+		<% end %>
+	</table>
+</article>
+
+<% content_for(:side_links) do %>
+		<li>
+			<%=link_to 'new auctioneer', new_auctioneer_path %>
+		</li>	
+<% end %>
