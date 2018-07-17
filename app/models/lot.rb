@@ -15,6 +15,7 @@ class Lot < ApplicationRecord
 
 	scope :by_lot_number, ->{order(lotnumber: :asc)}
 	scope :auctioned, ->{where(sold: [true,false]).joins(:sale).merge(Sale.descending)}
+	scope :sold_in_auction, ->{where(sold: true).count}
 	
 	def self.total_sales
 		sum{|l| l.soldat}

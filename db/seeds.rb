@@ -13,10 +13,10 @@ include Faker
 
 
 numberofhouses = 5
-numberofbuyers = 100
-numberofsellers = 30
-numberofsales = 60 #must be divisable by 10
-averagebidsperlot = 10
+numberofbuyers = 120
+numberofsellers = 50
+numberofsales = 80 #must be divisable by 10
+averagebidsperlot = 15
 
 
 

@@ -1,13 +1,10 @@
 <article>
-<header>
-	<h1>Auctions</h1>	
-</header>
-	<%= paginate @sales %>
+<%= paginate @sales %>	
 	<table>
 	<% unless @building.empty? %>
 		<tr>
 			<td colspan=8>
-				<h2>Building</h2>
+				<header><h1>Auctions - Building.</h1></header>
 			</td>
 		</tr>		
 		<% @building.each do |sale| %>
@@ -25,7 +22,7 @@
 	<% unless @live_sales.empty? %>
 		<tr>
 			<td colspan=8>
-				<h2>Active</h2>
+				<header><h1>Auctions - Live.</h1></header>
 			</td>
 		</tr>
 			<% @live_sales.each do |sale| %>
@@ -43,7 +40,7 @@
 	<% unless @complete_sales.empty? %>
 		<tr>
 			<td colspan=8>
-				<h2>Complete</h2>
+				<header><h1>Auctions - Complete.</h1></header>
 			</td>
 		</tr>
 			<% @complete_sales.each do |sale| %>

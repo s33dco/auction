@@ -1,11 +1,12 @@
 <article>
+	<%= paginate @sales %>
 	<header>
 		<h1>Auction Bidding</h1>
 	</header>
 	<% if @sales.empty? %>
 		<h2>No sales available</h2>
 	<% else %>
-	<%= paginate @sales %>
+	
 		<table>
 			<% @sales.each do |sale| %>
 				<tr>

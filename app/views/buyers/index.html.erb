@@ -1,8 +1,9 @@
 <article>
+	<%= paginate @buyers %>
 	<header>
 		<h1>Clients - Buyers</h1>
 	</header>
-	<%= paginate @buyers %>
+	
 	<table>
 		<% @buyers.each do |buyer| %>
 			<tr>
