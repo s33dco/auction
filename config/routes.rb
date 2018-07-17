@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  devise_for :auctioneers
 	root "pages#welcome"
   get 'sales/filter/:scope', to: "sales#index", as: :filtered_sales
   get 'bids/filter/:scope', to: "bids#index", as: :filtered_bids

@@ -43,6 +43,6 @@ class AuctioneersController < ApplicationController
 
 private
 	def auctioneer_params
-		params.require(:auctioneer).permit(:name, :email, :phone)
+		params.require(:auctioneer).permit(:name, :email, :phone, :password)
 	end
 end
