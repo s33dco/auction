@@ -6,7 +6,7 @@ class BidsController < ApplicationController
 
 	def show
 		@sale = Sale.find(params[:id])
-		@lots = @sale.lots.by_lot_number
+		@lots = @sale.lots.by_lot_number.page(params[:page]).per(10)
 	end
 
 	def create
