@@ -12,6 +12,21 @@ include Faker
 # ensure numberofsales / 10 != 0
 
 
+Auctioneer.create!{
+	name: 'Ian',
+	email: 'code@seed.co',
+	phone: '07978676545'
+}
+
+Buyer.create(
+	firstname: 		Faker::Name.first_name,
+	lastname: 		Faker::Name.last_name ,
+	email: 				'ian@s33d.co',
+	phone: 				Faker::PhoneNumber.phone_number,
+	commrate: 		rand(7..20),
+	code: 				rand(100..999))
+end
+
 numberofhouses = 5
 numberofbuyers = 20
 numberofsellers = 20
