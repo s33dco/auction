@@ -13,10 +13,13 @@
 		<%=link_to 'create new sale', new_sale_path %>
 	</li>
 <% end %>
-<% unless controller.action_name == "index" %>
-	<li class='contextual'>		
-		<%=link_to 'list sales', sales_path %>
-	</li>
-<% end %>
+
+		<li>
+			<%= link_to 'houses', houses_path %>
+		</li>
+		<li>
+			<%= link_to 'categories', categories_path %>
+		</li>
+
 
 

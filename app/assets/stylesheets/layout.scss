@@ -2,37 +2,54 @@
 /* the whole viewport */
 
 div.wrapper {
-
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+margin : 2vh 2vw;
 }
 
 /* 3 high level parts of the page */
 
-header.heeader {
+header.header{
+	margin-bottom: 1vh;
 
 }
-
-main.page {
-
+nav.site {
+	float: right;
 }
 
-footer.footer {
-
+nav.site li {
+	display: inline-block;
+	float: left;
+	padding:	1vh 1vw;
+	margin: 0 1vw;
 }
 
+main.page{
+	flex-grow: 1;
+}
+
+footer.footer{
+
+}
 
 /* within main.content */
 
-section.content {
-
-
+section {
+	display: flex;
+	flex-direction: row;
+	width: 94vw;
 }
 
 article {
-
-
+	width: 80%;
+	margin-right: 2vw;
 }
 
 aside {
+	width: 18%;
+}
 
+div.infos {
 
 }

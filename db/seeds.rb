@@ -12,8 +12,16 @@ include Faker
 # ensure numberofsales / 10 != 0
 
 
+numberofhouses = 5
+numberofbuyers = 100
+numberofsellers = 30
+numberofsales = 60 #must be divisable by 10
+averagebidsperlot = 10
+
+
+
 # make five auction houses
-5.times do
+numberofhouses.times do
 	House.create!(
 		name: 			Faker::Company.unique.name, 
 		address1: 	Faker::Address.street_address,
@@ -24,6 +32,8 @@ include Faker
 		code: 			('A'..'Z').to_a.shuffle[0,2].join,
 		siteinfo: 	false)
 end
+
+puts "#{House.count} houses created"
 
 # make 7 product categories
 Category.create!([
@@ -36,33 +46,40 @@ Category.create!([
 	{title: 'Audio'}
 	])
 
+puts "#{Category.count} catergories created"
+
 # make buyers
-10.times do
+numberofbuyers.times do
 	Buyer.create!(
 		firstname: 		Faker::Name.first_name,
-		lastname: 		Faker::Name.unique.last_name ,
-		email: 				Faker::Internet.unique.email,
+		lastname: 		Faker::Name.last_name ,
+		email: 				Faker::Internet.email,
 		phone: 				Faker::PhoneNumber.phone_number,
 		commrate: 		rand(7..20),
 		code: 				rand(100..999))
 end
 
+puts "#{Buyer.count} buyers created"
+
 # make sellers
-10.times do
+numberofsellers.times do
 Seller.create!(
 		firstname: 		Faker::Name.first_name,
-		lastname: 		Faker::Name.unique.last_name ,
-		email: 				Faker::Internet.unique.email,
+		lastname: 		Faker::Name.last_name ,
+		email: 				Faker::Internet.email,
 		phone: 				Faker::PhoneNumber.phone_number,
 		commrate: 		rand(7..20),
 		code: 				('A'..'Z').to_a.shuffle[0,2].join)
 end
 
+
+puts "#{Seller.count} sellers created"
+
 # make x active sales with 120 lots in each
 # change numbersales variable to reduce or increase seed date
 # depending on space and time, minimum value is 10
 
-numberofsales = 10
+
 numberofsales.times do
 	auction = Sale.create!(
 		house_id: 		rand(1..House.all.count),
@@ -74,14 +91,14 @@ numberofsales.times do
 												)
 		numberofsales -= 1
 		lotnumber = 1
-		numberoflots = 20
+		numberoflots = 200
 		numberoflots.times do
 			lot = auction.lots.new
 			lot.update!(
 			manufacturer: Faker::Device.manufacturer,
 			model: 				Faker::Device.model_name,
 			description: 	Faker::Hipster.paragraph(5, true, 2),
-			reserve: 			rand(5..200),
+			reserve: 			rand(5..120),
 			seller_id: 		rand(1..Seller.all.count),
 			category_id: 	rand(1..Category.all.count),
 			lotnumber: 		lotnumber
@@ -90,20 +107,48 @@ numberofsales.times do
 	end
 end
 
+puts "#{Sale.count} sales with #{Lot.count} lots created"
+
+
 # make an average of x bids per lot
-x = 10
-numberofbids = ( Lot.all.count * x)
+
+numberofbids = ( Lot.all.count * averagebidsperlot)
+
+
+
 numberofbids.times do
-	Bid.create!(
-		buyer_id: 		rand(1..Buyer.all.count),
-		lot_id: 			rand(1..Lot.all.count),
-		bidvalue: 		rand(5..200), # this could create some unsold lots reserve & bid max the same value
-		sale_id: 			rand(1..Sale.all.count)
-							)
+	begin
+			Bid.create!(
+				buyer_id: 		rand(1..Buyer.all.count),
+				lot_id: 			rand(1..Lot.all.count),
+				bidvalue: 		rand(5..120), # this could create some unsold lots reserve & bid max the same value
+				sale_id: 			rand(1..Sale.all.count)
+									)
+	rescue ActiveRecord::RecordInvalid
+		puts "bid skipped value too low #{Bid.count} bids in table"
+		puts '.'
+	end
 end
+
+puts "#{Bid.count} bids created"
+
+20.times do
+	puts '.'
+	puts ' '
+end
+puts "#{House.count} houses,"
+puts "#{Category.count} catergories,"
+puts "#{Buyer.count} buyers,"
+puts "#{Seller.count} sellers,"
+puts "#{Sale.count} sales," 
+puts "#{Lot.count} lots," 
+puts "#{Bid.count} bids in the database...."
+puts "generating reports"
 
 # make most recent 10% of auctions active
 howmanycomplete = ((Sale.all.count / 10) * 9)
+
+
 
 # order the auctions by date and set the earlier 25 to complete with buyer an sellers both paid
 auctions = Sale.order(date: :asc).limit(howmanycomplete)
@@ -118,5 +163,8 @@ auctions.each do | a |
     end
 	end
 end
+
+
+puts "complete ;-)"
 
 

@@ -1,33 +1,33 @@
 		<div class="infos">
 			<table>
-				<tr>
-					<td>Bids & Buyer fees</td>
-					<td class='money'><%=show_money(@gross)%></td>
+				</tr>
+					<tr>
+					<td>Lots</td>
+					<td class='money'><%= @how_many%></td>
 				</tr>
 					<tr>
 					<td>Bids</td>
 					<td class='money'><%=show_money(@total_sales)%></td>
 				</tr>
-					<tr>
+				<tr>
+					<td>Turnover</td>
+					<td class='money'><%=show_money(@gross)%></td>
+				</tr>
+				<tr>
 					<td>Seller's due</td>
 					<td class='money'><%=show_money(@pay_out)%></td>
 				</tr>
 					<tr>
-					<td>Seller comm</td>
+					<td>Seller fees</td>
 					<td class='money'><%=show_money(@seller_fees)%></td>
 				</tr>
 					<tr>
-					<td>Buyer comm</td>
+					<td>Buyer fees</td>
 					<td class='money'><%=show_money(@buyer_fees)%></td>
 				</tr>
 					<tr>
 					<td>Profit</td>
 					<td class='money'><%=show_money(@comm)%></td>
-				</tr>
-				</tr>
-					<tr>
-					<td>Number of lots</td>
-					<td class='money'><%= @how_many%></td>
 				</tr>
 				<tr>
 					<td>Av. profit/lot</td>

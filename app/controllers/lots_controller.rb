@@ -2,20 +2,26 @@ class LotsController < ApplicationController
 
 	def index
 		session[:q] = params[:q] if params[:q]
-		@search = Lot.auctioned.search(session[:q])
-		@lots = @search.result
-		@gross = @lots.total_gross
-		@total_sales = @lots.total_sales
-		@buyer_fees	= @lots.total_buyer_fees
-		@seller_fees = @lots.total_seller_fees
-		@comm = @lots.total_comm
-		@pay_out = @lots.pay_out
-		@average = @lots.average_profit
-		@how_many = @lots.count
+		search
+		
+		items if search_params
+
+		unless @lots.nil? 
+			@gross = @lots.total_gross
+			@total_sales = @lots.total_sales
+			@buyer_fees	= @lots.total_buyer_fees
+			@seller_fees = @lots.total_seller_fees
+			@comm = @lots.total_comm
+			@pay_out = @lots.pay_out
+			@average = @lots.average_profit
+			@how_many = @lots.count
+		end
+
+		@saved_for_csv = Lot.auctioned.search(session[:q]).result
 
 		respond_to do |format|
 			format.html
-			format.csv { send_data @lots.to_csv }
+			format.csv { send_data @saved_for_csv.to_csv }
 		end
 		
 	end
@@ -45,6 +51,18 @@ class LotsController < ApplicationController
 	end
 
 	private
+
+	def items
+	  @lots ||= search.result
+	end 
+
+	def search
+		@search ||= Lot.auctioned.search(search_params)
+	end
+
+	def search_params
+		params[:q]
+	end
 
 	def lot_params
 		params.require(:lot).permit(:category_id, :buyer_id, :seller_id, :winner, :soldat, :bfee, :sfee, :sold, :buyerpaid, :sellerpaid)

@@ -15,10 +15,7 @@ class Lot < ApplicationRecord
 
 	scope :by_lot_number, ->{order(lotnumber: :asc)}
 	scope :auctioned, ->{where(sold: [true,false]).joins(:sale).merge(Sale.descending)}
-	scope :unsold, ->{where(sold: false).joins(:sale).merge(Sale.descending)}
-	scope :sold, ->{where(sold: true).joins(:sale).merge(Sale.descending)}
-	scope :lastsale, ->{auctioned.where(sale_id: Sale.just_ended.id)}	
-
+	
 	def self.total_sales
 		sum{|l| l.soldat}
 	end
@@ -53,6 +50,14 @@ class Lot < ApplicationRecord
 		else
 			total_comm / self.count
 		end
+	end
+
+	def sale_date
+		sale.date
+	end
+
+	def sale_name
+		sale.house.code
 	end
 
 

@@ -12,6 +12,7 @@
 	  		<td>Seller</td>
 	  		<td><%= f.collection_select(:seller_id_eq, Seller.all, :id , :code_and_name, prompt: "All Sellers", include_blank: true  ) %></td>
 	  		<td><%= f.select :sellerpaid_eq, options_for_select([["Paid & Due", ""],["Paid", "true"], ["Seller Owed", "false"]])%></td>
+	  		<td><%= f.text_field :manufacturer_or_model_cont, placeholder: 'item name'%></td>
 	  	</tr>
 	  	<tr>
 	  		<td>Buyer</td>

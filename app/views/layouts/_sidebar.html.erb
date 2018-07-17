@@ -3,20 +3,14 @@
 	<ul>
 		<%= content_for(:side_links)%>
 		<li>
-			<%= link_to 'houses', houses_path %>
-		</li>
-		<li>
-			<%= link_to 'categories', categories_path %>
-		</li>
-		<li>
-			<%= link_to 'list sales', sales_path %>
+			<%= link_to 'sales', sales_path %>
 		</li>
 		<li>
 			<%= link_to 'bidding', bids_path %>
 		</li>
 		 <!-- todo unless no complete sales -->
 		<li>
-			<%= link_to 'post sale lots', filtered_lots_path(:lastsale) %>
+			<%= link_to 'lots', filtered_lots_path(:lastsale) %>
 		</li>
 		<li>
 			<%= link_to 'buyers', buyers_path %>
@@ -29,3 +23,5 @@
 		</li>
 	</ul>
 </nav>
+
+
