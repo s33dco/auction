@@ -10,7 +10,7 @@
 			<td>Category</td>
 			<td>Item</td>
 			<td class="money">Selling at</td>
-			<td class="money">Your Bid</td>
+			<td class="money">Your Current Bid</td>
 			<td class="money">Status</td>
 		</tr>
 		<%@lots.each do |lot| %>
@@ -36,7 +36,8 @@
 						<%=link_to 'increase bid', lot_path(lot)%>
 					<% end %>
 				<% end %>
-			</td>				
+			</td>	
+		
 		</tr>
 <% end %>
 		</tr>

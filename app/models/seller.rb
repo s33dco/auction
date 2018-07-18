@@ -1,4 +1,9 @@
 class Seller < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # and :omniauthable
+  devise :database_authenticatable, :confirmable, :lockable, :timeoutable,
+         :recoverable, :rememberable, :trackable, :validatable
+         
 	has_many :lots
 
 	# validates :firstname, presence: true,
@@ -30,7 +35,7 @@ class Seller < ApplicationRecord
 	end
 
 	def eldest
-		lots.order(created_at: :asc).first.sale.date
+		lots.order(created_at: :asc).first.sale.date unless lots.empty?
 	end
 
 	def code_and_name

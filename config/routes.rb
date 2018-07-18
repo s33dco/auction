@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
   
-  devise_for :auctioneers
-	root "pages#welcome"
+  devise_for :sellers, path: 'sellers', controllers: { sessions: "sellers/sessions", confirmations: "sellers/confirmations", passwords: "sellers/passwords", unlocks: "sellers/unlocks"}
+  devise_for :buyers, path: 'buyers', controllers: { sessions: "buyers/sessions", confirmations: "buyers/confirmations", passwords: "buyers/passwords", unlocks: "buyers/unlocks"}
+  devise_for :auctioneers, path: 'auctioneers', controllers: { sessions: "auctioneers/sessions", confirmations: "auctioneers/confirmations", passwords: "auctioneers/passwords", unlocks: "auctioneers/unlocks"}
+	
+  root "pages#welcome"
   get 'sales/filter/:scope', to: "sales#index", as: :filtered_sales
   get 'bids/filter/:scope', to: "bids#index", as: :filtered_bids
   get "welcome", to: "pages#welcome", as: 'welcome'

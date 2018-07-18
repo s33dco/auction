@@ -5,7 +5,7 @@ class BuyersController < ApplicationController
 	end
 
 	def show
-		@buyer = Buyer.find(params[:id])
+		@buyer = current_buyer
 		@sales = Sale.live
 		@unpaid_lots = @buyer.winning_bids.map{|b| b.lot}.select{| l | l.buyerpaid == false && l.sold == true}.sort{|a,b| b.sale.date <=> a.sale.date}
 		@unpaid_cash = @unpaid_lots.sum{| l | l.soldat + l.bfee }

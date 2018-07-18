@@ -15,7 +15,8 @@ include Faker
 Auctioneer.create!{
 	name: 'Ian',
 	email: 'code@seed.co',
-	phone: '07978676545'
+	phone: '07978676545',
+	password: 'password'
 }
 
 Buyer.create(
@@ -24,14 +25,25 @@ Buyer.create(
 	email: 				'ian@s33d.co',
 	phone: 				Faker::PhoneNumber.phone_number,
 	commrate: 		rand(7..20),
-	code: 				rand(100..999))
+	code: 				rand(100..999),
+	password: 'password')
+end
+
+Seller.create(
+	firstname: 		Faker::Name.first_name,
+	lastname: 		Faker::Name.last_name ,
+	email: 				'imarley@warpmail.net',
+	phone: 				Faker::PhoneNumber.phone_number,
+	commrate: 		rand(7..20),
+	code: 				rand(100..999),
+	password: 'password')
 end
 
 numberofhouses = 5
-numberofbuyers = 20
-numberofsellers = 20
-numberofsales = 10 #must be divisable by 10
-averagebidsperlot = 10
+numberofbuyers = 150
+numberofsellers = 50
+numberofsales = 90 #must be divisable by 10
+averagebidsperlot = 20
 
 
 
@@ -71,7 +83,8 @@ numberofbuyers.times do
 		email: 				Faker::Internet.email,
 		phone: 				Faker::PhoneNumber.phone_number,
 		commrate: 		rand(7..20),
-		code: 				rand(100..999))
+		code: 				rand(100..999),
+		password:   	('A'..'Z').to_a.shuffle[0,12].join)
 end
 
 puts "#{Buyer.count} buyers created"
@@ -84,7 +97,8 @@ Seller.create!(
 		email: 				Faker::Internet.email,
 		phone: 				Faker::PhoneNumber.phone_number,
 		commrate: 		rand(7..20),
-		code: 				('A'..'Z').to_a.shuffle[0,2].join)
+		code: 				('A'..'Z').to_a.shuffle[0,2].join),
+		password:   	('A'..'Z').to_a.shuffle[0,12].join)
 end
 
 
@@ -106,7 +120,7 @@ numberofsales.times do
 												)
 		numberofsales -= 1
 		lotnumber = 1
-		numberoflots = 50
+		numberoflots = 350
 		numberoflots.times do
 			lot = auction.lots.new
 			lot.update!(

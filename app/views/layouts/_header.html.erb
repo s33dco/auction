@@ -3,11 +3,38 @@
 		<li>
 			<%= link_to 'home', root_path%>
 		</li>
-		<li>
-			<%= link_to 'about', about_path%>
-		</li>
-		<li>log in</li>
-		<li><%= link_to 'profile', buyer_path(1)%></li>
-		<li>log out</li>
+
+		<% unless buyer_signed_in? || seller_signed_in?  %>
+			<li>
+				<%= link_to 'buyers', new_buyer_session_path%>
+			</li>
+		<% end %>
+
+
+		<% if buyer_signed_in? %>
+			<li>
+				<%= link_to 'profile', buyer_path(current_buyer) %>
+			</li>
+			<li>
+				<%= link_to 'log out', destroy_buyer_session_path , method: :delete %>
+			</li>
+		<% end %>
+
+		<% unless seller_signed_in? || buyer_signed_in? %>
+			<li>
+				<%= link_to 'sellers', new_seller_session_path%>
+			</li>
+		<% end %>
+
+		<% if seller_signed_in? %>
+			<li>
+				<%= link_to 'profile', seller_path(current_buyer) %>
+			</li>
+			<li>
+				<%= link_to 'log out', destroy_seller_session, method: :delete  %>
+			</li>
+		<% end %>
+
+
 	</ul>
 </nav>

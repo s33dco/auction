@@ -1,4 +1,8 @@
 class Buyer < ApplicationRecord
+
+  devise :database_authenticatable, :confirmable, :lockable, :timeoutable,
+         :recoverable, :rememberable, :trackable, :validatable
+
 	has_many :bids
 	has_many :bidon, through: :bids, source: :lot
 	has_many :lots
@@ -28,7 +32,7 @@ class Buyer < ApplicationRecord
 	scope :lastname_firstname, ->{order(lastname: :asc).order(firstname: :asc)}
 
 	def eldest
-		bids.order(created_at: :asc).first.sale.date
+		bids.order(created_at: :asc).first.sale.date unless bids.empty?
 	end
 
 
