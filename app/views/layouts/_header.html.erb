@@ -28,10 +28,10 @@
 
 		<% if seller_signed_in? %>
 			<li>
-				<%= link_to 'profile', seller_path(current_buyer) %>
+				<%= link_to 'profile', seller_path(current_seller) %>
 			</li>
 			<li>
-				<%= link_to 'log out', destroy_seller_session, method: :delete  %>
+				<%= link_to 'log out', destroy_seller_session_path, method: :delete  %>
 			</li>
 		<% end %>
 

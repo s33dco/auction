@@ -9,7 +9,7 @@ module Accessible
     if current_auctioneer
       flash.clear
       # if you have rails_admin. You can redirect anywhere really
-      redirect_to(lots_path) && return
+      redirect_to(sales_path) && return
     elsif current_buyer
       flash.clear
       # The authenticated root path can be defined in your routes.rb in: devise_scope :user do...

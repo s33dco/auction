@@ -12,12 +12,12 @@ include Faker
 # ensure numberofsales / 10 != 0
 
 
-Auctioneer.create!{
+Auctioneer.create!(
 	name: 'Ian',
 	email: 'code@seed.co',
 	phone: '07978676545',
 	password: 'password'
-}
+)
 
 Buyer.create(
 	firstname: 		Faker::Name.first_name,
@@ -26,8 +26,7 @@ Buyer.create(
 	phone: 				Faker::PhoneNumber.phone_number,
 	commrate: 		rand(7..20),
 	code: 				rand(100..999),
-	password: 'password')
-end
+	password: 		'password')
 
 Seller.create(
 	firstname: 		Faker::Name.first_name,
@@ -37,7 +36,6 @@ Seller.create(
 	commrate: 		rand(7..20),
 	code: 				rand(100..999),
 	password: 'password')
-end
 
 numberofhouses = 5
 numberofbuyers = 150
@@ -97,7 +95,7 @@ Seller.create!(
 		email: 				Faker::Internet.email,
 		phone: 				Faker::PhoneNumber.phone_number,
 		commrate: 		rand(7..20),
-		code: 				('A'..'Z').to_a.shuffle[0,2].join),
+		code: 				('A'..'Z').to_a.shuffle[0,2].join,
 		password:   	('A'..'Z').to_a.shuffle[0,12].join)
 end
 

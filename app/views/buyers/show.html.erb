@@ -5,7 +5,9 @@
 	<div class="details">
 		<%= render "client_contact" %>
 		<% unless @since.nil? %>
-			<p>(Bidding for <%= time_ago_in_words(@since)%>, winning <%= pluralize( @total_winning_bids ,'lot' )%>, (<%= pluralize(@total_bids, 'bid') %>), total spend <%= show_money(@gross_spend)%>).</p>
+			<p>(Bidding for <%= time_ago_in_words(@since)%>, winning <%= pluralize( @total_winning_bids ,'lot' )%>, (<%= pluralize(@total_bids, 'bid') %>), total spend <%= show_money(@gross_spend)%>).
+			<% if @buyer.last_sign_in_at%> last seen <%= time_ago_in_words(@buyer.last_sign_in_at) %> ago.<% end %></p>
+			
 		<% end %>
 	</div>
 

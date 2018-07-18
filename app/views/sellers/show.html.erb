@@ -5,7 +5,7 @@
 	<div class="details">
 	<%= render "client_contact" %>
 	<% unless @since.nil? %>
-	<p>(Selling for <%= time_ago_in_words(@since)%>, sold <%= @total_lots_sold_by_seller %>  of <%= pluralize(@seller.lots.count, 'lot')%> for <%=show_money(@cash_made_by_seller)%>)</p>
+	<p>(Selling for <%= time_ago_in_words(@since)%>, sold <%= @total_lots_sold_by_seller %>  of <%= pluralize(@seller.lots.count, 'lot')%> for <%=show_money(@cash_made_by_seller)%>).<% if @seller.last_sign_in_at%> last seen <%= time_ago_in_words(@seller.last_sign_in_at) %> ago.<% end %></p></p>
 	<% end %>
 	</div>
 
