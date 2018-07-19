@@ -14,7 +14,7 @@ include Faker
 
 Auctioneer.create!(
 	name: 'Ian',
-	email: 'code@seed.co',
+	email: 'code@s33d.co',
 	phone: '07978676545',
 	password: 'password'
 )
@@ -38,10 +38,10 @@ Seller.create(
 	password: 'password')
 
 numberofhouses = 5
-numberofbuyers = 150
-numberofsellers = 50
-numberofsales = 90 #must be divisable by 10
-averagebidsperlot = 20
+numberofbuyers = 50
+numberofsellers = 25
+numberofsales = 20 #must be divisable by 10
+averagebidsperlot = 10
 
 
 
@@ -118,7 +118,7 @@ numberofsales.times do
 												)
 		numberofsales -= 1
 		lotnumber = 1
-		numberoflots = 350
+		numberoflots = 75
 		numberoflots.times do
 			lot = auction.lots.new
 			lot.update!(
