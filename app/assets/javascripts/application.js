@@ -13,7 +13,7 @@
 //= require jquery
 //= require rails-ujs
 //= require cocoon
-//= require global.coffee.js
+//= require global.js
 //= require activestorage
 //= require turbolinks
 //= require_tree .
