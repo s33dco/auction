@@ -1,5 +1,8 @@
 class BidsController < ApplicationController
 
+	before_action :check_bid_buyer_or_admin, only:[:create]
+	before_action :check_if_admin, except:[:create]
+
 	def index
 		@sales = Sale.send(sales_scope).page(params[:page]).per(20)
 	end
@@ -9,19 +12,21 @@ class BidsController < ApplicationController
 		@lots = @sale.lots.by_lot_number.page(params[:page]).per(10)
 	end
 
+
 	def create
-		#to do current buyer !
-		# todo stop bids being created if !@lot.sale.active
 		@lot = Lot.find(params[:bid][:lot_id])
-		@bid = @lot.bids.new(bid_params)
-		@bid.buyer_id = current_buyer.id
-		@buyer =  current_buyer
-		@bid.sale = @lot.sale
-		if @bid.save
-			redirect_to buyer_bidding_path(@buyer, @bid.sale), notice: "Bid accepted #{@buyer.full_name}!"
+		if @lot.sale.active
+			@bid = @lot.bids.new(bid_params)
+			@bid.buyer_id = current_buyer.id
+			@bid.sale = @lot.sale
+			if @bid.save
+				redirect_to buyer_bidding_path(current_buyer, @bid.sale.id), notice: "Bid accepted #{current_buyer.full_name}!"
+			else
+				flash.now[:alert] = 'bid not accepted - too low'
+				render template: 'lots/show'
+			end
 		else
-			flash.now[:alert] = 'bid not accepted'
-			redirect_to lot_path(@lot)
+			redirect_to lot_url(@lot), alert: "Bids are not accepted for this lot"
 		end
 	end
 

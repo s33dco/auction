@@ -18,12 +18,15 @@
 						<% end %>
 					<% else %>
 						<% if @lot.sale.active? %>
-							<%= render 'bid_field'%>
+							<%= render 'lots/bid_field'%>
 						<% end %>
 					<% end %>
-				<p>
-					<%= link_to 'back to bidding card', buyer_bidding_path(@buyer, @lot.sale)%>
-				</p>
+				<% if current_buyer %>
+					<p><%= link_to 'back to bidding card', buyer_bidding_path(current_buyer, @lot.sale)%></p>
+				<% end %>
+				<% if current_seller %>
+					<p><%= link_to 'back to account', seller_path(current_seller)%></p>
+				<% end %>
 			</div>
 		</div>
 	</div>

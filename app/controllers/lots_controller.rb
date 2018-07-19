@@ -1,5 +1,8 @@
 class LotsController < ApplicationController
 
+	before_action :someone_signed_in, only: [:show]
+	before_action :check_if_admin, except:[:show]
+
 	def index
 		session[:q] = params[:q] if params[:q]
 		search
@@ -28,7 +31,6 @@ class LotsController < ApplicationController
 
 	def show
 		@lot = Lot.find(params[:id])
-		@buyer = Buyer.first
 	end
 
 	def edit

@@ -1,5 +1,7 @@
 class HousesController < ApplicationController
 
+	before_action :check_if_admin
+
 	def index
 		@houses = House.alpha
 	end

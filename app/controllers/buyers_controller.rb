@@ -1,14 +1,19 @@
 class BuyersController < ApplicationController
+	before_action :check_if_buyer_or_admin, only:[:show, :bidding]
+	before_action :check_if_admin, except:[:show, :bidding]
+
+	# check current_buyer = Buyer.find(params[:id]) on show & bidding
+	# all other action restrict to auctioneer_signed_in?
 
 	def index
 		@buyers = Buyer.lastname_firstname.page(params[:page]).per(20)
 	end
 
 	def show
-		@buyer = current_buyer
+		@buyer = Buyer.find(params[:id])
 		@sales = Sale.live
 		@unpaid_lots = @buyer.winning_bids.map{|b| b.lot}.select{| l | l.buyerpaid == false && l.sold == true}.sort{|a,b| b.sale.date <=> a.sale.date}
-		@unpaid_cash = @unpaid_lots.sum{| l | l.soldat + l.bfee }
+		@unpaid_cash = @unpaid_lots.sum{| l | l.soldat + l.bfee } 
 		@total_bids_value = @buyer.bids.sum{|b| b.bidvalue}
 		@total_bids = @buyer.bids.count
 		@total_winning_bids = @buyer.winning_bids.count

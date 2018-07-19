@@ -1,4 +1,9 @@
 class SellersController < ApplicationController
+
+	before_action :check_if_seller_or_admin, only:[:show]
+	before_action :check_if_admin, except:[:show]
+
+
 	def index
 		@sellers = Seller.lastname_firstname.page(params[:page]).per(20)
 	end

@@ -1,4 +1,7 @@
 class ReportsController < ApplicationController
+
+	before_action :check_if_admin
+
 	def index
 	end
 
@@ -8,7 +11,6 @@ class ReportsController < ApplicationController
 		@sale_lots = @sale.lots.by_lot_number
 		buyer = session[:report][:buyer_id]
 		seller = session[:report][:seller_id]
-
 		if buyer.blank? && seller.blank?
 			@lots = @sale.lots.by_lot_number
 			@sold_lots = @lots.map{|l| l.sold == true}

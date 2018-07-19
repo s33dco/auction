@@ -1,9 +1,11 @@
 
 <fieldset>
-	<h3><%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
-	<% unless @lot.selling_price >= @lot.reserve %>
-		<h3>Reserve not met</h3>
-	<% end %>	
+	<div class="current-bidding-info">
+		<h3><%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
+		<% unless @lot.selling_price >= @lot.reserve %>
+			<h3>Reserve not met</h3>
+		<% end %>
+	</div>
 	<div class="actions">
 		<%= form_with(model: Bid.new, url: bids_path, method: :post, local:true) do |f| %>	
 	  	<%=f.hidden_field :lot_id , value: @lot.id %>

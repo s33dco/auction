@@ -1,4 +1,7 @@
 class AuctioneersController < ApplicationController
+
+	before_action :check_if_admin
+
 	def index
 		@auctioneers = Auctioneer.all
 	end

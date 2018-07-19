@@ -4,15 +4,16 @@
 	</header>
 	<div class="details">
 		<%= render "client_contact" %>
-		<% unless @since.nil? %>
+		<%if auctioneer_signed_in?%>
+			<%unless @since.nil? %>
 			<p>(Bidding for <%= time_ago_in_words(@since)%>, winning <%= pluralize( @total_winning_bids ,'lot' )%>, (<%= pluralize(@total_bids, 'bid') %>), total spend <%= show_money(@gross_spend)%>).
-			<% if @buyer.last_sign_in_at%> last seen <%= time_ago_in_words(@buyer.last_sign_in_at) %> ago.<% end %></p>
-			
+			<% if @buyer.last_sign_in_at%> last signed in <%= time_ago_in_words(@buyer.last_sign_in_at) %> ago.<% end %></p>
+			<% end %>
 		<% end %>
 	</div>
 
 	<div class="live-sales">
-		<h3>Auctions</h3>
+		<h3>Available Auctions</h3>
 		<% if @sales.empty? %>
 			<p>Look out for a message advising when the next auciton is live. Let us know if your phone and email details have changed.</p>
 		<% else %>
@@ -30,7 +31,7 @@
 
 	<% unless @unpaid_lots.empty? %>
 		<div class="accounts">
-			<h3>Account  - Payment due <%= show_money(@unpaid_cash)%></h3>
+			<h3>Account</h3>
 			<table>
 				<tr>
 					<td></td>
@@ -52,6 +53,10 @@
 						<td class='money'><%= show_money(lot.buyer_pays)%></td>
 					</tr>
 				<% end %>
+				<tr>
+					<td colspan=6 class='right'>Payment due</td>
+					<td class='money'><%= show_money(@unpaid_cash)%></td>
+				</tr>
 			</table>
 		</div>
 	<% end %>

@@ -2,6 +2,10 @@ tr {
 	padding: .5vh 0;
 }
 
+tr.highlight {
+ font-weight: bold;
+}
+
 td {
 	margin: 1vh 1vw;
 	padding :.5vh .5vw;
@@ -9,4 +13,16 @@ td {
 
 td.money {
 	text-align: right;
+}
+
+td.right {
+	text-align: right;
+}
+
+th.left {
+	text-align: left;
+}
+
+.current-bidding-info {
+	display: none;
 }
