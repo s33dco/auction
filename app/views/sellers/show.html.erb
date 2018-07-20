@@ -5,9 +5,7 @@
 	<div class="details">
 	<%= render "client_contact" %>
 		<% if auctioneer_signed_in? %>
-			<% unless @since.nil? %>
-			<p>(Selling for <%= time_ago_in_words(@since)%>, sold <%= @total_lots_sold_by_seller %>  of <%= pluralize(@seller.lots.count, 'lot')%> for <%=show_money(@cash_made_by_seller)%>).<% if @seller.last_sign_in_at%> last seen <%= time_ago_in_words(@seller.last_sign_in_at) %> ago.<% end %></p></p>
-			<% end %>
+			<%= render "seller_facts" %>
 		<% end %>
 	</div>
 	<table>
@@ -61,6 +59,21 @@
 				<td colspan=6 class='right'>Total Credit Due</td>
 				<td class='money'><%= show_money(@cash_due_to_seller)%></td>
 			</tr>
+		</div>
+	<% end %>
+	<% unless @disputed_lots.empty? %>
+		<div class="disputed-lots">
+			<tr class='header'>
+				<th colspan=7 class='left'>Disputed Lots.</th>
+			</tr>
+			<% @disputed_lots.each do | lot| %>
+				<tr>
+					<td><%= short_date(lot.sale.date)%></td>
+					<td><%= lot.sale.house.code%></td>
+					<td><%= lot.lotnumber%></td>
+					<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
+				</tr>
+			<% end %>
 		</div>
 	<% end %>
 	<% unless @unsold_lots.empty? %>

@@ -68,6 +68,6 @@ class LotsController < ApplicationController
 	end
 
 	def lot_params
-		params.require(:lot).permit(:category_id, :buyer_id, :seller_id, :winner, :soldat, :bfee, :sfee, :sold, :buyerpaid, :sellerpaid)
+		params.require(:lot).permit(:dispute, :category_id, :buyer_id, :seller_id, :winner, :soldat, :bfee, :sfee, :sold, :buyerpaid, :sellerpaid)
 	end
 end

@@ -12,12 +12,15 @@ class BuyersController < ApplicationController
 	def show
 		@buyer = Buyer.find(params[:id])
 		@sales = Sale.live
-		@unpaid_lots = @buyer.winning_bids.map{|b| b.lot}.select{| l | l.buyerpaid == false && l.sold == true}.sort{|a,b| b.sale.date <=> a.sale.date}
-		@unpaid_cash = @unpaid_lots.sum{| l | l.soldat + l.bfee } 
-		@total_bids_value = @buyer.bids.sum{|b| b.bidvalue}
+		@winning_lots =  @buyer.lots
+		@unpaid_lots = @winning_lots.select{| l | l.buyerpaid == false && l.sold == true && l.dispute == false}.sort{|a,b| b.sale.date <=> a.sale.date}
+		@disputed_lots = @winning_lots.select{| l | l.dispute == true}.sort{|a,b| b.sale.date <=> a.sale.date}
+		@paid_lots = @winning_lots.select{| l | l.buyerpaid == true && l.sold == true && l.dispute == false}.sort{|a,b| b.sale.date <=> a.sale.date}
+		@gross_spend = @paid_lots.sum{| l | l.soldat + l.bfee }
+		@unpaid_cash = @unpaid_lots.sum{| l | l.soldat + l.bfee }
+		@disputed_cash = @disputed_lots.sum{| l | l.soldat + l.bfee }
 		@total_bids = @buyer.bids.count
 		@total_winning_bids = @buyer.winning_bids.count
-		@gross_spend = @buyer.winning_bids.map{|b| b.lot}.sum{| l | l.soldat + l.bfee}
 		@since = @buyer.eldest
 	end
 

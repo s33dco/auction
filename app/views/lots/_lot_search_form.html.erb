@@ -21,7 +21,7 @@
 	  		<td>Buyer</td>
 	  		<td><%= f.collection_select(:buyer_id_eq, Buyer.all, :id , :code_and_name, prompt: "All Buyers", include_blank: true  ) %></td>
 	  		<td><%= f.select :buyerpaid_eq, options_for_select([["Paid & Due", ""],["Paid", "true"], ["Buyer Owes", "false"]])%></td>
-	  		<td></td>
+	  		<td><%= f.select :dispute_eq, options_for_select([["All lots", ""],["Disputed", "true"], ["Undisputed", "false"]])%></td>
 	  		<td><%= f.submit "Search" %></td>
 	  	</tr>
 	  </table>

@@ -1,0 +1,15 @@
+<%unless @since.nil? %>
+	<ul>
+		<li>Bidding for <%= time_ago_in_words(@since)%></li>
+		<li>Bids made <%= @total_bids %></li>
+		<li>Bids won <%= @total_winning_bids %></li>
+		<li>Lots bought <%= @paid_lots.count %></li>
+		<li>Total spend <%= show_money(@gross_spend)%></li>
+		<% unless @disputed_lots.empty? %>
+			<li>disputed <%= pluralize(@disputed_lots.count, 'lot')%></li>
+		<% end %>
+		<% if @buyer.last_sign_in_at%>
+			<li><%= time_ago_in_words(@buyer.last_sign_in_at) %> ago.</li>
+		<% end %>
+	</ul>
+<% end %>

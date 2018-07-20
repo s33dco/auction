@@ -5,13 +5,11 @@
 	<div class="details">
 		<%= render "client_contact" %>
 		<%if auctioneer_signed_in?%>
-			<%unless @since.nil? %>
-			<p>(Bidding for <%= time_ago_in_words(@since)%>, winning <%= pluralize( @total_winning_bids ,'lot' )%>, (<%= pluralize(@total_bids, 'bid') %>), total spend <%= show_money(@gross_spend)%>).
-			<% if @buyer.last_sign_in_at%> last signed in <%= time_ago_in_words(@buyer.last_sign_in_at) %> ago.<% end %></p>
-			<% end %>
+			<%= render 'buyer_info' %>
 		<% end %>
 	</div>
 
+<%if buyer_signed_in?%>
 	<div class="live-sales">
 		<h3>Available Auctions</h3>
 		<% if @sales.empty? %>
@@ -28,6 +26,7 @@
 			</table>
 		<% end %>
 	</div>
+<% end %>
 
 	<% unless @unpaid_lots.empty? %>
 		<div class="accounts">
@@ -51,6 +50,9 @@
 						<td class='money'><%= show_money(lot.soldat)%></td>
 						<td class='money'><%= show_money(lot.bfee)%></td>
 						<td class='money'><%= show_money(lot.buyer_pays)%></td>
+						<% if auctioneer_signed_in? %>
+							<td><%= link_to 'edit', edit_lot_path(lot)%></td>
+						<% end %>
 					</tr>
 				<% end %>
 				<tr>
@@ -60,6 +62,42 @@
 			</table>
 		</div>
 	<% end %>
+
+	<% unless @disputed_lots.empty? %>
+		<div class="accounts">
+			<h3>Disputes</h3>
+			<table>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="money">Bid</td>
+					<td class="money">Comm</td>
+					<td class="money">Total</td>
+				</tr>
+				<% @disputed_lots.each do |lot| %>
+					<tr>
+						<td><%= lot.sale.house.code%></td>
+						<td><%= short_date(lot.sale.date)%></td>
+						<td>Lot <%= lot.lotnumber%></td>
+						<td><%= link_to "#{lot.make_and_model}", lot_path(lot.id)%></td>
+						<td class='money'><%= show_money(lot.soldat)%></td>
+						<td class='money'><%= show_money(lot.bfee)%></td>
+						<td class='money'><%= show_money(lot.buyer_pays)%></td>
+						<% if auctioneer_signed_in? %>
+							<td><%= link_to 'edit', edit_lot_path(lot)%></td>
+						<% end %>
+					</tr>
+				<% end %>
+				<tr>
+					<td colspan=6 class='right'>Disputed Total</td>
+					<td class='money'><%= show_money(@disputed_cash)%></td>
+				</tr>
+			</table>
+		</div>
+	<% end %>
+
 
 </article>
 

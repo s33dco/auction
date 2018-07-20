@@ -1,0 +1,13 @@
+<% unless @since.nil? %>
+		<ul>
+			<li>Selling for <%= time_ago_in_words(@since)%></li>
+			<li>Sold <%= @total_lots_sold_by_seller %>  of <%= pluralize(@seller.lots.count, 'lot')%></li>
+			<li>Revenue <%=show_money(@cash_made_by_seller)%></li>
+			<% unless @disputed_lots.empty? %>
+				<li>Disputes : <%= pluralize(@disputed_lots.count, 'lot')%></li>
+			<% end %>
+			<% if @seller.last_sign_in_at%>
+				<li>Last signed in <%= time_ago_in_words(@seller.last_sign_in_at) %> ago.</li>
+			<% end %>
+		</ul>
+<% end %>
