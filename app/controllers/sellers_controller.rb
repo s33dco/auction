@@ -12,6 +12,7 @@ class SellersController < ApplicationController
 		@seller = Seller.find(params[:id])
 		@active_lots = @seller.lots.select{| l | l.sold.nil? }.sort{|a,b| b.lotnumber<=> a.lotnumber}.sort{|a,b| b.sale.date <=> a.sale.date}
 		@sold_lots = @seller.lots.select{| l | l.sold == true && l.sellerpaid == false && l.dispute == false }.sort{|a,b| b.sale.date <=> a.sale.date}
+		@unsold_lots = @seller.lots.select{| l | l.sold == false && l.sellerpaid == false && l.dispute == false }.sort{|a,b| b.sale.date <=> a.sale.date}
 		@disputed_lots = @seller.lots.select{| l | l.dispute == true }.sort{|a,b| b.sale.date <=> a.sale.date}
 		@unsold_lots = @seller.lots.select{| l | l.sold == false && l.sellerpaid == false }.sort{|a,b| b.sale.date <=> a.sale.date}
 		@cash_made_by_seller = @seller.lots.select{| l | l.sold == true && l.sellerpaid == true && l.dispute == false }.sum{| l | (l.seller_due)} # lots paid
