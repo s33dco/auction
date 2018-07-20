@@ -6,7 +6,7 @@
 			<li><%= pluralize(@total_winning_bids, 'lot') %> won.</li>
 			<li><%=pluralize(@paid_lots.count, 'lot')%> purchased.</li>
 			<li>Total spend to date <%= show_money(@gross_spend)%></li>
-			<li>Account Payable <%= show_money(@unpaid_cash)%></li>
+			<li>Payment Due <%= show_money(@unpaid_cash)%></li>
 			<% unless @disputed_lots.empty? %>
 				<li><%= pluralize(@disputed_lots.count, 'lot')%> disputed.</li>
 			<% end %>
