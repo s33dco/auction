@@ -18,6 +18,7 @@ class LotsController < ApplicationController
 			@pay_out = @lots.pay_out
 			@average = @lots.average_profit
 			@how_many = @lots.count
+			@average_bid = (@total_sales / @how_many)
 		end
 
 		@saved_for_csv = Lot.auctioned.search(session[:q]).result
