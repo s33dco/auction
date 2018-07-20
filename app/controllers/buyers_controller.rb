@@ -20,7 +20,7 @@ class BuyersController < ApplicationController
 		@unpaid_cash = @unpaid_lots.sum{| l | l.soldat + l.bfee }
 		@disputed_cash = @disputed_lots.sum{| l | l.soldat + l.bfee }
 		@total_bids = @buyer.bids.count
-		@total_winning_bids = @buyer.winning_bids.count
+		@total_winning_bids = @winning_lots.count
 		@since = @buyer.eldest
 	end
 
