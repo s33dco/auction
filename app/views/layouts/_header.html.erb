@@ -1,10 +1,12 @@
 <nav class='site'>
 	<ul>
-		<li>
-			<%= link_to 'home', root_path%>
-		</li>
+		<% unless auctioneer_signed_in? %>
+			<li>
+				<%= link_to 'home', root_path%>
+			</li>
+		<% end %>
 
-		<% unless buyer_signed_in? || seller_signed_in?  %>
+		<% unless buyer_signed_in? || seller_signed_in? || auctioneer_signed_in? %>
 			<li>
 				<%= link_to 'buyers', new_buyer_session_path%>
 			</li>
@@ -21,7 +23,7 @@
 			</li>
 		<% end %>
 
-		<% unless seller_signed_in? || buyer_signed_in? %>
+		<% unless seller_signed_in? || buyer_signed_in? || auctioneer_signed_in? %>
 			<li>
 				<%= link_to 'sellers', new_seller_session_path%>
 			</li>
