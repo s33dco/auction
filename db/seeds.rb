@@ -37,11 +37,11 @@ Seller.create(
 	code: 				rand(100..999),
 	password: 'password')
 
-numberofhouses = 5
-numberofbuyers = 20
-numberofsellers = 10
+numberofhouses = 3
+numberofbuyers = 10
+numberofsellers = 5
 numberofsales = 10 #must be divisable by 10
-averagebidsperlot = 10
+averagebidsperlot = 5
 
 
 
@@ -118,7 +118,7 @@ numberofsales.times do
 												)
 		numberofsales -= 1
 		lotnumber = 1
-		numberoflots = 50
+		numberoflots = 20
 		numberoflots.times do
 			lot = auction.lots.new
 			lot.update!(
