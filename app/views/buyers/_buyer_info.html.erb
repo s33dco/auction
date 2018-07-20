@@ -1,13 +1,15 @@
 <%unless @since.nil? %>
 	<ul>
 		<li>Bidding for <%= time_ago_in_words(@since)%>.</li>
-		<li><%= @total_bids %> bids made.</li>
-		<li><%= pluralize(@total_winning_bids, 'lot' %> won.</li>
-		<li><%=pluralize(@paid_lots.count, 'lot')%> purchased.</li>
-		<li>Total spend to date <%= show_money(@gross_spend)%></li>
-		<li>Account Payable <%= show_money(@unpaid_cash)%></li>
-		<% unless @disputed_lots.empty? %>
-			<li><%= pluralize(@disputed_lots.count, 'lot')%> disputed.</li>
+		<% unless @winning_lots.empty? %>
+			<li><%= @total_bids %> bids made.</li>
+			<li><%= pluralize(@total_winning_bids, 'lot' %> won.</li>
+			<li><%=pluralize(@paid_lots.count, 'lot')%> purchased.</li>
+			<li>Total spend to date <%= show_money(@gross_spend)%></li>
+			<li>Account Payable <%= show_money(@unpaid_cash)%></li>
+			<% unless @disputed_lots.empty? %>
+				<li><%= pluralize(@disputed_lots.count, 'lot')%> disputed.</li>
+			<% end %>
 		<% end %>
 		<% if @buyer.last_sign_in_at%>
 			<li><%= time_ago_in_words(@buyer.last_sign_in_at) %> ago.</li>
