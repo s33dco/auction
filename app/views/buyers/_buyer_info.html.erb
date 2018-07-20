@@ -3,9 +3,9 @@
 		<li>Bidding for <%= time_ago_in_words(@since)%>.</li>
 		<li><%= @total_bids %> bids made.</li>
 		<li><%= @total_winning_bids %> bids won.</li>
-		<li>Lots Paid <%= @paid_lots.count %></li>
-		<li>Amount Due <%= show_money(@unpaid_cash)%></li>
-		<li>Total spend <%= show_money(@gross_spend)%></li>
+		<li><%=pluralize(@paid_lots.count, 'lot')%> purchased.</li>
+		<li>Total spend to date <%= show_money(@gross_spend)%></li>
+		<li>Account Payable <%= show_money(@unpaid_cash)%></li>
 		<% unless @disputed_lots.empty? %>
 			<li><%= pluralize(@disputed_lots.count, 'lot')%> disputed.</li>
 		<% end %>
