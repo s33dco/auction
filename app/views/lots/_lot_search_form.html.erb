@@ -4,7 +4,7 @@
 	  <table>
 	  	<tr>
 	  		<td>Auction</td>
-	  		<td><%= f.collection_select(:sale_id_eq, Sale.previous, :id, :code_and_date, prompt: 'All Auctions', include_blank: true )%></td>
+	  		<td><%= f.collection_select(:sale_id_eq, Sale.previous, :id, :code_and_date, prompt: 'All Sales', include_blank: true )%></td>
 	  		<td><%= f.select :sold_eq, options_for_select([["All lots", ""],["Sold lots", "true"], ["Unsold lots", "false"]])%></td>
 	  		<td><%= f.collection_select(:category_id_eq, Category.all, :id, :title, prompt: 'All Categories', include_blank: true )%></td>
 	  		<td><%= f.number_field :lotnumber_or_id_eq, placeholder: 'Lot or ID number...'%></td>
