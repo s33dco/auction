@@ -11,11 +11,13 @@ class SellersController < ApplicationController
 	def show
 		@seller = Seller.find(params[:id])
 		@active_lots = @seller.lots.select{| l | l.sold.nil? }.sort{|a,b| b.lotnumber<=> a.lotnumber}.sort{|a,b| b.sale.date <=> a.sale.date}
-		@sold_lots = @seller.lots.select{| l | l.sold == true && l.sellerpaid == false && l.dispute == false }.sort{|a,b| b.sale.date <=> a.sale.date}
-		@unsold_lots = @seller.lots.select{| l | l.sold == false && l.sellerpaid == false && l.dispute == false }.sort{|a,b| b.sale.date <=> a.sale.date}
+		@sold_lots = @seller.lots.select{| l | l.sold == true && l.dispute == false }.sort{|a,b| b.sale.date <=> a.sale.date}
+		@paid_lots = @seller.lots.select{| l | l.sold == true && l.sellerpaid == true && l.dispute == false }.sort{|a,b| b.sale.date <=> a.sale.date}
+		@unpaid_lots = @seller.lots.select{| l | l.sold == true && l.sellerpaid == false && l.dispute == false }.sort{|a,b| b.sale.date <=> a.sale.date}
+		@unsold_lots = @seller.lots.select{| l | l.sold == false  && l.sellerpaid == false && l.dispute == false }.sort{|a,b| b.sale.date <=> a.sale.date}
 		@disputed_lots = @seller.lots.select{| l | l.dispute == true }.sort{|a,b| b.sale.date <=> a.sale.date}
-		@cash_made_by_seller = @seller.lots.select{| l | l.sold == true && l.sellerpaid == true && l.dispute == false }.sum{| l | (l.seller_due)} # lots paid
-		@cash_due_to_seller = @sold_lots.sum{| l | (l.seller_due)}
+		@cash_made_by_seller = @paid_lots.sum{| l | (l.seller_due)} # lots paid
+		@cash_due_to_seller = @unpaid_lots.sum{| l | (l.seller_due)}
 		@total_lots_sold_by_seller = @sold_lots.count
 		@since = @seller.eldest
 	end

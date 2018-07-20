@@ -9,95 +9,96 @@
 		<% end %>
 	</div>
 	<table>
-	<% unless @active_lots.empty? %>
-		<div class="live-items">
-			<tr>
-				<th colspan=7 class='left'>Live Lots.</th>
-			</tr>
-			<tr>
-				<td colspan=4></td>
-				<td class='money'>Reserve</td>
-				<td colspan=2 class='money'>Current Bidding</td>
-			</tr>
-			<% @active_lots.each do | lot| %>
+		<% unless @active_lots.empty? %>
+			<div class="live-items">
 				<tr>
-					<td><%= short_date(lot.sale.date)%></td>
-					<td><%= lot.sale.house.code%></td>
-					<td><%= lot.lotnumber%></td>
-					<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
-					<td class="money"><%= show_money(lot.reserve)%></td>
-					<td class="money">(<%= pluralize(lot.bids.count, 'bid')%>)</td>
-					<td class="money"><%= show_money(lot.selling_price)%></td>
+					<th colspan=7 class='left'>Live Lots.</th>
 				</tr>
-			<% end %>
-		</div>
-	<% end %>
-	<% unless @sold_lots.empty? %>
-		<div class="sold-lots">
-		<tr class='header'>
-			<th colspan=7>-</th>
-		</tr>
-			<tr>
-				<td colspan=4 class='left'>Account.</td>
-				<td>Selling Price</td>
-				<td>Selling Fees</td>
-				<td>Amount Due</td>
-			</tr>
-			<% @sold_lots.each do | lot| %>
 				<tr>
-					<td><%= short_date(lot.sale.date)%></td>
-					<td><%= lot.sale.house.code%></td>
-					<td><%= lot.lotnumber%></td>
-					<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
-					<td class="money"><%= show_money(lot.soldat)%></td>
-					<td class="money"><%= show_money(lot.sfee)%></td>
-					<td class="money"><%= show_money(lot.seller_due)%></td>
+					<td colspan=4></td>
+					<td class='money'>Reserve</td>
+					<td colspan=2 class='money'>Current Bidding</td>
 				</tr>
-			<% end %>
-			<tr></tr>
-			<tr>
-				<td colspan=6 class='right'>Total Credit Due</td>
-				<td class='money'><%= show_money(@cash_due_to_seller)%></td>
-			</tr>
-		</div>
-	<% end %>
-	<% unless @disputed_lots.empty? %>
-		<div class="disputed-lots">
-			<tr class='header'>
-				<th colspan=7 class='left'>Disputed Lots.</th>
-			</tr>
-			<% @disputed_lots.each do | lot| %>
-				<tr>
-					<td><%= short_date(lot.sale.date)%></td>
-					<td><%= lot.sale.house.code%></td>
-					<td><%= lot.lotnumber%></td>
-					<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
-				</tr>
-			<% end %>
-		</div>
-	<% end %>
-	<% unless @unsold_lots.empty? %>
-		<div class="unsold-lots">
-			<tr class='header'>
-				<th colspan=7 class='left'>Unsold lots to be collected.</th>
-			</tr>
-			<% @unsold_lots.each do | lot| %>
-				<tr>
-					<td><%= short_date(lot.sale.date)%></td>
-					<td><%= lot.sale.house.code%></td>
-					<td><%= lot.lotnumber%></td>
-					<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
-					<td><%= show_money(lot.reserve)%></td>
-					<td><%= pluralize(lot.bids.count, 'bid')%></td>
-					<td><%= show_money(lot.highest_bid)%></td>
-				</tr>
-			<% end %>
-		</div>
-	<% end %>
-</table>
+				<% @active_lots.each do | lot| %>
+					<tr>
+						<td><%= short_date(lot.sale.date)%></td>
+						<td><%= lot.sale.house.code%></td>
+						<td><%= lot.lotnumber%></td>
+						<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
+						<td class="money"><%= show_money(lot.reserve)%></td>
+						<td class="money">(<%= pluralize(lot.bids.count, 'bid')%>)</td>
+						<td class="money"><%= show_money(lot.selling_price)%></td>
+					</tr>
+				<% end %>
+			</div>
+		<% end %>
 
+		<% unless @unpaid_lots.empty? %>
+			<div class="sold-lots">
+			<tr class='header'>
+				<th colspan=7>-</th>
+			</tr>
+				<tr>
+					<td colspan=4 class='left'>Account.</td>
+					<td>Selling Price</td>
+					<td>Selling Fees</td>
+					<td>Amount Due</td>
+				</tr>
+				<% @unpaid_lots.each do | lot| %>
+					<tr>
+						<td><%= short_date(lot.sale.date)%></td>
+						<td><%= lot.sale.house.code%></td>
+						<td><%= lot.lotnumber%></td>
+						<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
+						<td class="money"><%= show_money(lot.soldat)%></td>
+						<td class="money"><%= show_money(lot.sfee)%></td>
+						<td class="money"><%= show_money(lot.seller_due)%></td>
+					</tr>
+				<% end %>
+				<tr></tr>
+				<tr>
+					<td colspan=6 class='right'>Total Credit Due</td>
+					<td class='money'><%= show_money(@cash_due_to_seller)%></td>
+				</tr>
+			</div>
+		<% end %>
+		<% unless @disputed_lots.empty? %>
+			<div class="disputed-lots">
+				<tr class='header'>
+					<th colspan=7 class='left'>Disputed Lots.</th>
+				</tr>
+				<% @disputed_lots.each do | lot| %>
+					<tr>
+						<td><%= short_date(lot.sale.date)%></td>
+						<td><%= lot.sale.house.code%></td>
+						<td><%= lot.lotnumber%></td>
+						<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
+					</tr>
+				<% end %>
+			</div>
+		<% end %>
+		<% unless @unsold_lots.empty? %>
+			<div class="unsold-lots">
+				<tr class='header'>
+					<th colspan=4 class='left'>Unsold lots to be collected.</th>
+					<th>Reserve</th>
+					<th colspan=2 class='money'>Highest Bid</th>
+				</tr>
+				<% @unsold_lots.each do | lot| %>
+					<tr>
+						<td><%= short_date(lot.sale.date)%></td>
+						<td><%= lot.sale.house.code%></td>
+						<td><%= lot.lotnumber%></td>
+						<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
+						<td class='money'><%= show_money(lot.reserve)%></td>
+						<td><%= pluralize(lot.bids.count, 'bid')%></td>
+						<td class='money'><%= show_money(lot.highest_bid.first.bidvalue)%></td>
+					</tr>
+				<% end %>
+			</div>
+		<% end %>
+	</table>
 </article>
-
 <% content_for(:side_links) do %>
 	<li class='contextual'>
 		<%=link_to 'new seller', new_seller_path %>

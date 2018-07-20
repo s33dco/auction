@@ -15,7 +15,7 @@ class Bid < ApplicationRecord
  	private 
 
  	def bid_enough
- 		if bidvalue < lot.selling_price
+ 		if bidvalue < lot.selling_price 			# can end up with identical bids
  			errors.add(:bidvalue, "bid too low")
  		end
  	end
