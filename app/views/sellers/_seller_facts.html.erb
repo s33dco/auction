@@ -3,7 +3,7 @@
 			<li>Selling for <%= time_ago_in_words(@since)%>.</li>
 			<li>Sold <%= @total_lots_sold_by_seller %>  of <%= pluralize(@seller.lots.count, 'lot')%>.</li>
 			<li>Total Revenue <%=show_money(@cash_made_by_seller)%></li>
-			<li>Total Owed <%show_money(@cash_due_to_seller)%></li>
+			<li>Total Owed <%= show_money(@cash_due_to_seller)%></li>
 			<% unless @disputed_lots.empty? %>
 				<li><%= pluralize(@disputed_lots.count, 'lot')%> disputed.</li>
 			<% end %>
