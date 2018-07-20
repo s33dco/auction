@@ -3,4 +3,7 @@
 		<%= @default.name%> <%= @default.address1 if @default.address1 %> <%= @default.address2 if @default.address2 %> <%= @default.address3 if @default.address3 %> <%= @default.postcode if @default.postcode %><br>
 		<%= @default.email if @default.email %> /	<%= @default.phone if @default.phone %> </p>
 <% end %>
-<%= link_to 'Admin Sign In', new_auctioneer_session_path%>
+<% unless auctioneer_signed_in? %>
+	<%= link_to 'Admin Sign In', new_auctioneer_session_path%>
+<% end %>
+

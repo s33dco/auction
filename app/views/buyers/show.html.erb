@@ -11,7 +11,7 @@
 
 <%if buyer_signed_in?%>
 	<div class="live-sales">
-		<h3>Available Auctions</h3>
+		<h3>Live Auctions.</h3>
 		<% if @sales.empty? %>
 			<p>Look out for a message advising when the next auciton is live. Let us know if your phone and email details have changed.</p>
 		<% else %>
@@ -30,7 +30,7 @@
 
 	<% unless @unpaid_lots.empty? %>
 		<div class="accounts">
-			<h3>Account</h3>
+			<h3>Account Payable.</h3>
 			<table>
 				<tr>
 					<td></td>
@@ -65,7 +65,7 @@
 
 	<% unless @disputed_lots.empty? %>
 		<div class="accounts">
-			<h3>Disputes</h3>
+			<h3>Disputed Lots</h3>
 			<table>
 				<tr>
 					<td></td>
