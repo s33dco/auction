@@ -5,7 +5,7 @@
 			<li>Payments made to date <%=show_money(@cash_made_by_seller)%></li>
 			<li>Credit Due <%= show_money(@cash_due_to_seller)%></li>
 			<% unless @disputed_lots.empty? %>
-				<li><%= pluralize(@disputed_lots.count, 'lot')%> disputed.</li>
+				<li><%= pluralize(@disputed_lots.count, 'lot')%> in dispute.</li>
 			<% end %>
 			<% if @seller.last_sign_in_at%>
 				<li>Last signed in <%= time_ago_in_words(@seller.last_sign_in_at) %> ago.</li>

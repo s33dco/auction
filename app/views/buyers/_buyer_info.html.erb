@@ -8,7 +8,7 @@
 			<li>Total spend to date <%= show_money(@gross_spend)%></li>
 			<li>Payment Due <%= show_money(@unpaid_cash)%></li>
 			<% unless @disputed_lots.empty? %>
-				<li><%= pluralize(@disputed_lots.count, 'lot')%> disputed.</li>
+				<li><%= pluralize(@disputed_lots.count, 'lot')%> in dispute.</li>
 			<% end %>
 		<% end %>
 		<% if @buyer.last_sign_in_at%>
