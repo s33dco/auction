@@ -15,7 +15,7 @@
 				<td><%= link_to "View", sale_path(sale) %></td>
 				<td><%= link_to "Edit", edit_sale_path(sale) unless sale.frozen? %></td>
 				<td><%=link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure? ALL attached lots will be deleted!' } unless sale.frozen? %></td>
-				<td><%= button_to 'Open Sale', activate_sale_path(@sale), data: { confirm: 'Are you sure? This will publish the sale to all buyers!' }%></td>
+				<td><%= button_to 'Open Sale', activate_sale_path(sale), data: { confirm: 'Are you sure? This will publish the sale to all buyers!' }%></td>
 			</tr>
 		<% end %>
 	<% end %>
@@ -51,9 +51,6 @@
 					<td><%= pluralize(sale.vendors.uniq.count, 'vendor') %></td>
 					<td><%= pluralize(sale.bids.count, 'bid') %></td>
 					<td><%= link_to "view bids", bid_path(sale) %></td>
-					<!-- todo button to sales report -->
-					<td>Report</td>
-					<!-- to here -->
 				</tr>
 			<% end %>
 	<% end %>
