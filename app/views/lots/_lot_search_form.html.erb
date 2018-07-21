@@ -8,7 +8,6 @@
 	  		<td><%= f.select :sold_eq, options_for_select([["All lots", ""],["Sold lots", "true"], ["Unsold lots", "false"]])%></td>
 	  		<td><%= f.collection_select(:category_id_eq, Category.all, :id, :title, prompt: 'All Categories', include_blank: true )%></td>
 	  		<td><%= f.number_field :lotnumber_or_id_eq, placeholder: 'Lot or ID number...'%></td>
-
 	  	</tr>
 	  	<tr>
 	  		<td>Seller</td>
@@ -21,7 +20,7 @@
 	  		<td>Buyer</td>
 	  		<td><%= f.collection_select(:buyer_id_eq, Buyer.all, :id , :code_and_name, prompt: "All Buyers", include_blank: true  ) %></td>
 	  		<td><%= f.select :buyerpaid_eq, options_for_select([["Paid & Due", ""],["Paid", "true"], ["Buyer Owes", "false"]])%></td>
-	  		<td><%= f.select :dispute_eq, options_for_select([["All lots", ""],["Disputed", "true"], ["Undisputed", "false"]])%></td>
+	  		<td><%= f.select :dispute_eq, options_for_select([["No dispute filter", ""],["Disputed", "true"], ["Undisputed", "false"]])%></td>
 	  		<td><%= f.submit "Search" %></td>
 	  	</tr>
 	  </table>
