@@ -43,8 +43,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     user_name:      ENV['SENDMAIL_USERNAME'],
     password:       ENV['SENDMAIL_PASSWORD'],
-    domain:         ENV['MAIL_HOST'],
     address:       'thrust.3v0.net',
+    domain:         'localhost',
     port:          '465',
     authentication: :plain,
     tls: true

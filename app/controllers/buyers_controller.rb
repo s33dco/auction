@@ -11,7 +11,7 @@ class BuyersController < ApplicationController
 
 	def show
 		@buyer = Buyer.find(params[:id])
-		@sales = Sale.live
+		@sales = @buyer.houses.each.map{|h| h.sales}.flatten.select{|s| s.active == true}
 		@winning_lots =  @buyer.lots
 		@unpaid_lots = @winning_lots.select{| l | l.buyerpaid == false && l.sold == true && l.dispute == false}.sort{|a,b| b.sale.date <=> a.sale.date}
 		@disputed_lots = @winning_lots.select{| l | l.dispute == true}.sort{|a,b| b.sale.date <=> a.sale.date}
@@ -66,6 +66,6 @@ class BuyersController < ApplicationController
 	private
 
 	def buyer_params
-		params.require(:buyer).permit(:firstname, :lastname, :email, :phone, :commrate, :sale_id, :buyer, :code)
+		params.require(:buyer).permit(:firstname, :lastname, :email, :phone, :commrate, :code, {house_ids:[]}, :password)
 	end
 end

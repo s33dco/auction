@@ -1,0 +1,32 @@
+<fieldset>
+	<ul>
+		<li>
+			<label>First Name</label>
+			<%= f.text_field :firstname %>
+		</li>
+		<li>
+			<label>Last Name</label>
+			<%= f.text_field :lastname %>
+		</li>
+		<li>
+			<label>Code</label>
+			<%= f.text_field :code %>
+		</li>
+		<li>
+			<label>Phone</label>
+			<%=f.phone_field :phone %>
+		</li>
+		<li>
+			<label>Email</label>
+			<%= f.email_field :email %>
+		</li>
+		<li>
+			<label>Commision</label>
+			<%= f.number_field :commrate, step: 0.01  %>
+		</li>
+		<li>
+			<label>Select the auctions buyer can bid in</label>
+			<%= f.collection_check_boxes(:house_ids, House.all, :id, :code_and_name) %>
+		</li>
+	</ul>
+</fieldset>

@@ -6,7 +6,9 @@ class Buyer < ApplicationRecord
 	has_many :bids
 	has_many :bidon, through: :bids, source: :lot
 	has_many :lots
-	
+	has_and_belongs_to_many :houses
+
+
 
 	# validates :firstname, presence: true,
 	# 										  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },

@@ -1,5 +1,6 @@
 class House < ApplicationRecord
 	has_many :sales
+	has_and_belongs_to_many :buyers
 	has_one_attached :banner
 
 	validates :code, :name, presence: true
@@ -12,4 +13,8 @@ class House < ApplicationRecord
 
 	scope :home, ->{where("siteinfo = ?", true)}
 	scope :alpha, ->{order(name: :asc)}
+
+	def code_and_name
+		"(#{code})#{name}"
+	end
 end
