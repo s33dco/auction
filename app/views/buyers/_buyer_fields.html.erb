@@ -29,7 +29,7 @@
 			<%= f.password_field :password %>
 		</li>
 		<li>
-			<label>Select the auctions buyer can bid in</label>
+			<label>Select auctions available to buyer.</label>
 			<%= f.collection_check_boxes(:house_ids, House.all, :id, :code_and_name) %>
 		</li>
 	</ul>

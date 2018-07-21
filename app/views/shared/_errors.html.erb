@@ -1,5 +1,5 @@
 <% if object.errors.any? %>
-<section id="errors">
+<div class="errors">
   <header>
     <h2>
       <%= object.class.name.humanize.downcase %> could not be saved. 
@@ -13,5 +13,5 @@
       <li><%= message %></li>
     <% end %>
   </ul>
-</section>
+</div>
 <% end %>

@@ -15,6 +15,6 @@ class House < ApplicationRecord
 	scope :alpha, ->{order(name: :asc)}
 
 	def code_and_name
-		"(#{code})#{name}"
+		"(#{code}) #{name}"
 	end
 end

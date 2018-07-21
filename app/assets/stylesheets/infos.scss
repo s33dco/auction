@@ -22,9 +22,9 @@
 
 /* ERRORS */
 
-section#errors {
-  margin: 1em 0;
-  padding: 1em;
+div.errors {
+  margin: 1vh 0;
+  padding: 2vh 2vw;
   background: $errors-background-color;
 
   ul {
