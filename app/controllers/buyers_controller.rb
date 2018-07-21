@@ -1,6 +1,7 @@
 class BuyersController < ApplicationController
 	before_action :check_if_buyer_or_admin, only:[:show, :bidding]
 	before_action :check_if_admin, except:[:show, :bidding]
+	before_action :check_permitted_sale, only: [:bidding]
 
 	# check current_buyer = Buyer.find(params[:id]) on show & bidding
 	# all other action restrict to auctioneer_signed_in?
@@ -60,7 +61,6 @@ class BuyersController < ApplicationController
 		@buyer = Buyer.find(params[:id])
 		@sale = Sale.find(params[:sale])
 		@lots = @sale.lots.page(params[:page]).per(20)
-
 	end
 
 	private

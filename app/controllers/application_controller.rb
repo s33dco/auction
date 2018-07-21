@@ -56,4 +56,17 @@ class ApplicationController < ActionController::Base
 			redirect_to root_url, alert: "You'll need to sign in before accessing this area."
 		end
 	end
+
+	def check_permitted_sale
+		unless params[:sale].to_i.in? current_buyer.houses.each.map{|h| h.sales}.flatten.select{|s| s.active == true}.map{|s| s.id}
+			redirect_to buyer_path(current_buyer), alert: "Bids not accepted for this auction."
+		end
+	end
+
 end
+
+
+
+
+
+
