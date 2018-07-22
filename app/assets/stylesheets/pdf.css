@@ -55,16 +55,17 @@ section {
 
 	section.specifics {
 		text-align: center;
+		margin-top: 20px;
 	}
 
 	section.specifics h3 {
 		font-size: 1.75rem;
-		margin: 10px 0;
+		margin: 5px 0;
 	}
 
 	section.specifics p {
 		font-size: .75rem;
-		margin: 10px 0;
+		margin: 5px 0;
 	}
 
 	section.specifics p.cash {
