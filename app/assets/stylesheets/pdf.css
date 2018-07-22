@@ -14,7 +14,7 @@ section {
 	section.title{
 		padding: 5px;
 		border: 5px solid black;
-		border-radius: 25px;
+		border-radius: 10px;
 	}
 	.title h1 {
 		font-size: 2rem;
@@ -33,7 +33,7 @@ section {
 	table.summary td {
 		padding : 5px;
 	}
-
+/*
 	section.specifics {
 		text-align: center;
 	}
@@ -51,12 +51,12 @@ section {
 	section.specifics p.cash {
 		font-size: 2rem;
 		font-weight: bold;
-	}
+	}*/
 /* title section end */
 
 
 /* general table formatting */
-	td.money {
+/*	td.money {
 		text-align: right;
 	}
 
@@ -72,11 +72,11 @@ section {
 
 	td.centre {
 		text-align: center;
-	}
+	}*/
 /* general table formatting */
 
 
-table.lots{
+/*table.lots{
 	padding: 50px;
 }
 
@@ -126,3 +126,4 @@ table {
 	font-size: 2rem;
 	width: 100%;
 }
+*/
