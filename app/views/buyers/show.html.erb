@@ -1,6 +1,9 @@
 <article>
 	<header>
 		<h1><%= @buyer.first_and_last_name %></h1>
+		<% unless @unpaid_lots %>
+			<h3>(<%= link_to 'View Invoice', buyer_path(@buyer, :format => :pdf) %>)</h3>
+		<% end %>
 	</header>
 	<div class="details">
 		<%= render "client_contact" %>
@@ -30,7 +33,7 @@
 
 	<% unless @unpaid_lots.empty? %>
 		<div class="accounts">
-			<h3>Account Payable. (<%= link_to 'Create Invoice', buyer_path(@buyer, :format => :pdf) %>)</h3>
+			<h3>Account Payable. (<%= link_to 'View Invoice', buyer_path(@buyer, :format => :pdf) %>)</h3>
 			<table>
 				<tr>
 					<td></td>

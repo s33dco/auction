@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>PDF</title>
+		  <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+	</head>
+<body>
+	<section class='title'>
+		<h1>Account Statement</h1>
+		<table class='summary'>
+			<tr>
+				<td>Date of issue</td><td class='money'><%= nice_date(Time.now)%></td>
+			</tr>
+			<tr>
+				<td>Statement</td><td class='money'><%= @unpaid_lots.first.id %></td>
+			</tr>
+			<tr class='bold'>
+				<td>Credit Due</td><td class='money'><%= show_money(@cash_due_to_seller)%></td>
+			</tr>
+		</table>
+	</section>
+
+	<section class='specifics'>
+		<div class="billed">
+			<h3><%= @seller.full_name %>,  <%= @seller.email if @seller.email %>,  <%= @seller.phone if @seller.phone %>.</h3>
+			<% if @default %>
+				<h3>with thanks : <%= @default.name%>.</h3>
+				<p><%= @default.address1 if @default.address1 %>, <%= @default.address2 if @default.address2 %>, <%= @default.address3 if @default.address3 %>, <%= @default.postcode if @default.postcode %>, <%= @default.email if @default.email %>, <%= @default.phone if @default.phone %>.</p>
+			<% end %>
+		</div>
+	</section>
+
+	<section class="accounts">
+		<table class='lots'>
+		<div class="sold">
+			<tr>
+				<th colspan="7" class='header'>Lots Sold.</th>
+			</tr>
+			<tr class='bold'>
+				<td>Date</td>
+				<td>Auction</td>
+				<td class='centre'>Lot</td>
+				<td>Item</td>
+				<td class="money">Selling Price</td>
+				<td class="money">Selling Fees</td>
+				<td class="money">Payment Due</td>
+			</tr>
+			<% @unpaid_lots.each do | lot| %>
+				<tr>
+					<td><%= short_date(lot.sale.date)%></td>
+					<td><%= lot.sale.house.name %></td>
+					<td class='centre'><%= lot.lotnumber%></td>
+					<td><%= lot.make_and_model %></td>
+					<td class="money"><%= show_money(lot.soldat)%></td>
+					<td class="money"><%= show_money(lot.sfee)%></td>
+					<td class="money"><%= show_money(lot.seller_due)%></td>
+				</tr>
+			<% end %>
+			<tr></tr>
+			<tr class='total'>
+				<td colspan=6 class='money'>Total Credit Due</td>
+				<td class='money'><%= show_money(@cash_due_to_seller)%></td>
+			</tr>
+		</div>
+		<div class="unsold"></div>	
+		<% unless @unsold_lots.empty? %>
+			<tr>
+				<th colspan="7" class='header'>Lots for collection.</th>
+			</tr>
+			<tr class='bold'>
+				<td>Date</td>
+				<td>Auction</td>
+				<td class='centre'>Lot</td>
+				<td>Item</td>
+				<td class="money">Reserve</td>
+				<td class="money">Bids</td>
+				<td class='money'>Highest Bid</td>
+			</tr>
+			<% @unsold_lots.each do | lot| %>
+			<tr>
+				<td><%= short_date(lot.sale.date)%></td>
+				<td><%= lot.sale.house.name%></td>
+				<td><%= lot.lotnumber%></td>
+				<td><%= lot.make_and_model%></td>
+				<td class='money'><%= show_money(lot.reserve)%></td>
+				<td class="money"><%= lot.bids.count%></td>
+				<td class='money'><%= show_money(lot.highest_bid.first.bidvalue)%></td>
+			</tr>
+			<% end %>
+		<% end %>
+		</div>
+		</table>
+	</section>
+	</body>
+</html>

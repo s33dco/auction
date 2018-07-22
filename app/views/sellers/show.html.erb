@@ -1,6 +1,9 @@
 <article>
 	<header>
 		<h1><%= @seller.first_and_last_name %></h1>
+		<% if @unpaid_lots || @unsold_lots %>
+			<h3>(<%= link_to 'Statement', seller_path(@seller, :format => :pdf) %>)</h3>
+		<% end %>
 	</header>
 	<div class="details">
 	<%= render "client_contact" %>
@@ -36,7 +39,6 @@
 		<% unless @unpaid_lots.empty? %>
 			<div class="sold-lots">
 			<tr class='header'>
-				<th colspan=7>-</th>
 			</tr>
 				<tr>
 					<td colspan=4 class='left'>Account.</td>

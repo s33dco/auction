@@ -20,6 +20,14 @@ class SellersController < ApplicationController
 		@cash_due_to_seller = @unpaid_lots.sum{| l | (l.seller_due)}
 		@total_lots_sold_by_seller = @sold_lots.count
 		@since = @seller.eldest
+		respond_to do |format|
+			format.html
+		  format.pdf do
+		    render pdf: "Credit_Note-#{Time.now.to_date}-#{@seller.full_name.parameterize}",  header: { right: '[page] of [topage]' },
+		           template: "sellers/creditnote.pdf.erb",
+		           locals: {:seller => @seller}
+		  end
+		end
 	end
 
 	def new

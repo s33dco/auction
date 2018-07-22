@@ -7,27 +7,94 @@ body {
 section {
 	clear : both;
 	display: block;
+	margin: 15rem 0;
 }
 
-section.title{
-	padding: 75px;
-	border: 5px solid black;
-	margin: 50px 0;
-	border-radius: 50px;
-}
-.title h1 {
-	font-size: 25rem;
-	display: inline-block;
-	padding-top: 0;
-	margin: 80px ;
+
+/* title section*/
+	section.title{
+		padding: 75px;
+		border: 10px solid black;
+		padding: 100px 50px;
+		border-radius: 50px;
+	}
+	.title h1 {
+		font-size: 20rem;
+		display: inline-block;
+		padding-top: 0;
+		margin: 0px;
+	}
+
+	.title table{
+		float :right;
+		margin: 0px;
+		width: 35%;
+	}
+
+	table.summary td {
+		padding : 5px;
+	}
+
+	section.specifics {
+		text-align: center;
+	}
+
+	section.specifics h3 {
+		font-size: 8rem;
+		margin: 20px 0;
+	}
+
+	section.specifics p {
+		font-size: 5.5rem;
+		margin: 10px 0;
+	}
+
+	section.specifics p.cash {
+		font-size: 8rem;
+		font-weight: bold;
+	}
+/* title section end */
+
+
+/* general table formatting */
+	td.money {
+		text-align: right;
+	}
+
+	tr.bold {
+		font-weight: bold;
+	}
+
+	tr.total {
+		font-weight: bold;
+		margin:	100px 0;
+		padding: 100px 0;
+	}
+
+	td.centre {
+		text-align: center;
+	}
+/* general table formatting */
+
+
+table.lots{
+	padding: 50px;
 }
 
-div.details {
-	float :right;
-	margin-top: 20px;
+
+table.lots td {
+	margin: 20px 5px;
+	padding: 20px 0;
 }
 
-.details h3 {
+.lots th.header {
+		font-size: 9rem;
+		font-weight: bold;
+		text-align: center;
+}
+
+
+.details p {
 	font-size: 8rem;
 	margin: 5px 0;
 	padding : 15px 0;
@@ -36,44 +103,27 @@ div.details {
 
 
 
-section.specifics {
-	margin: 80px;
-	text-align: center;
-}
-
-section.specifics h3 {
-	font-size: 8rem;
-	margin: 20px 0;
-}
-
-section.specifics p {
-	font-size: 5.5rem;
-	margin: 10px 0;
-}
-
-section.specifics p.cash {
-	font-size: 8rem;
-	font-weight: bold;
+h3.title {
+	font-size: 9rem;
+	margin: 15px 0 0;
+	padding : 15px 0 0;
+	text-align: left;
 }
 
 
+
+
+table.lots {
+	border: 5px dashed grey;
+	border-radius: 50px;
+	margin: 15rem 0;
+}
 
 
 
 
 
 table {
-	font-size: 7rem;
+	font-size: 6.5rem;
 	width: 100%;
-}
-td {
-	padding: .75em;
-}
-
-td.money {
-	text-align: right;
-}
-
-tr.bold {
-	font-weight: bold;
 }

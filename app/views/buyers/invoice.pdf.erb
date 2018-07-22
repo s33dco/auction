@@ -1,21 +1,26 @@
 <html>
-<head>
-<meta charset='utf-8' />
-<title>PDF</title>
-  <%= wicked_pdf_stylesheet_link_tag "pdf" %>
-</head>
+	<head>
+		<meta charset='utf-8' />
+		<title>PDF</title>
+		  <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+	</head>
 <body>
-<section class='title'>
-<h1>Invoice</h1>
-<div class="details">
-	<h3>Date of issue : <%= nice_date(Time.now)%></h3>
-	<h3>Invoice Number : <%= @unpaid_lots.first.id %></h3>
-	<h3>Invoice Total : <%= show_money(@unpaid_cash)%></h3>
-</div>	
+	<section class='title'>
+		<h1>Invoice</h1>
+			<table class='summary'>
+				<tr>
+					<td>Date of issue</td><td class="money"><%= nice_date(Time.now)%></td>
+				</tr>
+				<tr>
+					<td>Invoice Number</td><td class="money"><%= @unpaid_lots.first.id %></td>
+				</tr>
+				<tr class='bold'>
+					<td>Invoice Total</td><td class='money'><%= show_money(@unpaid_cash)%></td>
+				</tr>
+			</table>
+	</section>
 
-</section>
-
-<section class='specifics'>
+	<section class='specifics'>
 		<div class="billed">
 			<h3>billed to : <%= @buyer.full_name %>,  <%= @buyer.email if @buyer.email %>,  <%= @buyer.phone if @buyer.phone %>.</h3>
 			<% if @default %>
@@ -25,38 +30,39 @@
 			<%end%>
 		</div>
 	</section>
-		<section class="accounts">
-			<table>
-				<tr class="bold">
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td class="money">Bid</td>
-					<td class="money">Fee</td>
-					<td class="money">Total</td>
-				</tr>
-				<% @unpaid_lots.each do |lot| %>
-					<tr>
-						<td><%= short_date(lot.sale.date)%></td>
-						<td><%= lot.sale.house.name %></td>
-						<td>Lot <%= lot.lotnumber%></td>
-						<td><%= lot.make_and_model %></td>
-						<td class='money'><%= show_money(lot.soldat)%></td>
-						<td class='money'><%= show_money(lot.bfee)%></td>
-						<td class='money'><%= show_money(lot.buyer_pays)%></td>
-					</tr>
 
-				<% end %>
-				<tr class='bold'>
-					<td colspan=6 class='money'>Payment due</td>
-					<td class='money'><%= show_money(@unpaid_cash)%></td>
+	<section class="accounts">
+		<div class="sold">
+		<table class='lots'>
+			<tr>
+				<th colspan="7" class='header'>Payment due for <%= pluralize(@unpaid_lots.count, 'lot')%> purchased.</th>
+			</tr>
+			<tr class="bold">
+				<td>Date</td>
+				<td>Auction</td>
+				<td class='centre'>Lot</td>
+				<td>Item</td>
+				<td class="money">Bid</td>
+				<td class="money">Fee</td>
+				<td class="money">Total</td>
+			</tr>
+			<% @unpaid_lots.each do |lot| %>
+				<tr>
+					<td><%= short_date(lot.sale.date)%></td>
+					<td><%= lot.sale.house.name %></td>
+					<td class='centre'><%= lot.lotnumber%></td>
+					<td><%= lot.make_and_model %></td>
+					<td class='money'><%= show_money(lot.soldat)%></td>
+					<td class='money'><%= show_money(lot.bfee)%></td>
+					<td class='money'><%= show_money(lot.buyer_pays)%></td>
 				</tr>
-			</table>
-		</section>
-
-		<footer>
-			<p>Stuff about the auction</p>
-		</footer>
+			<% end %>
+			<tr class='total'>
+				<td colspan=6 class='money'>Total</td>
+				<td class='money'><%= show_money(@unpaid_cash)%></td>
+			</tr>
+		</table>
+	</div>
+	</section>
 	</body>
-	</html>
+</html>

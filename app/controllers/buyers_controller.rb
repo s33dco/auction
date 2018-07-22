@@ -27,7 +27,7 @@ class BuyersController < ApplicationController
 		respond_to do |format|
 			format.html
 		  format.pdf do
-		    render pdf: "#{@buyer.full_name}-#{Time.now.to_date}-Invoice",  header: { right: '[page] of [topage]' },
+		    render pdf: "Invoice-#{Time.now.to_date}-#{@buyer.full_name.parameterize}",  header: { right: '[page] of [topage]' },
 		           template: "buyers/invoice.pdf.erb",
 		           locals: {:buyer => @buyer}
 		  end
