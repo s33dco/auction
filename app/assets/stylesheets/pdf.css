@@ -17,9 +17,9 @@ section {
 		height: 100px;
 	}
 	.title h1 {
-		font-size: 2rem;
+		font-size: 2.3rem;
 		display: inline-block;
-		padding: 0;
+		padding: 20px;
 		margin: 0px;
 	}
 
