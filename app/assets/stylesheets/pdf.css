@@ -14,7 +14,7 @@ section {
 		padding: 5px;
 		border: 5px solid black;
 		border-radius: 10px;
-		height: 100px;
+		height: 90px;
 	}
 	.title h1 {
 		font-size: 2.3rem;
@@ -24,7 +24,7 @@ section {
 	}
 
 	.title table{
-		font-size: .75rem;
+		font-size: .8rem;
 		float :right;
 		margin: 0px;
 		width: 40%;
