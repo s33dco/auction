@@ -72,6 +72,22 @@ section {
 		font-size: 1.75rem;
 		font-weight: bold;
 	}
+
+
+
+	table.lots {
+		border: 5px dashed grey;
+		border-radius: 25px;
+		width: 100%;
+	}
+
+	.lots th.header {
+			font-size: 1.5rem;
+			font-weight: bold;
+			text-align: center;
+	}
+
+
 /* title section end */
 
 
@@ -90,11 +106,7 @@ table.lots td {
 	padding: 20px 0;
 }
 
-.lots th.header {
-		font-size: 2rem;
-		font-weight: bold;
-		text-align: center;
-}
+
 
 
 .details p {
@@ -116,11 +128,6 @@ h3.title {
 
 
 
-table.lots {
-	border: 5px dashed grey;
-	border-radius: 50px;
-	margin: 15rem 0;
-}
 
 
 
