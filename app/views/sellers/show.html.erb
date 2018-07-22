@@ -1,9 +1,8 @@
 <article>
 	<header>
-		<h1><%= @seller.first_and_last_name %></h1>
-		<% if @unpaid_lots || @unsold_lots %>
-			<h3>(<%= link_to 'Statement', seller_path(@seller, :format => :pdf) %>)</h3>
-		<% end %>
+		<h1><%= @seller.first_and_last_name %>
+		<% if @unpaid_lots|| @unsold_lots%> (<%= link_to 'Statement', seller_path(@seller, :format => :pdf) %>)
+		<% end %></h1>
 	</header>
 	<div class="details">
 	<%= render "client_contact" %>
