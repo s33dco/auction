@@ -19,7 +19,7 @@ section {
 		border-radius: 50px;
 	}
 	.title h1 {
-		font-size: 8rem;
+		font-size: 4rem;
 		display: inline-block;
 		padding-top: 0;
 		margin: 0px;
@@ -40,17 +40,17 @@ section {
 	}
 
 	section.specifics h3 {
-		font-size: 4rem;
+		font-size: 2rem;
 		margin: 20px 0;
 	}
 
 	section.specifics p {
-		font-size: 5rem;
+		font-size: 3rem;
 		margin: 10px 0;
 	}
 
 	section.specifics p.cash {
-		font-size: 4rem;
+		font-size: 2rem;
 		font-weight: bold;
 	}
 /* title section end */
@@ -88,14 +88,14 @@ table.lots td {
 }
 
 .lots th.header {
-		font-size: 4rem;
+		font-size: 2rem;
 		font-weight: bold;
 		text-align: center;
 }
 
 
 .details p {
-	font-size: 4rem;
+	font-size: 2rem;
 	margin: 5px 0;
 	padding : 15px 0;
 	text-align: right;
@@ -104,7 +104,7 @@ table.lots td {
 
 
 h3.title {
-	font-size: 9rem;
+	font-size: 3rem;
 	margin: 15px 0 0;
 	padding : 15px 0 0;
 	text-align: left;
@@ -124,6 +124,6 @@ table.lots {
 
 
 table {
-	font-size: 6.5rem;
+	font-size: 2rem;
 	width: 100%;
 }
