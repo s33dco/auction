@@ -14,7 +14,7 @@ section {
 		padding: 5px;
 		border: 5px solid black;
 		border-radius: 10px;
-		height: 90px;
+		height: 100px;
 	}
 	.title h1 {
 		font-size: 2.3rem;
@@ -27,12 +27,30 @@ section {
 		font-size: 1rem;
 		float :right;
 		margin: 0px;
-		width: 40%;
+		width: 35%;
 	}
 
 	table.summary td {
 		padding : 5px;
 	}
+
+		td.money {
+			text-align: right;
+		}
+
+		tr.bold {
+			font-weight: bold;
+		}
+
+		tr.total {
+			font-weight: bold;
+			margin:	100px 0;
+			padding: 100px 0;
+		}
+
+		td.centre {
+			text-align: center;
+		}
 /*
 	section.specifics {
 		text-align: center;
@@ -56,23 +74,7 @@ section {
 
 
 /* general table formatting */
-/*	td.money {
-		text-align: right;
-	}
 
-	tr.bold {
-		font-weight: bold;
-	}
-
-	tr.total {
-		font-weight: bold;
-		margin:	100px 0;
-		padding: 100px 0;
-	}
-
-	td.centre {
-		text-align: center;
-	}*/
 /* general table formatting */
 
 
