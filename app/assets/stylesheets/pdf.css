@@ -25,6 +25,7 @@ section {
 	}
 
 	.title table{
+		font-size: 1rem;
 		float :right;
 		margin: 0px;
 		width: 35%;
