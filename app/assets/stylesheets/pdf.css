@@ -25,10 +25,10 @@ section {
 	}
 
 	.title table{
-		font-size: 1.25rem;
+		font-size: 1rem;
 		float :right;
 		margin: 0px;
-		width: 35%;
+		width: 40%;
 	}
 
 	table.summary td {
