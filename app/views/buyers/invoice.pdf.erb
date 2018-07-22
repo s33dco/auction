@@ -17,11 +17,11 @@
 
 <section class='specifics'>
 		<div class="billed">
-			<h3>Billed to</h3>
-			<h4><%= @buyer.full_name %>, <%= @buyer.email if @buyer.email %>, <%= @buyer.phone if @buyer.phone %></h5>
+			<h3>billed to : <%= @buyer.full_name %>,  <%= @buyer.email if @buyer.email %>,  <%= @buyer.phone if @buyer.phone %>.</h3>
 			<% if @default %>
-				<h3>With thanks</h3>
-				<h4><%= @default.name%></h4>
+				<h3>with thanks : <%= @default.name%>.</h3>
+				<p><%= @default.address1 if @default.address1 %>, <%= @default.address2 if @default.address2 %>, <%= @default.address3 if @default.address3 %>, <%= @default.postcode if @default.postcode %>, <%= @default.email if @default.email %>, <%= @default.phone if @default.phone %>.</p>
+				<p class='cash'>Cash on collection.</p>
 			<%end%>
 		</div>
 	</section>
