@@ -7,19 +7,18 @@ body {
 section {
 	clear : both;
 	display: block;
-	margin: 5rem 0;
 }
 
 
 /* title section*/
 	section.title{
-		padding: 75px;
-		border: 10px solid black;
+		padding: 5px;
+		border: 5px solid black;
 		padding: 100px 50px;
-		border-radius: 50px;
+		border-radius: 25px;
 	}
 	.title h1 {
-		font-size: 4rem;
+		font-size: 2rem;
 		display: inline-block;
 		padding-top: 0;
 		margin: 0px;
