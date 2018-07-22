@@ -53,6 +53,15 @@ class Lot < ApplicationRecord
 		end
 	end
 
+	def self.average_bid
+		if self.count == 0 
+			0
+		else
+			total_sales / self.count
+		end
+	end
+
+
 	def sale_date
 		sale.date
 	end

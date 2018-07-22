@@ -4,7 +4,6 @@
 	</header>
 	<div class="details">
 		<%= render "client_contact" %>
-
 		<%if auctioneer_signed_in?%>
 			<%= render 'buyer_info' %>
 		<% end %>
@@ -31,7 +30,7 @@
 
 	<% unless @unpaid_lots.empty? %>
 		<div class="accounts">
-			<h3>Account Payable.</h3>
+			<h3>Account Payable. (<%= link_to 'Create Invoice', buyer_path(@buyer, :format => :pdf) %>)</h3>
 			<table>
 				<tr>
 					<td></td>
@@ -55,6 +54,7 @@
 							<td><%= link_to 'edit', edit_lot_path(lot)%></td>
 						<% end %>
 					</tr>
+
 				<% end %>
 				<tr>
 					<td colspan=6 class='right'>Payment due</td>

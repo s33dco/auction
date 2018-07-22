@@ -1,0 +1,51 @@
+body {
+	width: 90%;
+	margin:	1em auto;
+	padding-top: 2em;
+}
+
+section {
+	clear : both;
+	display: block;
+
+}
+
+.title h1 {
+	font-size: 25rem;
+	display: inline-block;
+}
+
+div.billed {
+	float :left;
+	font-size: 9rem;
+	text-align: left;
+}
+div.details {
+	float :right;
+	font-size: 7rem;
+	text-align: right;
+}
+
+.details h1 {
+	font-size: 7rem;
+}
+
+.accounts h1 {
+	font-size: 15rem;
+}
+
+table {
+	font-size: 7rem;
+	width: 100%;
+}
+td {
+	padding: .75em;
+}
+
+td.money {
+	text-align: right;
+}
+
+tr.bold {
+	font-weight: bold;
+}

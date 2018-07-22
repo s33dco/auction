@@ -23,6 +23,16 @@ class BuyersController < ApplicationController
 		@total_bids = @buyer.bids.count
 		@total_winning_bids = @winning_lots.count
 		@since = @buyer.eldest
+
+		respond_to do |format|
+			format.html
+		  format.pdf do
+		    render pdf: "#{@buyer.full_name}-#{Time.now.to_date}-Invoice",  header: { right: '[page] of [topage]' },
+		           template: "buyers/invoice.pdf.erb",
+		           locals: {:buyer => @buyer}
+		  end
+		end
+
 	end
 
 	def new
