@@ -76,8 +76,6 @@ section {
 
 
 	table.lots {
-		border: 5px dashed grey;
-		border-radius: 25px;
 		width: 100%;
 		margin: 20px 0;
 	}
