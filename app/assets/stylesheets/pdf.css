@@ -79,12 +79,18 @@ section {
 		border: 5px dashed grey;
 		border-radius: 25px;
 		width: 100%;
+		margin: 20px 0;
 	}
 
 	.lots th.header {
 			font-size: 1.5rem;
 			font-weight: bold;
 			text-align: center;
+			margin-bottom: 10px;
+	}
+
+	.lots tr {
+		margin: 10px 0 ;
 	}
 
 
