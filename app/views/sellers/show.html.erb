@@ -1,7 +1,7 @@
 <article>
 	<header>
 		<h1><%= @seller.first_and_last_name %>
-		<% if @unpaid_lots %> (<%= link_to 'Statement', seller_path(@seller, :format => :pdf) %>)
+		<% unless @unpaid_lots.empty?%> (<%= link_to 'Statement', seller_path(@seller, :format => :pdf) %>)
 		<% end %></h1>
 	</header>
 	<div class="details">
