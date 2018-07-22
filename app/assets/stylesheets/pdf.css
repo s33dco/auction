@@ -14,11 +14,12 @@ section {
 		padding: 5px;
 		border: 5px solid black;
 		border-radius: 10px;
+		height: 100px;
 	}
 	.title h1 {
 		font-size: 2rem;
 		display: inline-block;
-		padding-top: 0;
+		padding: 0;
 		margin: 0px;
 	}
 
