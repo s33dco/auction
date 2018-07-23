@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
   resources :bids
   resources :buyers
-  resources :lots
   resources :houses
   resources :sellers
   resources :categories
@@ -24,6 +23,13 @@ Rails.application.routes.draw do
     member do
       post :deactivate
       post :activate
+    end
+  end
+
+  resources :lots do
+    member do
+      delete :delete_pictures
+      delete :delete_image
     end
   end
 end

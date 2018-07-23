@@ -31,23 +31,36 @@
 			</li>
 			<li>
 				<% if f.object.image.attached? %>
-					<%= image_tag f.object.image.variant(resize: "100x")%>
+					<div class="current-image">
+						<label>Current Image</label>
+						<%= image_tag f.object.image.variant(resize: "100x")%>
+						 	<%= link_to 'remove', delete_image_lot_path(f.object.id),
+											              method: :delete,
+											              data: { confirm: 'Are you sure?' } %>
+          </div>
 					<label>Change Image</label>
 					<%=f.file_field :image%>
 				<% else %>
-					<label>Choose Image</label>
+					<label>Main Image</label>
 					<%=f.file_field :image%>
 				<% end %>
 			</li>
 			<li>
 				<% if f.object.pictures.attached? %>
+				<label>Current Images</label>
+				 	<%= link_to 'remove all', delete_pictures_lot_path(f.object.id), 
+											 	method: :delete, 
+											 	data: { confirm: 'Are you sure?' } %><br>
 					<% f.object.pictures.each do |picture | %>
-						<%= image_tag picture.variant(resize: "100x")%>
+						<div class="current-image">
+							<%= image_tag picture.variant(resize: "100x")%>
+					<!-- to do remove attachment individually -->
+	          </div>
 					<% end %>
-					<label>Change Images</label>
+					<label>Add More Images</label>
 					<%=f.file_field :pictures, multiple: true%>
 				<% else %>
-					<label>Alternative Images</label>
+					<label>Add Alternative Images</label>
 					<%=f.file_field :pictures, multiple: true%>
 				<% end %>
 			</li>

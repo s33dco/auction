@@ -53,6 +53,18 @@ class LotsController < ApplicationController
     redirect_to sales_path, alert: "Lot successfully deleted!"
 	end
 
+	def delete_image
+		@lot = Lot.find(params[:id])
+		@lot.image.purge
+		redirect_to edit_sale_url(@lot.sale)
+	end
+
+	def delete_pictures
+		@lot = Lot.find(params[:id])
+		@lot.pictures.purge
+		redirect_to edit_sale_url(@lot.sale)
+	end
+
 	private
 
 	def items

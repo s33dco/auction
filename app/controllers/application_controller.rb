@@ -1,22 +1,22 @@
 class ApplicationController < ActionController::Base
 	
-	rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+	# rescue_from ActiveRecord::RecordNotFound, :with => :render_404
 
 	before_action	:set_house
-	before_action :set_active_sale
+	# before_action :set_active_sale
 
-	def render_404
-	  redirect_to root_url, alert: "Can't find that for you!"
-	end
+	# def render_404
+	#   redirect_to root_url, alert: "Can't find that for you!"
+	# end
 
 
 	def set_house
 		@default = House.home.first
 	end
 
-	def set_active_sale
-		@sale = Sale.live
-	end
+	# def set_active_sale
+	# 	@sale = Sale.live
+	# end
 
 	def nice_date(t)
 	  t.strftime("#{t.day.ordinalize} %B %Y") 
