@@ -30,7 +30,6 @@ class SalesController < ApplicationController
 
 		def edit
 			@sale = Sale.find(params[:id])
-			@lots = @sale.lots.by_lot_number
 		end
 
 		def update

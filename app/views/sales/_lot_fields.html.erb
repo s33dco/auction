@@ -26,16 +26,30 @@
 				<%=f.number_field :reserve, step: 0.01 %>
 			</li>
 				<li>
-					<label>Description</label>
+				<label>Description</label>
 				<%=f.text_area :description%>
 			</li>
 			<li>
-				<label>Main Image</label>
-				<%=f.file_field :image%>
+				<% if f.object.image.attached? %>
+					<%= image_tag f.object.image.variant(resize: "100x")%>
+					<label>Change Image</label>
+					<%=f.file_field :image%>
+				<% else %>
+					<label>Choose Image</label>
+					<%=f.file_field :image%>
+				<% end %>
 			</li>
 			<li>
-				<label>Alternative Images</label>
-				<%=f.file_field :pictures, multiple: true%>
+				<% if f.object.pictures.attached? %>
+					<% f.object.pictures.each do |picture | %>
+						<%= image_tag picture.variant(resize: "100x")%>
+					<% end %>
+					<label>Change Images</label>
+					<%=f.file_field :pictures, multiple: true%>
+				<% else %>
+					<label>Alternative Images</label>
+					<%=f.file_field :pictures, multiple: true%>
+				<% end %>
 			</li>
 			<li>
 				<%= link_to_remove_association "delete lot", f %>

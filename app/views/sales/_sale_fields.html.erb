@@ -20,7 +20,7 @@
 			</li>
 		</ul>
 		<%=f.fields_for :lots do | lot | %>
-			<%= render 'lot_fields', collection:@lots, f: lot %>
+			<%= render 'lot_fields', f: lot %>
 		<% end %>
 		<div class="links">
 		  <%= link_to_add_association 'add lot', f, :lots %>
