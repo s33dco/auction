@@ -3,7 +3,7 @@
 		<%= image_tag lot.image.variant(resize: "400x") if lot.image.attached? %>
 	</div>
 	<div class="specifics">
-		<h4><%=lot.description%></h4>
+		<h4><%=simple_format(lot.description)%></h4>
 	</div>
 	<% if lot.pictures.attached? %>
 		<div class="pictures">
