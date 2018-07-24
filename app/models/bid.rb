@@ -4,7 +4,7 @@ class Bid < ApplicationRecord
   belongs_to :sale
 
   validates :buyer_id, :lot_id, :bidvalue, presence: true
-  validate :bid_enough
+  # validate :bid_enough
 
 
   scope :desc_order, ->{order(bidvalue: :desc)}
