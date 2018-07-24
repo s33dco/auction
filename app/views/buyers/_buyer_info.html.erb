@@ -12,7 +12,7 @@
 			<% end %>
 		<% end %>
 		<% if @buyer.last_sign_in_at%>
-			<li><%= time_ago_in_words(@buyer.last_sign_in_at) %> ago.</li>
+			<li>last log in <%= time_ago_in_words(@buyer.last_sign_in_at) %> ago.</li>
 		<% end %>
 	</ul>
 <% end %>
