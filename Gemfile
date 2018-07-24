@@ -7,7 +7,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.0'
 
 # amazon s3
-gem 'aws-sdk'
+gem "aws-sdk-s3", require: false
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
