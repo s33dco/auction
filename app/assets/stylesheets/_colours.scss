@@ -1,0 +1,15 @@
+$primary-background-colour: #F4F4F4;
+$secondary-background-colour: #237CBE;
+$primary-text-colour: #444;
+$secondary-text-colour: #777;
+$primary-link-colour: #2E6AA0;
+$secondary-link-colour: #ababab;
+$errors-background-colour: #FFC;
+$errors-text-colour: #DC3D3D;
+$subdued-colour: darken($primary-background-colour, 15%);
+$flash-notice-colour: #b3e6b3;
+$flash-alert-colour:  #b30000;
+$accent-colour: #FAFBFF;
+$fieldset-colour: lighten($secondary-background-colour, 50%);
+$subfieldset-colour: lighten($fieldset-colour, 10%);
+$table-colour: lighten($secondary-background-colour, 75%);

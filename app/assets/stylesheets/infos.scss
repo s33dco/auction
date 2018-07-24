@@ -1,22 +1,23 @@
-@import "colors";
+@import "colours";
 
 
 /* FLASHES */
 
 .flash {
-  color: $primary-text-color;
+  color: $primary-text-colour;
   border-radius: 4px;
   padding: 1vh 0;
   text-align: center;
   text-transform: uppercase;
   box-shadow: #ffc 0 0 4px;
+  margin: 1vh 0;
 
   &.notice {
-    background-color: $flash-notice-color;
+    background-color: $flash-notice-colour;
   }
 
   &.alert {
-    background-color: $flash-alert-color;
+    background-color: $flash-alert-colour;
   }
 }
 
@@ -25,14 +26,14 @@
 div.errors {
   margin: 1vh 0;
   padding: 2vh 2vw;
-  background: $errors-background-color;
+  background: $errors-background-colour;
 
   ul {
     list-style: none;
   }
 
   h2 {
-    color: $errors-text-color;
+    color: $errors-text-colour;
     font-size: 1.25em;
   }
 

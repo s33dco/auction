@@ -1,11 +1,18 @@
+@import "colours";
+
 /* for full size screens */
 /* the whole viewport */
+html {
+background-color: $primary-background-colour;	
+}
+
 
 div.wrapper {
 display: flex;
 flex-direction: column;
 min-height: 100vh;
 margin : 2vh 2vw;
+
 }
 
 /* 3 high level parts of the page */
@@ -27,10 +34,11 @@ nav.site li {
 
 main.page{
 	flex-grow: 1;
+	width : 96vw;
 }
 
 footer.footer{
-margin-bottom: 2vh;
+margin-bottom: 5vh;
 }
 
 /* within main.content */
@@ -38,16 +46,15 @@ margin-bottom: 2vh;
 section {
 	display: flex;
 	flex-direction: row;
-	width: 94vw;
 }
 
 article {
-	width: 80%;
-	margin-right: 2vw;
+	width: 87vw;
+	padding: 2vh 2vw;
 }
 
 aside {
-	width: 18%;
+	width: 15vw;
 }
 
 nav.pagination{

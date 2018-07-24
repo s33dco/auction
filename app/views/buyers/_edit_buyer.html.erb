@@ -24,9 +24,24 @@
 			<label>Commision</label>
 			<%= f.number_field :commrate, step: 0.01  %>
 		</li>
-		<li>
-			<label>Select the auctions buyer can bid in</label>
-			<%= f.collection_check_boxes(:house_ids, House.all, :id, :code_and_name) %>
+		<li class='boxes'>
+			<label class='block'>Select auctions available to buyer.</label>
+			<div class="checkbox-list">
+				<%= f.collection_check_boxes(:house_ids, House.all, :id, :code_and_name) do |b| %>
+				  <div class="row">
+				    <%= b.label(class: "box-list") do %>
+				    <div class="label">
+				      <%= b.object.name %>
+				      <div class="box">
+				        <%= b.check_box(class: "box-list") %>
+				      </div>
+				      
+				    </div>
+
+				    <% end %>
+				  </div>
+				<% end %>
+			</div>
 		</li>
 	</ul>
 </fieldset>

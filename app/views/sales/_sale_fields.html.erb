@@ -1,6 +1,6 @@
 <%= render "shared/errors", object: @sale %>
 <%= form_with(model:@sale, local:true, html: {class: "cms"}) do |f| %>
-	<fieldset>
+	<fieldset class='main'>
 		<ul>
 			<li>
 				<label>House</label>
@@ -11,11 +11,11 @@
 				<%= f.date_select :date, { order: [ :day, :month, :year]} %>
 			</li>
 			<li>
-				<label>Notch (£)</label>
+				<label class="nextto">Notch (£)</label>
 				<%=f.number_field :notch , step: 0.01 %>
 			</li>
 			<li>
-				<label>Minimum Transaction fee (£)</label>
+				<label class="nextto">Min. Transaction fee (£)</label>
 				<%=f.number_field :minfee , step: 0.01 %>
 			</li>
 		</ul>

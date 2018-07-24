@@ -1,45 +1,46 @@
 <div class="nested-fields">
-	<fieldset>
+	<fieldset class='sub'>
 		<ul>
 			<li>
-				<label>Lot Number</label>
+				<label class='next'>Lot Number</label>
 				<%=f.number_field :lotnumber, step: 0.01 %>
 			</li>
 			<li>
-				<label>Category</label>
+				<label class='next'>Category</label>
 				<%= f.collection_select(:category_id, Category.alpha, :id , :title, prompt: "Choose Category" ) %>
 			</li>
 			<li>
-				<label>Seller</label>
+				<label class='next'>Seller</label>
 				<%= f.collection_select(:seller_id, Seller.by_code, :id , :code_and_name, prompt: "Choose Seller" ) %>
 			</li>
 			<li>
-				<label>Manufacturer</label>
+				<label class='next'>Manufacturer</label>
 				<%=f.text_field :manufacturer%>
 			</li>
 			<li>
-				<label>Model</label>
+				<label class='next'>Model</label>
 				<%=f.text_field :model%>
 			</li>
 			<li>
-				<label>Reserve</label>
+				<label class='next'>Reserve</label>
 				<%=f.number_field :reserve, step: 0.01 %>
 			</li>
 				<li>
-				<label>Description</label>
-				<%=f.text_area :description%>
+				<label class='next'>Description</label>
+				<%=f.text_area :description , rows: 10 %>
 			</li>
-			<li>
+			<li class='image'>
 				<% if f.object.image.attached? %>
-					<div class="current-image">
-						<label>Current Image</label>
-						<%= image_tag f.object.image.variant(resize: "100x")%>
-						 	<%= link_to 'remove', delete_image_lot_path(f.object.id),
-											              method: :delete,
-											              data: { confirm: 'Are you sure?' } %>
-          </div>
-					<label>Change Image</label>
-					<%=f.file_field :image%>
+						<label>Main Image</label>
+						<p><%= link_to 'remove', delete_image_lot_path(f.object.id),
+																				              method: :delete,
+																				              data: { confirm: 'Are you sure?' } %></p>
+						<div class="image-block">
+							<div class='block-image'>
+								<%= image_tag f.object.image.variant(resize: "400x")%>
+								<label>Change Image</label><%=f.file_field :image%>
+							</div>
+						</div>
 				<% else %>
 					<label>Main Image</label>
 					<%=f.file_field :image%>
@@ -47,20 +48,23 @@
 			</li>
 			<li>
 				<% if f.object.pictures.attached? %>
-				<label>Current Images</label>
-				 	<%= link_to 'remove all', delete_pictures_lot_path(f.object.id), 
+					<label>Additional Images</label>
+				 		<p><%= link_to 'remove all', delete_pictures_lot_path(f.object.id), 
 											 	method: :delete, 
-											 	data: { confirm: 'Are you sure?' } %><br>
-					<% f.object.pictures.each do |picture | %>
-						<div class="current-image">
-							<%= image_tag picture.variant(resize: "100x")%>
-					<!-- to do remove attachment individually -->
-	          </div>
-					<% end %>
+											 	data: { confirm: 'Are you sure?' } %></p>
+						<div class="picture-gallery">
+							<% f.object.pictures.each do |picture | %>
+								<div class="lot-picture">
+									<%= image_tag picture.variant(resize: "150x")%>
+							<!-- to do remove attachment individually -->
+								</div>
+						
+							<% end %>
+						</div>
 					<label>Add More Images</label>
 					<%=f.file_field :pictures, multiple: true%>
 				<% else %>
-					<label>Add Alternative Images</label>
+					<label>Additional Images</label>
 					<%=f.file_field :pictures, multiple: true%>
 				<% end %>
 			</li>

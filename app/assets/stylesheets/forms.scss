@@ -1,0 +1,140 @@
+@import "colours";
+
+/* main app forms */
+
+
+fieldset{
+	border : 1px solid $fieldset-colour;
+	border-radius:5px;
+	margin : 4vh auto;
+	padding : 2vh 0;
+	width:	90%;
+	background-color: $fieldset-colour;
+}
+
+fieldset.sub{
+	border : 1px solid $fieldset-colour;
+	border-radius: 5px;
+	background-color: $subfieldset-colour;
+}
+
+fieldset.lot-search{
+	margin: 0;
+	background-color: $primary-background-colour;
+}
+fieldset.lot-search table {
+	width: 100%;
+}
+
+
+fieldset.lot-edit{
+	width:	100%;
+}
+fieldset.lot-edit label {
+	display: inline-block;
+	vertical-align: text-top;
+	width: 25%;
+}
+
+
+a.add_fields {
+	margin: 1vh 0 1vh 10%;
+}
+
+fieldset ul	{
+	margin:	0 10%;
+}
+
+fieldset.sub ul	{
+	margin: 1vh 5%;
+}
+
+fieldset li {
+	margin : 1vh 0;
+	padding : 0.5vh 0;
+}
+
+label	{
+	display: block;
+	font-weight: bold;
+	margin : 1vh 0;
+	vertical-align: top;
+}
+
+fieldset.sub label.next {
+	display: inline-block;
+	width: 25%;
+}
+
+
+
+/*checkboxes for buyers*/
+
+li.boxes label {
+	width: 100%;
+}
+
+div.row {
+	width: 100%;
+	margin:	0.5vh 0;
+}
+
+div.row label{
+	font-weight: normal;
+}
+
+div.box {
+	display: inline;
+	padding: 5px;
+}
+
+input[type=text],
+input[type=tel],
+input[type=email],
+input[type=password],
+textarea {
+	width: 65%;
+	vertical-align: center;
+}
+
+input[type=submit]{
+	margin:	0 0 3vh 5%;
+}
+
+div.picture-gallery {
+	box-sizing: border-box;
+	margin: 2vh	 0;
+	width: 65%;
+	padding :0;
+	display: inline-block;
+}
+
+div.image-block {
+	margin: 2vh	 0;
+	padding: 0;
+}
+
+div.block-image img{
+	width : 100%;
+	margin-bottom: 2vh;
+/*	display: block;*/
+
+}
+
+div.picture-gallery {
+	box-sizing: border-box;
+	margin: 2vh	 0;
+	width: 100%;
+	padding :0;
+}
+
+div.lot-picture{
+	box-sizing: border-box;
+	width:	24%;
+	display: inline-block;
+}
+div.lot-picture img {
+	width :90%;
+	margin:5%;
+}
+
