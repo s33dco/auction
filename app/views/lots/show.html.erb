@@ -17,8 +17,10 @@
 							<h3>Reserve not met</h3>
 						<% end %>
 					<% else %>
-						<% if @lot.sale.active? %>
-							<%= render 'lots/bid_field'%>
+						<% if buyer_signed_in? %>
+							<% if @lot.sale.active? %>
+								<%= render 'lots/bid_field'%>
+							<% end %>
 						<% end %>
 					<% end %>
 
