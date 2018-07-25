@@ -18,13 +18,19 @@ fieldset.sub{
 	background-color: $subfieldset-colour;
 }
 
+div.lot-search{
+	width: 90%;
+	margin:	1vh auto;
+}
+
 fieldset.lot-search{
 	margin: 0;
+	padding: 0;
 	background-color: $primary-background-colour;
 }
 
 fieldset.lot-search td {
-	padding: 0.25vh 0 ;
+	padding: 0.25vh 1vw ;
 	}
 fieldset.lot-search input,
 fieldset.lot-search select{

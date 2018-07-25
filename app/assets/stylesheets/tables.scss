@@ -1,6 +1,8 @@
 @import "colours";
 
-
+table {
+	margin: 1vh 0;
+}
 
 tr {
 	padding: 1vh 0;
@@ -11,8 +13,8 @@ tr.highlight {
 }
 
 td {
-	margin: 0.5vh 1vw;
-	padding :0.5vh 1vw;
+	margin: 0.5vh 0.5vw;
+	padding :1.5vh 1vw;
 }
 
 td.money {
@@ -30,3 +32,18 @@ th.left {
 .current-bidding-info {
 	display: none;
 }
+
+.infos table {
+	margin: 2.5vh 0;
+}
+
+.infos table tr {
+	padding: 0.5vh 0;
+}
+
+.infos table td {
+	margin: 0.5vh 0;
+	padding: 0.5vh 0;
+}
+
+
