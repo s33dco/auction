@@ -4,25 +4,26 @@
 	</header>
 	<div class="top-box">
 		<div class="title-image">
+			<%= image_tag @lot.image if @lot.image.attached? %>
 		</div>
 		<div class="title-text">
 			<div class="item">
-				<h2><%= @lot.manufacturer %> <%= @lot.model %></h2>
+				<h2><%= @lot.model %> <%= @lot.manufacturer %></h2>
 			</div>
 			<div class="bid">
-					<% if @lot.sale.complete? %>
-						<% if @lot.selling_price >= @lot.reserve %>
-							<h3>Sold at : <%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
-						<% else %>
-							<h3>Reserve not met</h3>
-						<% end %>
+				<% if @lot.sale.complete? %>
+					<% if @lot.selling_price >= @lot.reserve %>
+						<h3>Sold at : <%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
 					<% else %>
-						<% if buyer_signed_in? %>
-							<% if @lot.sale.active? %>
-								<%= render 'lots/bid_field'%>
-							<% end %>
+						<h3>Reserve not met</h3>
+					<% end %>
+				<% else %>
+					<% if buyer_signed_in? %>
+						<% if @lot.sale.active? %>
+							<%= render 'lots/bid_field'%>
 						<% end %>
 					<% end %>
+				<% end %>
 
 				<% if current_seller %>
 					<p><%= link_to 'back to account', seller_path(current_seller)%></p>
@@ -33,7 +34,7 @@
 	<%= render 'shared/lot_item', lot: @lot%>
 	<% if current_buyer %>
 		<div class="buyer-account">
-			<p><%= link_to 'back to bidding card', buyer_bidding_path(current_buyer, @lot.sale)%></p>
+			<%= link_to 'back to bidding card', buyer_bidding_path(current_buyer, @lot.sale)%>
 		</div>
 	<% end %>
 

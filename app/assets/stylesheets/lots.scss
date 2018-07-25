@@ -1,0 +1,110 @@
+@import "colours";
+
+div.top-box{
+	display : flex;
+	flex-direction: row;
+	width: 100%;
+	margin: 2.5vh 0;
+	padding: 0;
+	border: 1px solid $fieldset-colour;
+	background-color: $fieldset-colour;
+}
+
+div.title-image {
+	width: 40%;
+	background-color: $fieldset-colour;
+}
+div.title-image img{
+	height: auto;
+	width: 95%;
+	margin: 2.5%;
+	border-radius: 2.5%;
+}
+
+div.title-text {
+	flex : 1;
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+	margin: 0;
+	padding: 0;
+}
+
+div.item  {
+	flex: 1;
+}
+
+div.item h2 {
+	margin : 5vh 2vw 0;
+	font-size: 3.75vw;
+}
+
+div.bid  {
+	flex: 1;
+}
+
+
+fieldset.bid-form{
+margin: 0;
+width: auto;
+border-radius: 2.5%;
+}
+
+
+.bid-form div.actions{
+	margin : 1vh 2vw;
+}
+
+.bid-form div.actions input[type=number]{
+	font-size: 2.75vw;
+	padding : 1vh 1vw;
+	vertical-align: center;
+
+}
+
+.bid-form div.actions input[type=submit] {
+	box-sizing: border-box;
+	font-size: 3vw;
+	margin: 0 2vw;
+	width: 4.5rem;
+}
+
+
+div.pictures {
+	display :flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+div.lot-pictures {
+	flex: 20%;
+	max-width: 20%;
+	height:	auto;
+}
+
+div.lot-pictures img{
+	vertical-align: middle;
+	width: 95%;
+	margin:	2.5%;
+	height:	auto;
+	border-radius: 2.5%;
+
+}
+
+div.specifics {
+	margin: 5vh 5vw;
+	line-height: 2;
+	font-size: 1.75em;
+}
+
+
+div.buyer-account {
+	margin: 5vh 0;
+	text-align: center;
+	font-size: 1.25em;
+}
+
+div.buyer_account a{
+	padding: 1.5vh 1.5vw;	
+}
+
