@@ -22,9 +22,20 @@ fieldset.lot-search{
 	margin: 0;
 	background-color: $primary-background-colour;
 }
-fieldset.lot-search table {
-	width: 100%;
+
+fieldset.lot-search td {
+	padding: 0.25vh 0 ;
+	}
+fieldset.lot-search input,
+fieldset.lot-search select{
+	padding: 0.25vh 0;
+	margin: 0.25vh 0;
 }
+fieldset.lot-search input[type=text],
+fieldset.lot-search input[type=number] {
+	width : 10em;
+}
+
 
 fieldset.lot-edit{
 	width:	100%;
@@ -90,9 +101,15 @@ input[type=text],
 input[type=tel],
 input[type=email],
 input[type=password],
+input[type=number],
 textarea {
-	width: 65%;
+	width: 40%;
 	vertical-align: center;
+	padding : 0.25em;
+}
+
+select {
+	padding : 0.25em;
 }
 
 input[type=submit]{
@@ -136,3 +153,49 @@ div.lot-picture img {
 	margin:5%;
 }
 
+fieldset.bid-form{
+margin: 2vh 0;
+}
+
+
+.bid-form div.actions{
+	margin : 2vh 2vw;
+}
+
+.bid-form div.actions input[type=number]{
+	font-size: 1.25em;
+	padding : 0.5em;
+	vertical-align: center;
+}
+
+.bid-form div.actions input[type=submit] {
+	font-size: 2em;
+	margin : 2vh 0;
+	width: 2em;
+	height: 2em;
+}
+
+
+fieldset.login {
+	padding : 5vh 5vw;
+}
+
+fieldset.login label{
+	display: inline-block;
+}
+
+fieldset.login input[type=email],
+fieldset.login input[type=password]{
+	margin: 2vh 0 3vh;
+	width :20em;
+}
+
+fieldset.login input[type=submit] {
+	margin: 2vh 0;
+	font-size: 1.25em;
+}
+
+div.links a {
+	margin: 2vh 0;
+	padding: 0.5vh 0;
+}

@@ -1,5 +1,5 @@
 
-<fieldset>
+<fieldset class='bid-form'>
 	<div class="current-bidding-info">
 		<h3><%= show_money(@lot.selling_price)%> (<%= pluralize(@lot.bids.count, 'bid')%>)</h3>
 		<% unless @lot.selling_price >= @lot.reserve %>

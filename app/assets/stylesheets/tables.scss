@@ -1,7 +1,9 @@
 @import "colours";
 
+
+
 tr {
-	padding: .5vh 0;
+	padding: 1vh 0;
 }
 
 tr.highlight {
@@ -9,8 +11,8 @@ tr.highlight {
 }
 
 td {
-	margin: 1vh 1vw;
-	padding :.5vh .5vw;
+	margin: 0.5vh 1vw;
+	padding :0.5vh 1vw;
 }
 
 td.money {

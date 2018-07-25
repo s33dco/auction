@@ -3,12 +3,14 @@
 		<%= image_tag lot.image.variant(resize: "400x") if lot.image.attached? %>
 	</div>
 	<div class="specifics">
-		<h4><%=simple_format(lot.description)%></h4>
+		<h3><%=simple_format(lot.description)%></h3>
 	</div>
 	<% if lot.pictures.attached? %>
 		<div class="pictures">
 			<% lot.pictures.each do |picture| %>
-				<%= image_tag picture.variant(resize: "200x")  %>
+				<div class="lot-pictures">
+					<%= image_tag picture.variant(resize: "200x")  %>
+				</div>
 			<% end %>
 		</div>
 	<% end %>

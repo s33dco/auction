@@ -7,7 +7,7 @@
 		</div>
 		<div class="title-text">
 			<div class="item">
-				<h1><%= @lot.manufacturer %> <%= @lot.model %></h1>
+				<h2><%= @lot.manufacturer %> <%= @lot.model %></h2>
 			</div>
 			<div class="bid">
 					<% if @lot.sale.complete? %>
@@ -21,9 +21,7 @@
 							<%= render 'lots/bid_field'%>
 						<% end %>
 					<% end %>
-				<% if current_buyer %>
-					<p><%= link_to 'back to bidding card', buyer_bidding_path(current_buyer, @lot.sale)%></p>
-				<% end %>
+
 				<% if current_seller %>
 					<p><%= link_to 'back to account', seller_path(current_seller)%></p>
 				<% end %>
@@ -31,4 +29,10 @@
 		</div>
 	</div>
 	<%= render 'shared/lot_item', lot: @lot%>
+	<% if current_buyer %>
+		<div class="buyer-account">
+			<p><%= link_to 'back to bidding card', buyer_bidding_path(current_buyer, @lot.sale)%></p>
+		</div>
+	<% end %>
+
 </article>

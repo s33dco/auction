@@ -1,5 +1,5 @@
 <%unless @since.nil? %>
-	<ul>
+	<ul class='facts'>
 		<li>Bidding for <%= time_ago_in_words(@since)%>.</li>
 		<% unless @winning_lots.empty? %>
 			<li><%= @total_bids %> bids made.</li>

@@ -1,5 +1,5 @@
 <% unless @since.nil? %>
-		<ul>
+		<ul class='facts'>
 			<li>Selling for <%= time_ago_in_words(@since)%>.</li>
 			<li>Sold <%= @total_lots_sold_by_seller %>  of <%= pluralize(@seller.lots.count, 'lot')%>.</li>
 			<li>Payments made to date <%=show_money(@cash_made_by_seller)%></li>

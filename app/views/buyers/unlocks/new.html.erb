@@ -2,6 +2,7 @@
 	<header>
 		<h1>Resend unlock instructions</h1>
 	</header>
+	<fieldset class='login'>
 	<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
 	  <%= devise_error_messages! %>
 
@@ -16,6 +17,7 @@
 	<% end %>
 
 	<%= render "buyers/shared/links" %>
+</fieldset>
 </article>
 
 
