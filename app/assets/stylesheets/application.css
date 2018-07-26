@@ -16,6 +16,7 @@
  *= require layout
  *= require forms
  *= require tables
+ *= require swipebox
  *= require lots
  *= require typography
  */

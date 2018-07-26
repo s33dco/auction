@@ -7,7 +7,9 @@
 		<div class="pictures">
 			<% lot.pictures.each do |picture| %>
 				<div class="lot-pictures">
-					<%= image_tag picture %>
+					<%= link_to image_path(url_for(picture)),class:'swipebox' do %>
+						<%= image_tag picture %>
+					<% end %>
 				</div>
 			<% end %>
 		</div>
