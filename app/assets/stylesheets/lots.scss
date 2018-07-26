@@ -8,11 +8,11 @@ div.top-box{
 	padding: 0;
 	border: 1px solid $fieldset-colour;
 	background-color: $fieldset-colour;
+	border-radius: 2.5%;
 }
 
 div.title-image {
-	width: 40%;
-	background-color: $fieldset-colour;
+	width: 35%;
 }
 div.title-image img{
 	height: auto;
@@ -25,7 +25,7 @@ div.title-text {
 	flex : 1;
 	display: flex;
 	flex-direction: column;
-	width: 60%;
+	width: 65%;
 	margin: 0;
 	padding: 0;
 }
@@ -36,7 +36,7 @@ div.item  {
 
 div.item h2 {
 	margin : 5vh 2vw 0;
-	font-size: 3.75vw;
+	font-size: 3vw;
 }
 
 div.bid  {
@@ -56,7 +56,7 @@ border-radius: 2.5%;
 }
 
 .bid-form div.actions input[type=number]{
-	font-size: 2.75vw;
+	font-size: 2.25vw;
 	padding : 1vh 1vw;
 	vertical-align: center;
 
@@ -66,7 +66,7 @@ border-radius: 2.5%;
 	box-sizing: border-box;
 	font-size: 3vw;
 	margin: 0 2vw;
-	width: 4.5rem;
+	width: 3.5rem;
 }
 
 

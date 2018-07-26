@@ -1,11 +1,11 @@
 <article>
 	<header>
-		<h1><%= nice_date(@sale.date) %> <%=@sale.house.name %> (<%= pluralize(@sale.lots.count, 'lot')%>).</h1>
-		<p>Fee charged per lot is <%= show_money(@sale.minfee)%> or <%=@buyer.commrate%>%, whichever is higher.</p>
+		<h1><%= nice_date(@sale.date) %> <%=@sale.house.name %>.</h1>
+		<p>(Fee charged per lot is <%= show_money(@sale.minfee)%> or <%=@buyer.commrate%>%, whichever is higher).</p>
 	</header>
 	<%= paginate @lots %>
 	<table>
-		<tr>
+		<tr class='highlight'>
 			<td>Lot</td>
 			<td>Category</td>
 			<td>Item</td>

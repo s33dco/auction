@@ -1,42 +1,58 @@
 <article>
 	<% if @sale %>
 	
-		<header>
-			<h1>Bidding for <%=@sale.house.name%> <%=nice_date(@sale.date)%></h1>
-			<h2><%= pluralize(@sale.bids.count, 'bid') %>, <%= pluralize(@sale.bidders.uniq.count, 'bidder') %></h2>
-			<%= paginate @lots %>
-		</header>
-		<% @lots.each do | lot | %>
-			<div class="lot">
-				<h2>Lot <%=lot.lotnumber%> - <%= link_to "#{lot.make_and_model}", lot_path(lot)%></h2>
-				<% if @sale.complete? %>
-					<% if lot.reserve > lot.soldat %>
-						<h3>Reserve not met (<%= show_money(lot.reserve)%>)</h3>
-					<% else %>
-						<h3>Sold at <%=show_money(lot.soldat)%> (reserve <%= show_money(lot.reserve)%>)</h3>
-					<% end %>
-				<% else %>
-					<h3>Bidding at <%=show_money(lot.selling_price)%> (reserve <%= show_money(lot.reserve)%>)</h3>
-				<% end %>
-				<table>
-					<% lot.bids.leading_bids.each do |bid |%> 
-					<!-- lot.bids.leading_bids(10).each for top 10 bids, defaults to 5 -->
-						<tr>
-							<td><%= bid.buyer.full_name%></td>
-							<td class='money'><%= show_money(bid.bidvalue)%></td>
-							<td><%= date_time(bid.created_at)%></td>
-						</tr>
-					<% end %>
-				</table>
-			</div>
-		<% end %>
+	<header>
+		<h1><%=@sale.house.name%></h1>
+		<h2><%=nice_date(@sale.date)%>, <%= pluralize(@sale.bids.count, 'bid') %>, <%= pluralize(@sale.bidders.uniq.count, 'bidder') %></h2>
 		<%= paginate @lots %>
+	</header>
+
+	<div class="lot-summary">
+		<% @lots.each do | lot | %>
+			<div class="bid-box">
+
+				<div class="lot-image">
+					<%= image_tag lot.image if lot.image.attached? %>
+				</div>
+				<div class="lot-text">
+					<div class="lot-item">
+						<h2>Lot <%=lot.lotnumber%> - <%= link_to "#{lot.make_and_model}", lot_path(lot)%></h2>
+					</div>
+
+
+					<div class="lot-bid">
+						<% if @sale.complete? %>
+							<% if lot.reserve > lot.soldat %>
+								<h3>Reserve not met (<%= show_money(lot.reserve)%>)</h3>
+							<% else %>
+								<h3>Sold at <%=show_money(lot.soldat)%> (reserve <%= show_money(lot.reserve)%>)</h3>
+							<% end %>
+						<% else %>
+							<h3>Bidding at <%=show_money(lot.selling_price)%> (reserve <%= show_money(lot.reserve)%>)</h3>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		<table>
+			<% lot.bids.leading_bids.each do |bid |%> 
+			<!-- lot.bids.leading_bids(10).each for top 10 bids, defaults to 5 -->
+				<tr>
+					<td><%= bid.buyer.full_name%></td>
+					<td class='money'><%= show_money(bid.bidvalue)%></td>
+					<td><%= date_time(bid.created_at)%></td>
+				</tr>
+			<% end %>
+		</table>
+		<% end %>
+	</div>
 	<% else %>
 		<header>
 			<h1>There is no current active sale</h1>
 		</header>
 		<p>check reports  or bidding for previous sale details</p>
 	<% end %>
+	
+	<%= paginate @lots %>
 </article>
 
 <% content_for(:side_links) do %>

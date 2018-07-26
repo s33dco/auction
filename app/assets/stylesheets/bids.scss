@@ -1,0 +1,65 @@
+@import "colours";
+
+div.lot-summary{
+	border-radius: 2.5%;
+	border: 5px solid $fieldset-colour;
+	margin: 2.5vh 2.5vw;
+}
+
+div.bid-box{
+	display : flex;
+	flex-direction: row;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 1px solid $fieldset-colour;
+	background-color: $fieldset-colour;
+}
+
+div.lot-image {
+	width: 20%;
+}
+
+div.lot-text {
+	flex : 1;
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin: 0;
+	padding: 0;
+}
+
+div.lot-image img{
+	height: auto;
+	width: 95%;
+	margin: 2.5%;
+	border-radius: 2.5%;
+}
+
+div.lot-item  {
+	flex: 1;
+}
+
+div.lot-item h2 {
+	margin : 2vh 2vw 0;
+	font-size: 2.5vw;
+}
+
+div.lot-bid  {
+	flex: 1;
+}
+
+div.lot-bid h3 {
+	flex: 1;
+	margin : 0 2vw;
+	font-size: 1.75vw;
+}
+
+.lot-summary table {
+	width : 90%;
+	margin : 0 auto;
+}
+
+.lot-summary table td {
+	font-size: 0.75rem;
+}
