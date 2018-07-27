@@ -3,11 +3,33 @@
 		<h1><%= nice_date(@sale.date) %> <%=@sale.house.name %></h1>
 	</header>
 	<% @lots.each do |lot| %>
-		<div class="lot">
-			<h2>Lot <%=lot.lotnumber%> - <%= link_to "#{lot.make_and_model}", lot_path(lot)%> - reserve : <%= show_money(lot.reserve)%></h2>
-			<!-- todo -->
-			<h5> images go here </h5>
+		<div class="lot-area">
+			<div class="sale-lot">
+				<div class="sale-image">
+					<% if lot.image.attached? %>
+						<%= image_tag(lot.image) %>
+					<% else %>
+						<h3>No Image</h3>
+					<% end %>
+				</div>
+				<div class="sale-text">
+					<h2><%=lot.lotnumber%> <%= link_to "#{lot.make_and_model}", lot_path(lot)%></h2>
+					<h3><%= show_money(lot.reserve)%> reserve</h3>
+				</div>
+			</div>
 			<p><%= simple_format(lot.description)%></p>
+
+			<% if lot.pictures.attached? %>
+			<div class="alt-images">
+				<% lot.pictures.each do |picture | %>
+				<div class="picture-wrapper">
+					<% image_tag(picture)%>
+				</div>
+				<% end %>
+			</div>
+			<% else %>
+				<h3>No additional images.</h3>
+			<% end %>
 		</div>
 	<% end %>
 </article>

@@ -21,8 +21,9 @@
 			<table>
 				<% @sales.each do |sale| %>
 					<tr>
+						<td><%=short_date(sale.date)%></td>
 						<td><%=sale.house.name %></td>
-						<td><%=nice_date(sale.date)%></td>
+						<td><%= pluralize(sale.lots.count, 'lot')%></td>
 						<td><%=link_to "bidding card", buyer_bidding_path(@buyer,sale)%></td>
 					</tr>
 				<% end %>

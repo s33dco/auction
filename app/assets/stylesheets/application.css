@@ -19,5 +19,8 @@
  *= require swipebox
  *= require lots
  *= require bids
+ *= require sales
+ *= require navigation
+ *= require mobile
  *= require typography
  */

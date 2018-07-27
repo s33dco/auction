@@ -1,5 +1,6 @@
 <% if  auctioneer_signed_in? %>
-	<nav class='admin-lnks'>
+		<%= content_for(:side_info)%>
+	<nav class='admin-links'>
 		<ul>
 			<%= content_for(:side_links)%>
 			<li>
@@ -25,6 +26,6 @@
 			</li>
 		</ul>
 	</nav>
-	<%= content_for(:side_info)%>
+
 <% end %>
 

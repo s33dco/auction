@@ -70,7 +70,7 @@ class BuyersController < ApplicationController
 	def bidding
 		@buyer = Buyer.find(params[:id])
 		@sale = Sale.find(params[:sale])
-		@lots = @sale.lots.page(params[:page]).per(20)
+		@lots = @sale.lots.by_lot_number.page(params[:page]).per(20)
 	end
 
 	private
