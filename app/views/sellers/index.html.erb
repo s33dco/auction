@@ -7,10 +7,13 @@
 	<table>
 		<% @sellers.each do |seller| %>
 			<tr>
-				<td>(<%=seller.code%>)</td>
+				<td class='hide'>(<%=seller.code%>)</td>
 				<td><%=link_to "#{seller.full_name}", seller_path(seller) %></td>
-				<td><%=seller.email%></td>
-				<td><%=seller.phone%></td>
+				<td class='hide'><%=seller.email%></td>
+				<td class='hide'><%=seller.phone%></td>
+				<td>
+					<% if seller.last_sign_in_at%>last seen <%= time_ago_in_words(seller.last_sign_in_at) %> ago.<% end %>
+				</td>
 				<td><%= link_to 'edit', edit_seller_path(seller)%></td>
 				<td><%=link_to 'delete', seller, method: :delete, data: { confirm: 'Are you sure?' } if seller.lots.empty? %></td>
 			</tr>

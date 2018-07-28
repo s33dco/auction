@@ -6,7 +6,7 @@
 .flash {
   color: $flash-text-colour;
   border-radius: 4px;
-  padding: 1vh 0;
+  padding: 1.5vh 0;
   text-align: center;
   text-transform: uppercase;
   box-shadow: #ffc 0 0 4px;
@@ -14,6 +14,7 @@
 
   &.notice {
     background-color: $flash-notice-colour;
+    color: $primary-text-colour;
   }
 
   &.alert {

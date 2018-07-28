@@ -12,6 +12,7 @@
  *
  *= require_self
  *= require reset
+
  *= require infos
  *= require layout
  *= require forms

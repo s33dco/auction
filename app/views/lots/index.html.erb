@@ -1,11 +1,12 @@
 <article>
 	<header>
-		<h1>Search, filter and edit the <%=Lot.sold_in_auction%> auctioned lots.</h1>
+		<h1 class='desktop'>Search, filter and edit the <%=Lot.sold_in_auction%> auctioned lots.</h1>
+		<h1 class='mobile'>Turn to landscape to search and edit sold lots.</h1>
 		<%= render 'lot_search_form' %>
 	</header>
 	
 	<%if @lots.nil?%>
-		<h4>Use the filters above to search and edit lots.</h4>
+		<h4 class='desktop'>Use the filters above to search and edit lots.</h4>
 	<% else %>
 		<% if @lots.empty? %>
 			<h4>No search results, no lots fit the criteria.</h4>

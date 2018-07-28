@@ -1,3 +1,268 @@
 @import "colours";
+@media (max-width: 777px){
 
-/* less than 736px */
+/* set up basic layout */
+  body {
+  	margin :0;
+  	padding: 0;
+  	background-color: #444;
+    line-height: 1.75;
+  }	
+
+  div.wrapper {
+  	width: 100vw;
+  	margin:0;
+  	padding: 0;
+  }
+
+  section.content {
+  	display: flex;
+  	flex-direction: column-reverse;
+  	width:100%;
+  }
+
+  footer.footer {
+  	font-size: .75em;
+  	text-align: center;
+  }
+
+  main.page {
+  	width: 100vw;
+  }
+
+  article {
+  	width: 92vw;
+  	min-height: 70vh;
+  	margin: 2vh 2vw;
+  	border-radius: 5px;
+  	background-color: #fff;
+  	box-shadow: 2px 2px #444;
+  }
+
+  aside {
+  	width: 100vw;
+  }
+/* set up basic layout */
+
+/* dispense with the header */
+  header.header {
+  	display :none;
+  }
+/* dispense with the header */
+
+
+h1,h2,h3,h4{
+	text-align: center;
+  margin-bottom: 0.75em;
+}
+
+/* space round flash messaging */
+  .flash {
+      margin: 1vh 2vh;
+  }
+/* space round flash messaging */
+  
+/* start mobile menu */
+
+  .nav-links a,
+  .show-mobile-menu {
+    font-size: 1.0rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ed6e2f;
+    padding : 1em 1em;
+  }
+
+  label.show-mobile-menu{
+    font-size: 1.1rem;
+  	margin: 0;
+  	padding: 1em;
+  	background-color: #444;
+  }
+
+  .show-mobile-menu {
+    display: block;
+    text-align: center;
+    margin-top: 0.5vh;
+    padding: 0 1.5em 1.5em;
+    position: relative;
+  }
+  .header-nav {
+    background-color: #444;
+    box-sizing: border-box;
+    left: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 2.5em;
+    transition: all 0.5s ease-in-out;
+    width: 100vw;
+    z-index: 9;
+  }
+  .header-nav li {
+    display: block;
+    margin-top: 1.5em;
+  }
+  .header-nav li ~ li {
+    border: 0;
+    padding: 0;
+  }
+  .header-nav li:last-child {
+    margin-bottom: 1.5em;
+  }
+
+  .header-nav .dropdown:hover .drop-menu,
+  .header-nav .drop-trigger:after {
+    display: none;
+  }
+  .header-nav .drop-trigger {
+    padding-right: 0;
+  }
+  .mobile-menu-check:checked ~ .header-nav {
+    max-height: 1000px;
+  }
+  .mobile-menu-check:checked ~ .show-mobile-menu:after {
+    background-color: #444;
+    color: #ed6e2f;
+    content: "CLOSE";
+    left: 0;
+    position: absolute;
+    top: 1em;
+    width: 100%;
+    text-align: center;
+  }
+	 .mobile-menu-check:checked ~ nav {
+	   max-height: 1000px;
+	}
+/* end of mobile menu */
+
+
+
+
+
+
+
+
+/* tables for mobile */
+
+  td.hide {
+    display :none;
+  }
+/* tables for mobile */
+
+/* forms for mobile */
+    fieldset,
+    fieldset.login {
+      margin : 0;
+      padding : 2vh 0;
+      width:  88vw;
+    }
+
+    fieldset.sub {
+      margin : 2vh 2vw;
+      width: 84vw;
+    }
+
+    fieldset.sub ul {
+      margin: 1vh 6vw;
+      width: 72vw;
+    }
+
+    fieldset ul,
+    fieldset.login ul,
+    div.field,
+    div.actions {
+      margin: 2vh auto;
+      width: 80%;
+    }
+
+    li label{
+      font-size: 1.25rem;
+      display: block;
+      width: 80%;
+    }
+
+    fieldset li.date select {
+      display: inline-block;
+    }
+
+    fieldset select{
+      font-size: 0.95rem;
+      display: block;
+    }
+
+    fieldset + input[type=submit] {
+      margin: 5vh 0 3vh 8vw;
+      font-size: 1.1rem;
+    }
+
+    input[type=text],
+    input[type=tel],
+    input[type=email],
+    input[type=password],
+    input[type=number],
+    textarea,
+    fieldset.login input[type=email],
+    fieldset.login input[type=password]
+     {
+      font-size: 1.1rem;
+      width: 80%;
+      vertical-align: center;
+      padding : 0.5em;
+    }
+
+    div.links a.add_fields {
+      margin: 15vh 0 10vh 10vw;
+    }
+/* forms for mobile */
+
+/* start of lot index search */
+  fieldset.lot-search,
+  div.lot-search {
+    width :100%;
+  }
+
+  h1.mobile {
+    padding-bottom: 2vh;
+  }
+  .lot-search table {
+    margin : 2.5vh 0;
+  }
+
+  .lot-search table tr {
+    line-height: 2.5;
+  }
+
+  .lot-search table tr {
+    margin: 1vh 1vw;
+  }
+
+  fieldset.lot-search input {
+    float: right;
+    margin-top: 1vh;
+  }
+
+  div.side-stats,
+  h1.desktop,
+  h4.desktop {
+    display: none;
+  }
+
+  /* to force landscape and relevant message display*/
+    }
+    @media (max-width: 660px){
+      div.lot-search {
+        display : none;
+      }
+    }
+
+      @media (min-width: 660px){
+        h1.mobile {
+          display : none;
+        }
+    }
+  /* end of landscape etc*/
+/* end of lot index search */

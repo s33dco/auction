@@ -5,22 +5,24 @@
 	<%= render 'shared/errors', object: @auctioneer %>
 	<%= form_with(model:@auctioneer, local:true) do |f| %>
 	<fieldset>
-		<li>
-			<label>Name</label>
-			<%= f.text_field :name %>
-		</li>
-		<li>
-			<label>Phone</label>
-			<%=f.phone_field :phone %>
-		</li>
-		<li>
-			<label>Email</label>
-			<%= f.email_field :email %>
-		</li>
-		<li>
-			<label>Password</label>
-			<%= f.password_field :password %>
-		</li>
+		<ul>
+			<li>
+				<label>Name</label>
+				<%= f.text_field :name %>
+			</li>
+			<li>
+				<label>Phone</label>
+				<%=f.phone_field :phone %>
+			</li>
+			<li>
+				<label>Email</label>
+				<%= f.email_field :email %>
+			</li>
+			<li>
+				<label>Password</label>
+				<%= f.password_field :password %>
+			</li>
+		</ul>
 	</fieldset>
 		<%= f.submit %>
 	<% end %>

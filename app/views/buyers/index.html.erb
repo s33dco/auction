@@ -7,10 +7,13 @@
 	<table>
 		<% @buyers.each do |buyer| %>
 			<tr>
-				<td>(<%= buyer.code %>)</td>
+				<td class='hide'>(<%= buyer.code %>)</td>
 				<td><%= link_to "#{buyer.first_and_last_name}", buyer_path(buyer) %></td>
-				<td><%= buyer.email %></td>
-				<td><%= buyer.phone %></td>
+				<td>
+						<% if buyer.last_sign_in_at%>last seen <%= time_ago_in_words(buyer.last_sign_in_at) %> ago.<% end %>
+				</td>
+				<td class='hide'><%= buyer.email %></td>
+				<td class='hide'><%= buyer.phone %></td>
 				<td><%= link_to 'edit', edit_buyer_path(buyer) %></td>
 				<td><%=link_to 'delete', buyer, method: :delete, data: { confirm: 'Are you sure? All lots will be deleted!' } if buyer.bids.empty? %></td>
 			</tr>

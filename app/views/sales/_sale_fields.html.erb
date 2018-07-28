@@ -6,7 +6,7 @@
 				<label>House</label>
 				<%= f.collection_select(:house_id, House.alpha, :id , :name, prompt: "Choose House" ) %>
 			</li>
-			<li>
+			<li class='date'>
 				<label>Auction Date</label>
 				<%= f.date_select :date, { order: [ :day, :month, :year]} %>
 			</li>

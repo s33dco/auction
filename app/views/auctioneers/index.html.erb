@@ -7,8 +7,8 @@
 		<% @auctioneers.each do |auctioneer| %>
 			<tr>
 				<td><%= link_to "#{auctioneer.name}", auctioneer_path(auctioneer) %></td>
-				<td><%= auctioneer.email %></td>
-				<td><%= auctioneer.phone %></td>
+				<td class='hide'><%= auctioneer.email %></td>
+				<td class='hide'><%= auctioneer.phone %></td>
 
 				<td>
 					<% if auctioneer.last_sign_in_at%>

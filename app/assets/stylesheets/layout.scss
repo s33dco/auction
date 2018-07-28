@@ -1,5 +1,6 @@
 @import "colours";
 
+
 /* for full size screens */
 /* the whole viewport */
 html {
@@ -41,6 +42,10 @@ footer.footer{
 margin-bottom: 5vh;
 }
 
+input#mobile-menu.mobile-menu-check {
+	display :none;
+}
+
 /* within main.content */
 
 section {
@@ -74,7 +79,6 @@ ul.facts li {
 ul.facts {
 	margin: 2vh 0;
 }
-
 
 
 

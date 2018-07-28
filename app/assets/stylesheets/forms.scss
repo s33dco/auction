@@ -29,6 +29,10 @@ fieldset.lot-search{
 	background-color: $primary-background-colour;
 }
 
+fieldset.lot-search h1.mobile {
+	display : none;
+}
+
 fieldset.lot-search td {
 	padding: 0.25vh 1vw ;
 	}

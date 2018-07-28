@@ -1,7 +1,47 @@
-<% if  auctioneer_signed_in? %>
-		<%= content_for(:side_info)%>
-	<nav class='admin-links'>
-		<ul>
+<nav>
+	<input type="checkbox" id="mobile-menu" class="mobile-menu-check">
+	<label for="mobile-menu" class="show-mobile-menu">MENU</label>
+	<ul class="header-nav nav-links">
+
+	<% unless auctioneer_signed_in? %>
+		<li>
+			<%= link_to 'home', root_path%>
+		</li>
+		<li>
+			<%= link_to 'about', root_path%>
+		</li>
+	<% end %>
+
+	<% unless buyer_signed_in? || seller_signed_in? || auctioneer_signed_in? %>
+		<li>
+			<%= link_to 'buyers', new_buyer_session_path%>
+		</li>
+	<% end %>
+	<% if buyer_signed_in? %>
+
+		<li>
+			<%= link_to 'account', buyer_path(current_buyer) %>
+		</li>
+		<li>
+			<%= link_to 'log out', destroy_buyer_session_path , method: :delete %>
+		</li>
+	<% end %>
+
+	<% unless seller_signed_in? || buyer_signed_in? || auctioneer_signed_in? %>
+		<li>
+			<%= link_to 'sellers', new_seller_session_path%>
+		</li>
+	<% end %>
+
+	<% if seller_signed_in? %>
+		<li>
+			<%= link_to 'account', seller_path(current_seller) %>
+		</li>
+		<li>
+			<%= link_to 'log out', destroy_seller_session_path, method: :delete  %>
+		</li>
+	<% end %>
+		<% if  auctioneer_signed_in? %>	
 			<%= content_for(:side_links)%>
 			<li>
 				<%= link_to 'sales', filtered_sales_path(:scope) %>
@@ -25,7 +65,8 @@
 				<%=link_to 'sign out', destroy_auctioneer_session_path, method: :delete %>
 			</li>
 		</ul>
-	</nav>
+		<% end %>
+	<%= content_for(:side_info)%>
+</nav>
 
-<% end %>
 
