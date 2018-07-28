@@ -140,10 +140,88 @@ h1,h2,h3,h4{
 /* end of mobile menu */
 
 
+/* lot show page */
 
 
+div.top-box {
+  flex-direction: column;
+}
 
+div.title-image {
+  width: 100%;
+}
 
+div.item h2 {
+margin: 2vh 2vw;
+font-size: 6vw;
+}
+
+.bid-form div.actions {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bid-form div.actions input[type=number],
+.bid-form div.actions input[type=submit]{
+  margin: 2vh 21vw;
+  display: inline;
+  font-size: 6vw;
+  padding: 1vh 1vw;
+  width: 25vw;
+  line-height: 2;
+}
+.bid-form div.actions input[type=submit]{
+  width: 27vw;
+}
+
+div.title-text div.item,
+ div.title-text div.bid{
+  text-align: center;
+}
+
+div.item h2 {
+  margin : 2vh 0;
+  font-size: 6vw;
+
+}
+div.lot-pictures {
+  flex: 50%;
+  max-width: 50%;
+  height: auto;
+}
+
+div.specifics p {
+  font-size: 6vw;
+  line-height: 1.5;
+}
+
+/* lot show page */
+
+/* bidding pages */
+  div.lot-image {
+    width: 33%;
+  }
+
+  div.lot-text {
+    flex : 1;
+    display: flex;
+    flex-direction: column;
+    width: 67%;
+    margin: 0;
+    padding: 0;
+  }
+
+  div.lot-item h2 {
+    margin : 1vh 1vw;
+    font-size: 5vw;
+  }
+
+  div.lot-bid h3 {
+    flex: 1;
+    margin : 0 2vw;
+    font-size: 3.5vw;
+  }
+/* bidding pages */
 
 
 /* tables for mobile */
@@ -234,7 +312,6 @@ h1,h2,h3,h4{
       margin: 0;
       padding: 0;
     }
-
 /* forms for mobile */
 
 /* start of lot index search */

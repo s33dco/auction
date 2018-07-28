@@ -3,7 +3,7 @@
 	
 	<header>
 		<h1><%=@sale.house.name%></h1>
-		<h2><%=nice_date(@sale.date)%>, <%= pluralize(@sale.bids.count, 'bid') %>, <%= pluralize(@sale.bidders.uniq.count, 'bidder') %></h2>
+		<h2><%=short_date(@sale.date)%>, <%= pluralize(@sale.bids.count, 'bid') %>, <%= pluralize(@sale.bidders.uniq.count, 'bidder') %></h2>
 		<%= paginate @lots %>
 	</header>
 
