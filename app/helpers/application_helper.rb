@@ -38,7 +38,7 @@ module ApplicationHelper
   end
 
   def date_time(t)
-    t.strftime("(%a %d %b, %k:%m:%S )") 
+    t.strftime("%a %v, %X") 
   end
 
     def show_money(money)

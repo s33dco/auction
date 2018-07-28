@@ -4,7 +4,7 @@ class BidsController < ApplicationController
 	before_action :check_if_admin, except:[:create]
 
 	def index
-		@sales = Sale.send(sales_scope).page(params[:page]).per(20)
+		@sales = Sale.send(sales_scope).page(params[:page]).per(10)
 	end
 
 	def show

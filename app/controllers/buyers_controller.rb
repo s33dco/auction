@@ -7,7 +7,7 @@ class BuyersController < ApplicationController
 	# all other action restrict to auctioneer_signed_in?
 
 	def index
-		@buyers = Buyer.lastname_firstname.page(params[:page]).per(20)
+		@buyers = Buyer.lastname_firstname.page(params[:page]).per(10)
 	end
 
 	def show
