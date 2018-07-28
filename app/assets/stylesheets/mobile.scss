@@ -209,20 +209,44 @@ h1,h2,h3,h4{
     fieldset.login input[type=password]
      {
       font-size: 1.1rem;
-      width: 80%;
+      width: 70vw;
       vertical-align: center;
-      padding : 0.5em;
+      padding : 1vw;
+    }
+
+    div.links{
+      text-align: center;
     }
 
     div.links a.add_fields {
-      margin: 15vh 0 10vh 10vw;
+      font-size: 1.2rem
     }
+
+    div.picture-gallery {
+      box-sizing: border-box;
+      margin: 2vh 0;
+      width: 72vw;
+      padding :0;
+    }
+    div.lot-picture {
+      box-sizing: border-box;
+      width: 35vw;
+      margin: 0;
+      padding: 0;
+    }
+
 /* forms for mobile */
 
 /* start of lot index search */
   fieldset.lot-search,
   div.lot-search {
     width :100%;
+  }
+
+  fieldset.lot-search input, 
+  fieldset.lot-search select{
+    font-size: 0.7rem;
+    margin: 0;
   }
 
   h1.mobile {
@@ -243,6 +267,10 @@ h1,h2,h3,h4{
   fieldset.lot-search input {
     float: right;
     margin-top: 1vh;
+  }
+
+  fieldset.lot-edit label{
+    width : 35%;
   }
 
   div.side-stats,
