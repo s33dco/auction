@@ -44,6 +44,13 @@
   }
 
 
+  footer.footer,
+  .footer a {
+    color: #ed6e2f;
+    text-decoration: none;
+  }
+
+
 /* set up basic layout */
 
 /* dispense with the header */
@@ -124,7 +131,7 @@ p{
 
   .nav-links a,
   .show-mobile-menu {
-    font-size: 1.0rem;
+    font-size: 1.1rem;
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
