@@ -175,7 +175,7 @@ fieldset.login input[type=submit] {
 	font-size: 1.25em;
 }
 
-div.links a {
-	margin: 2vh 0;
-	padding: 0.5vh 0;
-}
+  div.login-actions div.link {
+    margin: 1.75vh 0;
+    text-align: center;
+  }
