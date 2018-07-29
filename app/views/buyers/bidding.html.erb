@@ -4,10 +4,10 @@
 		<p>(Fee charged per lot is <%= show_money(@sale.minfee)%> or <%=@buyer.commrate%>%, whichever is higher).</p>
 	</header>
 	<%= paginate @lots %>
-	<table>
+	<table class='buyer-auction-list'>
 		<tr class='highlight'>
 			<td>Lot</td>
-			<td>Category</td>
+			<td class='hide'>Cat.</td>
 			<td>Item</td>
 			<td class="money">Selling at</td>
 			<td class="money">Current Bid</td>
@@ -16,7 +16,7 @@
 		<%@lots.each do |lot| %>
 		<tr>
 			<td><%= lot.lotnumber%></td>
-			<td><%= lot.category.title%></td>
+			<td class='hide'><%= lot.category.title%></td>
 			<td><%= link_to "#{lot.make_and_model}", lot_path(lot)%></td>
 			<td class="money"><%= show_money(lot.selling_price)%></td>
 			<td class="money">

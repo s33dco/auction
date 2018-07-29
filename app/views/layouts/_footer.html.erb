@@ -4,7 +4,3 @@
 		<p><%= @default.email if @default.email if @default.email %></p>
 		<p><%= @default.phone if @default.phone if @default.phone%></p>
 <% end %>
-<% unless auctioneer_signed_in? %>
-	<%= link_to 'Admin Sign In', new_auctioneer_session_path%>
-<% end %>
-

@@ -49,8 +49,6 @@
     color: #ed6e2f;
     text-decoration: none;
   }
-
-
 /* set up basic layout */
 
 /* dispense with the header */
@@ -59,41 +57,57 @@
   }
 /* dispense with the header */
 
+/* general typography */
+  div.paragraph {
+    margin: 5vh 4vw;
+    line-height: 1.75;
+  }
 
-div.paragraph {
-  margin: 5vh 4vw;
-  line-height: 1.75;
-}
+  div.paragraph p{
+    margin-bottom: 2vh;
+    font-size: 5vw;
+  }
 
-div.paragraph p{
-  margin-bottom: 2vh;
-  font-size: 5vw;
-}
+  h1{
+  	text-align: center;
+    margin-bottom: 0.75em;
+    font-size: 6.75vw;
+  }
+  h2{
+    text-align: center;
+    margin-bottom: 0.7em;
+    font-size: 5.75vw;
+  }
+  h3{
+    text-align: center;
+    margin-bottom: 0.6em;
+    font-size: 5.5vw;
+  }
+  h4{
+    text-align: center;
+    margin-bottom: 0.6em;
+    font-size: 5.25vw;
+  }
+  p{
+    margin-bottom: 2vh;
+    font-size: 5vw;
+  }
+/* general typography */
 
-h1{
-	text-align: center;
-  margin-bottom: 0.75em;
-  font-size: 6.75vw;
-}
-h2{
-  text-align: center;
-  margin-bottom: 0.75em;
-  font-size: 5.75vw;
-}
-h3{
-  text-align: center;
-  margin-bottom: 0.75em;
-  font-size: 5.5vw;
-}
-h4{
-  text-align: center;
-  margin-bottom: 0.75em;
-  font-size: 5.25vw;
-}
-p{
-  margin-bottom: 2vh;
-  font-size: 5vw;
-}
+/* buyer bidding list */
+
+  header p {
+    font-size: 3.5vw;
+    text-align: center;
+    margin-bottom: 1vh;
+  }
+
+  table.buyer-auction-list td{
+    font-size: 4vw;
+    padding: 1.5vh 1vw;
+  }
+
+/* buyer bidding list */
 
 /* pagination*/
     nav.pagination{
@@ -224,17 +238,34 @@ p{
     text-align: center;
   }
 
-  .bid-form div.actions input[type=number],
-  .bid-form div.actions input[type=submit]{
-    margin: 2vh 21vw;
-    display: inline;
-    font-size: 6vw;
-    padding: 1vh 1vw;
-    width: 25vw;
-    line-height: 2;
+
+  div.bid-maker{
+    display :flex;
+    flex-direction: row;
   }
+
+  div.number-maker{
+    flex :1 ;
+  }
+
+  div.sender-maker {
+    flex:1;
+  }
+
+  .bid-form div.actions input[type=number]{
+    margin: 1vh 5vw 1vh 15vw;
+    font-size: 4.5vw;
+    padding: 1vh 1vw;
+    width: 20vw;
+    line-height: 1.75;
+  }
+
   .bid-form div.actions input[type=submit]{
-    width: 27vw;
+    margin: 1vh 2vw 1vh 1vw;
+    font-size: 4.85vw;
+    padding: 1vh 1vw;
+    width: 20vw;
+    line-height: 1.95;
   }
 
   div.title-text div.item,
