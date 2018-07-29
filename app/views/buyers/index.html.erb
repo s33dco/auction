@@ -15,7 +15,7 @@
 				<td class='hide'><%= buyer.email %></td>
 				<td class='hide'><%= buyer.phone %></td>
 				<td><%= link_to 'edit', edit_buyer_path(buyer) %></td>
-				<td><%=link_to 'delete', buyer, method: :delete, data: { confirm: 'Are you sure? All lots will be deleted!' } if buyer.bids.empty? %></td>
+				<td><%=link_to 'delete', buyer, method: :delete, data: { confirm: 'Are you sure? There is no way back!' } if buyer.bids.empty? %></td>
 			</tr>
 		<% end %>
 	</table>

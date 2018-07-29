@@ -15,7 +15,7 @@
 					<% if seller.last_sign_in_at%>last seen <%= time_ago_in_words(seller.last_sign_in_at) %> ago.<% end %>
 				</td>
 				<td><%= link_to 'edit', edit_seller_path(seller)%></td>
-				<td><%=link_to 'delete', seller, method: :delete, data: { confirm: 'Are you sure?' } if seller.lots.empty? %></td>
+				<td><%=link_to 'delete', seller, method: :delete, data: { confirm: 'Are you sure? There is no way back!' } if seller.lots.empty? %></td>
 			</tr>
 		<% end %>
 	</table>
