@@ -313,7 +313,11 @@ p{
 
   td, th {
     font-size: 4.5vw;
-    padding: 1.5vh 3vw;
+    padding: 1.5vh 2.5vw;
+  }
+
+  td.left {
+    text-align: left;
   }
 
   td.hide {

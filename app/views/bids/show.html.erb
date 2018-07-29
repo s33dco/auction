@@ -37,7 +37,7 @@
 			<% lot.bids.leading_bids.each do |bid |%> 
 			<!-- lot.bids.leading_bids(10).each for top 10 bids, defaults to 5 -->
 				<tr>
-					<td><%= bid.buyer.full_name%></td>
+					<td><%= link_to bid.buyer.full_name ,buyer_path(bid.buyer) %></td>
 					<td class='money'><%= show_money(bid.bidvalue)%></td>
 					<td><%= date_time(bid.created_at)%></td>
 				</tr>
