@@ -13,7 +13,7 @@
 
 		<% unless @active_lots.empty? %>
 			<div class="live-items">
-			<h3>Live Lots.</h3>
+			<h3>Active Lots.</h3>
 				<table>
 					<tr>
 						<td></td>
@@ -21,7 +21,8 @@
 						<td class='hide'></td>
 						<td></td>
 						<td class='money'>Reserve</td>
-						<td colspan=2 class='money'>Current Bidding</td>
+						<td class='hide'></td>
+						<td class='money'>Current Bidding</td>
 					</tr>
 					<% @active_lots.each do | lot| %>
 						<tr>
@@ -30,7 +31,7 @@
 							<td class='hide'><%= lot.lotnumber%></td>
 							<td><%= lot.make_and_model %></td>
 							<td class="money"><%= show_money(lot.reserve)%></td>
-							<td class="money">(<%= pluralize(lot.bids.count, 'bid')%>)</td>
+							<td class="money hide">(<%= pluralize(lot.bids.count, 'bid')%>)</td>
 							<td class="money"><%= show_money(lot.selling_price)%></td>
 						</tr>
 					<% end %>
@@ -100,7 +101,8 @@
 							<td class='hide'>Lot</td>
 							<td>Item</td>
 							<td>Reserve</td>
-							<td colspan=2>Highest Bid</td>
+							<td class='hide'></td>
+							<td>Highest Bid</td>
 						</tr>
 				</tr>
 				<% @unsold_lots.each do | lot| %>
@@ -110,7 +112,7 @@
 						<td class='hide'><%= lot.lotnumber%></td>
 						<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
 						<td class='money'><%= show_money(lot.reserve)%></td>
-						<td><%= pluralize(lot.bids.count, 'bid')%></td>
+						<td class='hide'><%= pluralize(lot.bids.count, 'bid')%></td>
 						<td class='money'><%= show_money(lot.highest_bid.first.bidvalue)%></td>
 					</tr>
 				<% end %>
