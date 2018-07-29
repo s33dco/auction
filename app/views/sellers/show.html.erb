@@ -16,18 +16,18 @@
 			<h3>Live Lots.</h3>
 				<table>
 					<tr>
-						<th colspan=7 class='left'>Live Lots.</th>
-					</tr>
-					<tr>
-						<td colspan=4></td>
+						<td></td>
+						<td class='hide'></td>
+						<td class='hide'></td>
+						<td></td>
 						<td class='money'>Reserve</td>
 						<td colspan=2 class='money'>Current Bidding</td>
 					</tr>
 					<% @active_lots.each do | lot| %>
 						<tr>
 							<td><%= short_date(lot.sale.date)%></td>
-							<td><%= lot.sale.house.code%></td>
-							<td><%= lot.lotnumber%></td>
+							<td class='hide'><%= lot.sale.house.code%></td>
+							<td class='hide'><%= lot.lotnumber%></td>
 							<td><%= lot.make_and_model %></td>
 							<td class="money"><%= show_money(lot.reserve)%></td>
 							<td class="money">(<%= pluralize(lot.bids.count, 'bid')%>)</td>
@@ -43,7 +43,10 @@
 				<h3>Sold lots due for payment.</h3>
 				<table>
 					<tr  class='highlight'>
-						<td colspan=2 class='left'></td>
+						<td></td>
+						<td></td>
+						<td class= 'hide'></td>
+						<td></td>
 						<td class='hide'>Selling Price</td>
 						<td class='hide'>Selling Fees</td>
 						<td>Amount Due</td>
