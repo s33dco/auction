@@ -4,7 +4,7 @@
 	</header>
 	<%= render 'shared/errors', object: @buyer %>
 	<%= form_with(model:@buyer, local:true) do |f| %>
-		<%= render "shared/client_fields", f:f%>
+		<%= render "buyer_fields", f:f%>
 		<%= f.submit %>
 	<% end %>
 </article>

@@ -121,7 +121,11 @@
 	</table>
 </article>
 <% content_for(:side_links) do %>
-	<li class='contextual'>
-		<%=link_to 'new seller', new_seller_path %>
+
+		<li class='contextual'>
+		<%=link_to 'edit this seller', edit_seller_path(@seller) %>
 	</li>	
+		<li class='contextual'>
+		<%=link_to 'new seller', new_seller_path %>
+	</li>
 <% end %>

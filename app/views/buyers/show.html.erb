@@ -108,7 +108,11 @@
 </article>
 
 <% content_for(:side_links) do %>
+
 		<li class='contextual'>
+			<%=link_to 'edit this buyer', edit_buyer_path(@buyer) %>
+		</li>	
+				<li class='contextual'>
 			<%=link_to 'new buyer', new_buyer_path %>
 		</li>	
 <% end %>

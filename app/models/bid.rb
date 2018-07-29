@@ -4,7 +4,8 @@ class Bid < ApplicationRecord
   belongs_to :sale
 
   validates :buyer_id, :lot_id, :bidvalue, presence: true
-  # validate :bid_enough
+  validates_uniqueness_of :bidvalue, :scope => [:lot_id]
+  validate :bid_enough
 
 
   scope :desc_order, ->{order(bidvalue: :desc)}
@@ -15,8 +16,8 @@ class Bid < ApplicationRecord
  	private 
 
  	def bid_enough
- 		if bidvalue < lot.selling_price 			# can end up with identical bids
- 			errors.add(:bidvalue, "bid too low")
+ 		if bidvalue < lot.selling_price 
+ 			errors.add(:bidvalue, "too low")
  		end
  	end
 

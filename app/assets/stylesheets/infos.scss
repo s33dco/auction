@@ -4,7 +4,7 @@
 /* FLASHES */
 
 .flash {
-  color: $flash-text-colour;
+  color: #fff;
   border-radius: 4px;
   padding: 1.5vh 0;
   text-align: center;
@@ -13,7 +13,7 @@
 
   &.notice {
     background-color: $flash-notice-colour;
-    color: $primary-text-colour;
+
   }
 
   &.alert {
