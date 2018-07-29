@@ -1,8 +1,8 @@
 class Sale < ApplicationRecord
   belongs_to :house
-  has_many :lots
+  has_many :lots, dependent: :destroy
   has_many :vendors, through: :lots, source: :seller
-  has_many :bids
+  has_many :bids, dependent: :destroy
   has_many :bidders, through: :bids, source: :buyer
   accepts_nested_attributes_for :lots, allow_destroy: true, reject_if: ->(attrs) { attrs['lotnumber'].blank? || attrs['description'].blank? || attrs['reserve'].blank? || attrs['manufacturer'].blank? }
 

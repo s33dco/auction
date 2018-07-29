@@ -11,14 +11,14 @@
 	  	</tr>
 	  	<tr>
 	  		<td>Seller</td>
-	  		<td><%= f.collection_select(:seller_id_eq, Seller.all, :id , :code_and_name, prompt: "All Sellers", include_blank: true  ) %></td>
+	  		<td><%= f.collection_select(:seller_id_eq, Seller.lastname_firstname, :id , :code_and_name, prompt: "All Sellers", include_blank: true  ) %></td>
 	  		<td><%= f.select :sellerpaid_eq, options_for_select([["Paid & Due", ""],["Paid", "true"], ["Seller Owed", "false"]])%></td>
 	  		<td></td>
 	  		<td><%= f.text_field :manufacturer_or_model_or_description_cont, placeholder: 'Search in items for...'%></td>
 	  	</tr>
 	  	<tr>
 	  		<td>Buyer</td>
-	  		<td><%= f.collection_select(:buyer_id_eq, Buyer.all, :id , :code_and_name, prompt: "All Buyers", include_blank: true  ) %></td>
+	  		<td><%= f.collection_select(:buyer_id_eq, Buyer.lastname_firstname, :id , :code_and_name, prompt: "All Buyers", include_blank: true  ) %></td>
 	  		<td><%= f.select :buyerpaid_eq, options_for_select([["Paid & Due", ""],["Paid", "true"], ["Buyer Owes", "false"]])%></td>
 	  		<td><%= f.select :dispute_eq, options_for_select([["No dispute filter", ""],["Disputed", "true"], ["Undisputed", "false"]])%></td>
 	  		<td><%= f.submit "Search" %></td>

@@ -10,9 +10,9 @@ class Buyer < ApplicationRecord
 
 
 
-	# validates :firstname, presence: true,
-	# 										  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },
- #                        length: { minimum: 1}
+	validates :firstname, presence: true,
+											  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },
+                        length: { minimum: 1}
 
 	# validates :lastname, 	presence: true,
 	# 										  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },
@@ -26,13 +26,21 @@ class Buyer < ApplicationRecord
   # validates :phone,     numericality:  {message: "just digits no spaces"},
   # 											length: {minimum: 10, maximum: 14}
 
-  validates :code, 			presence: true
+  # validates :code, 			presence: true
 
 	validates_numericality_of :commrate, presence: true,
 														greater_than_or_equal_to: 0
 														
 	scope :by_code, ->{order(buyercode: :asc)}
 	scope :lastname_firstname, ->{order(lastname: :asc).order(firstname: :asc)}
+
+	def password_required?
+	  false
+	end
+
+	def email_required?
+	  false
+	end
 
 	def eldest
 		bids.order(created_at: :asc).first.sale.date unless bids.empty?

@@ -4,24 +4,10 @@
 	</header>
 	<%= render 'shared/errors', object: @auctioneer %>
 	<%= form_with(model:@auctioneer, local:true) do |f| %>
-	<fieldset>
-		<ul>
-			<li>
-				<label>Name</label>
-				<%= f.text_field :name %>
-			</li>
-			<li>
-				<label>Phone</label>
-				<%=f.phone_field :phone %>
-			</li>
-			<li>
-				<label>Email</label>
-				<%= f.email_field :email %>
-			</li>
-		</ul>
-	</fieldset>
+		<%= render "auctioneer_fields", f:f%>
 		<%= f.submit %>
 	<% end %>
+
 </article>
 
 <% content_for(:side_links) do %>
