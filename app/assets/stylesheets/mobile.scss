@@ -31,11 +31,12 @@
   }
 
   article {
+    color: #030305;
   	width: 92vw;
   	min-height: 70vh;
   	margin: 2vh 2vw;
   	border-radius: 5px;
-  	background-color: #fff;
+  	background-color: #FFFFF3;
   	box-shadow: 2px 2px #444;
   }
 
@@ -45,9 +46,12 @@
 
 
   footer.footer,
-  .footer a {
+  .footer a,
+  .footer p {
     color: #ed6e2f;
     text-decoration: none;
+    font-size: 1.1rem;
+
   }
 /* set up basic layout */
 
@@ -137,7 +141,7 @@
   .flash {
       margin: 1vh 2vh;
       padding:  1vh 1vw;
-      color: #444;
+      color: #FFFFF3;
   }
 /* space round flash messaging */
   
@@ -262,10 +266,10 @@
 
   .bid-form div.actions input[type=submit]{
     margin: 1vh 2vw 1vh 1vw;
-    font-size: 4.85vw;
-    padding: 1vh 1vw;
+    font-size: 6vw;
+    padding: 1.25vh 1vw 1vh;
     width: 20vw;
-    line-height: 1.95;
+    line-height: 1.8;
   }
 
   div.title-text div.item,
@@ -436,6 +440,15 @@
       width: 35vw;
       margin: 0;
       padding: 0;
+    }
+
+    fieldset.login input[type=submit]{
+      font-size: 4vw;
+    }
+
+    div.login-actions div.link {
+      margin: 1.75vh 0;
+      text-align: center;
     }
 /* forms for mobile */
 

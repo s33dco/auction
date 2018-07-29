@@ -11,26 +11,29 @@
 
 <% unless controller.action_name == "new" %>
 	<li class='contextual'>
-		<%=link_to 'create new sale', new_sale_path %>
+		<%=link_to 'create a new sale', new_sale_path %>
 	</li>
 <% end %>
+
 <% if controller.action_name == "index" %>
 		<li>
-			<%= link_to	'building', filtered_sales_path(:building)%>
+			<%= link_to	'add or edit lots', filtered_sales_path(:building)%>
 		</li>
 		<li>
-			<%= link_to	'live', filtered_sales_path(:active)%>
+			<%= link_to	'live auctions', filtered_sales_path(:active)%>
 		</li>
 		<li>
-			<%= link_to	'complete', filtered_sales_path(:ended)%>
+			<%= link_to	'completed auctions', filtered_sales_path(:ended)%>
 		</li>
 <% end %>
-		<li>
-			<%= link_to 'houses', houses_path %>
-		</li>
-		<li>
-			<%= link_to 'categories', categories_path %>
-		</li>
+<li>
+	<%= link_to 'sale categories', categories_path %>
+</li>
+<li>
+	<%= link_to 'auction houses', houses_path %>
+</li>
+
+
 
 
 
