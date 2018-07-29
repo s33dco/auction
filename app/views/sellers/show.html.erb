@@ -26,7 +26,7 @@
 						<td><%= short_date(lot.sale.date)%></td>
 						<td><%= lot.sale.house.code%></td>
 						<td><%= lot.lotnumber%></td>
-						<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
+						<td><%= lot.make_and_model %></td>
 						<td class="money"><%= show_money(lot.reserve)%></td>
 						<td class="money">(<%= pluralize(lot.bids.count, 'bid')%>)</td>
 						<td class="money"><%= show_money(lot.selling_price)%></td>
@@ -40,19 +40,19 @@
 			<tr>
 			</tr>
 				<tr  class='highlight'>
-					<td colspan=4 class='left'>Sold lots due for payment.</td>
-					<td>Selling Price</td>
-					<td>Selling Fees</td>
+					<td colspan=2 class='left'>Sold lots due for payment.</td>
+					<td class='hide'>Selling Price</td>
+					<td class='hide'>Selling Fees</td>
 					<td>Amount Due</td>
 				</tr>
 				<% @unpaid_lots.each do | lot| %>
 					<tr>
 						<td><%= short_date(lot.sale.date)%></td>
 						<td><%= lot.sale.house.code%></td>
-						<td><%= lot.lotnumber%></td>
-						<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
-						<td class="money"><%= show_money(lot.soldat)%></td>
-						<td class="money"><%= show_money(lot.sfee)%></td>
+						<td class= 'hide'><%= lot.lotnumber%></td>
+						<td><%= lot.make_and_model %></td>
+						<td class="money hide"><%= show_money(lot.soldat)%></td>
+						<td class="money hide"><%= show_money(lot.sfee)%></td>
 						<td class="money"><%= show_money(lot.seller_due)%></td>
 					</tr>
 				<% end %>
@@ -73,7 +73,7 @@
 						<td><%= short_date(lot.sale.date)%></td>
 						<td><%= lot.sale.house.code%></td>
 						<td><%= lot.lotnumber%></td>
-						<td><%= link_to "#{lot.make_and_model}", lot_path(lot) %></td>
+						<td><%= lot.make_and_model %></td>
 					</tr>
 				<% end %>
 			</div>

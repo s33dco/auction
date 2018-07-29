@@ -2,10 +2,10 @@
 <div class="errors">
   <header>
     <h2>
-      <%= object.class.name.humanize.downcase %> could not be saved. 
+      That won't work for the <%= object.class.name.humanize.downcase %>.
     </h2>
     <h3>
-      Please correct the following <%= pluralize(object.errors.count, "error") %>:
+      Please correct the <%= pluralize(object.errors.count, "problem") %>:
     </h3>
   </header>
   <ul>
