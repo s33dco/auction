@@ -76,20 +76,20 @@
 				<tr>
 					<td></td>
 					<td></td>
+					<td class='hide'></td>
 					<td></td>
-					<td></td>
-					<td class="money">Bid</td>
-					<td class="money">Comm</td>
+					<td class="money hide">Bid</td>
+					<td class="money hide">Comm</td>
 					<td class="money">Total</td>
 				</tr>
 				<% @disputed_lots.each do |lot| %>
 					<tr>
 						<td><%= lot.sale.house.code%></td>
 						<td><%= short_date(lot.sale.date)%></td>
-						<td>Lot <%= lot.lotnumber%></td>
+						<td class='hide'>Lot <%= lot.lotnumber%></td>
 						<td><%= link_to "#{lot.make_and_model}", lot_path(lot.id)%></td>
-						<td class='money'><%= show_money(lot.soldat)%></td>
-						<td class='money'><%= show_money(lot.bfee)%></td>
+						<td class='money hide'><%= show_money(lot.soldat)%></td>
+						<td class='money hide'><%= show_money(lot.bfee)%></td>
 						<td class='money'><%= show_money(lot.buyer_pays)%></td>
 						<% if auctioneer_signed_in? %>
 							<td><%= link_to 'edit', edit_lot_path(lot)%></td>
@@ -97,7 +97,8 @@
 					</tr>
 				<% end %>
 				<tr>
-					<td colspan=6 class='right'>Disputed Total</td>
+					<td colspan=3 class='hide'></td>
+					<td colspan=3 class='right'>Disputed Total</td>
 					<td class='money'><%= show_money(@disputed_cash)%></td>
 				</tr>
 			</table>
