@@ -54,10 +54,15 @@
   }
 /* set up basic layout */
 
-/* dispense with the header */
+/* dispense with the header show default name in footer */
   header.header {
   	display :none;
   }
+
+  .footer p.hide {
+  display: block;
+}
+
 /* dispense with the header */
 
 /* general typography */
@@ -65,7 +70,7 @@
   body {
   font-family: 'Open Sans Condensed', sans-serif;
   }
-  
+
   div.paragraph {
     margin: 5vh 4vw;
     line-height: 1.75;

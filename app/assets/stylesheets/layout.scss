@@ -42,6 +42,10 @@ footer.footer{
 margin-bottom: 5vh;
 }
 
+.footer p.hide {
+	display: none;
+}
+
 input#mobile-menu.mobile-menu-check {
 	display :none;
 }
