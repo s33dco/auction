@@ -9,7 +9,8 @@
 		</div>
 		<div class="title-text">
 			<div class="item">
-				<h2><%= @lot.model %> (<%= @lot.manufacturer %>)</h2>
+				<h2><%= @lot.model %></h2>
+				<h3><%= @lot.manufacturer %></h3>
 			</div>
 			<div class="bid">
 				<% if @lot.sale.complete? %>
