@@ -19,6 +19,9 @@
 			<label>Seller fee £</label>
 			<%= f.number_field :sfee, step: 0.01 %>
 		</li>
+		<li class='amount'>
+			Seller Due : <%=show_money(@lot.seller_due)%>
+		</li>
 		<li>
 			<label>Seller paid</label>
 			<%= f.check_box :sellerpaid%>
@@ -31,12 +34,15 @@
 			<label>Buyer fee £</label>
 			<%= f.number_field :bfee, step: 0.01 %>
 		</li>
+		<li class='amount'>
+			Buyer Pays : <%=show_money(@lot.buyer_pays)%>
+		</li>
 		<li>
 			<label>Buyer paid</label>
 			<%= f.check_box :buyerpaid%>
 		</li>
 		<li>
-			<label>Dispute ?</label>
+			<label>In Dispute ?</label>
 			<%= f.check_box :dispute%>
 		</li>
 	</ul>
