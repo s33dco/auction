@@ -166,7 +166,7 @@
 
   .nav-links a,
   .show-mobile-menu {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
@@ -175,9 +175,9 @@
   }
 
   label.show-mobile-menu{
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   	margin: 0;
-  	padding: 1em;
+  	padding: 1.5rem;
   	background-color: #444;
   }
 
@@ -185,7 +185,7 @@
     display: block;
     text-align: center;
     margin-top: 0.5vh;
-    padding: 0 1.5em 1.5em;
+    padding: 0 1.5em 1.5rem;
     position: relative;
   }
   .header-nav {
@@ -197,14 +197,14 @@
     padding: 0;
     position: absolute;
     text-align: center;
-    top: 2.5em;
+    top: 3rem;
     transition: all 0.5s ease-in-out;
     width: 100vw;
     z-index: 9;
   }
   .header-nav li {
     display: block;
-    margin-top: 1.75em;
+    margin-top: 1.5em;
   }
   .header-nav li ~ li {
     border: 0;
@@ -243,6 +243,8 @@
 
   div.top-box {
     flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   div.title-image {
@@ -254,7 +256,7 @@
   }
 
   div.item h2 {
-  margin: 2vh 2vw;
+/*  margin: 2vh 2vw;*/
   font-size: 6vw;
   }
 
