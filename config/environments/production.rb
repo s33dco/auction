@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.require_master_key = true
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -77,7 +77,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'immense-thicket-90474.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'exsale.co.uk' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
