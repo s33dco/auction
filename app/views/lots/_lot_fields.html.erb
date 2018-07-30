@@ -1,50 +1,58 @@
 <fieldset class='lot-edit'>
 	<ul>
-		<li>
-			<h3>Lot <%= @lot.lotnumber %>, <%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %></h3>
-		</li>
-		<li>
-			<label>Sold at £</label>
-			<%= f.number_field :soldat, step: 0.01 %>
-		</li>
-		<li>
-			<label>Sold</label>
-			<%= f.check_box :sold%>
-		</li>
-		<li>
-			<label>Seller</label>
-			<%= f.collection_select(:seller_id, Seller.by_code, :id , :code_and_name, prompt: "Choose Seller" ) %>
-		</li>
-		<li>
-			<label>Seller fee £</label>
-			<%= f.number_field :sfee, step: 0.01 %>
-		</li>
-		<li class='amount'>
-			Seller Due : <%=show_money(@lot.seller_due)%>
-		</li>
-		<li>
-			<label>Seller paid</label>
-			<%= f.check_box :sellerpaid%>
-		</li>
-		<li>
-			<label>Buyer</label>
-			<%= f.collection_select(:buyer_id, Buyer.all, :id , :code_and_name, include_blank: true) %>
-		</li>
-		<li>
-			<label>Buyer fee £</label>
-			<%= f.number_field :bfee, step: 0.01 %>
-		</li>
-		<li class='amount'>
-			Buyer Pays : <%=show_money(@lot.buyer_pays)%>
-		</li>
-		<li>
-			<label>Buyer paid</label>
-			<%= f.check_box :buyerpaid%>
-		</li>
-		<li>
-			<label>In Dispute ?</label>
-			<%= f.check_box :dispute%>
-		</li>
+		<div class="details">
+			<li>
+				<h3>Lot <%= @lot.lotnumber %>, <%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %></h3>
+			</li>
+			<li>
+				<label>Sold at £</label>
+				<%= f.number_field :soldat, step: 0.01 %>
+			</li>
+			<li>
+				<label>Sold</label>
+				<%= f.check_box :sold%>
+			</li>
+		</div>
+		<div class="seller">
+			<li>
+				<label>Seller</label>
+				<%= f.collection_select(:seller_id, Seller.by_code, :id , :code_and_name, prompt: "Choose Seller" ) %>
+			</li>
+			<li>
+				<label>Seller fee £</label>
+				<%= f.number_field :sfee, step: 0.01 %>
+			</li>
+			<li class='amount'>
+				Seller Due : <%=show_money(@lot.seller_due)%>
+			</li>
+			<li>
+				<label>Seller paid</label>
+				<%= f.check_box :sellerpaid%>
+			</li>
+		</div>
+		<div class="buyer">
+			<li>
+				<label>Buyer</label>
+				<%= f.collection_select(:buyer_id, Buyer.all, :id , :code_and_name, include_blank: true) %>
+			</li>
+			<li>
+				<label>Buyer fee £</label>
+				<%= f.number_field :bfee, step: 0.01 %>
+			</li>
+			<li class='amount'>
+				Buyer Pays : <%=show_money(@lot.buyer_pays)%>
+			</li>
+			<li>
+				<label>Buyer paid</label>
+				<%= f.check_box :buyerpaid%>
+			</li>
+		</div>
+		<div class="dispute">
+			<li>
+				<label>In Dispute ?</label>
+				<%= f.check_box :dispute%>
+			</li>
+		</div>
 	</ul>
 </fieldset>
 		

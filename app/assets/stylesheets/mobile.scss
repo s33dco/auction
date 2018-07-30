@@ -420,12 +420,6 @@
       display: block;
       width: 80%;
     }
-    li.amount {
-      font-size: 1.25rem;
-      font-weight: bold;
-      display: block;
-      width: 80%;
-    }
 
     fieldset li.date select {
       display: inline-block;
@@ -485,6 +479,25 @@
       margin: 1.75vh 0;
       text-align: center;
     }
+
+    /* for lot edit */
+
+    li.amount {
+      font-size: 1.25rem;
+      font-weight: bold;
+      display: block;
+      width: 80%;
+    }
+
+    .lot-edit div.details,
+    .lot-edit div.seller,
+    .lot-edit div.buyer {
+      margin: 0;
+      border-bottom: 2px solid #fff;
+      padding-bottom: 2.5vh;
+
+    }
+
 /* forms for mobile */
 
 /* start of lot index search */
