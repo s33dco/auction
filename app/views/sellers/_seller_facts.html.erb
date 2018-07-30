@@ -8,7 +8,7 @@
 				<li><%= pluralize(@disputed_lots.count, 'lot')%> in dispute.</li>
 			<% end %>
 			<% if @seller.last_sign_in_at%>
-				<li>Last log in <%= time_ago_in_words(@seller.last_sign_in_at) %> ago.</li>
+				<li>Last seen <%= time_ago_in_words(@seller.last_sign_in_at) %> ago.</li>
 			<% end %>
 		</ul>
 <% end %>
