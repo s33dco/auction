@@ -47,8 +47,8 @@
 				</tr>
 				<% @unpaid_lots.each do |lot| %>
 					<tr>
-						<td><%= lot.sale.house.name%></td>
 						<td><%= short_date(lot.sale.date)%></td>
+						<td><%= lot.sale.house.name%></td>
 						<td class='hide'>Lot <%= lot.lotnumber%></td>
 						<td><%= link_to "#{lot.make_and_model}", lot_path(lot.id)%></td>
 						<td class='money hide'><%= show_money(lot.soldat)%></td>

@@ -36,7 +36,7 @@
 	<%= render 'shared/lot_item', lot: @lot%>
 	<% if current_buyer %>
 		<div class="buyer-account">
-			<%= link_to 'back to bidding card', buyer_bidding_path(current_buyer, @lot.sale)%>
+			<%= link_to 'back to bidding card', buyer_bidding_path(current_buyer.id, @lot.sale.id)%>
 		</div>
 	<% end %>
 

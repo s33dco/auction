@@ -27,8 +27,8 @@ class ApplicationController < ActionController::Base
 
 	private
 
-	def someone_signed_in
-			unless auctioneer_signed_in? || buyer_signed_in? || seller_signed_in? 
+	def auctioneer_or_buyer_logged_in
+			unless auctioneer_signed_in? || buyer_signed_in? 
 				redirect_to root_url, alert: "You'll need to sign in before accessing this area."
 			end
 		end
