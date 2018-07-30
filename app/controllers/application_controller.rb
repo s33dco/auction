@@ -29,31 +29,31 @@ class ApplicationController < ActionController::Base
 
 	def auctioneer_or_buyer_logged_in
 			unless auctioneer_signed_in? || buyer_signed_in? 
-				redirect_to root_url, alert: "You'll need to sign in before accessing this area."
+				redirect_to root_url, alert: "You'll need to sign in first."
 			end
 		end
 
 	def check_if_buyer_or_admin
 		unless auctioneer_signed_in? || (buyer_signed_in? && current_buyer == Buyer.find(params[:id])) 
-			redirect_to root_url, alert: "You'll need to sign in before accessing this area."
+			redirect_to root_url, alert: "You'll need to sign in first."
 		end
 	end
 
 	def check_bid_buyer_or_admin
 		unless auctioneer_signed_in? || buyer_signed_in?
-			redirect_to root_url, alert: "You'll need to sign in before accessing this area."
+			redirect_to root_url, alert: "You'll need to sign in first."
 		end
 	end
 
 	def check_if_admin
 		unless auctioneer_signed_in?
-			redirect_to root_url, alert: "You'll need to sign in before accessing this area."
+			redirect_to root_url, alert: "You'll need to sign in first."
 		end
 	end
 
 	def check_if_seller_or_admin
 		unless auctioneer_signed_in? || (seller_signed_in? && current_seller == Seller.find(params[:id])) 
-			redirect_to root_url, alert: "You'll need to sign in before accessing this area."
+			redirect_to root_url, alert: "You'll need to sign in first."
 		end
 	end
 
