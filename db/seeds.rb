@@ -1,5 +1,5 @@
-require 'faker'
-include Faker
+# require 'faker'
+# include Faker
 
 # running this seed file will take some time
 # it will generate buyers and sellers
@@ -12,12 +12,11 @@ include Faker
 # ensure numberofsales / 10 != 0
 
 
-# Auctioneer.create!(
-# 	name: 'Ian',
-# 	email: 'code@s33d.co',
-# 	phone: '07978676545',
-# 	password: 'password'
-# )
+Auctioneer.create!(
+	name: 'Ian',
+	email: 'ian@s33d.co',
+	phone: '07968799929'
+)
 
 # Buyer.create(
 # 	firstname: 		Faker::Name.first_name,
@@ -37,41 +36,41 @@ include Faker
 # 	code: 				rand(100..999),
 # 	password: 'password')
 
-numberofhouses = 3
-numberofbuyers = 5
-numberofsellers = 5
-numberofsales = 10 #must be divisable by 10
-averagebidsperlot = 5
+# numberofhouses = 3
+# numberofbuyers = 5
+# numberofsellers = 5
+# numberofsales = 10 #must be divisable by 10
+# averagebidsperlot = 5
 
 
 
 # make five auction houses
-numberofhouses.times do
-	House.create!(
-		name: 			Faker::Company.unique.name, 
-		address1: 	Faker::Address.street_address,
-		address2: 	Faker::Address.city,
-		postcode: 	Faker::Address.postcode, 
-		phone: 			Faker::PhoneNumber.phone_number,
-		email: 			Faker::Internet.email,
-		code: 			('A'..'Z').to_a.shuffle[0,2].join,
-		siteinfo: 	false)
-end
+# numberofhouses.times do
+# 	House.create!(
+# 		name: 			Faker::Company.unique.name, 
+# 		address1: 	Faker::Address.street_address,
+# 		address2: 	Faker::Address.city,
+# 		postcode: 	Faker::Address.postcode, 
+# 		phone: 			Faker::PhoneNumber.phone_number,
+# 		email: 			Faker::Internet.email,
+# 		code: 			('A'..'Z').to_a.shuffle[0,2].join,
+# 		siteinfo: 	false)
+# end
 
-puts "#{House.count} houses created"
+# puts "#{House.count} houses created"
 
 # make 7 product categories
-Category.create!([
-	{title: 'TV'},
-	{title: 'Digital'},
-	{title: 'Home Cinema'},
-	{title: 'Tower PCs'},
-	{title: 'Laptops'},
-	{title: 'Phones'},
-	{title: 'Audio'}
-	])
+# Category.create!([
+# 	{title: 'TV'},
+# 	{title: 'Digital'},
+# 	{title: 'Home Cinema'},
+# 	{title: 'Tower PCs'},
+# 	{title: 'Laptops'},
+# 	{title: 'Phones'},
+# 	{title: 'Audio'}
+# 	])
 
-puts "#{Category.count} catergories created"
+# puts "#{Category.count} catergories created"
 
 # make buyers
 
@@ -86,7 +85,7 @@ puts "#{Category.count} catergories created"
 # 		password:   	('A'..'Z').to_a.shuffle[0,12].join)
 # end
 
-puts "#{Buyer.count} buyers created"
+# puts "#{Buyer.count} buyers created"
 
 # make sellers
 
@@ -102,7 +101,7 @@ puts "#{Buyer.count} buyers created"
 # end
 
 
-puts "#{Seller.count} sellers created"
+# puts "#{Seller.count} sellers created"
 
 # make x active sales with 120 lots in each
 # change numbersales variable to reduce or increase seed date
@@ -194,6 +193,6 @@ puts "#{Seller.count} sellers created"
 # end
 
 
-puts "complete ;-)"
+# puts "complete ;-)"
 
 
