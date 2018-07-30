@@ -243,8 +243,6 @@
 
   div.top-box {
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
   }
 
   div.title-image {
@@ -252,13 +250,35 @@
   }
 
   div.item {
-    width :100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-stretch;
   }
 
+
   div.item h2 {
-/*  margin: 2vh 2vw;*/
-  font-size: 6vw;
+    flex: 1;
+    font-size: 6.5vw;
+
   }
+
+  div.item h3 {
+    flex :1;
+    font-size: 5.5vw;
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
   .bid-form div.actions {
     margin: 0 auto;
@@ -295,17 +315,10 @@
     line-height: 1.8;
   }
 
-  div.title-text div.item,
    div.title-text div.bid{
     text-align: center;
   }
 
-  div.title-text div.item h2 {
-    margin : 2vh 0;
-    font-size: 6vw;
-    text-align: center;
-
-  }
   div.lot-pictures {
     flex: 50%;
     max-width: 50%;
@@ -318,8 +331,7 @@
     text-align: center;
   }
 
-  div.bid h3,
-  div.title-text h2 {
+  div.bid h3  {
     text-align: center;
   }
 /* lot show page */
