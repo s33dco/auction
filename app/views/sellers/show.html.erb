@@ -51,6 +51,9 @@
 						<td class='hide'>Selling Price</td>
 						<td class='hide'>Selling Fees</td>
 						<td class="money">Amount Due</td>
+						<% if auctioneer_signed_in? %>
+							<td></td>
+						<% end %>
 					</tr>
 					<% @unpaid_lots.each do | lot| %>
 						<tr>
@@ -61,6 +64,9 @@
 							<td class="money hide"><%= show_money(lot.soldat)%></td>
 							<td class="money hide"><%= show_money(lot.sfee)%></td>
 							<td class="money"><%= show_money(lot.seller_due)%></td>
+							<% if auctioneer_signed_in? %>
+								<td><%= link_to 'edit', edit_lot_path(lot)%></td>
+							<% end %>
 						</tr>
 					<% end %>
 					<tr></tr>
