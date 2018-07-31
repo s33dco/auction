@@ -15,6 +15,15 @@ amazon:
   bucket: ENV['AWS_BUCKET']
 
 
+  amazon:
+    service: S3
+    access_key_id: <%= ENV['SPACES_API_KEY']%>
+    secret_access_key: <%= ENV['SPACES_SECRET']%>
+    region: ams3
+    bucket: exsaleauctionspace
+    endpoint: 'https://ams3.digitaloceanspaces.com'
+
+
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
