@@ -1,6 +1,6 @@
 class SalesController < ApplicationController
 
-	before_action :someone_signed_in, only: [:show]
+	before_action :auctioneer_or_buyer_logged_in, only: [:show]
 	before_action :check_if_admin, except:[:show]
 
 		def index
