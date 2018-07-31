@@ -8,13 +8,13 @@ local:
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 
-  amazon:
-    service: S3
-    access_key_id: <%= ENV["SPACES_API_KEY"]%>
-    secret_access_key: <%= ENV["SPACES_SECRET"]%>
-    bucket: exsaleauctionspace
-    region: ams3
-    endpoint: 'https://ams3.digitaloceanspaces.com'
+amazon:
+  service: S3
+  access_key_id: <%= ENV["SPACES_API_KEY"]%>
+  secret_access_key: <%= ENV["SPACES_SECRET"]%>
+  region: ams3
+  bucket: exsaleauctionspace
+  endpoint: "https://ams3.digitaloceanspaces.com"
 
 
 
