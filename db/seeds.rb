@@ -44,18 +44,13 @@ Auctioneer.create!(
 
 
 
-# make five auction houses
-# numberofhouses.times do
-# 	House.create!(
-# 		name: 			Faker::Company.unique.name, 
-# 		address1: 	Faker::Address.street_address,
-# 		address2: 	Faker::Address.city,
-# 		postcode: 	Faker::Address.postcode, 
-# 		phone: 			Faker::PhoneNumber.phone_number,
-# 		email: 			Faker::Internet.email,
-# 		code: 			('A'..'Z').to_a.shuffle[0,2].join,
-# 		siteinfo: 	false)
-# end
+
+	House.create!(
+		name: 			'Exsale Auctions',  
+		phone: 			'07853381333',
+		email: 			Faker::Internet.email,
+		siteinfo: 	true)
+
 
 # puts "#{House.count} houses created"
 
