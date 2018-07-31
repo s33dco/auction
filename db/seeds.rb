@@ -45,11 +45,11 @@ Auctioneer.create!(
 
 
 
-	House.create!(
-		name: 			'Exsale Auctions',  
-		phone: 			'07853381333',
-		email: 			Faker::Internet.email,
-		siteinfo: 	true)
+	# House.create!(
+	# 	name: 			'Exsale Auctions',  
+	# 	phone: 			'07853381333',
+	# 	email: 			Faker::Internet.email,
+	# 	siteinfo: 	true)
 
 
 # puts "#{House.count} houses created"
