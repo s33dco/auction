@@ -13,7 +13,7 @@ amazon:
   secret_access_key: ENV['DIGITALOCEAN_SECRET']
   region: ams3
   bucket: exsaleauctionspace
-  endpoint: 'https://ams3.digitaloceanspaces.com'
+  endpoint: 'ams3.digitaloceanspaces.com'
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
