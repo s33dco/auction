@@ -11,9 +11,9 @@ amazon:
   service: S3
   access_key_id: ENV['DIGITALOCEAN_API_KEY']
   secret_access_key: ENV['DIGITALOCEAN_SECRET']
-  region: ams3
-  bucket: exsaleauctionspace
-  endpoint: 'https://ams3.digitaloceanspaces.com'
+  region: eu-west-2
+  bucket: active-storage
+
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
