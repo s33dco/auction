@@ -37,7 +37,7 @@
 																				              data: { confirm: 'Are you sure?' } %></p>
 						<div class="image-block">
 							<div class='block-image'>
-								<%= image_tag f.object.image.variant(resize: "75x")%>
+								<%= image_tag f.object.image.variant(resize: "200x")%>
 								<label>Change Image</label><%=f.file_field :image%>
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 						<div class="picture-gallery">
 							<% f.object.pictures.each do |picture | %>
 								<div class="lot-picture">
-									<%= image_tag picture.variant(resize: "50x")%>
+									<%= image_tag picture.variant(resize: "100x")%>
 							<!-- to do remove attachment individually -->
 								</div>
 						

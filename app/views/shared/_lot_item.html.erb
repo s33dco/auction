@@ -8,7 +8,7 @@
 			<% lot.pictures.each do |picture| %>
 				<div class="lot-pictures">
 					<%= link_to image_path(url_for(picture)),class:'swipebox' do %>
-						<%= image_tag picture.variant(resize: "5x").processed.service_url %>
+						<%= image_tag picture.variant(resize: "200x")%>
 					<% end %>
 				</div>
 			<% end %>
