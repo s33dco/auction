@@ -17,7 +17,7 @@
  *= require layout
  *= require forms
  *= require tables
- *= require swipebox
+ *= require lightbox
  *= require lots
  *= require bids
  *= require sales

@@ -10,7 +10,8 @@ gem 'rails', '~> 5.2.0'
 gem "aws-sdk-s3", require: false
 
 # image gallery lightbox
-gem 'swipebox'
+# gem 'swipebox'
+gem 'lightbox2-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

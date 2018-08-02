@@ -7,7 +7,7 @@
 		<div class="pictures">
 			<% lot.pictures.each do |picture| %>
 				<div class="lot-pictures">
-					<%= link_to image_path(url_for(picture)),class:'swipebox' do %>
+					<%= link_to image_path(url_for(picture)), data: {lightbox: picture.blob.id} do %>
 						<%= image_tag picture.variant(resize: "200x")%>
 					<% end %>
 				</div>

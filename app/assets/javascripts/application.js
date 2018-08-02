@@ -16,5 +16,5 @@
 //= require global.js
 //= require activestorage
 //= require turbolinks
-//= require swipebox
+//= require lightbox
 //= require_tree .
