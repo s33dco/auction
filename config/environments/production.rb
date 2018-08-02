@@ -84,11 +84,11 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address:              'smtp.sendgrid.net',
+    address:              'smtp.mailgun.org',
     port:                 587,
     domain:               'exsale.co.uk',
-    user_name:            ENV["SENDGRID_USERNAME"],
-    password:             ENV["SENDGRID_PASSWORD"],
+    user_name:            ENV["SMTP_LOGIN"],
+    password:             ENV["SMTP_PASSWORD"],
     authentication:       'plain',
     enable_starttls_auto: true 
   }
