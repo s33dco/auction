@@ -1,58 +1,155 @@
 <fieldset class='lot-edit'>
 	<ul>
-		<div class="details">
+		<% if @lot.bids.empty? && @lot.sold.nil? %>
 			<li>
-				<h3>Lot <%= @lot.lotnumber %>, <%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %></h3>
+				<label>Change Auction</label>
+				<%= f.collection_select(:sale_id, Sale.process, :id, :code_and_date, prompt: 'All Sales', include_blank: true )%>
 			</li>
-			<li>
-				<label>Sold at £</label>
-				<%= f.number_field :soldat, step: 0.01 %>
-			</li>
-			<li>
-				<label>Sold</label>
-				<%= f.check_box :sold%>
-			</li>
-		</div>
-		<div class="seller">
 			<li>
 				<label>Seller</label>
 				<%= f.collection_select(:seller_id, Seller.by_code, :id , :code_and_name, prompt: "Choose Seller" ) %>
 			</li>
 			<li>
-				<label>Seller fee £</label>
-				<%= f.number_field :sfee, step: 0.01 %>
-			</li>
-			<li class='amount'>
-				Seller Due : <%=show_money(@lot.seller_due)%>
+				<label class='next'>Lot Number</label>
+				<%=f.number_field :lotnumber, step: 0.01 %>
 			</li>
 			<li>
-				<label>Seller paid</label>
-				<%= f.check_box :sellerpaid%>
-			</li>
-		</div>
-		<div class="buyer">
-			<li>
-				<label>Buyer</label>
-				<%= f.collection_select(:buyer_id, Buyer.all, :id , :code_and_name, include_blank: true) %>
+				<label class='next'>Category</label>
+				<%= f.collection_select(:category_id, Category.alpha, :id , :title, prompt: "Choose Category" ) %>
 			</li>
 			<li>
-				<label>Buyer fee £</label>
-				<%= f.number_field :bfee, step: 0.01 %>
-			</li>
-			<li class='amount'>
-				Buyer Pays : <%=show_money(@lot.buyer_pays)%>
+				<label class='next'>Seller</label>
+				<%= f.collection_select(:seller_id, Seller.by_code, :id , :code_and_name, prompt: "Choose Seller" ) %>
 			</li>
 			<li>
-				<label>Buyer paid</label>
-				<%= f.check_box :buyerpaid%>
+				<label class='next'>Manufacturer</label>
+				<%=f.text_field :manufacturer%>
 			</li>
-		</div>
-		<div class="dispute">
 			<li>
-				<label>In Dispute ?</label>
-				<%= f.check_box :dispute%>
+				<label class='next'>Model</label>
+				<%=f.text_field :model%>
 			</li>
-		</div>
-	</ul>
+			<li>
+				<label class='next'>Reserve</label>
+				<%=f.number_field :reserve, step: 0.01 %>
+			</li>
+			<li>
+				<label class='next'>Description</label>
+				<%=f.text_area :description , rows: 10 %>
+
+
+			</li>
+			<li class='image'>
+				<% if f.object.image.attached? %>
+						<label>Main Image</label>
+						<div class="image-block">
+							<div class='block-image'>
+								<%= image_tag f.object.image.variant(resize: "200x")%>
+								<label>Change Image</label><%=f.file_field :image%>
+							</div>
+						</div>
+				<% else %>
+					<label>Main Image</label>
+					<%=f.file_field :image%>
+				<% end %>
+			</li>
+
+
+			<li>
+				<% if f.object.pictures.attached? %>
+					<label>Additional Images</label>
+
+						<div class="picture-gallery">
+							<% f.object.pictures.each do |picture | %>
+								<div class="lot-picture">
+									<%= image_tag picture.variant(resize: "100x")%>
+
+								</div>
+							<% end %>
+						</div>
+					<label>Add More Images</label>
+					<%=f.file_field :pictures, multiple: true%>
+				<% else %>
+					<label>Additional Images</label>
+					<%=f.file_field :pictures, multiple: true%>
+				<% end %>
+			</li>
+
+
+
+
+
+
+
+
+	
+		<% else %>
+			<div class="details">
+				<li>
+					<h3>Lot <%= @lot.lotnumber %>, <%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %></h3>
+				</li>
+				<li>
+					<label>Sold at £</label>
+					<%= f.number_field :soldat, step: 0.01 %>
+				</li>
+				<li>
+					<label>Sold</label>
+					<%= f.check_box :sold%>
+				</li>
+			</div>
+			<div class="seller">
+				<li>
+					<label>Seller</label>
+					<%= f.collection_select(:seller_id, Seller.by_code, :id , :code_and_name, prompt: "Choose Seller" ) %>
+				</li>
+				<li>
+					<label>Seller fee £</label>
+					<%= f.number_field :sfee, step: 0.01 %>
+				</li>
+				<li class='amount'>
+					Seller Due : <%=show_money(@lot.seller_due)%>
+				</li>
+				<li>
+					<label>Seller paid</label>
+					<%= f.check_box :sellerpaid%>
+				</li>
+			</div>
+			<div class="buyer">
+				<li>
+					<label>Buyer</label>
+					<%= f.collection_select(:buyer_id, Buyer.all, :id , :code_and_name, include_blank: true) %>
+				</li>
+				<li>
+					<label>Buyer fee £</label>
+					<%= f.number_field :bfee, step: 0.01 %>
+				</li>
+				<li class='amount'>
+					Buyer Pays : <%=show_money(@lot.buyer_pays)%>
+				</li>
+				<li>
+					<label>Buyer paid</label>
+					<%= f.check_box :buyerpaid%>
+				</li>
+			</div>
+			<div class="dispute">
+				<li>
+					<label>In Dispute ?</label>
+					<%= f.check_box :dispute%>
+				</li>
+			</div>
+		<% end %>
+		<% if  @lot.sold == false || nil %>
+			<div class="kill-bids">
+				<li>
+					<p><%= link_to 'reset & resell?', delete_bids_and_reset_lot_path(@lot.id),
+																	method: :delete,
+												          data: { confirm: "Are you sure? You will need a new sale, (open or lotting up), for this lot to go into, if you haven't made one yet come back when you have. This will destroy all bidding and financial details so the lot can be resold, there is no way back once the button has been pushed. The Image, Seller and item details will be all that is retained." } %></p>
+				</li>
+			</div>
+		<% end %>
+
+		</ul>
+
+	
 </fieldset>
 		

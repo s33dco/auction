@@ -23,7 +23,7 @@
 			<div class="alt-images">
 				<% lot.pictures.each do |picture | %>
 				<div class="picture-wrapper">
-					<% image_tag(picture.variant(resize: "100x"))%>
+					<%= image_tag(picture.variant(resize: "75x"))%>
 				</div>
 				<% end %>
 			</div>

@@ -46,9 +46,9 @@
 	<% end %>
 </article>
 
-<% content_for(:side_info) do %>
-	<%= render "side_stats" %>
-<% end %>
+<!-- content_for side_stats removed render side-stats -->
+
+
 <% content_for(:side_links) do %>
 	<li>
 			<%= link_to 'download CSV', lots_path(format: "csv") %>

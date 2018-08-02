@@ -39,5 +39,11 @@
 			<%= link_to 'back to bidding card', buyer_bidding_path(current_buyer.id, @lot.sale.id)%>
 		</div>
 	<% end %>
-
+	<% if auctioneer_signed_in?%>
+		<% content_for(:side_links) do %>
+			<li class='contextual'>
+				<%=link_to 'edit this lot', edit_lot_path(@lot) %>
+			</li>	
+		<% end %>
+	<% end %>
 </article>

@@ -9,17 +9,17 @@ class LotsController < ApplicationController
 		
 		items if search_params
 
-		unless @lots.nil? 
-			@gross = @lots.total_gross
-			@total_sales = @lots.total_sales
-			@buyer_fees	= @lots.total_buyer_fees
-			@seller_fees = @lots.total_seller_fees
-			@comm = @lots.total_comm
-			@pay_out = @lots.pay_out
-			@average = @lots.average_profit
-			@average_bid = @lots.average_bid
-			@how_many = @lots.count
-		end
+		# unless @lots.nil? 
+		# 	@gross = @lots.total_gross
+		# 	@total_sales = @lots.total_sales
+		# 	@buyer_fees	= @lots.total_buyer_fees
+		# 	@seller_fees = @lots.total_seller_fees
+		# 	@comm = @lots.total_comm
+		# 	@pay_out = @lots.pay_out
+		# 	@average = @lots.average_profit
+		# 	@average_bid = @lots.average_bid
+		# 	@how_many = @lots.count
+		# end
 
 		@saved_for_csv = Lot.auctioned.search(session[:q]).result
 
@@ -65,6 +65,19 @@ class LotsController < ApplicationController
 		redirect_to edit_sale_url(@lot.sale)
 	end
 
+	def delete_one_attached_picture
+		# attachment = ActiveStorage::Attachment.find(params[:id])
+		# attachment.purge
+		# redirect_to lot_path
+	end
+
+	def delete_bids_and_reset
+		@lot = Lot.find(params[:id])
+		@lot.bids.destroy_all
+		@lot.reset
+		redirect_to edit_lot_url(@lot), alert:'All bids deleted, lot details reset.'
+	end
+
 	private
 
 	def items
@@ -73,7 +86,7 @@ class LotsController < ApplicationController
 	end 
 
 	def search
-		@search ||= Lot.auctioned.search(search_params)
+		@search ||= Lot.all.search(search_params)
 	end
 
 	def search_params
@@ -81,6 +94,6 @@ class LotsController < ApplicationController
 	end
 
 	def lot_params
-		params.require(:lot).permit(:dispute, :category_id, :buyer_id, :seller_id, :winner, :soldat, :bfee, :sfee, :sold, :buyerpaid, :sellerpaid)
+		params.require(:lot).permit(:sale_id, :manufacturer, :model, :description, :lotnumber, :reserve, :dispute, :category_id, :buyer_id, :seller_id, :winner, :soldat, :bfee, :sfee, :sold, :buyerpaid, :sellerpaid, :image, pictures:[])
 	end
 end

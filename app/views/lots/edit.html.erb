@@ -1,6 +1,7 @@
 <article>
 	<header>
-		<h1>Editing <%= @lot.make_and_model%><br>(post auction)</h1>
+		<h1>Editing <%= @lot.make_and_model%><br>
+		<% if @lot.bids.empty? && (@lot.sold == nil || false) %>(pre auction)<% else %>(post auction)<%end%></h1>
 	</header>
 	<%= form_with(model: @lot, local:true) do |f| %>
 		<%= render 'lot_fields', f: f%>

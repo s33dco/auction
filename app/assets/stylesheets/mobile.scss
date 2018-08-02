@@ -491,11 +491,24 @@
 
     .lot-edit div.details,
     .lot-edit div.seller,
-    .lot-edit div.buyer {
+    .lot-edit div.buyer,
+    .lot-edit div.dispute {
       margin: 0;
       border-bottom: 2px solid #fff;
       padding-bottom: 2.5vh;
 
+    }
+
+    div.kill-bids {
+      background-color: red;
+      text-align: center;
+      border-radius: 5px;
+      padding-top: 0.4vh;
+      margin: 2.5vh 0;
+    }
+
+    .kill-bids a {
+      color: #fff;
     }
 
 /* forms for mobile */

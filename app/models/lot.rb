@@ -131,6 +131,10 @@ class Lot < ApplicationRecord
 		end
 	end
 
+	def reset
+		self.update_attributes(soldat:nil, bfee:nil, sfee:nil, sold:nil, buyerpaid:nil, sellerpaid:nil, buyer_id:nil, dispute:false)
+	end
+
 	def buyer_highest_bid(buyer)
 		bids.where("buyer_id = ?", buyer).order(bidvalue: :desc).first
 	end
