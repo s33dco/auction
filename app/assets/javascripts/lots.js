@@ -1,5 +1,8 @@
-;( function( $ ) {
+// commented ut as not using swipebox
 
-	$( '.swipebox' ).swipebox();
 
-} )( jQuery );
+// ;( function( $ ) {
+
+// 	$( '.swipebox' ).swipebox();
+
+// } )( jQuery );
