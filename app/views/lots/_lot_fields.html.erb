@@ -4,6 +4,7 @@
 			<div class="details">
 				<li>
 					<h3>Lot <%= @lot.lotnumber %>, <%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %></h3>
+					<h4>(record id <%= @lot.id %>)</h4>
 				</li>
 				<li>
 					<label>Change Auction</label>
@@ -45,6 +46,8 @@
 						<div class="image-block">
 							<div class='block-image'>
 								<%= image_tag f.object.image.variant(resize: "200x")%>
+								<p><%= link_to 'delete', delete_main_image_lot_url(f.object.id), 
+										 	method: :delete, data: { confirm: 'Are you sure? No way back!' } %></p>
 								<label>Change Image</label><%=f.file_field :image%>
 							</div>
 						</div>
@@ -60,7 +63,8 @@
 							<% f.object.pictures.each do |picture | %>
 								<div class="lot-picture">
 									<%= image_tag picture.variant(resize: "100x")%>
-
+									<p><%= link_to 'delete', delete_one_attached_picture_lot_path(picture.blob.id, @lot.id), 
+											 	method: :delete, data: { confirm: 'Are you sure? No way back!' } %></p>
 								</div>
 							<% end %>
 						</div>
@@ -83,6 +87,7 @@
 			<div class="details">
 				<li>
 					<h3>Lot <%= @lot.lotnumber %>, <%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %></h3>
+					<h4>(record id <%= @lot.id %>)</h4>
 				</li>
 				<li>
 				<% if @lot.sold.nil? %>

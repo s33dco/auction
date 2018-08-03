@@ -54,9 +54,13 @@ class LotsController < ApplicationController
 	end
 
 	def delete_one_attached_picture
-		# attachment = ActiveStorage::Attachment.find(params[:id])
-		# attachment.purge
-		# redirect_to lot_path
+		@lot = Lot.find(params[:format])
+		redirect_to edit_lot_url(@lot.id), alert:'Image deleted' if @lot.pictures.find(params[:id]).purge
+	end
+
+	def delete_main_image
+		@lot = Lot.find(params[:id])
+		redirect_to edit_sale_url(@lot.id), alert:'Image deleted' if @lot.image.purge
 	end
 
 	def reset_bids_and_fees

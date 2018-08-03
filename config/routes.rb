@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       delete :delete_pictures
       delete :delete_image
       delete :delete_one_attached_picture
+      delete :delete_main_image
       post :reset_bids_and_fees
     end
   end
