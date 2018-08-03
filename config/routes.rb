@@ -35,6 +35,6 @@ Rails.application.routes.draw do
     end
   end
 
-  match 'lots/:id/:image_id', to: 'lots#delete_one_attached_picture', via: :delete, as: :delete_one_attached_picture
+  delete 'lots/:id/:image_id', to: 'lots#delete_one_attached_picture', as: :delete_one_attached_picture
 
 end

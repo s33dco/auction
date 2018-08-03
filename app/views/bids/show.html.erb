@@ -22,10 +22,14 @@
 
 					<div class="lot-bid">
 						<% if @sale.complete? %>
-							<% if lot.reserve > lot.soldat %>
-								<h3>Reserve not met (<%= show_money(lot.reserve)%>)</h3>
+							<% lot.bids.empty? %>
+								<h3>Lot details have been reset</h3>
 							<% else %>
-								<h3>Sold at <%=show_money(lot.soldat)%> (reserve <%= show_money(lot.reserve)%>)</h3>
+								<% if lot.reserve > lot.soldat %>
+									<h3>Reserve not met (<%= show_money(lot.reserve)%>)</h3>
+								<% else %>
+									<h3>Sold at <%=show_money(lot.soldat)%> (reserve <%= show_money(lot.reserve)%>)</h3>
+								<% end %>
 							<% end %>
 						<% else %>
 							<h3>Bidding at <%=show_money(lot.selling_price)%> (reserve <%= show_money(lot.reserve)%>)</h3>

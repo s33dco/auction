@@ -55,9 +55,7 @@ class LotsController < ApplicationController
 
 	def delete_one_attached_picture
 		@lot = Lot.find(params[:id])
-		# @lot.picture.find(params[:image_id]).purge
-		attchmnt = ActiveStorage::Attachment.find(params[:image_id])
-		attchmnt.purge
+		@lot.pictures.find(params[:image_id]).purge
 		redirect_to edit_lot_path(@lot), alert: "Image deleted"
 	end
 
