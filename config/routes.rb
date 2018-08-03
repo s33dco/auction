@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'bids/filter/:scope', to: "bids#index", as: :filtered_bids
   get "welcome", to: "pages#welcome", as: 'welcome'
   get "about", to: "pages#about", as: 'about'
-  get "buyers/bidding/:id/:sale", to:"buyers#bidding", as: :buyer_bidding
+  get "buyers/bidding/:id/:sale", to: "buyers#bidding", as: :buyer_bidding
 
   resources :bids
   resources :buyers
@@ -30,9 +30,11 @@ Rails.application.routes.draw do
     member do
       delete :delete_pictures
       delete :delete_image
-      delete :delete_one_attached_picture
       delete :delete_main_image
       post :reset_bids_and_fees
     end
   end
+
+  match 'lots/:id/:image_id', to: 'lots#delete_one_attached_picture', via: :delete, as: :delete_one_attached_picture
+
 end
