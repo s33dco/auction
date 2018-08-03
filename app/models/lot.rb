@@ -133,6 +133,7 @@ class Lot < ApplicationRecord
 
 	def reset
 		self.update_attributes(soldat:nil, bfee:nil, sfee:nil, sold:nil, buyerpaid:nil, sellerpaid:nil, buyer_id:nil, dispute:false)
+		self.bids.destroy_all
 	end
 
 	def buyer_highest_bid(buyer)

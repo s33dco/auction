@@ -9,18 +9,6 @@ class LotsController < ApplicationController
 		
 		items if search_params
 
-		# unless @lots.nil? 
-		# 	@gross = @lots.total_gross
-		# 	@total_sales = @lots.total_sales
-		# 	@buyer_fees	= @lots.total_buyer_fees
-		# 	@seller_fees = @lots.total_seller_fees
-		# 	@comm = @lots.total_comm
-		# 	@pay_out = @lots.pay_out
-		# 	@average = @lots.average_profit
-		# 	@average_bid = @lots.average_bid
-		# 	@how_many = @lots.count
-		# end
-
 		@saved_for_csv = Lot.auctioned.search(session[:q]).result
 
 		respond_to do |format|
@@ -71,11 +59,10 @@ class LotsController < ApplicationController
 		# redirect_to lot_path
 	end
 
-	def delete_bids_and_reset
+	def reset_bids_and_fees
 		@lot = Lot.find(params[:id])
-		@lot.bids.destroy_all
-		@lot.reset
-		redirect_to edit_lot_url(@lot), alert:'All bids deleted, lot details reset.'
+		flash[:alert] = "All bids destroyed, all fees reset" if @lot.reset
+		redirect_to edit_lot_url(@lot)
 	end
 
 	private
