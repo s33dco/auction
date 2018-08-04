@@ -63,7 +63,8 @@
 							<% f.object.pictures.each do |picture | %>
 								<div class="lot-picture">
 									<%= image_tag picture.variant(resize: "100x")%>
-									<p><%= link_to 'delete', delete_one_attached_picture_path(@lot, picture.blob.id), 
+									<p></p>
+									<p><%= link_to 'delete', delete_one_attached_picture_path(@lot, picture.id), 
 											 	method: :delete, data: { confirm: 'Are you sure? No way back!' } %></p>
 								</div>
 							<% end %>
