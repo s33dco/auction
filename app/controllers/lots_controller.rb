@@ -56,7 +56,7 @@ class LotsController < ApplicationController
 	def delete_one_attached_picture
 		@lot = Lot.find(params[:id])
 		@lot.pictures.find(params[:image_id]).purge
-		redirect_to edit_lot_url(@lot.id), alert: "Image deleted"
+		render :edit, alert: "Image deleted"
 	end
 
 	def delete_main_image
