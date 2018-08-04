@@ -22,7 +22,7 @@
 
 					<div class="lot-bid">
 						<% if @sale.complete? %>
-							<% lot.bids.empty? %>
+							<% if lot.bids.empty? %>
 								<h3>Lot details have been reset</h3>
 							<% else %>
 								<% if lot.reserve > lot.soldat %>
