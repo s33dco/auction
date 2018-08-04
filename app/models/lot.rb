@@ -163,7 +163,11 @@ class Lot < ApplicationRecord
 
 # get the highest bid from a different buyer
 	def second_best_bid
-		bids.where.not(buyer_id: highest_bid.first.buyer.id).order(bidvalue: :desc).first		
+		if bidders.uniq.size < 1
+			nil
+		else
+			bids.where.not(buyer_id: highest_bid.first.buyer.id).order(bidvalue: :desc).first	
+		end	
 	end
 
 	def selling_price
