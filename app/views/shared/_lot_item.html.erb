@@ -6,7 +6,7 @@
 	<% if lot.pictures.attached? %>
 		<div class="pictures">
 			<% lot.pictures.each do |picture| %>
-				<div class="lot-pictures">
+				<div class="lot-pictures" >
 					<%= link_to image_path(url_for(picture)), 
 						data:  { colorbox: true, colorbox_iframe: true , colorbox_photo: true,  colorbox_width: "95%", colorbox_height: "95%", colorbox_scrolling: true }  do %>
 						<%= image_tag picture.variant(resize: '150x')%>
@@ -15,4 +15,17 @@
 			<% end %>
 		</div>
 	<% end %>
+	<script type="text/javascript">
+	$(document).ready(function(){    
+	    //Check if the current URL contains '#'
+	    if(document.URL.indexOf("#")==-1){
+	        // Set the URL to whatever it was plus "#".
+	        url = document.URL+"#";
+	        location = "#";
+
+	        //Reload the page
+	        location.reload(true);
+	    }
+	});
+	</script>
 </div>

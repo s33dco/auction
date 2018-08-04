@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require turbolinks
 //= require cocoon
 //= require global.js
 //= require activestorage
-//= require turbolinks
 //= require colorbox-rails
 //= require_tree .
+
