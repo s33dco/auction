@@ -8,7 +8,7 @@ class Lot < ApplicationRecord
 	has_one_attached :image
 	has_many_attached :pictures
 
-	validates :manufacturer, :description, :lotnumber,		
+	validates :manufacturer, :description, :lotnumber, :sale_id		
 										presence: true
 	validates_numericality_of :reserve, 
 										presence: true, greater_than_or_equal_to: 0
