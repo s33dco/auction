@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	
-	# rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+	rescue_from ActiveRecord::RecordNotFound, :with => :render_404
 
 	before_action	:set_house
 	# before_action :set_active_sale
