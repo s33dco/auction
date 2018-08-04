@@ -7,8 +7,9 @@
 		<div class="pictures">
 			<% lot.pictures.each do |picture| %>
 				<div class="lot-pictures">
-					<%= link_to image_path(url_for(picture)), data: {lightbox: picture.blob.id} do %>
-						<%= image_tag picture.variant(resize: "200x")%>
+					<%= link_to image_path(url_for(picture)), 
+						data:  { colorbox: true, colorbox_iframe: true , colorbox_photo: true,  colorbox_width: "90%", colorbox_height: "90%" }  do %>
+						<%= image_tag picture.variant(resize: '150x')%>
 					<% end %>
 				</div>
 			<% end %>
