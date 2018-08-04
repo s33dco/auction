@@ -591,6 +591,18 @@ div.lot-area div.picture-wrapper {
     display: none;
   }
 
+
+  /* get iframe to scroll */
+
+  div#cboxLoadedContent
+  {
+  overflow: auto;
+  -webkit-overflow-scrolling:touch;
+  }
+
+  /* get iframe to scroll */
+  
+
   /* to force landscape and relevant message display*/
     }
     @media (max-width: 660px){
