@@ -35,6 +35,5 @@ Rails.application.routes.draw do
     end
   end
 
-  delete 'lots/:id/:image_id', to: 'lots#delete_one_attached_picture', as: :delete_one_attached_picture
-  get 'lots/:id/:image_id', to: 'lots#edit'
+  delete "lots/:id/:image_id", to: 'lots#delete_one_attached_picture', as: :delete_one_attached_picture
 end
