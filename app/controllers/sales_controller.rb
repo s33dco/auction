@@ -53,7 +53,7 @@ class SalesController < ApplicationController
 
 		def activate
 			@sale = Sale.find(params[:id])
-		  flash[:notice] = "It's on - #{@sale.house.name} #{nice_date(@sale.date)} Active - no changes can be made." if @sale.activate
+		  flash[:notice] = "It's on - #{@sale.house.name} #{nice_date(@sale.date)} Active." if @sale.activate
 		  redirect_to sales_url
 		end
 

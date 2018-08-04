@@ -17,7 +17,7 @@ class BidsController < ApplicationController
 		@lot = Lot.find(params[:bid][:lot_id])
 		if @lot.sale.active
 			@bid = @lot.bids.new(bid_params)
-			@bid.buyer_id = current_buyer.id
+			@bid.buyer_id = current_buyer.id 
 			@bid.sale = @lot.sale
 			if @bid.save
 				redirect_to buyer_bidding_path(current_buyer, @bid.sale.id), notice: "Bid accepted #{current_buyer.full_name}!"

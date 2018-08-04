@@ -3,7 +3,8 @@ class Bid < ApplicationRecord
   belongs_to :lot
   belongs_to :sale
 
-  validates :buyer_id, :lot_id, :bidvalue, presence: true
+  validates :buyer_id, :lot_id, presence: true
+  validates_numericality_of :bidvalue, presence: true, greater_than: 0
   validates_uniqueness_of :bidvalue, :scope => [:lot_id]
   validate :bid_enough
 

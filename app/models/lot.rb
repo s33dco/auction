@@ -167,7 +167,7 @@ class Lot < ApplicationRecord
 	end
 
 	def selling_price
-		if self.bids.empty?
+		if bids.size < 1
 			# if no bids.....
 			0
 		else
