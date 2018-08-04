@@ -1,7 +1,8 @@
 <article>
 	<header>
-		<h1>Editing <%= @lot.make_and_model%></h1>
+		<h1>Editing <%= @lot.manufacturer%> <%= @lot.model%></h1>
 	</header>
+	<%= render "shared/errors", object: @lot %>
 	<%= form_with(model: @lot, local:true) do |f| %>
 		<%= render 'lot_fields', f: f%>
 		<%= f.submit %>
