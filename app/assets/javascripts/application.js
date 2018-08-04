@@ -16,5 +16,5 @@
 //= require global.js
 //= require activestorage
 //= require turbolinks
-//= require lightbox
+//= require colorbox-rails
 //= require_tree .
