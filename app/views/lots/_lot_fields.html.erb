@@ -3,12 +3,12 @@
 		<% if @lot.bids.blank? && (@lot.sold == nil || false) %>
 			<div class="details">
 				<li>
-					<h3>Lot <%= @lot.lotnumber %>, <%if @lot.sale? %><%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %><% end %></h3>
+					<h3>Lot <%= @lot.lotnumber %><%if @lot.sale %>, <%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %><% end %></h3>
 					<h4>(record id <%= @lot.id %>)</h4>
 				</li>
 				<li>
 					<label>Change Auction</label>
-					<%= f.collection_select(:sale_id, Sale.process, :id, :code_and_date, prompt: 'All Sales', include_blank: true )%>
+					<%= f.collection_select(:sale_id, Sale.process, :id, :code_and_date, prompt: 'All Sales')%>
 				</li>
 				<li>
 					<label class='next'>Lot Number</label>
@@ -87,7 +87,7 @@
 
 			<div class="details">
 				<li>
-					<h3>Lot <%= @lot.lotnumber %>, <%if @lot.sale? %><%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %><% end %></h3>
+					<h3>Lot <%= @lot.lotnumber %><%if @lot.sale %>, <%= @lot.sale.house.name %> <%= short_date(@lot.sale.date) %><% end %></h3>
 					<h4>(record id <%= @lot.id %>)</h4>
 				</li>
 				<li>
