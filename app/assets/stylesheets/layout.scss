@@ -4,9 +4,15 @@
 /* for full size screens */
 /* the whole viewport */
 html {
-background-color: $primary-background-colour;	
+background-color: #444;	
 }
 
+
+body {
+	margin :0;
+	padding: 0;
+  line-height: 1.75;
+}	
 
 div.wrapper {
 display: flex;
@@ -15,6 +21,26 @@ line-height: 1.1;
 min-height: 100vh;
 margin : 2vh 2vw;
 }
+
+
+footer.footer {
+	font-size: .75em;
+	text-align: center;
+}
+
+article {
+  color: #030305;
+	width: 92vw;
+	min-height: 70vh;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	box-shadow: 2px 2px #444;
+}
+
+fieldset.login {
+	width : auto;
+}
+
 
 /* 3 high level parts of the page */
 
@@ -26,20 +52,18 @@ nav.site {
 	float: right;
 }
 
-nav.site li {
-	display: inline-block;
-	float: left;
-	padding:	1vh 1vw;
-	margin: 0 1vw;
-}
-
 main.page{
 	flex-grow: 1;
-	width : 96vw;
 }
 
 footer.footer{
-margin-bottom: 5vh;
+	font-size: 1em;
+	margin: 2.5vh 0;
+	color: #ed6e2f;
+}
+
+footer p {
+	padding: 0.25vh 0;
 }
 
 .footer p.hide {
@@ -58,7 +82,7 @@ section {
 }
 
 article {
-	width: 87vw;
+	width: 85vw;
 	padding: 2vh 2vw;
 }
 
@@ -84,11 +108,51 @@ ul.facts {
 	margin: 2vh 0;
 }
 
+header.header,
+a{
+	color: #ed6e2f;
+	text-decoration: none;
+}
 
+a:hover {
+	color :#CE0305
+}
 
+article a {
+	color: #030305;
+}
 
+aside nav {
+	padding: 0 2.5vw;
+}
 
+aside nav label {
+	display: none;
+}
 
+aside nav li {
+	margin : 2vh 0;
+	font-size: .9em;
+	text-transform: uppercase;
+}
+
+header div.lot-search {
+	width: 100%;
+}
+
+  div.paragraph {
+    margin: 5vh 0;
+    line-height: 1.75;
+  }
+
+  div.paragraph p{
+    margin-bottom: 2vh;
+
+  }
+
+article div table td{
+	font-size: 1em;
+}
 
 
 
