@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :buyer do
-    firstname "MyString"
-    lastname "MyString"
-    phone "MyString"
-    email "MyString"
-    commrate "9.99"
+    firstname "A"
+    lastname "B"
+    phone "07777777777"
+    email "jt@jt.com"
+    commrate 9
   end
 end

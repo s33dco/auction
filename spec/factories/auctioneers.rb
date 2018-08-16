@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :auctioneer do
-    name "MyString"
-    email "MyString"
+    name "Jake"
+    email "jake@auction.com"
   end
 end

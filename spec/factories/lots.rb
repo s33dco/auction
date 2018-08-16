@@ -2,7 +2,11 @@ FactoryBot.define do
   factory :lot do
     manufacturer "MyString"
     model "MyString"
-    desciption "MyString"
-    selling_price "9.99"
+    description "MyString"
+    lotnumber 1
+    reserve 10
+    sale
+    seller
+    category
   end
 end

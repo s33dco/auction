@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :bid do
-    buyer nil
-    product nil
+    lot
+    buyer 
     bidvalue "9.99"
+    sale
   end
 end
