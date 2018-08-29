@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :buyers_house do
-    buyer nil
-    house nil
+    buyer 1
+    house 1
   end
 end

@@ -3,9 +3,6 @@ class BuyersController < ApplicationController
 	before_action :check_if_admin, except:[:show, :bidding]
 	before_action :check_permitted_sale, only: [:bidding]
 
-	# check current_buyer = Buyer.find(params[:id]) on show & bidding
-	# all other action restrict to auctioneer_signed_in?
-
 	def index
 		@buyers = Buyer.lastname_firstname.page(params[:page]).per(10)
 	end

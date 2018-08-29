@@ -5,5 +5,7 @@ FactoryBot.define do
     email "jt@jt.com"
     phone "07896777777"
     commrate 9
+    after(:build)   { |s| s.skip_confirmation_notification! }
+    after(:create)  { |s| s.confirm }
   end
 end
