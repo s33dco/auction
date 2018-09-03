@@ -9,6 +9,8 @@ RSpec.describe 'Logged in as Buyer' do
   let(:lot){create(:lot)}
   let(:buyer){create(:buyer)}
   let(:buyer2){create(:buyer)}
+  let(:seller){create(:seller)}
+  let(:auctioneer){create(:auctioneer)}
 
   before(:example) do
     sale.update(house: house)
@@ -20,118 +22,146 @@ RSpec.describe 'Logged in as Buyer' do
     sign_in(buyer)
   end
 
-  it "can access index" do
+  it "can view index" do
     get welcome_path
     expect(response).to have_http_status(:success)
   end
 
-  it "cannot access buyer log in" do
+  it "cannot view buyer log in" do
     get new_buyer_session_path
     expect(response).to have_http_status(:redirect)
   end
 
-  it "cannot access seller log in" do
+  it "cannot view seller log in" do
     get new_seller_session_path
     expect(response).to have_http_status(:redirect)
   end
 
-  it "cannot access auctioneer log in" do
+  it "cannot view auctioneer log in" do
     get new_auctioneer_session_path
     expect(response).to have_http_status(:redirect)
   end
 
-  it "cannot access buyer index" do
+  it "cannot view buyer index" do
     get buyers_path
     expect(response).to have_http_status(:redirect)
   end
 
-  it "cannot access seller index" do
+  it "cannot view seller index" do
     get sellers_path
     expect(response).to have_http_status(:redirect)
   end
 
-  it "cannot access auctioneer index" do
+  it "cannot view auctioneer index" do
     get auctioneers_path
     expect(response).to have_http_status(:redirect)
   end
 
-  it "cannot access sales index" do
+  it "cannot view sales index" do
     get sales_path
     expect(response).to have_http_status(:redirect)
   end
 
-  it "cannot access lots index" do
+  it "cannot view lots index" do
     get lots_path
     expect(response).to have_http_status(:redirect)
   end
 
-  it "can access buyer show" do
+  it "can view buyer show" do
     get buyer_path(buyer)
     expect(response).to have_http_status(:success)
   end
 
-  it "cannot access a different buyer's show" do
+  it "cannot view a different buyer's show" do
     get buyer_path(buyer2)
     expect(response).to have_http_status(:redirect)
   end  
 
-  # it "can access buyer bidding" do
-  #   get buyer_bidding_path(buyer,sale)
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "cannot view seller's own show page" do
+    get seller_path(seller)
+    expect(response).to have_http_status(:redirect)
+  end
 
-  # it "can access seller's own show page" do
-  #   get seller_path(seller)
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "can view own bidding card for permitted active sale" do
+    get buyer_bidding_path(buyer,sale)
+    expect(response).to have_http_status(:success)
+  end
 
-  # # it "cannot make a bid" do
-  # #   post bids_path(lot)
-  # #   expect(response).to have_http_status(:redirect)
-  # # end
+  it "cannot view own bidding card for not permitted active sale" do
+    get buyer_bidding_path(buyer,sale2)
+    expect(response).to have_http_status(:redirect)
+  end
 
-  # it "can create a sale" do
-  #   get new_sale_path
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "cannot view other buyers bidding card for permitted active sale" do
+    get buyer_bidding_path(buyer2,sale2)
+    expect(response).to have_http_status(:redirect)
+  end
 
-  # it "can create a seller" do
-  #   get new_seller_path
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "cannot view own bidding card for permitted non active sale" do
+    sale.active = false
+    sale.save
+    get buyer_bidding_path(buyer,sale)
+    expect(response).to have_http_status(:redirect)
+  end
 
-  # it "can create a buyer" do
-  #   get new_buyer_path
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "cannot view own bidding card for complete sale" do
+    sale.active = false
+    sale.complete = true
+    sale.save
+    get buyer_bidding_path(buyer,sale)
+    expect(response).to have_http_status(:redirect)
+  end
 
-  # it "can create an auctioneer" do
-  #   get new_auctioneer_path
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "cannot view other buyers bidding card for complete sale" do
+    sale2.active = false
+    sale2.complete = true
+    sale2.save
+    get buyer_bidding_path(buyer,sale2)
+    expect(response).to have_http_status(:redirect)
+  end
 
-  # it "can edit an auctioneer" do
-  #   get edit_auctioneer_path(auctioneer)
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "cannot create a sale" do
+    get new_sale_path
+    expect(response).to have_http_status(:redirect)
+  end
 
-  # it "can edit a buyer" do
-  #   get edit_buyer_path(buyer)
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "cannot create a seller" do
+    get new_seller_path
+    expect(response).to have_http_status(:redirect)
+  end
 
-  # it "can edit a seller" do
-  #   get edit_seller_path(seller)
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "cannot create a buyer" do
+    get new_buyer_path
+    expect(response).to have_http_status(:redirect)
+  end
 
-  # it "can edit a sale" do
-  #   get edit_sale_path(sale)
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "cannot create an auctioneer" do
+    get new_auctioneer_path
+    expect(response).to have_http_status(:redirect)
+  end
 
-  # it "can edit a lot" do
-  #   get edit_lot_path(lot)
-  #   expect(response).to have_http_status(:success)
-  # end
+  it "cannot edit an auctioneer" do
+    get edit_auctioneer_path(auctioneer)
+    expect(response).to have_http_status(:redirect)
+  end
+
+  it "cannot edit a buyer" do
+    get edit_buyer_path(buyer)
+    expect(response).to have_http_status(:redirect)
+  end
+
+  it "cannot edit a seller" do
+    get edit_seller_path(seller)
+    expect(response).to have_http_status(:redirect)
+  end
+
+  it "cannot edit a sale" do
+    get edit_sale_path(sale)
+    expect(response).to have_http_status(:redirect)
+  end
+
+  it "cannoy edit a lot" do
+    get edit_lot_path(lot)
+    expect(response).to have_http_status(:redirect)
+  end
 end
