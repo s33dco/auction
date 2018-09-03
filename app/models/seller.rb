@@ -10,9 +10,9 @@ class Seller < ApplicationRecord
 											  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },
                         length: { minimum: 1}
 
-	# validates :lastname, 	presence: true,
-	# 										  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },
-	# 											length: { minimum: 2 }
+	validates :lastname, 	presence: true,
+											  format: { with: /\A[a-z\s]+\Z/i, message: "only letters" },
+												length: { minimum: 1 }
 
   validates :email, 		presence: true,
                     		format: /\A\S+@\S+\z/,

@@ -1,9 +1,12 @@
 FactoryBot.define do
+
   factory :seller do
-    firstname "MyString"
-    lastname "MyString"
-    email "MyString"
-    phone "MyString"
-    commrate "9.99"
+    firstname "J"
+    lastname "T"
+    email "seller@factory.com"
+    phone "07896777777"
+    commrate 9
+    after(:build)   { |s| s.skip_confirmation_notification! }
+    after(:create)  { |s| s.confirm }
   end
 end
