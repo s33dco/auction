@@ -15,7 +15,8 @@ class BidsController < ApplicationController
 
 	def create
 		@lot = Lot.find(params[:bid][:lot_id])
-		if @lot.sale.active
+		@buyer = current_buyer
+		if @lot.sale.active && @lot.sale.house.in?(@buyer.houses)
 			@bid = @lot.bids.new(bid_params)
 			@bid.buyer_id = current_buyer.id 
 			@bid.sale = @lot.sale
@@ -26,7 +27,7 @@ class BidsController < ApplicationController
 				render template: 'lots/show'
 			end
 		else
-			redirect_to lot_url(@lot), alert: "Bids are not accepted for this lot"
+			redirect_to buyer_url(current_buyer), alert: "Bids are not accepted for this lot"
 		end
 	end
 
