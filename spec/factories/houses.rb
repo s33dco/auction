@@ -1,4 +1,5 @@
 FactoryBot.define do
+
   factory :house do
     name "MyString"
     code "aa"
@@ -7,6 +8,6 @@ FactoryBot.define do
     address3 "MyString"
     postcode "MyString"
     phone "01234123456"
-    email "anemail@email.com"
+    sequence(:email) { |n| "house#{n}@factory.com" }
   end
 end

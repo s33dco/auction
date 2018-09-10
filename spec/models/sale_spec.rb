@@ -24,4 +24,12 @@ RSpec.describe Sale, type: :model do
     sale.valid?
     expect(sale.errors[:date].any?).to eq(true)
   end
+
+  it "shows active as false" do
+    expect(sale.active).to eq(false)
+  end
+
+  it "shows complete as false" do
+    expect(sale.complete).to eq(false)
+  end
 end

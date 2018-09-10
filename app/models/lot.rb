@@ -111,7 +111,7 @@ class Lot < ApplicationRecord
 		if selling_price == 0
 			0
 		else
-			sale.minfee >= selling_price ? sale.minfee : ((selling_price/100) * seller.commrate)
+			sale.minfee >= ((selling_price/100) * seller.commrate) ? sale.minfee : ((selling_price/100) * seller.commrate)
 		end 
 	end
 
@@ -119,7 +119,7 @@ class Lot < ApplicationRecord
 		if selling_price == 0
 			0
 		else
-			sale.minfee >= selling_price ? sale.minfee : ((selling_price/100) * highest_bid.first.buyer.commrate)
+			sale.minfee >= ((selling_price/100) * highest_bid.first.buyer.commrate) ? sale.minfee : ((selling_price/100) * highest_bid.first.buyer.commrate)
 		end
 	end
 

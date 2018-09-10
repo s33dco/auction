@@ -1,14 +1,10 @@
 FactoryBot.define do
 
-	sequence :email do |n|
-	  "buyer#{n}@factory.com"
-	end
-
   factory :buyer do
-    firstname "A"
-    lastname "B"
+    firstname "Abuyer"
+    lastname "Buyer"
     phone "07777777777"
-    email
+    sequence(:email) { |n| "buyer#{n}@factory.com" }
     commrate 9
     after(:build)   { |b| b.skip_confirmation_notification! }
     after(:create)  { |b| b.confirm }
