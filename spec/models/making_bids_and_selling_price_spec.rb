@@ -71,32 +71,35 @@ RSpec.describe "making bids and lot selling_price" do
 	end
 
 	it 'a higher bid from the same bidder will not change the selling_price' do
-		bid = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 15, buyer_id:buyer.id)
-		bid2 = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 45, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 15, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 45, buyer_id:buyer.id)
 		expect(lot.selling_price).to eq(15)
 	end
 
 	it 'multiple higher bids from the same bidder will not change the selling_price' do
-		bid = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 15, buyer_id:buyer.id)
-		bid2 = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 25, buyer_id:buyer.id)
-		bid3 = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 45, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 15, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 25, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 45, buyer_id:buyer.id)
 		expect(lot.selling_price).to eq(15)
 	end
 
 	it 'selling_price equals second best bid plus notch when more than one buyer bidding' do
-		bid = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 15, buyer_id:buyer.id)
-		bid2 = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 20, buyer_id:buyer.id)
-		bid3 = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 45, buyer_id:buyer.id)
-		bid4 = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 30, buyer_id:buyer2.id)
-		expect(lot.selling_price).to eq(35)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 15, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 20, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 45, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 30, buyer_id:buyer2.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 42, buyer_id:buyer3.id)
+		expect(lot.selling_price).to eq(47)
 	end
 
 	it 'selling_price equals second best bid plus notch when more than one buyer bidding' do
-		bid = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 15, buyer_id:buyer.id)
-		bid2 = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 20, buyer_id:buyer.id)
-		bid3 = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 45, buyer_id:buyer.id)
-		bid4 = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 30, buyer_id:buyer2.id)
-		bid5 = Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 35, buyer_id:buyer3.id)
-		expect(lot.selling_price).to eq(40)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 15, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 20, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 45, buyer_id:buyer.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 30, buyer_id:buyer2.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 39, buyer_id:buyer3.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 49, buyer_id:buyer3.id)
+		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 50, buyer_id:buyer2.id)
+		expect(lot.selling_price).to eq(54)
 	end
 end

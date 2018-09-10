@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.describe 'Logged in as Buyer' do
 
-  let(:sale){create(:sale)}
-  let(:sale2){create(:sale)}
+  let(:sale){create(:sale, active:true)}
+  let(:sale2){create(:sale, active:true)}
   let(:house){create(:house)}
   let(:house2){create(:house)}
   let(:lot){create(:lot)}

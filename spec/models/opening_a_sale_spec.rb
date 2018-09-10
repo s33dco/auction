@@ -2,10 +2,22 @@ require 'rails_helper'
 
 RSpec.describe "opening a sale" do
 
-	it 'will open a sale if one or more lots'
+	let(:house){create(:house)}
+	let(:sale){create(:sale, notch:5, minfee:5, house_id:house.id)}
+	let(:lot){create(:lot, reserve:10, sale_id:sale.id)}
+	let(:lot2){create(:lot, reserve:10, sale_id:sale.id)}
+	let(:lot3){create(:lot, reserve:10, sale_id:sale.id)}
 
-	it 'marks sale as active'
+	before(:example) do
+	  sale.activate
+	end
 
-	it 'show a sale as not complete'
+	it 'marks sale complete as true' do
+		expect(sale.complete).to eq(false)
+	end
+
+	it 'marks sale active as true' do
+		expect(sale.active).to eq(true)
+	end
 
 end

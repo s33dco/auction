@@ -1,9 +1,10 @@
 FactoryBot.define do
   factory :sale do
     house 
-    date Time.now.to_date	
+    date 7.days.ago	
     notch 5
     minfee 5
-    active true
+    active false
+    complete false
   end
 end

@@ -60,7 +60,7 @@ class SalesController < ApplicationController
 		def deactivate
 			@sale = Sale.find(params[:id])
 		  flash.now[:notice] = "#{@sale.house.name} #{nice_date(@sale.date)} building report..." if @sale.deactivate
-		  @sale.generate_report
+		  @sale.write_auction_info_to_lots!
 		  flash[:notice] = "#{@sale.house.name} #{nice_date(@sale.date)} now closed - report built."
 		  redirect_to sales_url
 		end

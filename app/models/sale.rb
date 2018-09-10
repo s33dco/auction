@@ -57,7 +57,7 @@ class Sale < ApplicationRecord
     update_attributes(active: false, complete: true)
   end
 
-  def generate_report
+  def write_auction_info_to_lots!
     lots.each do |lot|
       if lot.reserve > lot.highest_bid_value
         lot.update_attributes(sold: false, soldat: 0, bfee:0, sfee:0) # not setting buyer/sellerpaid to true as these attributes decide lot populating on show page of relevant nodel
