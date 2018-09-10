@@ -9,7 +9,6 @@ RSpec.describe 'buying and selling fees' do
 	let(:seller1){create(:seller, commrate:10)}
 	let(:lot){create(:lot, sale_id:sale.id,reserve:10,seller_id:seller1.id)}
 	
-
 	it 'return minfee when buying comm is less' do
 		Bid.create(lot_id:lot.id,sale_id:sale.id, bidvalue: 500, buyer_id:buyer1.id)
 		allow(lot).to receive(:selling_price).and_return(50)
@@ -33,6 +32,5 @@ RSpec.describe 'buying and selling fees' do
 		allow(lot).to receive(:selling_price).and_return(500)
 		expect(lot.sellingfee).to eq(50)
 	end
-
 
 end

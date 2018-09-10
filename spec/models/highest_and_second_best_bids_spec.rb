@@ -50,5 +50,4 @@ RSpec.describe 'highest and second best bids' do
 		Bid.create(lot_id:lot.id,sale_id:sale.id,bidvalue: 59, buyer_id:buyer1.id)
 		expect(lot.highest_bid_value).to eq(59)
 	end
-
 end
