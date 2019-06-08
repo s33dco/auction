@@ -12,12 +12,12 @@ class Bid < ApplicationRecord
   scope :desc_order, ->{order(bidvalue: :desc)}
   scope :leading_bids, ->(number=5){desc_order.limit(number)}
   scope :eldest_first, ->{order(created_at: :asc)}
- 
 
- 	private 
+
+ 	private
 
  	def bid_enough
- 		if bidvalue.nil? || bidvalue < lot.selling_price 
+ 		if bidvalue.nil? || bidvalue < lot.selling_price
  			errors.add(:bidvalue, "too low")
  		end
  	end

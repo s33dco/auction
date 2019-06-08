@@ -3,7 +3,7 @@ class Seller < ApplicationRecord
   # and :omniauthable
   devise :database_authenticatable, :confirmable, :lockable, :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable
-         
+
 	has_many :lots
 
 	validates :firstname, presence: true,
@@ -16,7 +16,7 @@ class Seller < ApplicationRecord
 
   validates :email, 		presence: true,
                     		format: /\A\S+@\S+\z/,
-                    		uniqueness: { case_sensitive: false , 
+                    		uniqueness: { case_sensitive: false ,
                     									message: "Email address already in use"}
 
   # validates :phone,     numericality:  {message: "just digits no spaces"},

@@ -16,7 +16,7 @@ class Sale < ApplicationRecord
   scope :previous, ->{ended.order(date: :desc)}
   scope :just_ended, ->{ended.order(date: :desc).first}
   scope :building, ->{where('active = ? AND complete = ? ', false, false)}
- 
+
   def ordered_bidders
     bidders.uniq.sort{|a,b| a.lastname <=> b.lastname}
   end

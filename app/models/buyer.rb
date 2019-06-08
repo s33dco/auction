@@ -20,7 +20,7 @@ class Buyer < ApplicationRecord
 
   validates :email, 		presence: true,
                     		format: /\A\S+@\S+\z/,
-                    		uniqueness: { case_sensitive: false , 
+                    		uniqueness: { case_sensitive: false ,
                     									message: "Email address already in use"}
 
   # validates :phone,     numericality:  {message: "just digits no spaces"},
@@ -30,7 +30,7 @@ class Buyer < ApplicationRecord
 
 	validates_numericality_of :commrate, presence: true,
 														greater_than_or_equal_to: 0
-														
+
 	scope :by_code, ->{order(buyercode: :asc)}
 	scope :lastname_firstname, ->{order(lastname: :asc).order(firstname: :asc)}
 

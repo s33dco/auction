@@ -8,15 +8,15 @@ class Lot < ApplicationRecord
 	has_one_attached :image
 	has_many_attached :pictures
 
-	validates :manufacturer, :description, :lotnumber, :model,	
+	validates :manufacturer, :description, :lotnumber, :model,
 										presence: true
-	validates_numericality_of :reserve, 
+	validates_numericality_of :reserve,
 										presence: true, greater_than_or_equal_to: 0
 
 	scope :by_lot_number, ->{order(lotnumber: :asc)}
 	scope :auctioned, ->{where(sold: [true,false]).joins(:sale).merge(Sale.descending)}
 	scope :sold_in_auction, ->{where(sold: [true, false ]).count}
-	
+
 	def self.total_sales
 		sum{|l| l.soldat}
 	end
@@ -46,7 +46,7 @@ class Lot < ApplicationRecord
 	end
 
 	def self.average_profit
-		if self.count == 0 
+		if self.count == 0
 			0
 		else
 			total_comm / self.count
@@ -54,7 +54,7 @@ class Lot < ApplicationRecord
 	end
 
 	def self.average_bid
-		if self.count == 0 
+		if self.count == 0
 			0
 		else
 			total_sales / self.count
@@ -112,7 +112,7 @@ class Lot < ApplicationRecord
 			0
 		else
 			sale.minfee >= ((selling_price/100) * seller.commrate) ? sale.minfee : ((selling_price/100) * seller.commrate)
-		end 
+		end
 	end
 
 	def buyingfee
@@ -125,7 +125,7 @@ class Lot < ApplicationRecord
 
 	def commissions
 		if sold?
-			bfee + sfee	
+			bfee + sfee
 		else
 			0
 		end
@@ -139,9 +139,9 @@ class Lot < ApplicationRecord
 	def buyer_highest_bid(buyer)
 		bids.where("buyer_id = ?", buyer).order(bidvalue: :desc).first
 	end
-	
+
 	def highest_bid
-		bids.order(bidvalue: :desc)	
+		bids.order(bidvalue: :desc)
 	end
 
 	def highest_bid_value
@@ -167,8 +167,8 @@ class Lot < ApplicationRecord
 			# no buyers
 			nil
 		else
-			bids.where.not(buyer_id: highest_bid.first.buyer.id).order(bidvalue: :desc).first	
-		end	
+			bids.where.not(buyer_id: highest_bid.first.buyer.id).order(bidvalue: :desc).first
+		end
 	end
 
 	def selling_price
